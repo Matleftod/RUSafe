@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>R'U SAFE | Landing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="landing-page">
+  <main class="experience" aria-label="Présentation R'U SAFE">
+    <div class="stage-slider" data-stage-slider>
+      <section class="stage-panel stage-panel--landing" data-stage="landing" aria-labelledby="landing-title">
+        <div class="canvas landing-canvas">
+          <div class="landing-glow" aria-hidden="true"></div>
+
+          <img
+            class="brand-logo brand-logo--landing"
+            src="assets/logo.png"
+            alt="Logo R'U SAFE"
+            width="237"
+            height="171"
+            loading="eager"
+          />
+
+          <div class="landing-copy">
+            <h1 id="landing-title">Bienvenue sur R’U SAFE</h1>
+            <p class="landing-slogan" data-slogan aria-live="polite">
+              Grand angle sur <span class="accent">vos risques.</span>
+            </p>
+          </div>
+
+          <button class="pill-button pill-button--gradient landing-cta" type="button" data-open-gate>
+            <span>Découvrir nos activités</span>
+          </button>
+
+          <p class="page-footer">Mentions - Confidentialité - Contact</p>
+        </div>
+      </section>
+
+      <section class="stage-panel stage-panel--gate" data-stage="gate" aria-labelledby="gate-title">
+        <div class="canvas gate-canvas">
+          <div class="landing-glow landing-glow--gate" aria-hidden="true"></div>
+
+          <button class="back-link" type="button" aria-label="Revenir à la landing" data-back-to-landing>
+            <span></span>
+          </button>
+
+          <img
+            class="brand-logo brand-logo--gate"
+            src="assets/logo.png"
+            alt="Logo R'U SAFE"
+            width="237"
+            height="171"
+            loading="eager"
+          />
+
+          <section class="gate-card" aria-labelledby="gate-title">
+            <h2 class="sr-only" id="gate-title">Choix des activités</h2>
+
+            <div class="gate-tabs" role="tablist" aria-label="Activités">
+              <button class="gate-tab is-active" type="button" role="tab" aria-selected="true" data-gate-tab="dora">DORA</button>
+              <button class="gate-tab" type="button" role="tab" aria-selected="false" data-gate-tab="ausecaf">AUSECAF</button>
+              <button class="gate-tab" type="button" role="tab" aria-selected="false" data-gate-tab="secedi">SECEDI</button>
+              <button class="gate-tab" type="button" role="tab" aria-selected="false" data-gate-tab="diag62030">DIAG6 2030</button>
+            </div>
+
+            <div class="gate-body">
+              <p class="gate-description" data-gate-description>
+                Passez de la conformité « papier » à la résilience opérationnelle.
+              </p>
+
+              <div class="gate-media-row">
+                <div class="gate-video-shell" data-gate-media>
+                  <img
+                    class="gate-video-placeholder"
+                    src="assets/video-placeholder.png"
+                    alt="Placeholder vidéo"
+                    width="524"
+                    height="288"
+                  />
+                </div>
+
+                <a class="pill-button pill-button--gradient gate-access" href="accueil.html">
+                  <span>Accéder au site</span>
+                  <span class="button-arrow" aria-hidden="true"></span>
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <p class="page-footer">Mentions - Confidentialité - Contact</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
