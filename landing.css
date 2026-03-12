@@ -1,129 +1,4 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-:root {
-  --page-bg: #f4fffd;
-  --page-bg-soft: #e4f2f2;
-  --text-main: #0b1220;
-  --text-soft: #12182b;
-  --blue-1: #0c6199;
-  --blue-2: #559ff8;
-  --blue-3: #3627fb;
-  --blue-4: #4775e8;
-  --accent: #4d73ef;
-  --home-bg: #dfe8f8;
-  --card-bg: rgba(239, 246, 247, 0.55);
-  --shadow-soft: 0 20px 45px rgba(11, 18, 32, 0.1);
-  --shadow-strong: 0 20px 50px rgba(11, 18, 32, 0.18);
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  color: var(--text-main);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
-
-button {
-  border: 0;
-  background: none;
-  cursor: pointer;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  border: 0;
-  white-space: nowrap;
-}
-
-.pill-button {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  min-height: 65px;
-  padding: 0 26px;
-  border-radius: 999px;
-  line-height: 1;
-  transition:
-    transform 220ms var(--ease-out),
-    box-shadow 220ms var(--ease-out),
-    background-color 220ms var(--ease-out),
-    color 220ms var(--ease-out),
-    border-color 220ms var(--ease-out);
-}
-
-.pill-button:hover {
-  transform: translateY(-2px);
-}
-
-.pill-button:active {
-  transform: translateY(0);
-}
-
-.pill-button:focus-visible,
-.gate-tab:focus-visible,
-.back-link:focus-visible {
-  outline: 3px solid rgba(85, 159, 248, 0.45);
-  outline-offset: 4px;
-}
-
-.pill-button--gradient {
-  border: 2px solid transparent;
-  background:
-    linear-gradient(rgba(244, 255, 253, 0.75), rgba(244, 255, 253, 0.75)) padding-box,
-    linear-gradient(90deg, var(--blue-1) 0%, var(--blue-2) 38%, var(--blue-3) 76%, var(--blue-4) 100%) border-box;
-  color: var(--text-main);
-  box-shadow: 0 0 0 rgba(77, 115, 239, 0);
-}
-
-.pill-button--gradient:hover {
-  box-shadow: 0 12px 30px rgba(77, 115, 239, 0.16);
-}
-
-.pill-button--dark {
-  min-width: 117px;
-  border: 2px solid rgba(11, 18, 32, 0.9);
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.pill-button--dark:hover {
-  background: rgba(11, 18, 32, 0.06);
-}
+/* Landing-specific layout built on top of the shared design system. */
 
 .page-footer {
   position: absolute;
@@ -133,12 +8,12 @@ button {
   transform: translateX(-50%);
   font-size: 14px;
   line-height: 1.5;
-  color: var(--text-main);
+  color: var(--color-text);
   white-space: nowrap;
 }
 
 .landing-page {
-  background: var(--page-bg);
+  background: var(--color-page);
   height: var(--app-height, 100dvh);
   overflow: hidden;
 }
@@ -178,7 +53,7 @@ button {
   display: grid;
   place-items: center;
   overflow: hidden;
-  background: var(--page-bg);
+  background: var(--color-page);
 }
 
 .landing-page .stage-panel {
@@ -190,7 +65,7 @@ button {
 
 .canvas {
   position: relative;
-  width: 1440px;
+  width: var(--container-stage);
   height: 920px;
   flex: none;
   overflow: hidden;
@@ -202,7 +77,7 @@ button {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 1440px;
+  width: var(--container-stage);
   height: 920px;
   margin: 0;
   transform: translate(-50%, -50%) scale(var(--stage-scale, 1));
@@ -264,10 +139,10 @@ button {
 
 .landing-copy h1 {
   margin: 0;
-  font-size: 48px;
-  line-height: 1.2;
-  font-weight: 700;
-  letter-spacing: -0.04em;
+  font-size: var(--font-size-title-lg);
+  line-height: var(--line-height-heading);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-heading);
 }
 
 .landing-slogan {
@@ -275,8 +150,8 @@ button {
   margin: 43px 0 0;
   font-size: 36px;
   line-height: 1.5;
-  font-weight: 400;
-  transition: opacity 280ms ease, transform 280ms ease;
+  font-weight: var(--font-weight-regular);
+  transition: opacity var(--duration-slow) ease, transform var(--duration-slow) ease;
 }
 
 .landing-slogan.is-swapping {
@@ -285,7 +160,7 @@ button {
 }
 
 .landing-slogan .accent {
-  color: var(--accent);
+  color: var(--color-accent);
 }
 
 .landing-cta {
@@ -294,7 +169,7 @@ button {
   left: 50%;
   min-width: 277px;
   font-size: 20px;
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   transform: translateX(-50%);
 }
 
@@ -321,7 +196,7 @@ button {
 }
 
 .back-link:hover {
-  background: rgba(77, 115, 239, 0.08);
+  background: var(--color-accent-soft);
   transform: translateX(-2px);
 }
 
@@ -330,8 +205,8 @@ button {
   width: 16px;
   height: 16px;
   margin-left: 6px;
-  border-left: 4px solid var(--accent);
-  border-bottom: 4px solid var(--accent);
+  border-left: 4px solid var(--color-accent);
+  border-bottom: 4px solid var(--color-accent);
   transform: rotate(45deg);
 }
 
@@ -339,11 +214,11 @@ button {
   position: absolute;
   top: 298px;
   left: 58px;
-  width: 1324px;
+  width: var(--container-gate);
   min-height: 577px;
   padding: 22px 44px 34px;
-  border-radius: 32px;
-  background: linear-gradient(180deg, rgba(239, 246, 247, 0.7) 0%, rgba(229, 244, 244, 0.54) 100%);
+  border-radius: var(--radius-card-lg);
+  background: var(--gradient-gate-card);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(12px);
 }
@@ -360,8 +235,8 @@ button {
   padding: 14px 0 18px;
   font-size: 34px;
   line-height: 1.2;
-  font-weight: 600;
-  color: var(--text-main);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
   text-align: center;
   letter-spacing: -0.04em;
   transition: color 220ms ease, transform 220ms var(--ease-out);
@@ -376,7 +251,7 @@ button {
   height: 4px;
   border-radius: 999px;
   transform: translateX(-50%);
-  background: linear-gradient(90deg, var(--blue-2), var(--blue-3));
+  background: linear-gradient(90deg, var(--color-brand-2), var(--color-brand-3));
   transition: width 220ms var(--ease-out);
 }
 
@@ -385,7 +260,7 @@ button {
 }
 
 .gate-tab.is-active {
-  color: var(--accent);
+  color: var(--color-accent);
 }
 
 .gate-tab.is-active::after {
@@ -403,8 +278,8 @@ button {
   text-align: center;
   font-size: 22px;
   line-height: 1.35;
-  font-weight: 400;
-  color: var(--text-main);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text);
   transition: opacity 220ms ease, transform 220ms ease;
 }
 
@@ -426,7 +301,7 @@ button {
   width: 524px;
   min-height: 288px;
   padding: 0;
-  border-radius: 18px;
+  border-radius: var(--radius-card-sm);
   background: transparent;
   box-shadow: none;
   overflow: hidden;
@@ -441,7 +316,7 @@ button {
   width: 524px;
   height: 288px;
   object-fit: cover;
-  border-radius: 18px;
+  border-radius: var(--radius-card-sm);
   box-shadow: none;
 }
 
@@ -456,8 +331,8 @@ button {
   width: 14px;
   height: 14px;
   margin-right: 2px;
-  border-top: 4px solid var(--accent);
-  border-right: 4px solid var(--accent);
+  border-top: 4px solid var(--color-accent);
+  border-right: 4px solid var(--color-accent);
   transform: rotate(45deg);
 }
 

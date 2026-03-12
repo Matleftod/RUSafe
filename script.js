@@ -1,118 +1,114 @@
-const sloganEntries = [
-  { html: 'Grand angle sur <span class="accent">vos risques.</span>' },
-  { html: 'Du rapport au <span class="accent">rempart.</span>' },
-  { html: 'Tranquillité <span class="accent">approuvée.</span>' },
-  { html: 'Les surprises, seulement si elles viennent avec du <span class="accent">champagne.</span>' }
-];
+function initLandingPage() {
+  const stageSlider = document.querySelector("[data-stage-slider]");
 
-const gateContent = {
-  dora: {
-    description: "Passez de la conformité « papier » à la résilience opérationnelle.",
-    accent: "#4d73ef"
-  },
-  ausecaf: {
-    description: "Votre trésorerie est une cible : auditez vos applis, pas seulement vos process.",
-    accent: "#2097b2"
-  },
-  secedi: {
-    description: "Moins d’angles morts sur vos plateformes EDI bancaires.",
-    accent: "#6d56f6"
-  },
-  diag62030: {
-    description: "Diagnostic 2030 : état des lieux, gaps, roadmap, budget, échéances.",
-    accent: "#3a63dd"
-  }
-};
-
-const stageSlider = document.querySelector("[data-stage-slider]");
-const openGateButton = document.querySelector("[data-open-gate]");
-const backToLandingButton = document.querySelector("[data-back-to-landing]");
-const sloganNode = document.querySelector("[data-slogan]");
-const gateTabs = document.querySelectorAll("[data-gate-tab]");
-const gateDescription = document.querySelector("[data-gate-description]");
-const gateMedia = document.querySelector("[data-gate-media]");
-
-let sloganIndex = 0;
-
-function setStage(stage) {
   if (!stageSlider) {
     return;
   }
 
-  stageSlider.classList.toggle("is-gate", stage === "gate");
-}
+  const sloganEntries = [
+    { html: 'Grand angle sur <span class="accent">vos risques.</span>' },
+    { html: 'Du rapport au <span class="accent">rempart.</span>' },
+    { html: 'Tranquillité <span class="accent">approuvée.</span>' },
+    { html: 'Les surprises, seulement si elles viennent avec du <span class="accent">champagne.</span>' }
+  ];
+  const gateContent = {
+    dora: {
+      description: "Passez de la conformité « papier » à la résilience opérationnelle."
+    },
+    ausecaf: {
+      description: "Votre trésorerie est une cible : auditez vos applis, pas seulement vos process."
+    },
+    secedi: {
+      description: "Moins d’angles morts sur vos plateformes EDI bancaires."
+    },
+    diag62030: {
+      description: "Diagnostic 2030 : état des lieux, gaps, roadmap, budget, échéances."
+    }
+  };
+  const openGateButton = document.querySelector("[data-open-gate]");
+  const backToLandingButton = document.querySelector("[data-back-to-landing]");
+  const sloganNode = document.querySelector("[data-slogan]");
+  const gateTabs = document.querySelectorAll("[data-gate-tab]");
+  const gateDescription = document.querySelector("[data-gate-description]");
+  const gateMedia = document.querySelector("[data-gate-media]");
+  let sloganIndex = 0;
 
-function swapSlogan() {
-  if (!sloganNode || document.hidden || stageSlider?.classList.contains("is-gate")) {
-    return;
+  function setStage(stage) {
+    stageSlider.classList.toggle("is-gate", stage === "gate");
   }
 
-  sloganNode.classList.add("is-swapping");
+  function swapSlogan() {
+    if (!sloganNode || document.hidden || stageSlider.classList.contains("is-gate")) {
+      return;
+    }
 
-  window.setTimeout(() => {
-    sloganIndex = (sloganIndex + 1) % sloganEntries.length;
-    sloganNode.innerHTML = sloganEntries[sloganIndex].html;
-    sloganNode.classList.remove("is-swapping");
-  }, 180);
-}
+    sloganNode.classList.add("is-swapping");
 
-function setGateTab(key) {
-  if (!gateDescription || !gateMedia || !gateContent[key]) {
-    return;
+    window.setTimeout(() => {
+      sloganIndex = (sloganIndex + 1) % sloganEntries.length;
+      sloganNode.innerHTML = sloganEntries[sloganIndex].html;
+      sloganNode.classList.remove("is-swapping");
+    }, 180);
   }
+
+  function setGateTab(key) {
+    if (!gateDescription || !gateMedia || !gateContent[key]) {
+      return;
+    }
+
+    gateTabs.forEach((tab) => {
+      const isActive = tab.dataset.gateTab === key;
+      tab.classList.toggle("is-active", isActive);
+      tab.setAttribute("aria-selected", String(isActive));
+      tab.setAttribute("tabindex", isActive ? "0" : "-1");
+    });
+
+    gateDescription.classList.add("is-swapping");
+    gateMedia.classList.add("is-refreshing");
+
+    window.setTimeout(() => {
+      gateDescription.textContent = gateContent[key].description;
+      gateDescription.classList.remove("is-swapping");
+      gateMedia.classList.remove("is-refreshing");
+    }, 180);
+  }
+
+  function updateLandingViewport() {
+    const viewportHeight = window.innerHeight;
+    const viewportWidth = window.innerWidth;
+    const designWidth = 1440;
+    const designHeight = 920;
+    const scale = Math.min(viewportWidth / designWidth, viewportHeight / designHeight, 1);
+
+    document.documentElement.style.setProperty("--app-height", `${viewportHeight}px`);
+    document.documentElement.style.setProperty("--stage-scale", scale.toFixed(4));
+  }
+
+  openGateButton?.addEventListener("click", () => setStage("gate"));
+  backToLandingButton?.addEventListener("click", () => setStage("landing"));
 
   gateTabs.forEach((tab) => {
-    const isActive = tab.dataset.gateTab === key;
-    tab.classList.toggle("is-active", isActive);
-    tab.setAttribute("aria-selected", String(isActive));
+    tab.addEventListener("click", () => setGateTab(tab.dataset.gateTab));
   });
 
-  gateDescription.classList.add("is-swapping");
-  gateMedia.classList.add("is-refreshing");
+  if (sloganNode) {
+    window.setInterval(swapSlogan, 4200);
+  }
 
-  window.setTimeout(() => {
-    gateDescription.textContent = gateContent[key].description;
-    gateDescription.classList.remove("is-swapping");
-    gateMedia.classList.remove("is-refreshing");
-  }, 180);
+  window.addEventListener("resize", updateLandingViewport, { passive: true });
+  window.addEventListener("orientationchange", updateLandingViewport, { passive: true });
+
+  setGateTab("dora");
+  updateLandingViewport();
 }
 
-function updateLandingViewport() {
-  const viewportHeight = window.innerHeight;
-  const viewportWidth = window.innerWidth;
-  const designWidth = 1440;
-  const designHeight = 920;
-  const scale = Math.min(viewportWidth / designWidth, viewportHeight / designHeight, 1);
+function initHomeNav() {
+  const homeNav = document.querySelector(".home-nav");
 
-  document.documentElement.style.setProperty("--app-height", `${viewportHeight}px`);
-  document.documentElement.style.setProperty("--stage-scale", scale.toFixed(4));
-}
+  if (!homeNav) {
+    return;
+  }
 
-if (openGateButton) {
-  openGateButton.addEventListener("click", () => setStage("gate"));
-}
-
-if (backToLandingButton) {
-  backToLandingButton.addEventListener("click", () => setStage("landing"));
-}
-
-gateTabs.forEach((tab) => {
-  tab.addEventListener("click", () => setGateTab(tab.dataset.gateTab));
-});
-
-if (sloganNode) {
-  window.setInterval(swapSlogan, 4200);
-}
-
-window.addEventListener("resize", updateLandingViewport, { passive: true });
-window.addEventListener("orientationchange", updateLandingViewport, { passive: true });
-
-setGateTab("dora");
-updateLandingViewport();
-
-const homeNav = document.querySelector(".home-nav");
-
-if (homeNav) {
   const hoverMediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
   const desktopSubmenuMediaQuery = window.matchMedia("(min-width: 961px)");
   const dropdownItems = homeNav.querySelectorAll(".home-nav__item--has-dropdown, .home-nav__submenu-item--has-dropdown");
@@ -130,6 +126,24 @@ if (homeNav) {
 
   function getTrigger(item) {
     return item.querySelector(":scope > .home-nav__trigger, :scope > .home-nav__subtrigger");
+  }
+
+  function getControlledMenu(trigger) {
+    return document.getElementById(trigger?.getAttribute("aria-controls") || "");
+  }
+
+  function setExpandedState(trigger, isExpanded) {
+    if (!trigger) {
+      return;
+    }
+
+    trigger.setAttribute("aria-expanded", String(isExpanded));
+
+    const controlledMenu = getControlledMenu(trigger);
+
+    if (controlledMenu) {
+      controlledMenu.setAttribute("aria-hidden", String(!isExpanded));
+    }
   }
 
   function resetDropdownShift() {
@@ -184,27 +198,19 @@ if (homeNav) {
     window.requestAnimationFrame(updateDropdownShift);
   }
 
+  function closeNestedItems(item) {
+    item.querySelectorAll(".home-nav__submenu-item--has-dropdown").forEach((nestedItem) => {
+      nestedItem.classList.remove("is-open");
+      setExpandedState(getTrigger(nestedItem), false);
+      clearCloseTimer(nestedItem);
+    });
+  }
+
   function closeItem(item) {
     clearCloseTimer(item);
     item.classList.remove("is-open");
-
-    const trigger = getTrigger(item);
-
-    if (trigger) {
-      trigger.setAttribute("aria-expanded", "false");
-    }
-
-    item.querySelectorAll(".home-nav__submenu-item--has-dropdown").forEach((nestedItem) => {
-      nestedItem.classList.remove("is-open");
-      const nestedTrigger = getTrigger(nestedItem);
-
-      if (nestedTrigger) {
-        nestedTrigger.setAttribute("aria-expanded", "false");
-      }
-
-      clearCloseTimer(nestedItem);
-    });
-
+    setExpandedState(getTrigger(item), false);
+    closeNestedItems(item);
     refreshDropdownShift();
   }
 
@@ -226,23 +232,13 @@ if (homeNav) {
     clearCloseTimer(item);
     closeSiblings(item);
     item.classList.add("is-open");
-
-    const trigger = getTrigger(item);
-
-    if (trigger) {
-      trigger.setAttribute("aria-expanded", "true");
-    }
+    setExpandedState(getTrigger(item), true);
 
     let parentDropdownItem = item.parentElement?.closest(".home-nav__item--has-dropdown, .home-nav__submenu-item--has-dropdown");
 
     while (parentDropdownItem) {
       parentDropdownItem.classList.add("is-open");
-      const parentTrigger = getTrigger(parentDropdownItem);
-
-      if (parentTrigger) {
-        parentTrigger.setAttribute("aria-expanded", "true");
-      }
-
+      setExpandedState(getTrigger(parentDropdownItem), true);
       parentDropdownItem = parentDropdownItem.parentElement?.closest(".home-nav__item--has-dropdown, .home-nav__submenu-item--has-dropdown");
     }
 
@@ -270,6 +266,8 @@ if (homeNav) {
     if (!trigger) {
       return;
     }
+
+    setExpandedState(trigger, false);
 
     trigger.addEventListener("click", (event) => {
       event.preventDefault();
@@ -339,3 +337,6 @@ if (homeNav) {
   window.addEventListener("resize", refreshDropdownShift, { passive: true });
   window.addEventListener("orientationchange", refreshDropdownShift, { passive: true });
 }
+
+initLandingPage();
+initHomeNav();
