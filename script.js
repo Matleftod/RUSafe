@@ -62,25 +62,25 @@ function initLandingPage() {
     dora: {
       description: "Passez de la conformité « papier » à la résilience opérationnelle.",
       title: "DORA",
-      video: "assets/DORA.mp4",
+      video: "assets/DORA.web.mp4",
       mockup: "handphoneLeft"
     },
     ausecaf: {
       description: "Votre trésorerie est une cible : auditez vos applis, pas seulement vos process.",
       title: "AUSECAF",
-      video: "assets/AUSECAF.mp4",
+      video: "assets/AUSECAF.web.mp4",
       mockup: "laptop"
     },
     secedi: {
       description: "Moins d’angles morts sur vos plateformes EDI bancaires.",
       title: "SECEDI",
-      video: "assets/SECEDI.mp4",
+      video: "assets/SECEDI.web.mp4",
       mockup: "moniteur"
     },
     diag62030: {
       description: "Diagnostic 2030 : état des lieux, gaps, roadmap, budget, échéances.",
       title: "DIAG6 2030",
-      video: "assets/DIAG6.mp4",
+      video: "assets/DIAG6.web.mp4",
       mockup: "handphoneRight"
     }
   };
