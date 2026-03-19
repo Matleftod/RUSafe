@@ -63,24 +63,28 @@ function initLandingPage() {
       description: "Passez de la conformité « papier » à la résilience opérationnelle.",
       title: "DORA",
       video: "assets/DORA.web.mp4",
+      poster: "assets/DORA.png",
       mockup: "handphoneLeft"
     },
     ausecaf: {
       description: "Votre trésorerie est une cible : auditez vos applis, pas seulement vos process.",
       title: "AUSECAF",
       video: "assets/AUSECAF.web.mp4",
+      poster: "assets/AUSECAF.png",
       mockup: "laptop"
     },
     secedi: {
       description: "Moins d’angles morts sur vos plateformes EDI bancaires.",
       title: "SECEDI",
       video: "assets/SECEDI.web.mp4",
+      poster: "assets/SECEDI.png",
       mockup: "moniteur"
     },
     diag62030: {
       description: "Diagnostic 2030 : état des lieux, gaps, roadmap, budget, échéances.",
       title: "DIAG6 2030",
       video: "assets/DIAG6.web.mp4",
+      poster: "assets/DIAG6 2030.png",
       mockup: "handphoneRight"
     }
   };
@@ -291,54 +295,61 @@ function initLandingPage() {
         return;
       }
 
-      applyMockupLayout(layer, nextContent.mockup);
-      positionMockupLayer(layer, key, nextContent.mockup);
-      layer.video.pause();
-      layer.video.currentTime = 0;
-      layer.video.src = nextContent.video;
-      layer.video.setAttribute("aria-label", `Vidéo ${nextContent.title}`);
-      layer.video.load();
-
-      const revealLayer = () => {
+      preloadImage(nextContent.poster, () => {
         if (swapSequence !== gateSwapSequence) {
           return;
         }
 
-        const previousLayer = gateMediaLayers[activeGateLayerIndex];
+        applyMockupLayout(layer, nextContent.mockup);
+        positionMockupLayer(layer, key, nextContent.mockup);
+        layer.video.pause();
+        layer.video.currentTime = 0;
+        layer.video.poster = nextContent.poster;
+        layer.video.src = nextContent.video;
+        layer.video.setAttribute("aria-label", `Vidéo ${nextContent.title}`);
+        layer.video.load();
 
-        window.clearTimeout(gateMediaFallbackTimer);
-        setLayerState(layer, { mounted: true, visible: false });
-
-        window.requestAnimationFrame(() => {
+        const revealLayer = () => {
           if (swapSequence !== gateSwapSequence) {
             return;
           }
 
-          setLayerState(layer, { mounted: true, visible: true });
+          const previousLayer = gateMediaLayers[activeGateLayerIndex];
 
-          if (previousLayer && previousLayer !== layer) {
-            setLayerState(previousLayer, { mounted: true, visible: false });
-            previousLayer.video?.pause();
+          window.clearTimeout(gateMediaFallbackTimer);
+          setLayerState(layer, { mounted: true, visible: false });
 
-            gateLayerCleanupTimer = window.setTimeout(() => {
-              if (swapSequence !== gateSwapSequence) {
-                return;
-              }
+          window.requestAnimationFrame(() => {
+            if (swapSequence !== gateSwapSequence) {
+              return;
+            }
 
-              setLayerState(previousLayer, { mounted: false, visible: false });
-            }, MEDIA_REVEAL_FALLBACK_MS);
-          }
+            setLayerState(layer, { mounted: true, visible: true });
 
-          activeGateLayerIndex = gateMediaLayers.indexOf(layer);
-          gateActiveKey = key;
-          layer.key = key;
-          gateAccess.classList.remove("is-swapping");
-        });
-      };
+            if (previousLayer && previousLayer !== layer) {
+              setLayerState(previousLayer, { mounted: true, visible: false });
+              previousLayer.video?.pause();
 
-      layer.video.onloadeddata = revealLayer;
-      layer.video.onerror = revealLayer;
-      gateMediaFallbackTimer = window.setTimeout(revealLayer, MEDIA_REVEAL_FALLBACK_MS);
+              gateLayerCleanupTimer = window.setTimeout(() => {
+                if (swapSequence !== gateSwapSequence) {
+                  return;
+                }
+
+                setLayerState(previousLayer, { mounted: false, visible: false });
+              }, MEDIA_REVEAL_FALLBACK_MS);
+            }
+
+            activeGateLayerIndex = gateMediaLayers.indexOf(layer);
+            gateActiveKey = key;
+            layer.key = key;
+            gateAccess.classList.remove("is-swapping");
+          });
+        };
+
+        layer.video.onloadeddata = revealLayer;
+        layer.video.onerror = revealLayer;
+        gateMediaFallbackTimer = window.setTimeout(revealLayer, MEDIA_REVEAL_FALLBACK_MS);
+      });
     });
   }
 
@@ -398,6 +409,7 @@ function initLandingPage() {
 
     applyMockupLayout(initialLayer, gateContent[initialKey].mockup);
     positionMockupLayer(initialLayer, initialKey, gateContent[initialKey].mockup);
+    initialLayer.video.poster = gateContent[initialKey].poster;
     initialLayer.video.src = gateContent[initialKey].video;
     initialLayer.video.setAttribute("aria-label", `Vidéo ${gateContent[initialKey].title}`);
     initialLayer.video.load();
