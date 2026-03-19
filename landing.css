@@ -15,7 +15,7 @@
   --gate-top-padding: 26px;
   --gate-topbar-height: 198px;
   --gate-logo-offset: 39px;
-  --gate-mark-width: 156px;
+  --gate-mark-width: 126px;
   --gate-card-top-gap: 52px;
   --gate-card-width: calc(var(--container-gate) + 24px);
   --gate-card-padding-top: 24px;
@@ -27,7 +27,7 @@
   --gate-description-width: 660px;
   --gate-description-size: 21px;
   --gate-mockup-screen-height: 164px;
-  --gate-mockup-stage-height: calc(1.42 * var(--gate-mockup-screen-height));
+  --gate-mockup-stage-height: calc(var(--gate-mockup-stage-factor, 1.68) * var(--gate-mockup-screen-height));
   --gate-mockup-max-width: calc(100vw - 96px);
   --glow-top: 557px;
   --glow-top-gate: 575px;
@@ -205,8 +205,6 @@
 .brand-logo--gate {
   width: var(--gate-mark-width);
   justify-self: end;
-  margin-top: 4px;
-  opacity: 0.92;
 }
 
 .back-link {
@@ -237,7 +235,7 @@
 .gate-card {
   position: relative;
   isolation: isolate;
-  width: min(100%, var(--gate-card-width));
+  width: min(90%, var(--gate-card-width));
   margin: 0 auto;
   padding: var(--gate-card-padding-top) 0 var(--gate-card-padding-bottom);
   display: grid;
@@ -315,7 +313,7 @@
 .gate-body {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  width: min(100%, var(--gate-tabs-width));
+  width: 100%;
   margin: 14px auto 0;
   gap: 20px 14px;
 }
@@ -342,31 +340,50 @@
 }
 
 .gate-media-row {
-  grid-column: 1;
-  justify-self: center;
+  grid-column: 1 / -1;
+  width: 100%;
 }
 
-.gate-video-shell {
-  width: auto;
+.gate-media-stage {
+  position: relative;
+  width: 100%;
   min-height: var(--gate-mockup-stage-height);
-  display: grid;
-  place-items: center;
-  padding: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
   overflow: hidden;
 }
 
-.gate-video-shell.is-swapping .video-mockup {
+.gate-video-shell {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+
+.gate-video-shell.is-mounted {
+  visibility: visible;
+}
+
+.gate-video-shell.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.gate-video-shell.is-mounted:not(.is-visible) .video-mockup {
   opacity: 0;
   transform: translateY(8px);
+}
+
+.video-mockup-anchor {
+  position: absolute;
+  top: 50%;
+  left: var(--mockup-left, 0px);
+  transform: translateY(-50%);
 }
 
 .video-mockup {
   --mockup-aspect-ratio: 1333 / 652;
   --mockup-width-factor: 2.812236;
-  --mockup-height-factor: 1.375527;
   --mockup-screen-left: 26.7067%;
   --mockup-screen-top: 14.8773%;
   --mockup-screen-width: 69.4674%;
@@ -419,11 +436,6 @@
   transform-origin: center center;
 }
 
-.gate-video-player.is-swapping {
-  opacity: 0;
-  transform: translateY(8px);
-}
-
 .gate-access {
   grid-column: 1 / -1;
   justify-self: center;
@@ -436,18 +448,6 @@
 .gate-access.is-swapping {
   opacity: 0;
   transform: translateY(8px);
-}
-
-.gate-card[data-active-tab="ausecaf"] .gate-media-row {
-  grid-column: 2;
-}
-
-.gate-card[data-active-tab="secedi"] .gate-media-row {
-  grid-column: 3;
-}
-
-.gate-card[data-active-tab="diag62030"] .gate-media-row {
-  grid-column: 4;
 }
 
 /* Shared CTA ornament */
@@ -532,7 +532,6 @@
   .gate-card[data-active-tab="secedi"] .gate-media-row,
   .gate-card[data-active-tab="diag62030"] .gate-media-row {
     grid-column: 1;
-    justify-self: center;
   }
 }
 
@@ -587,6 +586,7 @@
   .landing-slogan,
   .gate-description,
   .gate-video-shell,
+  .video-mockup-anchor,
   .video-mockup,
   .pill-button,
   .gate-tab,
