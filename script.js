@@ -2,8 +2,7 @@ function initLandingPage() {
   const landingShell = document.querySelector(".landing-shell");
   const stageSlider = document.querySelector("[data-stage-slider]");
   const stagePanels = document.querySelectorAll("[data-stage]");
-  const SWAP_DELAY_MS = 180;
-  const MEDIA_CROSSFADE_MS = 220;
+  const SLOGAN_SWAP_DELAY_MS = 180;
   const SLOGAN_ROTATION_MS = 4200;
   const MOCKUP_CONFIG = {
     handphoneLeft: {
@@ -117,8 +116,6 @@ function initLandingPage() {
   let sloganIndex = 0;
   let activeGateLayerIndex = 0;
   let gateActiveKey = "";
-  let gateSwapTimer = 0;
-  let gateLayerCleanupTimer = 0;
   let gateSwapSequence = 0;
   let gateRealignFrame = 0;
 
@@ -170,9 +167,6 @@ function initLandingPage() {
   }
 
   function clearGateMediaSwapState() {
-    window.clearTimeout(gateSwapTimer);
-    window.clearTimeout(gateLayerCleanupTimer);
-
     gateMediaLayers.forEach((layer, index) => {
       if (!layer.video) {
         return;
@@ -195,19 +189,34 @@ function initLandingPage() {
 
     const imagePromise = new Promise((resolve) => {
       const image = new Image();
+      let settled = false;
 
       const finalize = () => {
+        if (settled) {
+          return;
+        }
+
+        settled = true;
         image.onload = null;
         image.onerror = null;
         resolve();
       };
 
-      image.onload = finalize;
+      const finalizeAfterDecode = () => {
+        if (typeof image.decode === "function") {
+          image.decode().catch(() => {}).finally(finalize);
+          return;
+        }
+
+        finalize();
+      };
+
+      image.onload = finalizeAfterDecode;
       image.onerror = finalize;
       image.src = src;
 
-      if (image.complete) {
-        finalize();
+      if (image.complete && image.naturalWidth > 0) {
+        finalizeAfterDecode();
       }
     });
 
@@ -338,23 +347,14 @@ function initLandingPage() {
           return;
         }
 
-        gateDescription.textContent = nextContent.description;
-        gateDescription.classList.remove("is-swapping");
-        setLayerState(layer, { mounted: true, visible: true });
-
         if (previousLayer && previousLayer !== layer) {
-          setLayerState(previousLayer, { mounted: true, visible: false });
+          setLayerState(previousLayer, { mounted: false, visible: false });
           previousLayer.video?.pause();
-
-          gateLayerCleanupTimer = window.setTimeout(() => {
-            if (swapSequence !== gateSwapSequence) {
-              return;
-            }
-
-            setLayerState(previousLayer, { mounted: false, visible: false });
-          }, MEDIA_CROSSFADE_MS);
         }
 
+        gateDescription.textContent = nextContent.description;
+        setLayerState(layer, { mounted: true, visible: true });
+        gateDescription.classList.remove("is-swapping");
         activeGateLayerIndex = gateMediaLayers.indexOf(layer);
         gateActiveKey = key;
         layer.key = key;
@@ -374,7 +374,7 @@ function initLandingPage() {
       sloganIndex = (sloganIndex + 1) % sloganEntries.length;
       sloganNode.innerHTML = sloganEntries[sloganIndex].html;
       sloganNode.classList.remove("is-swapping");
-    }, SWAP_DELAY_MS);
+    }, SLOGAN_SWAP_DELAY_MS);
   }
 
   function setGateTab(key) {
@@ -398,13 +398,7 @@ function initLandingPage() {
     gateDescription.classList.add("is-swapping");
     gateAccess.classList.add("is-swapping");
 
-    gateSwapTimer = window.setTimeout(() => {
-      if (swapSequence !== gateSwapSequence) {
-        return;
-      }
-
-      prepareGateMediaLayer(nextLayer, key, swapSequence);
-    }, SWAP_DELAY_MS);
+    prepareGateMediaLayer(nextLayer, key, swapSequence);
   }
 
   function initializeGateMedia() {
