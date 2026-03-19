@@ -1,5 +1,54 @@
 /* Landing-specific layout built on top of the shared design system. */
 
+/* Shared page frame */
+
+.landing-page {
+  --landing-frame-width: 1440px;
+  --brand-logo-width: 222px;
+  --landing-intro-top: 132px;
+  --landing-copy-top-gap: 92px;
+  --landing-copy-width: 1116px;
+  --landing-copy-actions-gap: 153px;
+  --landing-title-size: var(--font-size-title-lg);
+  --landing-slogan-size: 36px;
+  --landing-slogan-gap: 43px;
+  --gate-top-padding: 26px;
+  --gate-topbar-height: 198px;
+  --gate-logo-offset: 39px;
+  --gate-mark-width: 156px;
+  --gate-card-top-gap: 52px;
+  --gate-card-width: calc(var(--container-gate) + 24px);
+  --gate-card-padding-top: 24px;
+  --gate-card-padding-inline: 32px;
+  --gate-card-padding-bottom: 32px;
+  --gate-tabs-width: 944px;
+  --gate-tabs-gap: 6px;
+  --gate-tab-size: 31px;
+  --gate-description-width: 660px;
+  --gate-description-size: 21px;
+  --gate-mockup-screen-height: 164px;
+  --gate-mockup-stage-height: calc(1.42 * var(--gate-mockup-screen-height));
+  --gate-mockup-max-width: calc(100vw - 96px);
+  --glow-top: 557px;
+  --glow-top-gate: 575px;
+  background: var(--color-page);
+  min-height: 100dvh;
+  margin: 0;
+  overflow: hidden;
+}
+
+.landing-shell {
+  position: relative;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+.landing-viewport {
+  position: relative;
+  height: 100dvh;
+  overflow: hidden;
+}
+
 .page-footer {
   position: absolute;
   left: 50%;
@@ -10,36 +59,19 @@
   line-height: 1.5;
   color: var(--color-text);
   white-space: nowrap;
+  z-index: 2;
 }
 
-.landing-page {
-  background: var(--color-page);
-  height: var(--app-height, 100dvh);
-  overflow: hidden;
-}
-
-.experience {
-  min-height: 100svh;
-}
-
-.landing-page .experience {
-  position: relative;
-  height: var(--app-height, 100dvh);
-  min-height: 0;
-  overflow: hidden;
-}
+/* Horizontal stage system */
 
 .stage-slider {
+  position: relative;
+  z-index: 1;
   display: flex;
   width: 200%;
-  min-height: 100svh;
+  height: 100%;
   transition: transform 900ms var(--ease-out);
   will-change: transform;
-}
-
-.landing-page .stage-slider {
-  height: 100%;
-  min-height: 0;
 }
 
 .stage-slider.is-gate {
@@ -49,51 +81,24 @@
 .stage-panel {
   flex: 0 0 50%;
   width: 50%;
-  min-height: 100svh;
-  display: grid;
-  place-items: center;
+  min-width: 50%;
+  min-height: 100%;
   overflow: hidden;
-  background: var(--color-page);
+  background: transparent;
 }
 
-.landing-page .stage-panel {
-  position: relative;
+.panel-frame {
+  width: min(100%, var(--landing-frame-width));
   height: 100%;
-  min-height: 0;
-  overflow: hidden;
+  margin: 0 auto;
 }
 
-.canvas {
-  position: relative;
-  width: var(--container-stage);
-  height: 920px;
-  flex: none;
-  overflow: hidden;
-  transform: scale(var(--stage-scale, 1));
-  transform-origin: center center;
-}
-
-.landing-page .canvas {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: var(--container-stage);
-  height: 920px;
-  margin: 0;
-  transform: translate(-50%, -50%) scale(var(--stage-scale, 1));
-  transform-origin: center center;
-}
-
-.landing-canvas,
-.gate-canvas {
-  height: 920px;
-  min-height: 0;
-}
+/* Shared decorative elements */
 
 .landing-glow {
   position: absolute;
+  top: var(--glow-top);
   left: 50%;
-  top: 557px;
   width: 659px;
   height: 640px;
   border-radius: 50%;
@@ -101,45 +106,45 @@
   background:
     radial-gradient(circle at 50% 40%, rgba(115, 241, 255, 0.78) 0%, rgba(115, 241, 255, 0.42) 35%, rgba(115, 241, 255, 0.15) 58%, rgba(115, 241, 255, 0) 76%);
   filter: blur(24px);
+  opacity: 0.88;
   pointer-events: none;
+  z-index: 0;
 }
 
-.landing-glow--gate {
-  top: 575px;
+.landing-shell.is-gate .landing-glow {
+  top: var(--glow-top-gate);
 }
 
 .brand-logo {
-  position: absolute;
+  display: block;
+  width: var(--brand-logo-width);
+  height: auto;
   object-fit: contain;
   filter: drop-shadow(0 10px 12px rgba(11, 18, 32, 0.2));
 }
 
-.brand-logo--landing {
-  top: 132px;
-  left: 602px;
-  width: 237px;
-  height: 171px;
+/* Landing panel */
+
+.panel-frame--landing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--landing-intro-top);
 }
 
-.brand-logo--gate {
-  top: 65px;
-  left: 602px;
-  width: 237px;
-  height: 171px;
+.brand-logo--landing {
+  margin-inline: auto;
 }
 
 .landing-copy {
-  position: absolute;
-  top: 395px;
-  left: 50%;
-  width: 1116px;
+  width: min(100%, var(--landing-copy-width));
+  margin-top: var(--landing-copy-top-gap);
   text-align: center;
-  transform: translateX(-50%);
 }
 
 .landing-copy h1 {
   margin: 0;
-  font-size: var(--font-size-title-lg);
+  font-size: var(--landing-title-size);
   line-height: var(--line-height-heading);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-heading);
@@ -147,8 +152,8 @@
 
 .landing-slogan {
   min-height: 54px;
-  margin: 43px 0 0;
-  font-size: 36px;
+  margin: var(--landing-slogan-gap) 0 0;
+  font-size: var(--landing-slogan-size);
   line-height: 1.5;
   font-weight: var(--font-weight-regular);
   transition: opacity var(--duration-slow) ease, transform var(--duration-slow) ease;
@@ -163,34 +168,53 @@
   color: var(--color-accent);
 }
 
+.landing-actions {
+  margin-top: var(--landing-copy-actions-gap);
+  display: flex;
+  justify-content: center;
+}
+
 .landing-cta {
-  position: absolute;
-  top: 703px;
-  left: 50%;
   min-width: 277px;
   font-size: 20px;
   font-weight: var(--font-weight-regular);
-  transform: translateX(-50%);
 }
 
-.landing-cta.pill-button:hover {
-  transform: translateX(-50%) translateY(-2px);
+/* Gate panel */
+
+.panel-frame--gate {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding-top: 0;
 }
 
-.landing-cta.pill-button:active {
-  transform: translateX(-50%);
+.gate-topbar {
+  position: absolute;
+  top: var(--gate-top-padding);
+  left: 0;
+  width: 100%;
+  min-height: var(--gate-topbar-height);
+  display: grid;
+  grid-template-columns: 42px 1fr auto;
+  align-items: start;
+  padding-inline: 20px;
+  box-sizing: border-box;
+}
+
+.brand-logo--gate {
+  width: var(--gate-mark-width);
+  justify-self: end;
+  margin-top: 4px;
+  opacity: 0.92;
 }
 
 .back-link {
-  position: absolute;
-  top: 26px;
-  left: 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 42px;
   height: 42px;
-  z-index: 2;
   border-radius: 50%;
   transition: background-color 200ms ease, transform 200ms var(--ease-out);
 }
@@ -211,29 +235,26 @@
 }
 
 .gate-card {
-  position: absolute;
-  top: 298px;
-  left: 58px;
-  width: var(--container-gate);
-  min-height: 577px;
-  padding: 22px 44px 34px;
-  border-radius: var(--radius-card-lg);
-  background: var(--gradient-gate-card);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(12px);
+  width: min(100%, var(--gate-card-width));
+  margin: 0 auto;
+  padding: var(--gate-card-padding-top) var(--gate-card-padding-inline) var(--gate-card-padding-bottom);
+  display: grid;
+  justify-items: center;
 }
 
 .gate-tabs {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: min(100%, var(--gate-tabs-width));
+  margin: 0 auto;
   align-items: start;
-  gap: 12px;
+  gap: var(--gate-tabs-gap);
 }
 
 .gate-tab {
   position: relative;
   padding: 14px 0 18px;
-  font-size: 34px;
+  font-size: var(--gate-tab-size);
   line-height: 1.2;
   font-weight: var(--font-weight-semibold);
   color: var(--color-text);
@@ -268,15 +289,23 @@
 }
 
 .gate-body {
-  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: min(100%, var(--gate-tabs-width));
+  margin: 14px auto 0;
+  gap: 20px 14px;
 }
 
 .gate-description {
-  width: 700px;
-  min-height: 72px;
+  grid-column: 1 / -1;
+  width: min(100%, var(--gate-description-width));
+  min-height: calc(2 * 1.35em);
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  font-size: 22px;
+  font-size: var(--gate-description-size);
   line-height: 1.35;
   font-weight: var(--font-weight-regular);
   color: var(--color-text);
@@ -289,43 +318,110 @@
 }
 
 .gate-media-row {
-  display: grid;
-  grid-template-columns: 1fr 270px;
-  align-items: center;
-  gap: 54px;
-  margin-top: 22px;
+  grid-column: 1;
+  justify-self: center;
 }
 
 .gate-video-shell {
-  justify-self: center;
-  width: 524px;
-  min-height: 288px;
+  width: auto;
+  min-height: var(--gate-mockup-stage-height);
+  display: grid;
+  place-items: center;
   padding: 0;
-  border-radius: var(--radius-card-sm);
+  border-radius: 0;
   background: transparent;
   box-shadow: none;
+  overflow: visible;
+}
+
+.gate-video-shell.is-swapping .video-mockup {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.video-mockup {
+  --mockup-aspect-ratio: 1333 / 652;
+  --mockup-width-factor: 2.812236;
+  --mockup-height-factor: 1.375527;
+  --mockup-screen-left: 26.7067%;
+  --mockup-screen-top: 14.8773%;
+  --mockup-screen-width: 69.4674%;
+  --mockup-screen-height: 72.6994%;
+  --mockup-screen-radius: 36px;
+  position: relative;
+  display: block;
+  width: min(var(--gate-mockup-max-width), calc(var(--mockup-width-factor) * var(--gate-mockup-screen-height)));
+  aspect-ratio: var(--mockup-aspect-ratio);
+  isolation: isolate;
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.video-mockup__screen {
+  position: absolute;
+  left: var(--mockup-screen-left);
+  top: var(--mockup-screen-top);
+  width: var(--mockup-screen-width);
+  height: var(--mockup-screen-height);
   overflow: hidden;
-  transition: transform 260ms var(--ease-out);
+  border-radius: var(--mockup-screen-radius);
+  background: rgba(8, 15, 28, 0.96);
+  z-index: 0;
 }
 
-.gate-video-shell.is-refreshing {
-  transform: scale(0.985);
-}
-
-.gate-video-placeholder {
-  width: 524px;
-  height: 288px;
-  object-fit: cover;
-  border-radius: var(--radius-card-sm);
+.video-mockup__frame {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   box-shadow: none;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gate-video-player {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: inherit;
+  box-shadow: none;
+  background: rgba(8, 15, 28, 0.96);
+}
+
+.gate-video-player.is-swapping {
+  opacity: 0;
+  transform: translateY(8px);
 }
 
 .gate-access {
-  justify-self: end;
-  min-width: 231px;
-  padding-inline: 24px 22px;
-  font-size: 20px;
+  grid-column: 1 / -1;
+  justify-self: center;
+  min-width: 214px;
+  padding-inline: 22px 20px;
+  font-size: 18px;
+  transition: opacity 220ms ease, transform 220ms ease;
 }
+
+.gate-access.is-swapping {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.gate-card[data-active-tab="ausecaf"] .gate-media-row {
+  grid-column: 2;
+}
+
+.gate-card[data-active-tab="secedi"] .gate-media-row {
+  grid-column: 3;
+}
+
+.gate-card[data-active-tab="diag62030"] .gate-media-row {
+  grid-column: 4;
+}
+
+/* Shared CTA ornament */
 
 .button-arrow {
   width: 14px;
@@ -336,14 +432,138 @@
   transform: rotate(45deg);
 }
 
+/* Responsive adjustments */
+
+@media (max-width: 1200px), (max-height: 900px) {
+  .landing-page {
+    --landing-intro-top: 96px;
+    --landing-copy-top-gap: 72px;
+    --landing-copy-width: 980px;
+    --landing-copy-actions-gap: 118px;
+    --landing-title-size: 42px;
+    --landing-slogan-size: 32px;
+    --gate-top-padding: 20px;
+    --gate-topbar-height: 180px;
+    --gate-logo-offset: 28px;
+    --gate-mark-width: 144px;
+    --gate-card-top-gap: 36px;
+    --gate-card-width: var(--container-gate);
+    --gate-card-padding-top: 22px;
+    --gate-card-padding-inline: 28px;
+    --gate-card-padding-bottom: 28px;
+    --gate-tabs-width: 884px;
+    --gate-tab-size: 29px;
+    --gate-description-width: 640px;
+    --gate-description-size: 20px;
+    --gate-mockup-screen-height: 154px;
+    --gate-mockup-max-width: calc(100vw - 88px);
+  }
+}
+
+@media (max-width: 960px), (max-height: 780px) {
+  .landing-page {
+    --brand-logo-width: 194px;
+    --landing-intro-top: 64px;
+    --landing-copy-top-gap: 44px;
+    --landing-copy-width: 760px;
+    --landing-copy-actions-gap: 72px;
+    --landing-title-size: 38px;
+    --landing-slogan-size: 28px;
+    --landing-slogan-gap: 28px;
+    --gate-top-padding: 18px;
+    --gate-topbar-height: 136px;
+    --gate-logo-offset: 18px;
+    --gate-mark-width: 132px;
+    --gate-card-top-gap: 20px;
+    --gate-card-padding-top: 22px;
+    --gate-card-padding-inline: 22px;
+    --gate-card-padding-bottom: 24px;
+    --gate-tabs-width: 100%;
+    --gate-tabs-gap: 8px;
+    --gate-tab-size: 22px;
+    --gate-description-size: 19px;
+    --gate-mockup-screen-height: 144px;
+    --gate-mockup-max-width: calc(100vw - 72px);
+    --glow-top: 62%;
+    --glow-top-gate: 64%;
+  }
+
+  .gate-body {
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 16px;
+  }
+
+  .gate-tabs {
+    width: 100%;
+  }
+
+  .gate-media-row,
+  .gate-card[data-active-tab="ausecaf"] .gate-media-row,
+  .gate-card[data-active-tab="secedi"] .gate-media-row,
+  .gate-card[data-active-tab="diag62030"] .gate-media-row {
+    grid-column: 1;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 720px) {
+  .landing-page {
+    --brand-logo-width: 164px;
+    --landing-intro-top: 42px;
+    --landing-copy-top-gap: 28px;
+    --landing-copy-width: 100%;
+    --landing-copy-actions-gap: 48px;
+    --landing-title-size: 34px;
+    --landing-slogan-size: 24px;
+    --gate-topbar-height: 122px;
+    --gate-logo-offset: 12px;
+    --gate-mark-width: 120px;
+    --gate-card-top-gap: 18px;
+    --gate-card-padding-top: 20px;
+    --gate-card-padding-inline: 18px;
+    --gate-card-padding-bottom: 22px;
+    --gate-tabs-gap: 4px;
+    --gate-tab-size: 17px;
+    --gate-description-size: 18px;
+    --gate-mockup-screen-height: 128px;
+    --gate-mockup-max-width: calc(100vw - 56px);
+  }
+
+  .page-footer {
+    white-space: normal;
+    text-align: center;
+    width: min(100% - 32px, 420px);
+  }
+
+  .gate-tab {
+    padding: 10px 0 14px;
+  }
+
+  .gate-tab.is-active::after {
+    width: 48px;
+  }
+
+  .landing-cta,
+  .gate-access {
+    min-width: 0;
+    width: min(100%, 280px);
+  }
+}
+
+/* Motion accessibility */
+
 @media (prefers-reduced-motion: reduce) {
   .stage-slider,
   .landing-slogan,
   .gate-description,
   .gate-video-shell,
+  .video-mockup,
   .pill-button,
   .gate-tab,
-  .back-link {
+  .back-link,
+  .gate-access,
+  .landing-glow {
     transition: none !important;
     animation: none !important;
   }

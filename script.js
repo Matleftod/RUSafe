@@ -1,5 +1,52 @@
 function initLandingPage() {
+  const landingShell = document.querySelector(".landing-shell");
   const stageSlider = document.querySelector("[data-stage-slider]");
+  const stagePanels = document.querySelectorAll("[data-stage]");
+  const SWAP_DELAY_MS = 180;
+  const MEDIA_REVEAL_FALLBACK_MS = 220;
+  const SLOGAN_ROTATION_MS = 4200;
+  const MOCKUP_CONFIG = {
+    handphoneLeft: {
+      frame: "assets/mockups/handphoneLeft.png",
+      nativeWidth: 1333,
+      nativeHeight: 652,
+      screenX: 356,
+      screenY: 97,
+      screenWidth: 926,
+      screenHeight: 474,
+      screenRadius: 36
+    },
+    laptop: {
+      frame: "assets/mockups/laptop.png",
+      nativeWidth: 1076,
+      nativeHeight: 560,
+      screenX: 89,
+      screenY: 26,
+      screenWidth: 898,
+      screenHeight: 424,
+      screenRadius: 16
+    },
+    moniteur: {
+      frame: "assets/mockups/moniteur.png",
+      nativeWidth: 1019,
+      nativeHeight: 688,
+      screenX: 35,
+      screenY: 26,
+      screenWidth: 947,
+      screenHeight: 490,
+      screenRadius: 18
+    },
+    handphoneRight: {
+      frame: "assets/mockups/handphoneright.png",
+      nativeWidth: 1341,
+      nativeHeight: 664,
+      screenX: 58,
+      screenY: 96,
+      screenWidth: 938,
+      screenHeight: 476,
+      screenRadius: 36
+    }
+  };
 
   if (!stageSlider) {
     return;
@@ -13,28 +60,90 @@ function initLandingPage() {
   ];
   const gateContent = {
     dora: {
-      description: "Passez de la conformité « papier » à la résilience opérationnelle."
+      description: "Passez de la conformité « papier » à la résilience opérationnelle.",
+      title: "DORA",
+      video: "assets/DORA.mp4",
+      mockup: "handphoneLeft"
     },
     ausecaf: {
-      description: "Votre trésorerie est une cible : auditez vos applis, pas seulement vos process."
+      description: "Votre trésorerie est une cible : auditez vos applis, pas seulement vos process.",
+      title: "AUSECAF",
+      video: "assets/AUSECAF.mp4",
+      mockup: "laptop"
     },
     secedi: {
-      description: "Moins d’angles morts sur vos plateformes EDI bancaires."
+      description: "Moins d’angles morts sur vos plateformes EDI bancaires.",
+      title: "SECEDI",
+      video: "assets/SECEDI.mp4",
+      mockup: "moniteur"
     },
     diag62030: {
-      description: "Diagnostic 2030 : état des lieux, gaps, roadmap, budget, échéances."
+      description: "Diagnostic 2030 : état des lieux, gaps, roadmap, budget, échéances.",
+      title: "DIAG6 2030",
+      video: "assets/DIAG6.mp4",
+      mockup: "handphoneRight"
     }
   };
   const openGateButton = document.querySelector("[data-open-gate]");
   const backToLandingButton = document.querySelector("[data-back-to-landing]");
   const sloganNode = document.querySelector("[data-slogan]");
+  const gateCard = document.querySelector(".gate-card");
   const gateTabs = document.querySelectorAll("[data-gate-tab]");
   const gateDescription = document.querySelector("[data-gate-description]");
   const gateMedia = document.querySelector("[data-gate-media]");
+  const gateVideo = document.querySelector("[data-gate-video]");
+  const gateMockup = document.querySelector("[data-video-mockup]");
+  const gateFrame = document.querySelector("[data-gate-frame]");
+  const gateAccess = document.querySelector(".gate-access");
   let sloganIndex = 0;
+  let gateMediaFallbackTimer = 0;
 
   function setStage(stage) {
-    stageSlider.classList.toggle("is-gate", stage === "gate");
+    const isGateStage = stage === "gate";
+
+    stageSlider.classList.toggle("is-gate", isGateStage);
+    landingShell?.classList.toggle("is-gate", isGateStage);
+
+    stagePanels.forEach((panel) => {
+      const isActive = panel.dataset.stage === stage;
+      panel.setAttribute("aria-hidden", String(!isActive));
+
+      if ("inert" in panel) {
+        panel.inert = !isActive;
+      }
+    });
+  }
+
+  function updateGateTabs(key) {
+    gateTabs.forEach((tab) => {
+      const isActive = tab.dataset.gateTab === key;
+      tab.classList.toggle("is-active", isActive);
+      tab.setAttribute("aria-selected", String(isActive));
+      tab.setAttribute("tabindex", isActive ? "0" : "-1");
+    });
+  }
+
+  function applyMockupLayout(mockupKey) {
+    if (!gateMockup || !gateFrame || !MOCKUP_CONFIG[mockupKey]) {
+      return;
+    }
+
+    const config = MOCKUP_CONFIG[mockupKey];
+    const toPercent = (value, total) => `${((value / total) * 100).toFixed(4)}%`;
+
+    gateMockup.dataset.mockupType = mockupKey;
+    gateMockup.style.setProperty("--mockup-aspect-ratio", `${config.nativeWidth} / ${config.nativeHeight}`);
+    gateMockup.style.setProperty("--mockup-width-factor", (config.nativeWidth / config.screenHeight).toFixed(6));
+    gateMockup.style.setProperty("--mockup-height-factor", (config.nativeHeight / config.screenHeight).toFixed(6));
+    gateMockup.style.setProperty("--mockup-screen-left", toPercent(config.screenX, config.nativeWidth));
+    gateMockup.style.setProperty("--mockup-screen-top", toPercent(config.screenY, config.nativeHeight));
+    gateMockup.style.setProperty("--mockup-screen-width", toPercent(config.screenWidth, config.nativeWidth));
+    gateMockup.style.setProperty("--mockup-screen-height", toPercent(config.screenHeight, config.nativeHeight));
+    gateMockup.style.setProperty("--mockup-screen-radius", `${config.screenRadius}px`);
+
+    gateFrame.src = config.frame;
+    gateFrame.width = config.nativeWidth;
+    gateFrame.height = config.nativeHeight;
   }
 
   function swapSlogan() {
@@ -48,40 +157,49 @@ function initLandingPage() {
       sloganIndex = (sloganIndex + 1) % sloganEntries.length;
       sloganNode.innerHTML = sloganEntries[sloganIndex].html;
       sloganNode.classList.remove("is-swapping");
-    }, 180);
+    }, SWAP_DELAY_MS);
   }
 
   function setGateTab(key) {
-    if (!gateDescription || !gateMedia || !gateContent[key]) {
+    if (!gateDescription || !gateVideo || !gateAccess || !gateContent[key]) {
       return;
     }
 
-    gateTabs.forEach((tab) => {
-      const isActive = tab.dataset.gateTab === key;
-      tab.classList.toggle("is-active", isActive);
-      tab.setAttribute("aria-selected", String(isActive));
-      tab.setAttribute("tabindex", isActive ? "0" : "-1");
-    });
+    const nextContent = gateContent[key];
+    updateGateTabs(key);
+
+    gateCard?.setAttribute("data-active-tab", key);
 
     gateDescription.classList.add("is-swapping");
-    gateMedia.classList.add("is-refreshing");
+    gateMedia?.classList.add("is-swapping");
+    gateAccess.classList.add("is-swapping");
 
     window.setTimeout(() => {
-      gateDescription.textContent = gateContent[key].description;
+      gateDescription.textContent = nextContent.description;
+      applyMockupLayout(nextContent.mockup);
+      gateVideo.pause();
+      gateVideo.currentTime = 0;
+      gateVideo.onloadeddata = null;
+      gateVideo.onerror = null;
+      window.clearTimeout(gateMediaFallbackTimer);
+      gateVideo.src = nextContent.video;
+      gateVideo.setAttribute("aria-label", `Vidéo ${nextContent.title}`);
+      gateVideo.load();
+
+      const revealMedia = () => {
+        window.clearTimeout(gateMediaFallbackTimer);
+        gateMedia?.classList.remove("is-swapping");
+        gateAccess.classList.remove("is-swapping");
+        gateVideo.onloadeddata = null;
+        gateVideo.onerror = null;
+      };
+
+      gateVideo.onloadeddata = revealMedia;
+      gateVideo.onerror = revealMedia;
+      gateMediaFallbackTimer = window.setTimeout(revealMedia, MEDIA_REVEAL_FALLBACK_MS);
+
       gateDescription.classList.remove("is-swapping");
-      gateMedia.classList.remove("is-refreshing");
-    }, 180);
-  }
-
-  function updateLandingViewport() {
-    const viewportHeight = window.innerHeight;
-    const viewportWidth = window.innerWidth;
-    const designWidth = 1440;
-    const designHeight = 920;
-    const scale = Math.min(viewportWidth / designWidth, viewportHeight / designHeight, 1);
-
-    document.documentElement.style.setProperty("--app-height", `${viewportHeight}px`);
-    document.documentElement.style.setProperty("--stage-scale", scale.toFixed(4));
+    }, SWAP_DELAY_MS);
   }
 
   openGateButton?.addEventListener("click", () => setStage("gate"));
@@ -92,14 +210,11 @@ function initLandingPage() {
   });
 
   if (sloganNode) {
-    window.setInterval(swapSlogan, 4200);
+    window.setInterval(swapSlogan, SLOGAN_ROTATION_MS);
   }
 
-  window.addEventListener("resize", updateLandingViewport, { passive: true });
-  window.addEventListener("orientationchange", updateLandingViewport, { passive: true });
-
+  setStage("landing");
   setGateTab("dora");
-  updateLandingViewport();
 }
 
 function initHomeNav() {
