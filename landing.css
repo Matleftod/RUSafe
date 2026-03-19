@@ -235,11 +235,35 @@
 }
 
 .gate-card {
+  position: relative;
+  isolation: isolate;
   width: min(100%, var(--gate-card-width));
   margin: 0 auto;
-  padding: var(--gate-card-padding-top) var(--gate-card-padding-inline) var(--gate-card-padding-bottom);
+  padding: var(--gate-card-padding-top) 0 var(--gate-card-padding-bottom);
   display: grid;
   justify-items: center;
+
+  border: 1px solid rgba(63, 106, 255, 0.18);
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow:
+    0 18px 48px rgba(12, 20, 36, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+
+  overflow: hidden;
+}
+
+.gate-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 50% 78%, rgba(115, 241, 255, 0.16) 0%, rgba(115, 241, 255, 0.08) 28%, rgba(115, 241, 255, 0) 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.08));
+  pointer-events: none;
 }
 
 .gate-tabs {
@@ -331,7 +355,7 @@
   border-radius: 0;
   background: transparent;
   box-shadow: none;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .gate-video-shell.is-swapping .video-mockup {
