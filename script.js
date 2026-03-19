@@ -10,41 +10,41 @@ function initLandingPage() {
       frame: "assets/mockups/handphoneLeft.png",
       nativeWidth: 1333,
       nativeHeight: 652,
-      screenX: 356,
-      screenY: 97,
-      screenWidth: 926,
-      screenHeight: 474,
-      screenRadius: 36
+      screenX: 357,
+      screenY: 106,
+      screenWidth: 934,
+      screenHeight: 400,
+      screenRadius: 0
     },
     laptop: {
       frame: "assets/mockups/laptop.png",
       nativeWidth: 1076,
       nativeHeight: 560,
-      screenX: 89,
+      screenX: 103,
       screenY: 26,
-      screenWidth: 898,
-      screenHeight: 424,
-      screenRadius: 16
+      screenWidth: 866,
+      screenHeight: 438,
+      screenRadius: 0
     },
     moniteur: {
       frame: "assets/mockups/moniteur.png",
       nativeWidth: 1019,
       nativeHeight: 688,
-      screenX: 35,
-      screenY: 26,
-      screenWidth: 947,
-      screenHeight: 490,
-      screenRadius: 18
+      screenX: 24,
+      screenY: 24,
+      screenWidth: 969,
+      screenHeight: 495,
+      screenRadius: 0
     },
     handphoneRight: {
       frame: "assets/mockups/handphoneright.png",
       nativeWidth: 1341,
       nativeHeight: 664,
-      screenX: 58,
-      screenY: 96,
-      screenWidth: 938,
-      screenHeight: 476,
-      screenRadius: 36
+      screenX: 50,
+      screenY: 106,
+      screenWidth: 934,
+      screenHeight: 400,
+      screenRadius: 0
     }
   };
 
@@ -140,6 +140,9 @@ function initLandingPage() {
     gateMockup.style.setProperty("--mockup-screen-width", toPercent(config.screenWidth, config.nativeWidth));
     gateMockup.style.setProperty("--mockup-screen-height", toPercent(config.screenHeight, config.nativeHeight));
     gateMockup.style.setProperty("--mockup-screen-radius", `${config.screenRadius}px`);
+    gateMockup.style.setProperty("--mockup-video-scale", String(config.videoScale ?? 1));
+    gateMockup.style.setProperty("--mockup-video-offset-x", `${config.videoOffsetX ?? 0}px`);
+    gateMockup.style.setProperty("--mockup-video-offset-y", `${config.videoOffsetY ?? 0}px`);
 
     gateFrame.src = config.frame;
     gateFrame.width = config.nativeWidth;

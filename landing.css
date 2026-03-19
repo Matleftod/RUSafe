@@ -347,7 +347,10 @@
   --mockup-screen-top: 14.8773%;
   --mockup-screen-width: 69.4674%;
   --mockup-screen-height: 72.6994%;
-  --mockup-screen-radius: 36px;
+  --mockup-screen-radius: 0px;
+  --mockup-video-scale: 1;
+  --mockup-video-offset-x: 0px;
+  --mockup-video-offset-y: 0px;
   position: relative;
   display: block;
   width: min(var(--gate-mockup-max-width), calc(var(--mockup-width-factor) * var(--gate-mockup-screen-height)));
@@ -385,9 +388,11 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  border-radius: inherit;
+  border-radius: 0;
   box-shadow: none;
   background: rgba(8, 15, 28, 0.96);
+  transform: translate(var(--mockup-video-offset-x), var(--mockup-video-offset-y)) scale(var(--mockup-video-scale));
+  transform-origin: center center;
 }
 
 .gate-video-player.is-swapping {
