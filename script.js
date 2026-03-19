@@ -3,7 +3,7 @@ function initLandingPage() {
   const stageSlider = document.querySelector("[data-stage-slider]");
   const stagePanels = document.querySelectorAll("[data-stage]");
   const SWAP_DELAY_MS = 180;
-  const MEDIA_REVEAL_FALLBACK_MS = 220;
+  const MEDIA_CROSSFADE_MS = 220;
   const SLOGAN_ROTATION_MS = 4200;
   const MOCKUP_CONFIG = {
     handphoneLeft: {
@@ -107,10 +107,16 @@ function initLandingPage() {
   const mockupHeightFactor = Math.max(
     ...Object.values(MOCKUP_CONFIG).map((config) => config.nativeHeight / config.screenHeight)
   );
+  const mediaImageAssets = [
+    ...new Set([
+      ...Object.values(MOCKUP_CONFIG).map((config) => config.frame),
+      ...Object.values(gateContent).map((content) => content.poster)
+    ])
+  ];
+  const imageWarmCache = new Map();
   let sloganIndex = 0;
   let activeGateLayerIndex = 0;
   let gateActiveKey = "";
-  let gateMediaFallbackTimer = 0;
   let gateSwapTimer = 0;
   let gateLayerCleanupTimer = 0;
   let gateSwapSequence = 0;
@@ -165,7 +171,6 @@ function initLandingPage() {
 
   function clearGateMediaSwapState() {
     window.clearTimeout(gateSwapTimer);
-    window.clearTimeout(gateMediaFallbackTimer);
     window.clearTimeout(gateLayerCleanupTimer);
 
     gateMediaLayers.forEach((layer, index) => {
@@ -173,31 +178,48 @@ function initLandingPage() {
         return;
       }
 
-      layer.video.onloadeddata = null;
-      layer.video.onerror = null;
-
       if (index !== activeGateLayerIndex) {
         setLayerState(layer, { mounted: false, visible: false });
       }
     });
   }
 
-  function preloadImage(src, onReady) {
-    const framePreload = new Image();
-
-    const finalize = () => {
-      framePreload.onload = null;
-      framePreload.onerror = null;
-      onReady();
-    };
-
-    framePreload.onload = finalize;
-    framePreload.onerror = finalize;
-    framePreload.src = src;
-
-    if (framePreload.complete) {
-      finalize();
+  function warmImage(src) {
+    if (!src) {
+      return Promise.resolve();
     }
+
+    if (imageWarmCache.has(src)) {
+      return imageWarmCache.get(src);
+    }
+
+    const imagePromise = new Promise((resolve) => {
+      const image = new Image();
+
+      const finalize = () => {
+        image.onload = null;
+        image.onerror = null;
+        resolve();
+      };
+
+      image.onload = finalize;
+      image.onerror = finalize;
+      image.src = src;
+
+      if (image.complete) {
+        finalize();
+      }
+    });
+
+    imageWarmCache.set(src, imagePromise);
+
+    return imagePromise;
+  }
+
+  function warmGateMediaAssets() {
+    mediaImageAssets.forEach((src) => {
+      void warmImage(src);
+    });
   }
 
   function getTargetScreenHeight() {
@@ -290,65 +312,53 @@ function initLandingPage() {
     setLayerState(layer, { mounted: true, visible: false });
     layer.key = key;
 
-    preloadImage(nextMockup.frame, () => {
+    Promise.all([
+      warmImage(nextMockup.frame),
+      warmImage(nextContent.poster)
+    ]).then(() => {
       if (swapSequence !== gateSwapSequence) {
         return;
       }
 
-      preloadImage(nextContent.poster, () => {
+      applyMockupLayout(layer, nextContent.mockup);
+      positionMockupLayer(layer, key, nextContent.mockup);
+      layer.video.pause();
+      layer.video.currentTime = 0;
+      layer.video.poster = nextContent.poster;
+      layer.video.src = nextContent.video;
+      layer.video.setAttribute("aria-label", `Vidéo ${nextContent.title}`);
+      layer.video.load();
+
+      const previousLayer = gateMediaLayers[activeGateLayerIndex];
+
+      setLayerState(layer, { mounted: true, visible: false });
+
+      window.requestAnimationFrame(() => {
         if (swapSequence !== gateSwapSequence) {
           return;
         }
 
-        applyMockupLayout(layer, nextContent.mockup);
-        positionMockupLayer(layer, key, nextContent.mockup);
-        layer.video.pause();
-        layer.video.currentTime = 0;
-        layer.video.poster = nextContent.poster;
-        layer.video.src = nextContent.video;
-        layer.video.setAttribute("aria-label", `Vidéo ${nextContent.title}`);
-        layer.video.load();
+        gateDescription.textContent = nextContent.description;
+        gateDescription.classList.remove("is-swapping");
+        setLayerState(layer, { mounted: true, visible: true });
 
-        const revealLayer = () => {
-          if (swapSequence !== gateSwapSequence) {
-            return;
-          }
+        if (previousLayer && previousLayer !== layer) {
+          setLayerState(previousLayer, { mounted: true, visible: false });
+          previousLayer.video?.pause();
 
-          const previousLayer = gateMediaLayers[activeGateLayerIndex];
-
-          window.clearTimeout(gateMediaFallbackTimer);
-          setLayerState(layer, { mounted: true, visible: false });
-
-          window.requestAnimationFrame(() => {
+          gateLayerCleanupTimer = window.setTimeout(() => {
             if (swapSequence !== gateSwapSequence) {
               return;
             }
 
-            setLayerState(layer, { mounted: true, visible: true });
+            setLayerState(previousLayer, { mounted: false, visible: false });
+          }, MEDIA_CROSSFADE_MS);
+        }
 
-            if (previousLayer && previousLayer !== layer) {
-              setLayerState(previousLayer, { mounted: true, visible: false });
-              previousLayer.video?.pause();
-
-              gateLayerCleanupTimer = window.setTimeout(() => {
-                if (swapSequence !== gateSwapSequence) {
-                  return;
-                }
-
-                setLayerState(previousLayer, { mounted: false, visible: false });
-              }, MEDIA_REVEAL_FALLBACK_MS);
-            }
-
-            activeGateLayerIndex = gateMediaLayers.indexOf(layer);
-            gateActiveKey = key;
-            layer.key = key;
-            gateAccess.classList.remove("is-swapping");
-          });
-        };
-
-        layer.video.onloadeddata = revealLayer;
-        layer.video.onerror = revealLayer;
-        gateMediaFallbackTimer = window.setTimeout(revealLayer, MEDIA_REVEAL_FALLBACK_MS);
+        activeGateLayerIndex = gateMediaLayers.indexOf(layer);
+        gateActiveKey = key;
+        layer.key = key;
+        gateAccess.classList.remove("is-swapping");
       });
     });
   }
@@ -393,8 +403,6 @@ function initLandingPage() {
         return;
       }
 
-      gateDescription.textContent = gateContent[key].description;
-      gateDescription.classList.remove("is-swapping");
       prepareGateMediaLayer(nextLayer, key, swapSequence);
     }, SWAP_DELAY_MS);
   }
@@ -438,6 +446,7 @@ function initLandingPage() {
   }
 
   gateCard?.style.setProperty("--gate-mockup-stage-factor", mockupHeightFactor.toFixed(6));
+  warmGateMediaAssets();
   initializeGateMedia();
   scheduleGateMediaRealign();
   setStage("landing");
