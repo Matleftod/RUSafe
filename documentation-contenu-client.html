@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>R'U SAFE | Contenus du site</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --page: #eef7fb;
+      --surface: rgba(255, 255, 255, 0.74);
+      --surface-strong: rgba(255, 255, 255, 0.92);
+      --text: #0b1220;
+      --muted: rgba(11, 18, 32, 0.68);
+      --soft: rgba(11, 18, 32, 0.1);
+      --brand-1: #0c6199;
+      --brand-2: #559ff8;
+      --brand-3: #3627fb;
+      --accent-soft: rgba(85, 159, 248, 0.13);
+      --success-soft: rgba(12, 97, 153, 0.1);
+      --warning-soft: rgba(243, 169, 54, 0.16);
+      --radius-sm: 14px;
+      --radius-md: 22px;
+      --radius-lg: 32px;
+      --shadow: 0 24px 70px rgba(11, 18, 32, 0.12);
+      --gradient: linear-gradient(90deg, var(--brand-1), var(--brand-2) 42%, var(--brand-3));
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 8%, rgba(85, 159, 248, 0.28), transparent 34rem),
+        radial-gradient(circle at 90% 22%, rgba(54, 39, 251, 0.14), transparent 28rem),
+        linear-gradient(180deg, #ffffff 0%, var(--page) 42%, #dfe8f8 100%);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 40px 0 72px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 72px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .brand img {
+      width: 82px;
+      height: auto;
+      filter: drop-shadow(0 10px 18px rgba(11, 18, 32, 0.14));
+    }
+
+    .topnav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .topnav a,
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 16px;
+      border: 1px solid rgba(11, 18, 32, 0.14);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.48);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      gap: clamp(32px, 6vw, 80px);
+      align-items: end;
+      margin-bottom: 72px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--brand-1);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin-bottom: 22px;
+      font-size: clamp(40px, 7vw, 76px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    h2 {
+      margin-bottom: 18px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.12;
+      letter-spacing: -0.035em;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+    }
+
+    p,
+    li {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .lead {
+      max-width: 760px;
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.55;
+    }
+
+    .hero-card,
+    .panel,
+    .card,
+    .question-block {
+      border: 1px solid rgba(11, 18, 32, 0.1);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero-card {
+      padding: 28px;
+      border-radius: var(--radius-lg);
+    }
+
+    .status-list {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .status-list li {
+      display: grid;
+      gap: 4px;
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    .status-list strong {
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    .section {
+      margin-top: 72px;
+    }
+
+    .section-intro {
+      max-width: 780px;
+      margin-bottom: 28px;
+    }
+
+    .panel {
+      padding: clamp(24px, 4vw, 44px);
+      border-radius: var(--radius-lg);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 22px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.66);
+      box-shadow: none;
+    }
+
+    .card--blue {
+      background: var(--accent-soft);
+    }
+
+    .card--warning {
+      background: var(--warning-soft);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.68);
+      color: rgba(11, 18, 32, 0.78);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .site-map {
+      display: grid;
+      gap: 16px;
+    }
+
+    .site-flow {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .flow-card {
+      padding: 18px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.66);
+    }
+
+    .flow-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .map-row {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 18px;
+      padding: 18px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.62);
+    }
+
+    .map-row h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .map-row ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .nested-list {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nested-list > li {
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.52);
+    }
+
+    .nested-list strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .nested-list ul {
+      margin-top: 8px;
+    }
+
+    .content-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.62);
+    }
+
+    .content-table th,
+    .content-table td {
+      padding: 16px;
+      border-bottom: 1px solid rgba(11, 18, 32, 0.08);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .content-table th {
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .content-table td {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .question-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .question-block {
+      padding: 24px;
+      border-radius: var(--radius-md);
+      box-shadow: none;
+      background: var(--surface-strong);
+    }
+
+    .question-block ol,
+    .question-block ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .example {
+      display: block;
+      margin-top: 8px;
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(85, 159, 248, 0.12);
+      color: rgba(11, 18, 32, 0.78);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .priority-list {
+      counter-reset: priority;
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .priority-list li {
+      counter-increment: priority;
+      position: relative;
+      padding: 18px 18px 18px 68px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.66);
+    }
+
+    .priority-list li::before {
+      content: counter(priority, decimal-leading-zero);
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      background: var(--gradient);
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .simple-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    .simple-list li {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .simple-list strong {
+      color: var(--text);
+    }
+
+    @media (max-width: 820px) {
+      .page {
+        width: min(100% - 28px, 1180px);
+        padding-top: 24px;
+      }
+
+      .topbar,
+      .hero,
+      .map-row {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        margin-bottom: 48px;
+      }
+
+      .topnav {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        margin-bottom: 48px;
+      }
+
+      .content-table,
+      .content-table tbody,
+      .content-table tr,
+      .content-table td,
+      .content-table th {
+        display: block;
+      }
+
+      .content-table thead {
+        display: none;
+      }
+
+      .content-table tr {
+        border-bottom: 1px solid rgba(11, 18, 32, 0.08);
+      }
+
+      .content-table td {
+        border-bottom: 0;
+      }
+
+      .content-table td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 4px;
+        color: var(--text);
+        font-size: 13px;
+        font-weight: 700;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 12mm;
+      }
+
+      body {
+        background: #ffffff;
+      }
+
+      .page {
+        width: 100%;
+        padding: 0;
+      }
+
+      .topbar {
+        margin-bottom: 28px;
+      }
+
+      .topnav {
+        display: none;
+      }
+
+      .section {
+        margin-top: 34px;
+        break-inside: avoid;
+      }
+
+      .panel,
+      .card,
+      .question-block,
+      .hero-card {
+        box-shadow: none;
+        background: #ffffff;
+        backdrop-filter: none;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      h3 {
+        font-size: 16px;
+      }
+
+      p,
+      li {
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .content-table {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        border: 1px solid rgba(11, 18, 32, 0.16);
+        page-break-inside: auto;
+      }
+
+      .content-table thead {
+        display: table-header-group;
+      }
+
+      .content-table tbody {
+        display: table-row-group;
+      }
+
+      .content-table tr {
+        display: table-row;
+        break-inside: avoid;
+      }
+
+      .content-table th,
+      .content-table td {
+        display: table-cell;
+        padding: 9px;
+        border: 1px solid rgba(11, 18, 32, 0.12);
+        font-size: 10.5px;
+        line-height: 1.35;
+        vertical-align: top;
+      }
+
+      .content-table th:first-child,
+      .content-table td:first-child {
+        width: 19%;
+      }
+
+      .content-table th:nth-child(2),
+      .content-table td:nth-child(2) {
+        width: 43%;
+      }
+
+      .content-table th:nth-child(3),
+      .content-table td:nth-child(3) {
+        width: 38%;
+      }
+
+      .content-table td::before {
+        content: none;
+      }
+
+      .priority-list li,
+      .map-row,
+      .flow-card {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand">
+        <img src="assets/logo.png" alt="Logo R'U SAFE" width="116" height="84" />
+        <span>Contenus du site</span>
+      </div>
+
+      <nav class="topnav" aria-label="Navigation du document">
+        <a href="#etat-actuel">Etat actuel</a>
+        <a href="#arborescence">Arborescence</a>
+        <a href="#contenus">Contenus</a>
+      </nav>
+    </header>
+
+    <section class="section" id="etat-actuel" aria-labelledby="etat-actuel-title">
+      <div class="section-intro">
+        <p class="eyebrow">Etat actuel</p>
+        <h1 id="etat-actuel-title">Ce qui existe deja et ce qui reste a construire.</h1>
+        <p class="lead">
+          La direction artistique globale est posee et le header donne deja une base d'arborescence.
+          Le contenu des pages, lui, n'est pas final : les textes visibles aujourd'hui servent surtout
+          a remplir la maquette et a tester le rendu.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="card card--blue">
+          <h3>Deja pose</h3>
+          <p>Logo, ambiance graphique, couleurs, boutons, landing d'entree et structure du header. Cette base peut servir de point de depart pour terminer le site.</p>
+        </article>
+        <article class="card card--blue">
+          <h3>Deja visible</h3>
+          <p>Une landing avec 4 activites mises en avant : DORA, AUSECAF, SECEDI et DIAG6 2030. Une page principale existe aussi, mais son contenu est temporaire.</p>
+        </article>
+        <article class="card card--warning">
+          <h3>A remplacer</h3>
+          <p>Les textes de la page d'accueil, les exemples d'equipe, les arguments commerciaux, les preuves, les offres detaillees, le contact et les informations legales.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="arborescence" aria-labelledby="arborescence-title">
+      <div class="section-intro">
+        <p class="eyebrow">Arborescence actuelle</p>
+        <h2 id="arborescence-title">La structure visible aujourd'hui dans le menu.</h2>
+        <p>
+          Le header donne deja une premiere organisation du site. Pour le moment, cette organisation
+          sert de plan de travail : elle montre les grandes familles de contenus a preparer.
+        </p>
+      </div>
+
+      <div class="panel site-map">
+        <div class="site-flow" aria-label="Parcours simple du site">
+          <div class="flow-card">
+            <strong>1. Arrivee</strong>
+            <p>Le visiteur arrive sur une page d'introduction R'U SAFE.</p>
+          </div>
+          <div class="flow-card">
+            <strong>2. Choix d'activite</strong>
+            <p>Il voit les 4 entrees deja mises en avant : DORA, AUSECAF, SECEDI, DIAG6 2030.</p>
+          </div>
+          <div class="flow-card">
+            <strong>3. Site principal</strong>
+            <p>Il accede ensuite au site complet avec les offres, l'equipe et le contact.</p>
+          </div>
+        </div>
+
+        <div class="map-row">
+          <h3>Landing</h3>
+          <ul>
+            <li>Role : accueillir le visiteur et donner une premiere impression forte.</li>
+            <li>Contenu actuel : logo, slogan, bouton de decouverte, videos de presentation.</li>
+            <li>Contenu a preparer : slogans definitifs, textes tres courts pour DORA, AUSECAF, SECEDI et DIAG6 2030, videos definitives ou visuels de remplacement.</li>
+          </ul>
+        </div>
+
+        <div class="map-row">
+          <h3>Accueil</h3>
+          <ul>
+            <li>Role : expliquer rapidement ce que fait R'U SAFE et pourquoi faire appel a vous.</li>
+            <li>Contenu actuel : texte d'exemple oriente audit securite.</li>
+            <li>Contenu a preparer : accroche principale, presentation courte, offres principales, methode, preuves, equipe, contact.</li>
+          </ul>
+        </div>
+
+        <div class="map-row">
+          <h3>Activites</h3>
+          <ul class="nested-list">
+            <li>
+              <strong>Expertise / Consulting</strong>
+              Cybersecurite, RGPD, Cash Management, Risk Management.
+              <ul>
+                <li>Cybersecurite : DORA, NIS2, NIS3, SecNumCloud, RSSI de transition, DSI de transition.</li>
+                <li>RGPD : DPO de transition.</li>
+                <li>Cash Management : AUSECAF, SECEDI.</li>
+                <li>Risk Management : offre a clarifier.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Formations</strong>
+              IA, transformation numerique, gouvernance/risque/conformite, securite de l'information,
+              protection des donnees, cybersecurite, continuite, qualite, sante/securite, durabilite.
+            </li>
+            <li>
+              <strong>Autres entrees directes</strong>
+              Audit, Diagnostic, TPRM, Cash Management, Corporate / Filiales.
+            </li>
+          </ul>
+        </div>
+
+        <div class="map-row">
+          <h3>Infos societe</h3>
+          <ul>
+            <li>Qui sommes-nous : presentation de R'U SAFE, approche, valeurs, positionnement.</li>
+            <li>Equipes : personnes a afficher, roles, expertises, photos ou avatars.</li>
+            <li>Contact : moyen de contact principal et informations pratiques.</li>
+            <li>Legal : mentions legales et confidentialite a ajouter avant publication.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contenus" aria-labelledby="contenus-title">
+      <div class="section-intro">
+        <p class="eyebrow">Contenu minimum</p>
+        <h2 id="contenus-title">Les contenus concrets a produire pour une premiere version.</h2>
+        <p>
+          Pour avancer efficacement, chaque page doit repondre a des besoins simples : comprendre
+          l'offre, savoir si elle me concerne, etre rassure, puis pouvoir prendre contact.
+        </p>
+      </div>
+
+      <table class="content-table">
+        <thead>
+          <tr>
+            <th>Zone du site</th>
+            <th>Ce qu'il faut ecrire</th>
+            <th>Exemples concrets</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Zone du site">Accueil</td>
+            <td data-label="Ce qu'il faut ecrire">Une accroche principale, une presentation courte de R'U SAFE, 3 a 5 offres mises en avant, les publics concernes et un appel au contact.</td>
+            <td data-label="Exemples concrets">"Nous aidons les directions a securiser leurs activites critiques", "DORA", "Cash Management", "Audit", "Formation", "Parler de votre besoin".</td>
+          </tr>
+          <tr>
+            <td data-label="Zone du site">Offres / activites</td>
+            <td data-label="Ce qu'il faut ecrire">Pour chaque offre : a quoi elle sert, pour qui elle est faite, ce qui est inclus, ce que le client obtient a la fin.</td>
+            <td data-label="Exemples concrets">DORA : diagnostic de conformite, plan d'action, ateliers metiers, restitution direction. AUSECAF : analyse des flux, points de fragilite, recommandations.</td>
+          </tr>
+          <tr>
+            <td data-label="Zone du site">Formations</td>
+            <td data-label="Ce qu'il faut ecrire">Les themes proposes, le public vise, la duree, le format, les objectifs et ce que les participants sauront faire apres.</td>
+            <td data-label="Exemples concrets">Formation IA pour dirigeants, 1 jour, comprendre les risques et les usages. Formation RGPD pour equipes internes, cas pratiques et supports fournis.</td>
+          </tr>
+          <tr>
+            <td data-label="Zone du site">Qui sommes-nous</td>
+            <td data-label="Ce qu'il faut ecrire">Une presentation humaine et professionnelle : origine de R'U SAFE, expertise, maniere de travailler, difference avec une approche standard.</td>
+            <td data-label="Exemples concrets">"Une structure specialisee dans les sujets de risque, conformite et securite", "une approche pragmatique", "des recommandations applicables".</td>
+          </tr>
+          <tr>
+            <td data-label="Zone du site">Equipe</td>
+            <td data-label="Ce qu'il faut ecrire">Les personnes visibles sur le site, leur role, leur specialite et une bio courte en langage simple.</td>
+            <td data-label="Exemples concrets">Nom, fonction, 2 lignes de presentation, sujets maitrises : DORA, cybersecurite, audit, formation, gestion du risque.</td>
+          </tr>
+          <tr>
+            <td data-label="Zone du site">Contact</td>
+            <td data-label="Ce qu'il faut ecrire">Le moyen de contact principal, le type de demande attendu et les informations utiles a transmettre lors du premier message.</td>
+            <td data-label="Exemples concrets">Email, telephone, formulaire simple, "precisez votre organisation, votre besoin, votre delai et le sujet concerne".</td>
+          </tr>
+          <tr>
+            <td data-label="Zone du site">Legal</td>
+            <td data-label="Ce qu'il faut ecrire">Les informations obligatoires : editeur du site, entreprise, responsable de publication, hebergement, confidentialite.</td>
+            <td data-label="Exemples concrets">Raison sociale, SIRET, adresse, email, nom de l'hebergeur, politique de traitement des donnees du formulaire.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" aria-labelledby="v1-title">
+      <div class="section-intro">
+        <p class="eyebrow">Priorite V1</p>
+        <h2 id="v1-title">Le plus simple pour mettre le site en ligne proprement.</h2>
+      </div>
+
+      <ol class="priority-list">
+        <li>
+          <strong>Garder une page d'accueil complete.</strong>
+          <p>Elle presente R'U SAFE, les grandes activites, l'approche, l'equipe ou l'expertise, puis le contact.</p>
+        </li>
+        <li>
+          <strong>Creer d'abord les pages d'offres deja mises en avant.</strong>
+          <p>DORA, AUSECAF, SECEDI et DIAG6 2030 sont deja visibles dans la landing. Elles doivent donc etre solides en priorite.</p>
+        </li>
+        <li>
+          <strong>Transformer les autres entrees du menu en pages simples.</strong>
+          <p>Chaque page peut commencer avec une structure courte : probleme traite, accompagnement propose, resultat obtenu, contact.</p>
+        </li>
+        <li>
+          <strong>Ajouter des elements de confiance.</strong>
+          <p>Experience, secteurs accompagnes, methode de travail, livrables, certifications, exemples anonymises ou references si possible.</p>
+        </li>
+        <li>
+          <strong>Completer contact et mentions obligatoires.</strong>
+          <p>Le site doit permettre de contacter R'U SAFE facilement et contenir les informations legales avant publication.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section" aria-labelledby="resume-title">
+      <div class="panel">
+        <div class="section-intro">
+          <p class="eyebrow">Resume global</p>
+          <h2 id="resume-title">A clarifier pendant l'appel.</h2>
+        </div>
+
+        <ul class="simple-list">
+          <li>
+            <strong>Ce que R'U SAFE vend vraiment.</strong> Exemple : accompagnement DORA, audit, formation, diagnostic, conseil cyber, cash management.
+          </li>
+          <li>
+            <strong>Les offres a mettre en avant en premier.</strong> Exemple : DORA et AUSECAF maintenant, les formations dans un second temps.
+          </li>
+          <li>
+            <strong>Les clients concernes.</strong> Exemple : banques, assurances, PME, ETI, directions informatiques, equipes conformite, directions generales.
+          </li>
+          <li>
+            <strong>Ce que le client recoit a la fin.</strong> Exemple : rapport, plan d'action, diagnostic, restitution, formation, feuille de route.
+          </li>
+          <li>
+            <strong>Ce qui peut rassurer un visiteur.</strong> Exemple : experience, secteurs accompagnes, certifications, exemples anonymises, methode de travail.
+          </li>
+          <li>
+            <strong>Ce qui ne doit pas etre publie.</strong> Exemple : noms de clients confidentiels, informations sensibles, chiffres internes, details de mission non publics.
+          </li>
+          <li>
+            <strong>Les informations pratiques.</strong> Exemple : email de contact, telephone, personnes a presenter, mentions legales, hebergeur.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
