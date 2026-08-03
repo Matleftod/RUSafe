@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="R’U SAFE accompagne les institutions financières, les industries et leurs partenaires dans leurs enjeux de conformité, de cybersécurité et de résilience opérationnelle." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="R’U SAFE accompagne les institutions financières, les industries et leurs partenaires dans leurs enjeux de conformité, de cybersécurité et de résilience opérationnelle.">
   <title>R’U SAFE — Conformité, cybersécurité et résilience opérationnelle</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="design-system.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="stylesheet" href="design-system.css">
 
   <style>
     :root {
       --navy: var(--color-text);
       --blue: var(--color-brand-3);
-      --blue-2: var(--color-brand-2);
       --sky: var(--color-page-home);
       --green: var(--color-brand-1);
       --text: var(--color-text);
       --muted: var(--color-text-muted);
-      --white: var(--color-page);
       --line: var(--color-border-accent-soft);
       --shadow: var(--shadow-soft);
-      --radius: var(--radius-card-md);
       --max: 1300px;
       --header-height: 64px;
     }
@@ -45,8 +43,35 @@
 
     a:focus-visible,
     button:focus-visible {
-      outline: 3px solid var(--color-focus-ring);
+      outline: 3px solid var(--color-page);
       outline-offset: 4px;
+      box-shadow: 0 0 0 7px var(--color-brand-3);
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 100;
+      padding: 12px 16px;
+      border-radius: var(--radius-pill);
+      background: var(--color-text);
+      color: var(--color-page);
+      font-weight: var(--font-weight-semibold);
+      transform: translateY(calc(-100% - 20px));
+      transition: transform var(--duration-fast) var(--ease-out);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .scroll-sentinel {
+      position: absolute;
+      top: 16px;
+      width: 1px;
+      height: 1px;
+      pointer-events: none;
     }
 
     .container {
@@ -90,12 +115,11 @@
         box-shadow var(--duration-base) var(--ease-out);
     }
 
-    .topbar.is-scrolled {
-      background-color: var(--color-surface-glass-strong);
+    .topbar.is-scrolled,
+    .topbar.menu-open {
+      background-color: var(--color-surface-glass-stronger);
       border-bottom-color: var(--color-border-accent-soft);
       box-shadow: 0 10px 32px var(--color-accent-shadow);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
     }
 
     .nav {
@@ -139,6 +163,9 @@
 
     .nav-links a:not(.button) {
       position: relative;
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
     }
 
     .nav-links a:not(.button)::after {
@@ -176,7 +203,16 @@
       box-shadow: var(--shadow-accent-hover);
     }
 
+    .button:active {
+      transform: translateY(0);
+    }
+
+    .button:focus-visible {
+      box-shadow: 0 0 0 7px var(--color-brand-3);
+    }
+
     .nav-links .button {
+      min-height: 44px;
       padding: 9px 14px;
       font-size: .82rem;
     }
@@ -184,7 +220,6 @@
     .button.primary,
     .hero-card,
     .hero-list span,
-    .card .icon,
     .partner-panel,
     .reference-box {
       border: var(--border-width-strong) solid transparent;
@@ -201,11 +236,11 @@
       position: relative;
       display: flex;
       align-items: center;
-      height: 100vh;
-      height: 100svh;
-      height: 100dvh;
-      min-height: 0;
+      min-height: 100vh;
+      min-height: 100svh;
+      min-height: 100dvh;
       overflow: hidden;
+      overflow: clip;
       background: var(--color-page-home);
       color: var(--color-text);
       padding: clamp(72px, 9vh, 92px) 0 clamp(20px, 3.5vh, 36px);
@@ -248,7 +283,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: clamp(14px, 5vh, 80px);
+      gap: clamp(20px, 4vh, 48px);
       text-align: center;
     }
 
@@ -284,7 +319,7 @@
       --gradient-border-fill: var(--color-surface-glass-stronger);
       width: 100%;
       margin-top: 0;
-      padding: 10px 0px;
+      padding: 8px 0;
       border-radius: var(--radius-card-lg);
       box-shadow: var(--shadow-soft);
     }
@@ -352,6 +387,8 @@
 
     .countdown strong { color: var(--navy); }
     .countdown .launch-live { color: var(--green); }
+
+    .countdown-note { color: var(--muted); }
     .countdown-grid {
       display: flex;
       gap: 10px;
@@ -377,7 +414,13 @@
       font-weight: 700;
     }
 
-    section { padding: 84px 0; }
+    section {
+      padding: clamp(64px, 7vw, 94px) 0;
+    }
+
+    section[id] {
+      scroll-margin-top: calc(var(--header-height) + 16px);
+    }
 
     .section-head {
       max-width: 760px;
@@ -394,32 +437,37 @@
 
     .section-head p { margin: 0; color: var(--muted); font-size: 1.07rem; }
 
+    .section-head.flush { margin-bottom: 0; }
+
+    .partner-action { margin-top: 24px; }
+
     .steps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .step, .card, .metric {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--color-surface-glass-stronger);
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      border-block: 1px solid var(--line);
+      list-style: none;
     }
 
     .step {
-      padding: 26px;
+      min-width: 0;
+      padding: 28px clamp(18px, 2vw, 28px);
       position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
+    }
+
+    .step + .step {
+      border-inline-start: 1px solid var(--line);
     }
 
     .step-number {
-      font-size: 3.1rem;
+      font-size: .76rem;
       line-height: 1;
       font-weight: var(--font-weight-bold);
-      color: var(--color-brand-2);
-      opacity: .38;
-      margin-bottom: 18px;
+      color: var(--color-brand-1);
+      letter-spacing: .1em;
+      margin-bottom: 16px;
     }
 
     .step h3 { margin: 0 0 8px; color: var(--navy); font-size: 1.25rem; }
@@ -430,18 +478,26 @@
     .solutions {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      gap: 0 clamp(28px, 4vw, 54px);
+      border-bottom: 1px solid var(--line);
     }
 
-    .card { padding: 28px; }
+    .card {
+      min-width: 0;
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+    }
+
     .card h3 { margin: 0 0 9px; color: var(--navy); }
     .card p { color: var(--muted); margin: 0; }
-    .card .icon {
-      --gradient-border-fill: var(--color-page-home);
-      width: 48px; height: 48px; border-radius: 14px;
-      display: grid; place-items: center;
-      color: var(--color-text);
-      margin-bottom: 18px; font-size: 1.3rem;
+
+    .solution-index {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--color-brand-1);
+      font-size: .76rem;
+      font-weight: var(--font-weight-bold);
+      letter-spacing: .1em;
     }
 
     .partner {
@@ -479,25 +535,37 @@
       align-items: flex-start;
     }
 
-    .checks b {
-      width: 23px; height: 23px; flex: 0 0 23px;
-      border-radius: 50%; display: grid; place-items: center;
-      background: var(--color-surface-glass);
+    .checks li::before {
+      content: "✓";
+      flex: 0 0 auto;
+      color: var(--color-page);
+      font-weight: var(--font-weight-bold);
     }
 
     .metrics {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      gap: 0;
+      margin: 0;
+      border-block: 1px solid var(--line);
     }
 
-    .metric { padding: 24px; }
+    .metric {
+      min-width: 0;
+      padding: 26px clamp(18px, 2vw, 26px);
+    }
+
+    .metric + .metric {
+      border-inline-start: 1px solid var(--line);
+    }
+
     .metric .value {
       color: var(--blue);
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: var(--font-weight-bold);
       letter-spacing: -.04em;
     }
+
     .metric strong { display: block; color: var(--navy); margin-top: 4px; }
     .metric span { color: var(--muted); font-size: .92rem; }
 
@@ -517,12 +585,25 @@
     }
 
     .reference-box .big {
-      font-size: 4rem;
+      font-size: clamp(2.25rem, 4vw, 3rem);
       font-weight: var(--font-weight-bold);
-      line-height: 1;
+      line-height: 1.04;
     }
 
     .reference-box p { color: var(--color-surface-glass-stronger); }
+
+    .reference-copy h2 {
+      margin: 14px 0;
+      color: var(--navy);
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      line-height: 1.08;
+    }
+
+    .reference-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
 
     .cta {
       padding: 72px 0;
@@ -550,6 +631,9 @@
     .cta p { color: var(--color-surface-glass-strong); max-width: 760px; margin: 0; }
 
     .cta-email {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
       margin-top: 8px;
       color: var(--color-page);
       font-size: clamp(1.15rem, 2vw, 1.45rem);
@@ -577,8 +661,18 @@
       font-size: .9rem;
     }
 
+    .footer-grid a:not(.brand) {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
+
     .mobile-toggle {
       display: none;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      min-height: 44px;
       border: 1px solid var(--line);
       background: var(--color-surface-glass-stronger);
       border-radius: 10px;
@@ -596,10 +690,16 @@
       .hero-list li:nth-child(3) { border-inline-start: 0; }
       .hero-list li:nth-child(n + 3) { border-top: 1px solid var(--color-border-accent-soft); }
       .steps, .metrics { grid-template-columns: repeat(2, 1fr); }
+      .step + .step,
+      .metric + .metric { border-inline-start: 0; }
+      .step:nth-child(even),
+      .metric:nth-child(even) { border-inline-start: 1px solid var(--line); }
+      .step:nth-child(n + 3),
+      .metric:nth-child(n + 3) { border-top: 1px solid var(--line); }
       .nav-links {
         display: none;
         position: absolute;
-        top: var(--header-height);
+        top: calc(var(--header-height) + 8px);
         left: 20px;
         right: 20px;
         padding: 20px;
@@ -611,16 +711,31 @@
         align-items: stretch;
       }
       .nav-links.open { display: flex; }
+      .nav-links a {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 8px 12px;
+      }
+      .nav-links a:not(.button)::after {
+        right: 12px;
+        bottom: 4px;
+        left: 12px;
+      }
       .mobile-toggle { display: inline-flex; }
     }
 
     @media (max-width: 640px) {
       .container { width: min(100% - 28px, var(--max)); }
-      section { padding: 64px 0; }
       .steps, .solutions, .metrics { grid-template-columns: 1fr; }
+      .step:nth-child(even),
+      .metric:nth-child(even) { border-inline-start: 0; }
+      .step:nth-child(n + 2),
+      .metric:nth-child(n + 2) { border-top: 1px solid var(--line); }
       .countdown { align-items: flex-start; flex-direction: column; }
       .footer-grid { align-items: flex-start; flex-direction: column; }
       .hero { padding: 68px 0 20px; }
+      .hero-content { gap: 18px; }
       .hero-logo { width: clamp(170px, min(56vw, 28vh), 220px); }
       .hero h1 { font-size: clamp(1.85rem, 8.2vw, 2.3rem); }
       .hero-card { padding: 6px; }
@@ -631,60 +746,31 @@
       .brand-logo { width: 68px; }
     }
 
-    @media (max-height: 760px) {
-      .hero { padding: 64px 0 16px; }
-      .hero-content { gap: 10px; }
-      .hero-logo {
-        width: clamp(160px, min(21vw, 25vh), 220px);
-      }
-      .hero-copy { gap: 6px; }
-      .hero h1 { font-size: clamp(1.8rem, 3.2vw, 2.7rem); }
-      .hero p {
-        font-size: .88rem;
-        line-height: 1.5;
-      }
-      .hero-card {
-        padding: 6px;
-      }
-      .hero-list li { padding-block: 6px; }
-      .hero-list strong {
-        margin-bottom: 3px;
-        font-size: .8rem;
-      }
-      .hero-list div {
-        font-size: .7rem;
-        line-height: 1.35;
-      }
-    }
-
-    @media (max-width: 640px) and (max-height: 620px) {
-      .hero-card {
-        overflow-x: auto;
-        overscroll-behavior-inline: contain;
-        scroll-snap-type: inline proximity;
-      }
+    @media (max-width: 360px) {
       .hero-list {
-        grid-template-columns: repeat(4, 180px);
-        width: max-content;
+        grid-template-columns: 1fr;
       }
-      .hero-list li {
-        scroll-snap-align: start;
-      }
-      .hero-list li:nth-child(3) {
-        border-inline-start: 1px solid var(--color-border-accent-soft);
-      }
-      .hero-list li:nth-child(n + 3) {
-        border-top: 0;
-      }
+      .hero-list li + li { border-inline-start: 0; border-top: 1px solid var(--color-border-accent-soft); }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       * { transition: none !important; }
     }
+
+    @media (forced-colors: active) {
+      a:focus-visible,
+      button:focus-visible {
+        outline-color: Highlight;
+        box-shadow: none;
+      }
+    }
   </style>
 </head>
 <body>
+
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+  <div class="scroll-sentinel" id="scrollSentinel" aria-hidden="true"></div>
 
   <!--
     PERSONNALISATION RAPIDE POUR LE WEBMASTER
@@ -696,10 +782,12 @@
   <header class="topbar">
     <div class="container nav">
       <a class="brand" href="#accueil" aria-label="R’U SAFE — retour à l’accueil">
-        <img class="brand-logo" src="assets/logo.png" alt="Logo R’U SAFE" width="116" height="84" />
+        <img class="brand-logo" src="assets/logo.png" srcset="assets/logo-80.webp 80w, assets/logo-160.webp 160w, assets/logo-245.webp 245w" sizes="76px" alt="" width="116" height="84" decoding="async">
       </a>
 
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+      <button class="mobile-toggle" id="mobileToggle" type="button" aria-label="Ouvrir le menu" aria-controls="navLinks" aria-expanded="false">
+        <span id="mobileToggleIcon" aria-hidden="true">☰</span>
+      </button>
 
       <nav class="nav-links" id="navLinks" aria-label="Navigation principale">
         <a href="#approche">Notre approche</a>
@@ -711,10 +799,10 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <section class="hero" id="accueil">
       <div class="container hero-content">
-        <img class="hero-logo" src="assets/logo.png" alt="R’U SAFE" width="245" height="183" />
+        <img class="hero-logo" src="assets/logo.png" srcset="assets/logo-245.webp 245w, assets/logo-320.webp 320w, assets/logo-440.webp 440w, assets/logo@3x.webp 735w" sizes="(max-width: 640px) 220px, (max-width: 900px) 24vw, 320px" alt="Logo R’U SAFE" width="245" height="183" decoding="async" fetchpriority="high">
 
         <div class="hero-copy">
           <h1>Transformons les obligations réglementaires en leviers de résilience et de performance.</h1>
@@ -725,10 +813,10 @@
 
         <aside class="hero-card" aria-label="Domaines d’intervention">
           <ul class="hero-list">
-            <li><span>✓</span><div><strong>Conformité réglementaire</strong>DORA, NIS2, NIS3, ISO 27001, AI Act et PASSI.</div></li>
-            <li><span>✓</span><div><strong>Résilience opérationnelle</strong>Risques, continuité, TPRM, suivi des tests de résilience et tiers critiques.</div></li>
-            <li><span>✓</span><div><strong>Cyber & Tech</strong>Gouvernance, <em>controls</em>, preuves et remédiation.</div></li>
-            <li><span>✓</span><div><strong>Reporting exécutif</strong>Une vision consolidée pour les dirigeants.</div></li>
+            <li><span aria-hidden="true">✓</span><div><strong>Conformité réglementaire</strong>DORA, NIS2, NIS3, ISO 27001, AI Act et PASSI.</div></li>
+            <li><span aria-hidden="true">✓</span><div><strong>Résilience opérationnelle</strong>Risques, continuité, TPRM, suivi des tests de résilience et tiers critiques.</div></li>
+            <li><span aria-hidden="true">✓</span><div><strong>Cyber &amp; Tech</strong>Gouvernance, <em>controls</em>, preuves et remédiation.</div></li>
+            <li><span aria-hidden="true">✓</span><div><strong>Reporting exécutif</strong>Une vision consolidée pour les dirigeants.</div></li>
           </ul>
         </aside>
       </div>
@@ -738,9 +826,9 @@
       <div class="container countdown">
         <div>
           <strong>Le site complet R’U SAFE sera mis en ligne le 24 août 2026 à 8 h.</strong><br>
-          <span style="color:var(--muted)">En attendant, découvrez l’essentiel de notre positionnement et de nos expertises.</span>
+          <span class="countdown-note">En attendant, découvrez l’essentiel de notre positionnement et de nos expertises.</span>
         </div>
-        <div class="countdown-grid" id="countdown" aria-live="polite">
+        <div class="countdown-grid" id="countdown" role="timer" aria-live="off" aria-atomic="true" aria-label="Compte à rebours avant la mise en ligne">
           <div class="timebox"><span id="days">--</span><small>jours</small></div>
           <div class="timebox"><span id="hours">--</span><small>heures</small></div>
           <div class="timebox"><span id="minutes">--</span><small>minutes</small></div>
@@ -756,28 +844,28 @@
           <p>Nous allons au-delà du constat réglementaire pour transformer les exigences en actions concrètes et mesurables.</p>
         </div>
 
-        <div class="steps">
-          <article class="step">
+        <ol class="steps">
+          <li class="step">
             <div class="step-number">01</div>
             <h3>Diagnostiquer</h3>
             <p>Évaluer rapidement le niveau de conformité et identifier les écarts critiques.</p>
-          </article>
-          <article class="step">
+          </li>
+          <li class="step">
             <div class="step-number">02</div>
             <h3>Remédier</h3>
             <p>Construire et mettre en œuvre des plans d’action réalistes et priorisés.</p>
-          </article>
-          <article class="step">
+          </li>
+          <li class="step">
             <div class="step-number">03</div>
             <h3>Automatiser</h3>
             <p>Réduire les tâches manuelles et fiabiliser le suivi des <em>controls</em> Cyber et Tech.</p>
-          </article>
-          <article class="step">
+          </li>
+          <li class="step">
             <div class="step-number">04</div>
             <h3>Piloter</h3>
             <p>Donner aux dirigeants une vision consolidée de la résilience et des risques.</p>
-          </article>
-        </div>
+          </li>
+        </ol>
       </div>
     </section>
 
@@ -791,25 +879,25 @@
 
         <div class="solutions">
           <article class="card">
-            <div class="icon">🛡️</div>
-            <h3>Conformité & résilience</h3>
+            <span class="solution-index" aria-hidden="true">01</span>
+            <h3>Conformité &amp; résilience</h3>
             <p>DORA, NIS2, NIS3, ISO 27001, AI Act, accompagnements et suivis, Audit/revoyure PASSI (RGS/LPM).</p>
           </article>
 
           <article class="card">
-            <div class="icon">⚙️</div>
+            <span class="solution-index" aria-hidden="true">02</span>
             <h3>Automatisation des <em>controls</em></h3>
             <p>Cartographie des <em>controls</em>, collecte des preuves, suivi des anomalies, pilotage des non-conformités et suivi des tests de résilience.</p>
           </article>
 
           <article class="card">
-            <div class="icon">📊</div>
+            <span class="solution-index" aria-hidden="true">03</span>
             <h3>Resilient Advisor</h3>
             <p>Une fonction transverse reliant Direction, IT, Cyber, Risques, Conformité, Procurement et Métiers.</p>
           </article>
 
           <article class="card">
-            <div class="icon">💡</div>
+            <span class="solution-index" aria-hidden="true">04</span>
             <h3>Solutions propriétaires</h3>
             <p>AUSECAF, SECEDI, D&amp;IIM, suivi de la résilience, formation et accompagnement autour de l’intelligence artificielle.</p>
           </article>
@@ -819,13 +907,13 @@
 
     <section class="partner" id="partenaires">
       <div class="container partner-grid">
-        <div class="section-head" style="margin-bottom:0">
+        <div class="section-head flush">
           <span class="eyebrow dark">Pour nos partenaires</span>
           <h2>Un partenaire expert, agile et complémentaire.</h2>
           <p>
             R’U SAFE intervient directement auprès des organisations ou en complémentarité avec des cabinets de conseil, intégrateurs, éditeurs et partenaires commerciaux souhaitant renforcer leur offre sur DORA, NIS2, NIS3, AI Act, PASSI et la résilience opérationnelle.
           </p>
-          <div style="margin-top:24px">
+          <div class="partner-action">
             <a class="button primary" href="#contact">Étudier une collaboration</a>
           </div>
         </div>
@@ -833,11 +921,11 @@
         <div class="partner-panel">
           <h3>Ce que R’U SAFE apporte</h3>
           <ul class="checks">
-            <li><b>✓</b><span>Une expertise senior immédiatement mobilisable.</span></li>
-            <li><b>✓</b><span>Une approche indépendante et orientée résultats.</span></li>
-            <li><b>✓</b><span>Une capacité d’intervention de bout en bout.</span></li>
-            <li><b>✓</b><span>Une capacité de co-construction et d’intégration dans l’offre du partenaire.</span></li>
-            <li><b>✓</b><span>Un modèle flexible, scalable et adapté aux projets à fort impact.</span></li>
+            <li>Une expertise senior immédiatement mobilisable.</li>
+            <li>Une approche indépendante et orientée résultats.</li>
+            <li>Une capacité d’intervention de bout en bout.</li>
+            <li>Une capacité de co-construction et d’intégration dans l’offre du partenaire.</li>
+            <li>Un modèle flexible, scalable et adapté aux projets à fort impact.</li>
           </ul>
         </div>
       </div>
@@ -851,26 +939,26 @@
         </div>
 
         <div class="metrics">
-          <div class="metric">
+          <article class="metric">
             <div class="value">12 à 35 ans</div>
             <strong>Consultants exclusivement seniors</strong>
             <span>Une équipe expérimentée en transformation, Cyber, conformité et résilience.</span>
-          </div>
-          <div class="metric">
+          </article>
+          <article class="metric">
             <div class="value">2 ans</div>
             <strong>Programme DORA Cyber</strong>
             <span>Pilotage complet de bout en bout.</span>
-          </div>
-          <div class="metric">
+          </article>
+          <article class="metric">
             <div class="value">1200+</div>
             <strong><em>Controls</em> suivis</strong>
             <span><em>Controls</em> Cyber et Tech déployés, revus ou pilotés.</span>
-          </div>
-          <div class="metric">
+          </article>
+          <article class="metric">
             <div class="value">30</div>
             <strong>Experts mobilisables</strong>
             <span>Selon les besoins du projet.</span>
-          </div>
+          </article>
         </div>
       </div>
     </section>
@@ -878,16 +966,16 @@
     <section class="alt">
       <div class="container reference">
         <div class="reference-box">
-          <div class="big" style="font-size:3rem">Économies réalisées majeures</div>
+          <div class="big">Des économies majeures réalisées</div>
           <p>Grâce à une approche terrain justifiée et unique combinant expertise réglementaire, optimisation opérationnelle, analyse des besoins et négociation structurée.</p>
         </div>
 
-        <div>
+        <div class="reference-copy">
           <span class="eyebrow dark">Référence majeure</span>
-          <h2 style="color:var(--navy);font-size:clamp(2rem,4vw,3.1rem);line-height:1.08;margin:14px 0">
+          <h2>
             Une expérience complète sur une infrastructure financière systémique européenne.
           </h2>
-          <p style="color:var(--muted);font-size:1.06rem">
+          <p>
             Pilotage DORA Cyber, gouvernance, politiques et procédures, gestion des risques ICT et tiers, <em>controls</em>, suivi des tests de résilience, accompagnement des revoyures PASSI, préparation aux audits et accompagnement opérationnel.
           </p>
         </div>
@@ -908,7 +996,7 @@
   <footer>
     <div class="container footer-grid">
       <a class="brand" href="#accueil" aria-label="R’U SAFE — retour à l’accueil">
-        <img class="brand-logo" src="assets/logo.png" alt="Logo R’U SAFE" width="116" height="84" />
+        <img class="brand-logo" src="assets/logo.png" srcset="assets/logo-80.webp 80w, assets/logo-160.webp 160w, assets/logo-245.webp 245w" sizes="76px" alt="" width="116" height="84" loading="lazy" decoding="async">
       </a>
       <div>Conformité réglementaire · Cybersécurité · Résilience opérationnelle · AI Act</div>
       <div>
@@ -920,53 +1008,118 @@
   <script>
     const topbar = document.querySelector(".topbar");
     const mobileToggle = document.getElementById("mobileToggle");
+    const mobileToggleIcon = document.getElementById("mobileToggleIcon");
     const navLinks = document.getElementById("navLinks");
+    const scrollSentinel = document.getElementById("scrollSentinel");
+    const desktopMedia = window.matchMedia("(min-width: 901px)");
+    let headerScrolled = null;
+    let headerFrame = 0;
 
     function updateHeaderSurface() {
-      topbar.classList.toggle("is-scrolled", window.scrollY > 16);
+      const shouldShowSurface = window.scrollY > 16;
+
+      if (shouldShowSurface !== headerScrolled) {
+        topbar.classList.toggle("is-scrolled", shouldShowSurface);
+        headerScrolled = shouldShowSurface;
+      }
+
+      headerFrame = 0;
     }
 
-    updateHeaderSurface();
-    window.addEventListener("scroll", updateHeaderSurface, { passive: true });
+    function requestHeaderUpdate() {
+      if (!headerFrame) {
+        headerFrame = window.requestAnimationFrame(updateHeaderSurface);
+      }
+    }
+
+    function setMenuState(isOpen, returnFocus = false) {
+      navLinks.classList.toggle("open", isOpen);
+      topbar.classList.toggle("menu-open", isOpen);
+      mobileToggle.setAttribute("aria-expanded", String(isOpen));
+      mobileToggle.setAttribute("aria-label", isOpen ? "Fermer le menu" : "Ouvrir le menu");
+      mobileToggleIcon.textContent = isOpen ? "✕" : "☰";
+
+      if (returnFocus) {
+        mobileToggle.focus();
+      }
+    }
+
+    if ("IntersectionObserver" in window) {
+      const headerObserver = new IntersectionObserver(([entry]) => {
+        topbar.classList.toggle("is-scrolled", !entry.isIntersecting);
+      });
+
+      headerObserver.observe(scrollSentinel);
+    } else {
+      updateHeaderSurface();
+      window.addEventListener("scroll", requestHeaderUpdate, { passive: true });
+    }
 
     mobileToggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-      mobileToggle.setAttribute("aria-expanded", String(isOpen));
-      mobileToggle.textContent = isOpen ? "✕" : "☰";
+      setMenuState(mobileToggle.getAttribute("aria-expanded") !== "true");
     });
 
     navLinks.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        mobileToggle.setAttribute("aria-expanded", "false");
-        mobileToggle.textContent = "☰";
+        setMenuState(false);
       });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && mobileToggle.getAttribute("aria-expanded") === "true") {
+        setMenuState(false, true);
+      }
+    });
+
+    document.addEventListener("pointerdown", (event) => {
+      if (mobileToggle.getAttribute("aria-expanded") === "true" && !topbar.contains(event.target)) {
+        setMenuState(false);
+      }
+    });
+
+    desktopMedia.addEventListener("change", (event) => {
+      if (event.matches) {
+        setMenuState(false);
+      }
     });
 
     // Date cible : 24 août 2026 à 08:00, heure de Paris (UTC+2 en août).
     const launchDate = new Date("2026-08-24T08:00:00+02:00");
+    const countdown = document.getElementById("countdown");
+    const daysOutput = document.getElementById("days");
+    const hoursOutput = document.getElementById("hours");
+    const minutesOutput = document.getElementById("minutes");
+    let countdownTimer;
 
     function updateCountdown() {
       const now = new Date();
       const distance = launchDate.getTime() - now.getTime();
-      const countdown = document.getElementById("countdown");
 
       if (distance <= 0) {
+        countdown.setAttribute("role", "status");
+        countdown.setAttribute("aria-live", "polite");
+        countdown.setAttribute("aria-label", "Le nouveau site est disponible.");
         countdown.innerHTML = '<strong class="launch-live">Le nouveau site est disponible.</strong>';
-        return;
+        if (countdownTimer) {
+          window.clearInterval(countdownTimer);
+        }
+        return false;
       }
 
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((distance / (1000 * 60)) % 60);
 
-      document.getElementById("days").textContent = String(days);
-      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+      daysOutput.textContent = String(days);
+      hoursOutput.textContent = String(hours).padStart(2, "0");
+      minutesOutput.textContent = String(minutes).padStart(2, "0");
+      countdown.setAttribute("aria-label", `${days} jours, ${hours} heures et ${minutes} minutes avant la mise en ligne`);
+      return true;
     }
 
-    updateCountdown();
-    setInterval(updateCountdown, 60000);
+    if (updateCountdown()) {
+      countdownTimer = window.setInterval(updateCountdown, 60000);
+    }
   </script>
 </body>
 </html>
