@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="R’U SAFE accompagne les institutions financières, les industries et leurs partenaires dans leurs enjeux de conformité, de cybersécurité et de résilience opérationnelle." />
+  <title>R’U SAFE — Conformité, cybersécurité et résilience opérationnelle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="design-system.css" />
+
+  <style>
+    :root {
+      --navy: var(--color-text);
+      --blue: var(--color-brand-3);
+      --blue-2: var(--color-brand-2);
+      --sky: var(--color-page-home);
+      --green: var(--color-brand-1);
+      --text: var(--color-text);
+      --muted: var(--color-text-muted);
+      --white: var(--color-page);
+      --line: var(--color-border-accent-soft);
+      --shadow: var(--shadow-soft);
+      --radius: var(--radius-card-md);
+      --max: 1300px;
+      --header-height: 64px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--font-family-base);
+      color: var(--text);
+      background: var(--color-page);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--color-focus-ring);
+      outline-offset: 4px;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--color-accent-soft);
+      border: 1px solid var(--color-border-accent-soft);
+      color: var(--color-brand-1);
+      font-size: .84rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow.dark {
+      background: var(--color-accent-soft);
+      border-color: var(--color-border-accent-soft);
+      color: var(--color-brand-3);
+    }
+
+    .topbar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 50;
+      height: var(--header-height);
+      background-color: transparent;
+      border-bottom: 1px solid transparent;
+      transition:
+        background-color var(--duration-base) var(--ease-out),
+        border-color var(--duration-base) var(--ease-out),
+        box-shadow var(--duration-base) var(--ease-out);
+    }
+
+    .topbar.is-scrolled {
+      background-color: var(--color-surface-glass-strong);
+      border-bottom-color: var(--color-border-accent-soft);
+      box-shadow: 0 10px 32px var(--color-accent-shadow);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      min-height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: var(--font-weight-bold);
+      color: var(--navy);
+      letter-spacing: .02em;
+      font-size: 1.25rem;
+    }
+
+    .brand-logo {
+      width: 76px;
+      height: auto;
+      filter: drop-shadow(0 8px 12px var(--color-accent-shadow));
+      transition: transform var(--duration-base) var(--ease-out), filter var(--duration-base) ease;
+    }
+
+    .brand:hover .brand-logo {
+      transform: translateY(-2px);
+      filter: drop-shadow(0 12px 16px var(--color-accent-shadow));
+    }
+
+    .brand-mark {
+      --gradient-border-fill: var(--color-brand-1);
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      color: var(--color-page);
+      box-shadow: var(--shadow-accent-hover);
+      font-size: 1.2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: .82rem;
+      font-weight: var(--font-weight-medium);
+      color: var(--color-text-soft);
+    }
+
+    .nav-links a:not(.button) {
+      position: relative;
+    }
+
+    .nav-links a:not(.button)::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -7px;
+      left: 0;
+      height: 2px;
+      border-radius: var(--radius-pill);
+      background: var(--color-brand-3);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform var(--duration-base) var(--ease-out);
+    }
+
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links a:not(.button):hover::after { transform: scaleX(1); }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border-radius: var(--radius-pill);
+      padding: 13px 18px;
+      font-weight: var(--font-weight-semibold);
+      border: 1px solid transparent;
+      transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) ease, background var(--duration-base) ease;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-accent-hover);
+    }
+
+    .nav-links .button {
+      padding: 9px 14px;
+      font-size: .82rem;
+    }
+
+    .brand-mark,
+    .button.primary,
+    .hero-card,
+    .hero-list span,
+    .card .icon,
+    .partner-panel,
+    .reference-box {
+      border: var(--border-width-strong) solid transparent;
+      background:
+        linear-gradient(var(--gradient-border-fill), var(--gradient-border-fill)) padding-box,
+        var(--gradient-brand) border-box;
+    }
+
+    .button.primary {
+      --gradient-border-fill: var(--color-page);
+      color: var(--color-text);
+    }
+    .button.secondary { background: var(--color-surface-glass-stronger); color: var(--navy); border-color: var(--line); }
+    .button.light { background: var(--color-page); color: var(--navy); }
+    .button.ghost { background: transparent; color: var(--color-page); border-color: var(--color-surface-glass-strong); }
+
+    .hero {
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 100vh;
+      height: 100svh;
+      height: 100dvh;
+      min-height: 0;
+      overflow: hidden;
+      background: var(--color-page-home);
+      color: var(--color-text);
+      padding: clamp(72px, 9vh, 92px) 0 clamp(20px, 3.5vh, 36px);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      pointer-events: none;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+
+    .hero::before {
+      top: -52%;
+      left: -26%;
+      width: clamp(520px, 72vw, 1040px);
+      aspect-ratio: 1330 / 1957;
+      background-image: url("assets/background/Vector1.svg");
+      opacity: .72;
+      transform: rotate(12deg);
+    }
+
+    .hero::after {
+      right: -20%;
+      bottom: -42%;
+      width: clamp(420px, 56vw, 800px);
+      aspect-ratio: 956 / 1049;
+      background-image: url("assets/background/Vector2.svg");
+      opacity: .62;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-logo {
+      width: clamp(170px, min(20vw, 27vh), 260px);
+      height: auto;
+      margin-bottom: clamp(12px, 2vh, 20px);
+      filter: drop-shadow(0 18px 24px var(--color-accent-shadow));
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero h1 {
+      margin: 0;
+      max-width: 860px;
+      font-size: clamp(2.1rem, 3.7vw, 3.25rem);
+      line-height: var(--line-height-tight);
+      letter-spacing: -.045em;
+    }
+
+    .hero p {
+      max-width: 780px;
+      margin: clamp(8px, 1.5vh, 14px) 0 0;
+      font-size: clamp(.96rem, 1.5vw, 1.14rem);
+      line-height: 1.55;
+      color: var(--color-text-muted);
+    }
+
+    .hero-card {
+      --gradient-border-fill: var(--color-surface-glass-stronger);
+      width: 100%;
+      margin-top: clamp(18px, 3vh, 30px);
+      padding: 10px 0px;
+      border-radius: var(--radius-card-lg);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-list {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .hero-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      min-width: 0;
+      padding: 4px clamp(12px, 1.4vw, 18px);
+      text-align: left;
+      color: var(--color-text-soft);
+    }
+
+    .hero-list li + li {
+      border-inline-start: 1px solid var(--color-border-accent-soft);
+    }
+
+    .hero-list strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: clamp(.86rem, 1.1vw, .98rem);
+      line-height: 1.3;
+    }
+
+    .hero-list div {
+      font-size: clamp(.74rem, .9vw, .84rem);
+      line-height: 1.5;
+    }
+
+    .hero-list span {
+      --gradient-border-fill: var(--color-brand-1);
+      width: 25px;
+      height: 25px;
+      flex: 0 0 25px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--color-page);
+      font-size: .8rem;
+    }
+
+    .countdown-wrap {
+      background: var(--color-surface-glass-stronger);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .countdown {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 15px 0;
+    }
+
+    .countdown strong { color: var(--navy); }
+    .countdown .launch-live { color: var(--green); }
+    .countdown-grid {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .timebox {
+      min-width: 70px;
+      padding: 8px 12px;
+      text-align: center;
+      border-radius: 12px;
+      background: var(--sky);
+      color: var(--navy);
+      font-weight: var(--font-weight-bold);
+    }
+
+    .timebox small {
+      display: block;
+      font-size: .67rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    section { padding: 84px 0; }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 38px;
+    }
+
+    .section-head h2 {
+      margin: 12px 0;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1.08;
+      letter-spacing: -.03em;
+      color: var(--navy);
+    }
+
+    .section-head p { margin: 0; color: var(--muted); font-size: 1.07rem; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .step, .card, .metric {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--color-surface-glass-stronger);
+    }
+
+    .step {
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .step-number {
+      font-size: 3.1rem;
+      line-height: 1;
+      font-weight: var(--font-weight-bold);
+      color: var(--color-brand-2);
+      opacity: .38;
+      margin-bottom: 18px;
+    }
+
+    .step h3 { margin: 0 0 8px; color: var(--navy); font-size: 1.25rem; }
+    .step p { margin: 0; color: var(--muted); }
+
+    .alt { background: var(--color-page-soft); }
+
+    .solutions {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .card { padding: 28px; }
+    .card h3 { margin: 0 0 9px; color: var(--navy); }
+    .card p { color: var(--muted); margin: 0; }
+    .card .icon {
+      --gradient-border-fill: var(--color-page-home);
+      width: 48px; height: 48px; border-radius: 14px;
+      display: grid; place-items: center;
+      color: var(--color-text);
+      margin-bottom: 18px; font-size: 1.3rem;
+    }
+
+    .partner {
+      background: var(--color-page-home);
+    }
+
+    .partner-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 46px;
+      align-items: center;
+    }
+
+    .partner-panel {
+      --gradient-border-fill: var(--color-brand-1);
+      border-radius: 28px;
+      padding: 34px;
+      color: var(--color-page);
+      box-shadow: var(--shadow);
+    }
+
+    .partner-panel h3 { margin-top: 0; font-size: 1.65rem; }
+
+    .checks {
+      display: grid;
+      gap: 13px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .checks li {
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+    }
+
+    .checks b {
+      width: 23px; height: 23px; flex: 0 0 23px;
+      border-radius: 50%; display: grid; place-items: center;
+      background: var(--color-surface-glass);
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .metric { padding: 24px; }
+    .metric .value {
+      color: var(--blue);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: var(--font-weight-bold);
+      letter-spacing: -.04em;
+    }
+    .metric strong { display: block; color: var(--navy); margin-top: 4px; }
+    .metric span { color: var(--muted); font-size: .92rem; }
+
+    .reference {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 38px;
+      align-items: center;
+    }
+
+    .reference-box {
+      --gradient-border-fill: var(--color-brand-3);
+      color: var(--color-page);
+      padding: 34px;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .reference-box .big {
+      font-size: 4rem;
+      font-weight: var(--font-weight-bold);
+      line-height: 1;
+    }
+
+    .reference-box p { color: var(--color-surface-glass-stronger); }
+
+    .cta {
+      padding: 72px 0;
+      background: var(--color-text);
+      color: var(--color-page);
+    }
+
+    .cta-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .cta h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.25rem); max-width: 800px; line-height: 1.08; }
+    .cta p { color: var(--color-surface-glass-strong); max-width: 760px; margin-bottom: 0; }
+
+    footer {
+      padding: 34px 0;
+      border-top: 1px solid var(--line);
+      background: var(--color-page);
+    }
+
+    .footer-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .mobile-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      background: var(--color-surface-glass-stronger);
+      border-radius: 10px;
+      padding: 9px 11px;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 900px) {
+      .partner-grid, .reference { grid-template-columns: 1fr; }
+      .hero { padding: 72px 0 28px; }
+      .hero::before { top: -32%; left: -42%; }
+      .hero::after { right: -36%; bottom: -24%; }
+      .hero-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-list li { padding: 10px 16px; }
+      .hero-list li:nth-child(3) { border-inline-start: 0; }
+      .hero-list li:nth-child(n + 3) { border-top: 1px solid var(--color-border-accent-soft); }
+      .steps, .metrics { grid-template-columns: repeat(2, 1fr); }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: var(--header-height);
+        left: 20px;
+        right: 20px;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--color-surface-glass-stronger);
+        box-shadow: var(--shadow);
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-links.open { display: flex; }
+      .mobile-toggle { display: inline-flex; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 28px, var(--max)); }
+      section { padding: 64px 0; }
+      .steps, .solutions, .metrics { grid-template-columns: 1fr; }
+      .countdown { align-items: flex-start; flex-direction: column; }
+      .cta-grid, .footer-grid { align-items: flex-start; flex-direction: column; }
+      .hero { padding: 68px 0 20px; }
+      .hero-logo { width: clamp(120px, min(44vw, 22vh), 170px); }
+      .hero h1 { font-size: clamp(1.85rem, 8.2vw, 2.3rem); }
+      .hero-card { padding: 6px; }
+      .hero-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-list li { padding: 10px; }
+      .hero-list li:nth-child(3) { border-inline-start: 0; }
+      .hero-list li:nth-child(n + 3) { border-top: 1px solid var(--color-border-accent-soft); }
+      .brand-logo { width: 68px; }
+    }
+
+    @media (max-height: 760px) {
+      .hero { padding: 64px 0 16px; }
+      .hero-logo {
+        width: clamp(140px, min(18vw, 22vh), 200px);
+        margin-bottom: 8px;
+      }
+      .hero h1 { font-size: clamp(1.8rem, 3.2vw, 2.7rem); }
+      .hero p {
+        margin-top: 8px;
+        font-size: .88rem;
+        line-height: 1.5;
+      }
+      .hero-card {
+        margin-top: 14px;
+        padding: 6px;
+      }
+      .hero-list li { padding-block: 6px; }
+      .hero-list strong {
+        margin-bottom: 3px;
+        font-size: .8rem;
+      }
+      .hero-list div {
+        font-size: .7rem;
+        line-height: 1.35;
+      }
+    }
+
+    @media (max-width: 640px) and (max-height: 620px) {
+      .hero-card {
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        scroll-snap-type: inline proximity;
+      }
+      .hero-list {
+        grid-template-columns: repeat(4, 180px);
+        width: max-content;
+      }
+      .hero-list li {
+        scroll-snap-align: start;
+      }
+      .hero-list li:nth-child(3) {
+        border-inline-start: 1px solid var(--color-border-accent-soft);
+      }
+      .hero-list li:nth-child(n + 3) {
+        border-top: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    PERSONNALISATION RAPIDE POUR LE WEBMASTER
+    1) Le logo officiel est chargé depuis assets/logo.png.
+    2) Vérifier l'adresse e-mail : contact@rusafe.fr
+    3) Remplacer https://www.linkedin.com/ par la page LinkedIn R’U SAFE.
+    4) Le compte à rebours est réglé sur le 24/08/2026 à 08:00, heure de Paris.
+  -->
+
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#accueil" aria-label="R’U SAFE — retour à l’accueil">
+        <img class="brand-logo" src="assets/logo.png" alt="Logo R’U SAFE" width="116" height="84" />
+      </a>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navigation principale">
+        <a href="#approche">Notre approche</a>
+        <a href="#expertise">Expertises</a>
+        <a href="#partenaires">Partenaires</a>
+        <a href="#references">Références</a>
+        <a class="button primary" href="mailto:contact@rusafe.fr?subject=%C3%89change%20avec%20R%E2%80%99U%20SAFE">Nous contacter</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="accueil">
+      <div class="container hero-content">
+        <img class="hero-logo" src="assets/logo.png" alt="R’U SAFE" width="245" height="183" />
+
+        <div class="hero-copy">
+          <h1>Transformons les obligations réglementaires en leviers de résilience et de performance.</h1>
+          <p>
+            R’U SAFE accompagne les institutions financières, les industries et leurs partenaires dans leurs enjeux de conformité, de cybersécurité et de résilience opérationnelle.
+          </p>
+        </div>
+
+        <aside class="hero-card" aria-label="Domaines d’intervention">
+          <ul class="hero-list">
+            <li><span>✓</span><div><strong>Conformité réglementaire</strong>DORA, NIS2, NIS3, ISO 27001, AI Act et PASSI.</div></li>
+            <li><span>✓</span><div><strong>Résilience opérationnelle</strong>Risques, continuité, TPRM, suivi des tests de résilience et tiers critiques.</div></li>
+            <li><span>✓</span><div><strong>Cyber & Tech</strong>Gouvernance, <em>controls</em>, preuves et remédiation.</div></li>
+            <li><span>✓</span><div><strong>Reporting exécutif</strong>Une vision consolidée pour les dirigeants.</div></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <div class="countdown-wrap">
+      <div class="container countdown">
+        <div>
+          <strong>Le site complet R’U SAFE sera mis en ligne le 24 août 2026 à 8 h.</strong><br>
+          <span style="color:var(--muted)">En attendant, découvrez l’essentiel de notre positionnement et de nos expertises.</span>
+        </div>
+        <div class="countdown-grid" id="countdown" aria-live="polite">
+          <div class="timebox"><span id="days">--</span><small>jours</small></div>
+          <div class="timebox"><span id="hours">--</span><small>heures</small></div>
+          <div class="timebox"><span id="minutes">--</span><small>minutes</small></div>
+        </div>
+      </div>
+    </div>
+
+    <section id="approche">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow dark">Notre approche</span>
+          <h2>Diagnostiquer, remédier, automatiser et piloter.</h2>
+          <p>Nous allons au-delà du constat réglementaire pour transformer les exigences en actions concrètes et mesurables.</p>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">01</div>
+            <h3>Diagnostiquer</h3>
+            <p>Évaluer rapidement le niveau de conformité et identifier les écarts critiques.</p>
+          </article>
+          <article class="step">
+            <div class="step-number">02</div>
+            <h3>Remédier</h3>
+            <p>Construire et mettre en œuvre des plans d’action réalistes et priorisés.</p>
+          </article>
+          <article class="step">
+            <div class="step-number">03</div>
+            <h3>Automatiser</h3>
+            <p>Réduire les tâches manuelles et fiabiliser le suivi des <em>controls</em> Cyber et Tech.</p>
+          </article>
+          <article class="step">
+            <div class="step-number">04</div>
+            <h3>Piloter</h3>
+            <p>Donner aux dirigeants une vision consolidée de la résilience et des risques.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt" id="expertise">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow dark">Nos expertises différenciantes</span>
+          <h2>Une expertise réglementaire qui devient opérationnelle.</h2>
+          <p>Une combinaison de conseil senior, de méthodes terrain, d’outils spécialisés et de pilotage exécutif.</p>
+        </div>
+
+        <div class="solutions">
+          <article class="card">
+            <div class="icon">🛡️</div>
+            <h3>Conformité & résilience</h3>
+            <p>DORA, NIS2, NIS3, ISO 27001, AI Act, accompagnements et suivis, Audit/revoyure PASSI (RGS/LPM).</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">⚙️</div>
+            <h3>Automatisation des <em>controls</em></h3>
+            <p>Cartographie des <em>controls</em>, collecte des preuves, suivi des anomalies, pilotage des non-conformités et suivi des tests de résilience.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">📊</div>
+            <h3>Resilient Advisor</h3>
+            <p>Une fonction transverse reliant Direction, IT, Cyber, Risques, Conformité, Procurement et Métiers.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">💡</div>
+            <h3>Solutions propriétaires</h3>
+            <p>AUSECAF, SECEDI, D&amp;IIM, suivi de la résilience, formation et accompagnement autour de l’intelligence artificielle.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="partner" id="partenaires">
+      <div class="container partner-grid">
+        <div class="section-head" style="margin-bottom:0">
+          <span class="eyebrow dark">Pour nos partenaires</span>
+          <h2>Un partenaire expert, agile et complémentaire.</h2>
+          <p>
+            R’U SAFE intervient directement auprès des organisations ou en complémentarité avec des cabinets de conseil, intégrateurs, éditeurs et partenaires commerciaux souhaitant renforcer leur offre sur DORA, NIS2, NIS3, AI Act, PASSI et la résilience opérationnelle.
+          </p>
+          <div style="margin-top:24px">
+            <a class="button primary" href="mailto:contact@rusafe.fr?subject=Projet%20de%20partenariat%20R%E2%80%99U%20SAFE">Étudier une collaboration</a>
+          </div>
+        </div>
+
+        <div class="partner-panel">
+          <h3>Ce que R’U SAFE apporte</h3>
+          <ul class="checks">
+            <li><b>✓</b><span>Une expertise senior immédiatement mobilisable.</span></li>
+            <li><b>✓</b><span>Une approche indépendante et orientée résultats.</span></li>
+            <li><b>✓</b><span>Une capacité d’intervention de bout en bout.</span></li>
+            <li><b>✓</b><span>Une capacité de co-construction et d’intégration dans l’offre du partenaire.</span></li>
+            <li><b>✓</b><span>Un modèle flexible, scalable et adapté aux projets à fort impact.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="references">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow dark">Quelques repères</span>
+          <h2>Une expérience éprouvée dans des environnements exigeants.</h2>
+        </div>
+
+        <div class="metrics">
+          <div class="metric">
+            <div class="value">12 à 35 ans</div>
+            <strong>Consultants exclusivement seniors</strong>
+            <span>Une équipe expérimentée en transformation, Cyber, conformité et résilience.</span>
+          </div>
+          <div class="metric">
+            <div class="value">2 ans</div>
+            <strong>Programme DORA Cyber</strong>
+            <span>Pilotage complet de bout en bout.</span>
+          </div>
+          <div class="metric">
+            <div class="value">1200+</div>
+            <strong><em>Controls</em> suivis</strong>
+            <span><em>Controls</em> Cyber et Tech déployés, revus ou pilotés.</span>
+          </div>
+          <div class="metric">
+            <div class="value">30</div>
+            <strong>Experts mobilisables</strong>
+            <span>Selon les besoins du projet.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="container reference">
+        <div class="reference-box">
+          <div class="big" style="font-size:3rem">Économies réalisées majeures</div>
+          <p>Grâce à une approche terrain justifiée et unique combinant expertise réglementaire, optimisation opérationnelle, analyse des besoins et négociation structurée.</p>
+        </div>
+
+        <div>
+          <span class="eyebrow dark">Référence majeure</span>
+          <h2 style="color:var(--navy);font-size:clamp(2rem,4vw,3.1rem);line-height:1.08;margin:14px 0">
+            Une expérience complète sur une infrastructure financière systémique européenne.
+          </h2>
+          <p style="color:var(--muted);font-size:1.06rem">
+            Pilotage DORA Cyber, gouvernance, politiques et procédures, gestion des risques ICT et tiers, <em>controls</em>, suivi des tests de résilience, accompagnement des revoyures PASSI, préparation aux audits et accompagnement opérationnel.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-grid">
+        <div>
+          <h2>Vous souhaitez renforcer votre offre ou accompagner vos clients sur DORA, NIS2, NIS3, AI Act et la résilience opérationnelle ?</h2>
+          <p>Parlons de nos complémentarités et des opportunités de création de valeur commune.</p>
+        </div>
+        <a class="button light" href="mailto:contact@rusafe.fr?subject=%C3%89change%20avec%20R%E2%80%99U%20SAFE">Nous contacter</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="brand">
+        <span class="brand-mark">🔒</span>
+        <span>R’U SAFE</span>
+      </div>
+      <div>Conformité réglementaire · Cybersécurité · Résilience opérationnelle · AI Act</div>
+      <div>
+        <a href="mailto:contact@rusafe.fr">contact@rusafe.fr</a>
+        &nbsp;·&nbsp;
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const topbar = document.querySelector(".topbar");
+    const mobileToggle = document.getElementById("mobileToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    function updateHeaderSurface() {
+      topbar.classList.toggle("is-scrolled", window.scrollY > 16);
+    }
+
+    updateHeaderSurface();
+    window.addEventListener("scroll", updateHeaderSurface, { passive: true });
+
+    mobileToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      mobileToggle.setAttribute("aria-expanded", String(isOpen));
+      mobileToggle.textContent = isOpen ? "✕" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        mobileToggle.setAttribute("aria-expanded", "false");
+        mobileToggle.textContent = "☰";
+      });
+    });
+
+    // Date cible : 24 août 2026 à 08:00, heure de Paris (UTC+2 en août).
+    const launchDate = new Date("2026-08-24T08:00:00+02:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const distance = launchDate.getTime() - now.getTime();
+      const countdown = document.getElementById("countdown");
+
+      if (distance <= 0) {
+        countdown.innerHTML = '<strong class="launch-live">Le nouveau site est disponible.</strong>';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+
+      document.getElementById("days").textContent = String(days);
+      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
+  </script>
+</body>
+</html>
