@@ -23,6 +23,11 @@
       --shadow: var(--shadow-soft);
       --max: 1300px;
       --header-height: 64px;
+      --font-size-title: clamp(2rem, 4vw, 3.25rem);
+      --font-size-subtitle: clamp(1.375rem, 1.8vw, 1.625rem);
+      --font-size-body: 1rem;
+      --font-size-caption: .875rem;
+      --font-size-label: .75rem;
     }
 
     * { box-sizing: border-box; }
@@ -33,6 +38,7 @@
       font-family: var(--font-family-base);
       color: var(--text);
       background: var(--color-page);
+      font-size: var(--font-size-body);
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
@@ -88,7 +94,7 @@
       background: var(--color-accent-soft);
       border: 1px solid var(--color-border-accent-soft);
       color: var(--color-brand-1);
-      font-size: .84rem;
+      font-size: var(--font-size-label);
       font-weight: 700;
       letter-spacing: .04em;
       text-transform: uppercase;
@@ -156,7 +162,7 @@
       display: flex;
       align-items: center;
       gap: 18px;
-      font-size: .82rem;
+      font-size: var(--font-size-caption);
       font-weight: var(--font-weight-medium);
       color: var(--color-text-soft);
     }
@@ -214,12 +220,13 @@
     .nav-links .button {
       min-height: 44px;
       padding: 9px 14px;
-      font-size: .82rem;
+      font-size: var(--font-size-caption);
     }
 
     .button.primary,
     .hero-card,
     .hero-list span,
+    .card .icon,
     .partner-panel,
     .reference-box {
       border: var(--border-width-strong) solid transparent;
@@ -302,16 +309,16 @@
 
     .hero h1 {
       margin: 0;
-      font-size: clamp(2.1rem, 3.7vw, 3.25rem);
+      font-size: var(--font-size-title);
       line-height: var(--line-height-tight);
-      letter-spacing: -.045em;
+      letter-spacing: -.03em;
     }
 
-    .hero p {
+    .hero-copy p {
       max-width: 780px;
       margin: 0;
-      font-size: clamp(.96rem, 1.5vw, 1.14rem);
-      line-height: 1.55;
+      font-size: var(--font-size-subtitle);
+      line-height: 1.45;
       color: var(--color-text-muted);
     }
 
@@ -350,12 +357,12 @@
     .hero-list strong {
       display: block;
       margin-bottom: 5px;
-      font-size: clamp(.86rem, 1.1vw, .98rem);
+      font-size: var(--font-size-body);
       line-height: 1.3;
     }
 
     .hero-list div {
-      font-size: clamp(.74rem, .9vw, .84rem);
+      font-size: var(--font-size-body);
       line-height: 1.5;
     }
 
@@ -368,29 +375,54 @@
       display: grid;
       place-items: center;
       color: var(--color-page);
-      font-size: .8rem;
+      font-size: var(--font-size-label);
     }
 
     .countdown-wrap {
+      width: 100%;
       background: var(--color-surface-glass-stronger);
-      border-bottom: 1px solid var(--line);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-card-md);
+      box-shadow: var(--shadow-soft);
     }
 
     .countdown {
-      min-height: 88px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      padding: 15px 0;
+      padding: 12px 16px;
+      text-align: left;
     }
 
-    .countdown strong { color: var(--navy); }
-    .countdown .launch-live { color: var(--green); }
+    .countdown-copy {
+      flex: 1;
+      min-width: 0;
+    }
 
-    .countdown-note { color: var(--muted); }
+    .countdown-title {
+      margin: 0;
+      color: var(--navy);
+      font-size: var(--font-size-subtitle);
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.35;
+    }
+
+    .countdown-logo {
+      display: inline-block;
+      width: 60px;
+      height: auto;
+      margin-inline: .2em;
+      vertical-align: middle;
+      filter: drop-shadow(0 6px 8px var(--color-accent-shadow));
+    }
+
+    .countdown .launch-live { color: var(--green); font-size: var(--font-size-subtitle); }
+
+    .countdown-note { margin: 2px 0 0; color: var(--muted); font-size: var(--font-size-body); }
     .countdown-grid {
       display: flex;
+      flex: 0 0 auto;
       gap: 10px;
       flex-wrap: wrap;
     }
@@ -405,9 +437,16 @@
       font-weight: var(--font-weight-bold);
     }
 
+    .timebox > span {
+      display: block;
+      font-size: var(--font-size-subtitle);
+      line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+    }
+
     .timebox small {
       display: block;
-      font-size: .67rem;
+      font-size: var(--font-size-label);
       text-transform: uppercase;
       letter-spacing: .06em;
       color: var(--muted);
@@ -429,13 +468,13 @@
 
     .section-head h2 {
       margin: 12px 0;
-      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-size: var(--font-size-title);
       line-height: 1.08;
       letter-spacing: -.03em;
       color: var(--navy);
     }
 
-    .section-head p { margin: 0; color: var(--muted); font-size: 1.07rem; }
+    .section-head p { margin: 0; color: var(--muted); font-size: var(--font-size-body); }
 
     .section-head.flush { margin-bottom: 0; }
 
@@ -444,33 +483,34 @@
     .steps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 0;
+      gap: 18px;
       margin: 0;
       padding: 0;
-      border-block: 1px solid var(--line);
       list-style: none;
     }
 
-    .step {
+    .step,
+    .card,
+    .metric {
       min-width: 0;
-      padding: 28px clamp(18px, 2vw, 28px);
-      position: relative;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-card-md);
+      background: var(--color-surface-glass-stronger);
+      box-shadow: var(--shadow-soft);
     }
 
-    .step + .step {
-      border-inline-start: 1px solid var(--line);
-    }
+    .step { padding: 26px; }
 
     .step-number {
-      font-size: .76rem;
+      font-size: 3.1rem;
       line-height: 1;
       font-weight: var(--font-weight-bold);
-      color: var(--color-brand-1);
-      letter-spacing: .1em;
-      margin-bottom: 16px;
+      color: var(--color-brand-2);
+      opacity: .38;
+      margin-bottom: 18px;
     }
 
-    .step h3 { margin: 0 0 8px; color: var(--navy); font-size: 1.25rem; }
+    .step h3 { margin: 0 0 8px; color: var(--navy); font-size: var(--font-size-subtitle); }
     .step p { margin: 0; color: var(--muted); }
 
     .alt { background: var(--color-page-soft); }
@@ -478,26 +518,26 @@
     .solutions {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 0 clamp(28px, 4vw, 54px);
-      border-bottom: 1px solid var(--line);
+      gap: 20px;
     }
 
     .card {
-      min-width: 0;
-      padding: 28px 0;
-      border-top: 1px solid var(--line);
+      padding: 28px;
     }
 
-    .card h3 { margin: 0 0 9px; color: var(--navy); }
+    .card h3 { margin: 0 0 9px; color: var(--navy); font-size: var(--font-size-subtitle); }
     .card p { color: var(--muted); margin: 0; }
 
-    .solution-index {
-      display: block;
-      margin-bottom: 12px;
-      color: var(--color-brand-1);
-      font-size: .76rem;
-      font-weight: var(--font-weight-bold);
-      letter-spacing: .1em;
+    .card .icon {
+      --gradient-border-fill: var(--color-page-home);
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 18px;
+      border-radius: 14px;
+      color: var(--color-text);
+      font-size: 1.3rem;
     }
 
     .partner {
@@ -519,7 +559,7 @@
       box-shadow: var(--shadow);
     }
 
-    .partner-panel h3 { margin-top: 0; font-size: 1.65rem; }
+    .partner-panel h3 { margin-top: 0; font-size: var(--font-size-subtitle); }
 
     .checks {
       display: grid;
@@ -545,18 +585,12 @@
     .metrics {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 0;
+      gap: 16px;
       margin: 0;
-      border-block: 1px solid var(--line);
     }
 
     .metric {
-      min-width: 0;
-      padding: 26px clamp(18px, 2vw, 26px);
-    }
-
-    .metric + .metric {
-      border-inline-start: 1px solid var(--line);
+      padding: 24px;
     }
 
     .metric .value {
@@ -567,7 +601,7 @@
     }
 
     .metric strong { display: block; color: var(--navy); margin-top: 4px; }
-    .metric span { color: var(--muted); font-size: .92rem; }
+    .metric span { color: var(--muted); font-size: var(--font-size-body); }
 
     .reference {
       display: grid;
@@ -585,7 +619,7 @@
     }
 
     .reference-box .big {
-      font-size: clamp(2.25rem, 4vw, 3rem);
+      font-size: var(--font-size-title);
       font-weight: var(--font-weight-bold);
       line-height: 1.04;
     }
@@ -595,14 +629,15 @@
     .reference-copy h2 {
       margin: 14px 0;
       color: var(--navy);
-      font-size: clamp(2rem, 4vw, 3.1rem);
+      font-size: var(--font-size-title);
       line-height: 1.08;
+      letter-spacing: -.03em;
     }
 
     .reference-copy p {
       margin: 0;
       color: var(--muted);
-      font-size: 1.06rem;
+      font-size: var(--font-size-body);
     }
 
     .cta {
@@ -627,7 +662,7 @@
       gap: 16px;
     }
 
-    .cta h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.25rem); max-width: 900px; line-height: 1.08; }
+    .cta h2 { margin: 0; font-size: var(--font-size-title); max-width: 900px; line-height: 1.08; letter-spacing: -.03em; }
     .cta p { color: var(--color-surface-glass-strong); max-width: 760px; margin: 0; }
 
     .cta-email {
@@ -636,7 +671,7 @@
       min-height: 44px;
       margin-top: 8px;
       color: var(--color-page);
-      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      font-size: var(--font-size-subtitle);
       font-weight: var(--font-weight-semibold);
       text-decoration: underline;
       text-decoration-color: var(--color-brand-2);
@@ -658,7 +693,7 @@
       justify-content: space-between;
       gap: 20px;
       color: var(--muted);
-      font-size: .9rem;
+      font-size: var(--font-size-caption);
     }
 
     .footer-grid a:not(.brand) {
@@ -677,7 +712,7 @@
       background: var(--color-surface-glass-stronger);
       border-radius: 10px;
       padding: 9px 11px;
-      font-size: 1.1rem;
+      font-size: var(--font-size-body);
     }
 
     @media (max-width: 900px) {
@@ -690,12 +725,6 @@
       .hero-list li:nth-child(3) { border-inline-start: 0; }
       .hero-list li:nth-child(n + 3) { border-top: 1px solid var(--color-border-accent-soft); }
       .steps, .metrics { grid-template-columns: repeat(2, 1fr); }
-      .step + .step,
-      .metric + .metric { border-inline-start: 0; }
-      .step:nth-child(even),
-      .metric:nth-child(even) { border-inline-start: 1px solid var(--line); }
-      .step:nth-child(n + 3),
-      .metric:nth-child(n + 3) { border-top: 1px solid var(--line); }
       .nav-links {
         display: none;
         position: absolute;
@@ -728,16 +757,13 @@
     @media (max-width: 640px) {
       .container { width: min(100% - 28px, var(--max)); }
       .steps, .solutions, .metrics { grid-template-columns: 1fr; }
-      .step:nth-child(even),
-      .metric:nth-child(even) { border-inline-start: 0; }
-      .step:nth-child(n + 2),
-      .metric:nth-child(n + 2) { border-top: 1px solid var(--line); }
       .countdown { align-items: flex-start; flex-direction: column; }
+      .countdown-grid { width: 100%; gap: 8px; flex-wrap: nowrap; }
+      .timebox { min-width: 0; flex: 1 1 0; padding-inline: 4px; }
       .footer-grid { align-items: flex-start; flex-direction: column; }
       .hero { padding: 68px 0 20px; }
       .hero-content { gap: 18px; }
       .hero-logo { width: clamp(170px, min(56vw, 28vh), 220px); }
-      .hero h1 { font-size: clamp(1.85rem, 8.2vw, 2.3rem); }
       .hero-card { padding: 6px; }
       .hero-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .hero-list li { padding: 10px; }
@@ -747,6 +773,7 @@
     }
 
     @media (max-width: 360px) {
+      .countdown-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .hero-list {
         grid-template-columns: 1fr;
       }
@@ -802,6 +829,25 @@
   <main id="main-content" tabindex="-1">
     <section class="hero" id="accueil">
       <div class="container hero-content">
+        <div class="countdown-wrap">
+          <div class="countdown">
+            <div class="countdown-copy">
+              <p class="countdown-title">
+                Le site complet
+                <img class="countdown-logo" src="assets/logo.png" srcset="assets/logo-80.webp 80w, assets/logo-160.webp 160w" sizes="60px" alt="R’U SAFE" width="116" height="84" decoding="async">
+                sera mis en ligne le 24 août 2026 à 8 H am.
+              </p>
+              <p class="countdown-note">En attendant, découvrez l’essentiel de notre positionnement et de nos expertises.</p>
+            </div>
+            <div class="countdown-grid" id="countdown" role="timer" aria-live="off" aria-atomic="true" aria-label="Compte à rebours avant la mise en ligne">
+              <div class="timebox"><span id="days">--</span><small>jours</small></div>
+              <div class="timebox"><span id="hours">--</span><small>heures</small></div>
+              <div class="timebox"><span id="minutes">--</span><small>minutes</small></div>
+              <div class="timebox"><span id="seconds">--</span><small>secondes</small></div>
+            </div>
+          </div>
+        </div>
+
         <img class="hero-logo" src="assets/logo.png" srcset="assets/logo-245.webp 245w, assets/logo-320.webp 320w, assets/logo-440.webp 440w, assets/logo@3x.webp 735w" sizes="(max-width: 640px) 220px, (max-width: 900px) 24vw, 320px" alt="Logo R’U SAFE" width="245" height="183" decoding="async" fetchpriority="high">
 
         <div class="hero-copy">
@@ -821,20 +867,6 @@
         </aside>
       </div>
     </section>
-
-    <div class="countdown-wrap">
-      <div class="container countdown">
-        <div>
-          <strong>Le site complet R’U SAFE sera mis en ligne le 24 août 2026 à 8 h.</strong><br>
-          <span class="countdown-note">En attendant, découvrez l’essentiel de notre positionnement et de nos expertises.</span>
-        </div>
-        <div class="countdown-grid" id="countdown" role="timer" aria-live="off" aria-atomic="true" aria-label="Compte à rebours avant la mise en ligne">
-          <div class="timebox"><span id="days">--</span><small>jours</small></div>
-          <div class="timebox"><span id="hours">--</span><small>heures</small></div>
-          <div class="timebox"><span id="minutes">--</span><small>minutes</small></div>
-        </div>
-      </div>
-    </div>
 
     <section id="approche">
       <div class="container">
@@ -879,25 +911,25 @@
 
         <div class="solutions">
           <article class="card">
-            <span class="solution-index" aria-hidden="true">01</span>
+            <div class="icon" aria-hidden="true">🛡️</div>
             <h3>Conformité &amp; résilience</h3>
             <p>DORA, NIS2, NIS3, ISO 27001, AI Act, accompagnements et suivis, Audit/revoyure PASSI (RGS/LPM).</p>
           </article>
 
           <article class="card">
-            <span class="solution-index" aria-hidden="true">02</span>
+            <div class="icon" aria-hidden="true">⚙️</div>
             <h3>Automatisation des <em>controls</em></h3>
             <p>Cartographie des <em>controls</em>, collecte des preuves, suivi des anomalies, pilotage des non-conformités et suivi des tests de résilience.</p>
           </article>
 
           <article class="card">
-            <span class="solution-index" aria-hidden="true">03</span>
+            <div class="icon" aria-hidden="true">📊</div>
             <h3>Resilient Advisor</h3>
             <p>Une fonction transverse reliant Direction, IT, Cyber, Risques, Conformité, Procurement et Métiers.</p>
           </article>
 
           <article class="card">
-            <span class="solution-index" aria-hidden="true">04</span>
+            <div class="icon" aria-hidden="true">💡</div>
             <h3>Solutions propriétaires</h3>
             <p>AUSECAF, SECEDI, D&amp;IIM, suivi de la résilience, formation et accompagnement autour de l’intelligence artificielle.</p>
           </article>
@@ -1089,6 +1121,7 @@
     const daysOutput = document.getElementById("days");
     const hoursOutput = document.getElementById("hours");
     const minutesOutput = document.getElementById("minutes");
+    const secondsOutput = document.getElementById("seconds");
     let countdownTimer;
 
     function updateCountdown() {
@@ -1109,16 +1142,18 @@
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
 
       daysOutput.textContent = String(days);
       hoursOutput.textContent = String(hours).padStart(2, "0");
       minutesOutput.textContent = String(minutes).padStart(2, "0");
-      countdown.setAttribute("aria-label", `${days} jours, ${hours} heures et ${minutes} minutes avant la mise en ligne`);
+      secondsOutput.textContent = String(seconds).padStart(2, "0");
+      countdown.setAttribute("aria-label", `${days} jours, ${hours} heures, ${minutes} minutes et ${seconds} secondes avant la mise en ligne`);
       return true;
     }
 
     if (updateCountdown()) {
-      countdownTimer = window.setInterval(updateCountdown, 60000);
+      countdownTimer = window.setInterval(updateCountdown, 1000);
     }
   </script>
 </body>
