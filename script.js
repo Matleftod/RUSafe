@@ -4,6 +4,10 @@ function initLandingPage() {
   const stagePanels = document.querySelectorAll("[data-stage]");
   const SLOGAN_SWAP_DELAY_MS = 180;
   const SLOGAN_ROTATION_MS = 4200;
+  const VIDEO_ACCESS_STORAGE_KEY = "rusafe:video-access:v1";
+  const VIDEO_ACCESS_DURATION_MS = 60 * 24 * 60 * 60 * 1000;
+  const VIDEO_SEEK_TOLERANCE_SECONDS = 0.1;
+  const VIDEO_COMPLETION_TOLERANCE_SECONDS = 1;
   const MOCKUP_CONFIG = {
     handphoneLeft: {
       frame: "assets/mockups/handphoneLeft.png",
@@ -102,7 +106,9 @@ function initLandingPage() {
     video: layerElement.querySelector("[data-gate-video]"),
     key: null
   }));
-  const gateAccess = document.querySelector(".gate-access");
+  const gateAccess = document.querySelector("[data-gate-access]");
+  const gateAccessWrap = document.querySelector("[data-gate-access-wrap]");
+  const gateAccessStatus = document.querySelector("[data-gate-access-status]");
   const mockupHeightFactor = Math.max(
     ...Object.values(MOCKUP_CONFIG).map((config) => config.nativeHeight / config.screenHeight)
   );
@@ -113,11 +119,153 @@ function initLandingPage() {
     ])
   ];
   const imageWarmCache = new Map();
+  const videoPlaybackStates = new WeakMap();
   let sloganIndex = 0;
   let activeGateLayerIndex = 0;
   let gateActiveKey = "";
   let gateSwapSequence = 0;
   let gateRealignFrame = 0;
+  let gateUnlocked = false;
+
+  function hasStoredGateAccess() {
+    try {
+      const storedAccess = JSON.parse(window.localStorage.getItem(VIDEO_ACCESS_STORAGE_KEY));
+      const expiresAt = Number(storedAccess?.expiresAt);
+
+      if (Number.isFinite(expiresAt) && expiresAt > Date.now()) {
+        return true;
+      }
+
+      window.localStorage.removeItem(VIDEO_ACCESS_STORAGE_KEY);
+    } catch {
+      // The gate still works for the current visit if storage is unavailable.
+    }
+
+    return false;
+  }
+
+  function rememberGateAccess() {
+    const unlockedAt = Date.now();
+
+    try {
+      window.localStorage.setItem(VIDEO_ACCESS_STORAGE_KEY, JSON.stringify({
+        unlockedAt,
+        expiresAt: unlockedAt + VIDEO_ACCESS_DURATION_MS
+      }));
+    } catch {
+      // Private browsing or strict browser settings may prevent persistence.
+    }
+  }
+
+  function setGateAccessState(isUnlocked, { announce = false } = {}) {
+    gateUnlocked = isUnlocked;
+    gateAccess?.classList.toggle("is-locked", !isUnlocked);
+    gateAccessWrap?.classList.toggle("is-locked", !isUnlocked);
+
+    if (isUnlocked) {
+      gateAccess?.removeAttribute("aria-disabled");
+      gateAccess?.removeAttribute("aria-describedby");
+    } else {
+      gateAccess?.setAttribute("aria-disabled", "true");
+      gateAccess?.setAttribute("aria-describedby", "gate-access-help");
+    }
+
+    if (announce && gateAccessStatus) {
+      gateAccessStatus.textContent = isUnlocked
+        ? "Accès au site déverrouillé."
+        : "Regardez une vidéo jusqu’au bout pour accéder au site.";
+    }
+  }
+
+  function unlockGateAccess() {
+    if (gateUnlocked) {
+      return;
+    }
+
+    rememberGateAccess();
+    setGateAccessState(true, { announce: true });
+  }
+
+  function getPlayedDuration(video) {
+    let playedDuration = 0;
+
+    for (let index = 0; index < video.played.length; index += 1) {
+      playedDuration += video.played.end(index) - video.played.start(index);
+    }
+
+    return playedDuration;
+  }
+
+  function resetVideoPlaybackState(video) {
+    const playbackState = videoPlaybackStates.get(video);
+
+    if (!playbackState) {
+      return;
+    }
+
+    playbackState.furthestTime = 0;
+    playbackState.isRestoringSeek = false;
+  }
+
+  function protectGateVideo(video) {
+    if (!video || videoPlaybackStates.has(video)) {
+      return;
+    }
+
+    const playbackState = {
+      furthestTime: 0,
+      isRestoringSeek: false
+    };
+
+    videoPlaybackStates.set(video, playbackState);
+
+    video.addEventListener("loadedmetadata", () => {
+      resetVideoPlaybackState(video);
+    });
+
+    video.addEventListener("timeupdate", () => {
+      if (video.seeking || video.paused || playbackState.isRestoringSeek) {
+        return;
+      }
+
+      playbackState.furthestTime = Math.max(playbackState.furthestTime, video.currentTime);
+    });
+
+    video.addEventListener("seeking", () => {
+      if (video.currentTime > playbackState.furthestTime + VIDEO_SEEK_TOLERANCE_SECONDS) {
+        playbackState.isRestoringSeek = true;
+        video.currentTime = playbackState.furthestTime;
+      }
+    });
+
+    video.addEventListener("seeked", () => {
+      playbackState.isRestoringSeek = false;
+    });
+
+    video.addEventListener("ratechange", () => {
+      if (video.playbackRate !== 1) {
+        video.playbackRate = 1;
+      }
+    });
+
+    video.addEventListener("keydown", (event) => {
+      if (["ArrowRight", "End", "PageDown"].includes(event.key)) {
+        event.preventDefault();
+      }
+    });
+
+    video.addEventListener("ended", () => {
+      const duration = video.duration;
+
+      if (!Number.isFinite(duration) || duration <= 0) {
+        return;
+      }
+
+      if (getPlayedDuration(video) >= duration - VIDEO_COMPLETION_TOLERANCE_SECONDS) {
+        unlockGateAccess();
+      }
+    });
+  }
 
   function setStage(stage) {
     const isGateStage = stage === "gate";
@@ -332,6 +480,7 @@ function initLandingPage() {
       applyMockupLayout(layer, nextContent.mockup);
       positionMockupLayer(layer, key, nextContent.mockup);
       layer.video.pause();
+      resetVideoPlaybackState(layer.video);
       layer.video.currentTime = 0;
       layer.video.poster = nextContent.poster;
       layer.video.src = nextContent.video;
@@ -411,6 +560,7 @@ function initLandingPage() {
 
     applyMockupLayout(initialLayer, gateContent[initialKey].mockup);
     positionMockupLayer(initialLayer, initialKey, gateContent[initialKey].mockup);
+    resetVideoPlaybackState(initialLayer.video);
     initialLayer.video.poster = gateContent[initialKey].poster;
     initialLayer.video.src = gateContent[initialKey].video;
     initialLayer.video.setAttribute("aria-label", `Vidéo ${gateContent[initialKey].title}`);
@@ -432,6 +582,15 @@ function initLandingPage() {
     tab.addEventListener("click", () => setGateTab(tab.dataset.gateTab));
   });
 
+  gateAccess?.addEventListener("click", (event) => {
+    if (gateUnlocked) {
+      return;
+    }
+
+    event.preventDefault();
+    setGateAccessState(false, { announce: true });
+  });
+
   window.addEventListener("resize", scheduleGateMediaRealign, { passive: true });
   window.addEventListener("orientationchange", scheduleGateMediaRealign, { passive: true });
 
@@ -440,6 +599,8 @@ function initLandingPage() {
   }
 
   gateCard?.style.setProperty("--gate-mockup-stage-factor", mockupHeightFactor.toFixed(6));
+  gateMediaLayers.forEach((layer) => protectGateVideo(layer.video));
+  setGateAccessState(hasStoredGateAccess());
   warmGateMediaAssets();
   initializeGateMedia();
   scheduleGateMediaRealign();

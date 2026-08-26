@@ -436,9 +436,15 @@
   transform-origin: center center;
 }
 
-.gate-access {
+.gate-access-wrap {
   grid-column: 1 / -1;
   justify-self: center;
+  position: relative;
+  display: grid;
+  justify-items: center;
+}
+
+.gate-access {
   min-width: 214px;
   padding-inline: 22px 20px;
   font-size: 18px;
@@ -448,6 +454,70 @@
 .gate-access.is-swapping {
   opacity: 0;
   transform: translateY(8px);
+}
+
+.gate-access.is-locked {
+  border-color: rgba(11, 18, 32, 0.12);
+  background: var(--color-surface-muted-strong);
+  color: var(--color-text-muted);
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.76;
+}
+
+.gate-access.is-locked:hover,
+.gate-access.is-locked:active {
+  transform: none;
+  box-shadow: none;
+}
+
+.gate-access.is-locked .button-arrow {
+  border-color: currentColor;
+  opacity: 0.62;
+}
+
+.gate-access-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 11px);
+  z-index: 4;
+  width: max-content;
+  max-width: min(300px, calc(100vw - 32px));
+  padding: 8px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  background: rgba(11, 18, 32, 0.94);
+  color: var(--color-page);
+  box-shadow: 0 8px 22px rgba(11, 18, 32, 0.16);
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.45;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 5px);
+  transition:
+    opacity var(--duration-fast) ease,
+    transform var(--duration-fast) var(--ease-out),
+    visibility var(--duration-fast) ease;
+}
+
+.gate-access-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border: 6px solid transparent;
+  border-top-color: rgba(11, 18, 32, 0.94);
+  transform: translateX(-50%);
+}
+
+.gate-access-wrap.is-locked:hover .gate-access-tooltip,
+.gate-access-wrap.is-locked:focus-within .gate-access-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
 }
 
 /* Shared CTA ornament */
@@ -575,6 +645,11 @@
   .landing-cta,
   .gate-access {
     min-width: 0;
+    width: 100%;
+  }
+
+  .landing-cta,
+  .gate-access-wrap {
     width: min(100%, 280px);
   }
 }
@@ -592,6 +667,7 @@
   .gate-tab,
   .back-link,
   .gate-access,
+  .gate-access-tooltip,
   .landing-glow {
     transition: none !important;
     animation: none !important;

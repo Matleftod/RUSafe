@@ -94,6 +94,7 @@
                               width="524"
                               height="288"
                               controls
+                              controlslist="nodownload noplaybackrate"
                               preload="metadata"
                               playsinline
                             >
@@ -129,6 +130,7 @@
                               width="524"
                               height="288"
                               controls
+                              controlslist="nodownload noplaybackrate"
                               preload="metadata"
                               playsinline
                             >
@@ -156,10 +158,22 @@
                   </div>
                 </div>
 
-                <a class="pill-button pill-button--gradient gate-access" href="accueil.html">
-                  <span>Accéder au site</span>
-                  <span class="button-arrow" aria-hidden="true"></span>
-                </a>
+                <div class="gate-access-wrap is-locked" data-gate-access-wrap>
+                  <a
+                    class="pill-button pill-button--gradient gate-access is-locked"
+                    href="accueil.html"
+                    aria-disabled="true"
+                    aria-describedby="gate-access-help"
+                    data-gate-access
+                  >
+                    <span>Accéder au site</span>
+                    <span class="button-arrow" aria-hidden="true"></span>
+                  </a>
+                  <span class="gate-access-tooltip" id="gate-access-help" role="tooltip">
+                    Regardez une vidéo jusqu’au bout pour accéder au site.
+                  </span>
+                  <span class="sr-only" role="status" aria-live="polite" data-gate-access-status></span>
+                </div>
               </div>
             </section>
           </div>

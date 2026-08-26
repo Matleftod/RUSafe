@@ -459,90 +459,21 @@
       font-size: var(--font-size-label);
     }
 
-    .countdown-wrap {
-      width: 100%;
-      background: var(--color-surface-glass-stronger);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-card-md);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .countdown {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 12px 16px;
-      text-align: left;
-    }
-
-    .countdown-copy {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .countdown-title {
-      margin: 0;
-      color: var(--navy);
-      font-size: var(--font-size-subtitle);
-      font-weight: var(--font-weight-semibold);
-      line-height: 1.35;
-      overflow-wrap: anywhere;
-    }
-
-    .countdown-logo {
-      display: inline-block;
-      width: 60px;
-      height: auto;
-      margin-inline: .2em;
-      vertical-align: middle;
-      filter: drop-shadow(0 6px 8px var(--color-accent-shadow));
-    }
-
-    .countdown .launch-live { color: var(--green); font-size: var(--font-size-subtitle); }
-
-    .countdown-note { margin: 2px 0 0; color: var(--muted); font-size: var(--font-size-body); }
-    .countdown-grid {
-      display: flex;
-      flex: 0 0 auto;
-      min-width: 0;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .timebox {
-      min-width: 70px;
-      padding: 8px 12px;
-      text-align: center;
-      border-radius: 12px;
-      background: var(--sky);
-      color: var(--navy);
-      font-weight: var(--font-weight-bold);
-    }
-
-    .timebox > span {
-      display: block;
-      font-size: var(--font-size-subtitle);
-      line-height: 1.1;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .timebox small {
-      display: block;
-      font-size: var(--font-size-label);
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      color: var(--muted);
-      font-weight: 700;
-      overflow-wrap: anywhere;
-    }
-
     section {
+      position: relative;
+      isolation: isolate;
       padding: clamp(64px, 7vw, 94px) 0;
+      overflow: hidden;
+      overflow: clip;
     }
 
     section[id] {
       scroll-margin-top: calc(var(--header-height) + 16px);
+    }
+
+    main > section > .container {
+      position: relative;
+      z-index: 2;
     }
 
     .section-head {
@@ -568,7 +499,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 18px;
-      margin: 0;
+      margin: 0 0 28px;
       padding: 0;
       list-style: none;
     }
@@ -583,7 +514,15 @@
       box-shadow: var(--shadow-soft);
     }
 
-    .step { padding: 26px; }
+    .step {
+      position: relative;
+      padding: 30px 26px;
+      transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) ease;
+    }
+
+    .step:nth-child(even) { transform: translateY(28px); }
+    .step:hover { transform: translateY(-6px); box-shadow: var(--shadow-accent-hover); }
+    .step:nth-child(even):hover { transform: translateY(22px); }
 
     .step-number {
       font-size: 3.1rem;
@@ -601,13 +540,20 @@
 
     .solutions {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
       gap: 20px;
+      align-items: start;
     }
 
     .card {
       padding: 28px;
+      transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) ease;
     }
+
+    .card:nth-child(2),
+    .card:nth-child(3) { border-radius: 42px 18px 42px 18px; }
+
+    .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-accent-hover); }
 
     .card h3 { margin: 0 0 9px; color: var(--navy); font-size: var(--font-size-subtitle); }
     .card p { color: var(--muted); margin: 0; }
@@ -637,8 +583,8 @@
 
     .partner-panel {
       --gradient-border-fill: var(--color-brand-1);
-      border-radius: 28px;
-      padding: 34px;
+      border-radius: 58px 24px 58px 24px;
+      padding: 42px;
       color: var(--color-page);
       box-shadow: var(--shadow);
     }
@@ -674,8 +620,13 @@
     }
 
     .metric {
-      padding: 24px;
+      position: relative;
+      padding: 28px 24px;
+      overflow: hidden;
     }
+
+    .metric:nth-child(2),
+    .metric:nth-child(4) { border-radius: 42px 18px 42px 18px; }
 
     .metric .value {
       color: var(--blue);
@@ -706,8 +657,8 @@
     .reference-box {
       --gradient-border-fill: var(--color-brand-3);
       color: var(--color-page);
-      padding: 34px;
-      border-radius: 28px;
+      padding: 42px 38px;
+      border-radius: 26px 64px 26px 64px;
       box-shadow: var(--shadow);
     }
 
@@ -818,6 +769,9 @@
       .hero-list li:nth-child(3) { border-inline-start: 0; }
       .hero-list li:nth-child(n + 3) { border-top: 1px solid var(--color-border-accent-soft); }
       .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .step:nth-child(even) { transform: none; }
+      .step:hover,
+      .step:nth-child(even):hover { transform: translateY(-4px); }
     }
 
     @media (min-width: 561px) and (max-width: 1024px) {
@@ -829,7 +783,6 @@
       .hero { --hero-padding-top: 72px; --hero-padding-bottom: 28px; }
       .hero::before { top: -32%; left: -42%; }
       .hero::after { right: -36%; bottom: -24%; }
-      .countdown-grid { display: grid; grid-template-columns: repeat(2, minmax(70px, 1fr)); }
       .nav-links {
         display: none;
         position: absolute;
@@ -861,14 +814,12 @@
         align-self: center;
       }
       .mobile-toggle { display: inline-flex; }
+      .card:hover { transform: translateY(-4px); }
     }
 
     @media (max-width: 767px), (max-height: 720px) and (max-width: 1024px) {
       .hero { --hero-padding-bottom: 16px; }
       .hero-content { gap: var(--space-8); }
-      .countdown-note { display: none; }
-      .countdown-title { line-height: 1.25; }
-      .countdown-logo { width: 56px; }
       .hero-copy { gap: var(--space-4); }
       .hero-copy p { line-height: 1.35; }
       .hero-card {
@@ -878,13 +829,6 @@
     }
 
     @media (max-width: 767px) {
-      .countdown { align-items: flex-start; flex-direction: column; gap: var(--space-2); padding: var(--space-3) var(--space-4); }
-      .countdown-grid { display: flex; width: 100%; gap: var(--space-1); flex-wrap: nowrap; }
-      .timebox { min-width: 0; flex: 1 1 0; padding: var(--space-2) 2px; }
-      .timebox small {
-        font-size: clamp(.625rem, 2.8vw, var(--font-size-label));
-        letter-spacing: .02em;
-      }
       .hero { --hero-padding-top: 68px; }
       .brand-logo { width: 68px; }
     }
@@ -893,10 +837,6 @@
       .container { width: min(100% - 28px, var(--max)); }
       .steps, .solutions, .metrics { grid-template-columns: 1fr; }
       .footer-grid { align-items: flex-start; flex-direction: column; }
-    }
-
-    @media (min-width: 768px) and (max-width: 900px) and (max-height: 720px) {
-      .countdown-grid { display: flex; flex-wrap: nowrap; }
     }
 
     @media (min-width: 901px) and (max-height: 700px) {
@@ -916,9 +856,221 @@
       }
     }
 
-    @media (max-width: 360px) {
-      .countdown-grid { gap: 4px; }
-      .timebox small { letter-spacing: 0; }
+    .team-section { background: var(--color-page-home); }
+    .team-heading {
+      display: grid;
+      gap: var(--space-4);
+      max-width: 760px;
+      margin-bottom: var(--space-10);
+    }
+    .team-heading h2, .team-heading p { margin: 0; }
+    .team-heading .eyebrow { justify-self: start; }
+    .team-heading h2 {
+      max-width: 18ch;
+      color: var(--navy);
+      font-size: var(--font-size-title);
+      line-height: 1.08;
+      letter-spacing: -.03em;
+    }
+    .team-heading p { color: var(--muted); font-size: 1.05rem; }
+    .team-directory, .team-category { display: grid; gap: var(--space-6); }
+    .team-directory { gap: var(--space-10); }
+    .team-category__title {
+      margin: 0;
+      font-size: clamp(1.35rem, 2vw, 1.75rem);
+      line-height: 1.2;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-4);
+      align-items: stretch;
+    }
+    .team-card {
+      display: grid;
+      grid-template-columns: 76px minmax(0, 1fr);
+      column-gap: var(--space-4);
+      row-gap: var(--space-2);
+      align-items: center;
+      padding: var(--space-5);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-card-md);
+      background: var(--color-surface);
+      box-shadow: var(--shadow);
+    }
+    .team-avatar {
+      display: grid;
+      grid-row: span 2;
+      place-items: center;
+      width: 76px;
+      height: 76px;
+      border: 1px solid var(--color-border-accent-soft);
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--color-accent-soft);
+      color: var(--blue);
+      font-size: 1.25rem;
+      font-weight: var(--font-weight-bold);
+    }
+    .team-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .team-card__role, .team-card h4, .team-card__bio { margin: 0; }
+    .team-card__role {
+      align-self: end;
+      color: var(--muted);
+      font-size: var(--font-size-label);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .team-card h4 { align-self: start; font-size: 1.2rem; line-height: 1.2; }
+    .team-card__bio {
+      grid-column: 1 / -1;
+      min-height: 54px;
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: var(--font-size-caption);
+    }
+
+    #approche::before,
+    #expertise::before,
+    .partner::before,
+    #references::after,
+    .flagship::before,
+    .team-section::before,
+    .cta::before,
+    .cta::after {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      width: var(--organic-size, 520px);
+      aspect-ratio: var(--organic-ratio, 1);
+      background: var(--organic-image) center / contain no-repeat;
+      opacity: var(--organic-opacity, .16);
+      pointer-events: none;
+      transform: var(--organic-transform, none);
+    }
+
+    #approche::before {
+      --organic-size: clamp(360px, 50vw, 720px);
+      --organic-ratio: 1546 / 1593;
+      --organic-image: url("assets/background/Vector3.svg");
+      --organic-opacity: .17;
+      --organic-transform: translateY(-50%) rotate(-18deg);
+      right: -28%;
+      top: 50%;
+    }
+
+    #expertise::before {
+      --organic-size: clamp(300px, 38vw, 560px);
+      --organic-ratio: 1330 / 1957;
+      --organic-image: url("assets/background/Vector1.svg");
+      --organic-opacity: .18;
+      --organic-transform: rotate(22deg);
+      top: 18%;
+      left: -18%;
+    }
+
+    .partner::before {
+      --organic-size: clamp(280px, 36vw, 520px);
+      --organic-ratio: 1028 / 1000;
+      --organic-image: url("assets/background/Vector4.svg");
+      --organic-opacity: .12;
+      --organic-transform: rotate(18deg);
+      top: 14%;
+      right: -14%;
+    }
+
+    #references::after {
+      --organic-size: clamp(360px, 48vw, 680px);
+      --organic-ratio: 1546 / 1593;
+      --organic-image: url("assets/background/Vector3.svg");
+      --organic-opacity: .13;
+      --organic-transform: rotate(32deg);
+      top: 8%;
+      left: -26%;
+    }
+
+    .flagship::before {
+      --organic-size: clamp(240px, 28vw, 360px);
+      --organic-ratio: 956 / 1049;
+      --organic-image: url("assets/background/Vector2.svg");
+      --organic-opacity: .09;
+      --organic-transform: translateY(-50%) rotate(-24deg);
+      top: 50%;
+      right: -16%;
+    }
+
+    .team-section::before {
+      --organic-size: clamp(320px, 42vw, 620px);
+      --organic-ratio: 1028 / 1000;
+      --organic-image: url("assets/background/Vector4.svg");
+      --organic-opacity: .1;
+      --organic-transform: rotate(-18deg);
+      top: 2%;
+      left: -22%;
+    }
+
+    .team-card {
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      transition: transform var(--duration-base) var(--ease-out), border-color var(--duration-base) ease, box-shadow var(--duration-base) ease;
+    }
+
+    .team-card::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      right: -42px;
+      bottom: -58px;
+      width: 126px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--color-accent-soft);
+      opacity: .55;
+    }
+
+    .team-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-brand-2);
+      box-shadow: var(--shadow-accent-hover);
+    }
+
+    .cta::before {
+      --organic-size: clamp(240px, 28vw, 360px);
+      --organic-ratio: 1546 / 1593;
+      --organic-image: url("assets/background/Vector3.svg");
+      --organic-opacity: .14;
+      --organic-transform: translateY(-50%) rotate(16deg);
+      left: -16%;
+      top: 50%;
+    }
+
+    .cta::after {
+      --organic-size: clamp(220px, 26vw, 360px);
+      --organic-ratio: 1028 / 1000;
+      --organic-image: url("assets/background/Vector4.svg");
+      --organic-opacity: .18;
+      --organic-transform: rotate(-22deg);
+      right: -10%;
+      bottom: 6%;
+    }
+
+    .cta-grid {
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 1024px) {
+      .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      .team-grid { grid-template-columns: 1fr; }
+      .team-heading { margin-bottom: var(--space-8); }
+      .cta::after { display: none; }
+      .partner-panel,
+      .reference-box { border-radius: var(--radius-card-lg); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -946,12 +1098,11 @@
     PERSONNALISATION RAPIDE POUR LE WEBMASTER
     1) Le logo officiel est chargé depuis assets/logo.png.
     2) Vérifier l'adresse e-mail : pmi@rusafe.fr
-    3) Le compte à rebours est réglé sur le 31/08/2026 à 08:00, heure de Paris.
   -->
 
   <header class="topbar">
     <div class="container nav">
-      <a class="brand" href="#accueil" aria-label="R’U SAFE — back to home" data-i18n-aria-label="brandHome">
+      <a class="brand" href="landing.html" aria-label="R’U SAFE — back to the landing page" data-i18n-aria-label="brandHome">
         <img class="brand-logo" src="assets/logo.png" srcset="assets/logo-80.webp 80w, assets/logo-160.webp 160w, assets/logo-245.webp 245w" sizes="76px" alt="" width="116" height="84" decoding="async">
       </a>
 
@@ -964,6 +1115,7 @@
         <a href="#expertise" data-i18n="navExpertise">Expertise</a>
         <a href="#partenaires" data-i18n="navPartners">Partners</a>
         <a href="#references" data-i18n="navReferences">Track record</a>
+        <a href="#equipe" data-i18n="navTeam">Team</a>
         <a class="button primary" id="headerContact" href="mailto:pmi@rusafe.fr?subject=Discussion%20with%20R%E2%80%99U%20SAFE" data-i18n="navContact">Contact us</a>
         <button class="language-switch" id="languageToggle" type="button" aria-label="Switch to French">
           <span class="language-option is-active" data-language-option="en" aria-hidden="true">🇬🇧</span>
@@ -978,25 +1130,6 @@
   <main id="main-content" tabindex="-1">
     <section class="hero" id="accueil">
       <div class="container hero-content">
-        <div class="countdown-wrap">
-          <div class="countdown">
-            <div class="countdown-copy">
-              <p class="countdown-title">
-                <span data-i18n="countdownPrefix">The full</span>
-                <img class="countdown-logo" src="assets/logo.png" srcset="assets/logo-80.webp 80w, assets/logo-160.webp 160w" sizes="60px" alt="R’U SAFE" width="116" height="84" decoding="async">
-                <span data-i18n="countdownSuffix">website will go live on 31 August 2026 at 8:00 am.</span>
-              </p>
-              <p class="countdown-note" data-i18n="countdownNote">Until then, explore our approach and core areas of expertise.</p>
-            </div>
-            <div class="countdown-grid" id="countdown" role="timer" aria-live="off" aria-atomic="true" aria-label="Countdown to the website launch">
-              <div class="timebox"><span id="days">--</span><small data-i18n="days">days</small></div>
-              <div class="timebox"><span id="hours">--</span><small data-i18n="hours">hours</small></div>
-              <div class="timebox"><span id="minutes">--</span><small data-i18n="minutes">minutes</small></div>
-              <div class="timebox"><span id="seconds">--</span><small data-i18n="seconds">seconds</small></div>
-            </div>
-          </div>
-        </div>
-
         <div class="hero-copy">
           <h1 data-i18n="heroTitle">Let’s turn regulatory obligations into drivers of resilience and performance.</h1>
           <p data-i18n="heroSubtitle">R’U SAFE supports financial institutions, industrial organisations and their partners in addressing compliance, cybersecurity and operational resilience challenges.</p>
@@ -1138,7 +1271,7 @@
       </div>
     </section>
 
-    <section class="alt">
+    <section class="alt flagship">
       <div class="container reference">
         <div class="reference-box">
           <div class="big" data-i18n="savingsTitle">Major savings achieved</div>
@@ -1149,6 +1282,121 @@
           <span class="eyebrow dark" data-i18n="majorReferenceEyebrow">Flagship engagement</span>
           <h2 data-i18n="majorReferenceTitle">End-to-end experience with a systemically important European financial infrastructure.</h2>
           <p data-i18n-html="majorReferenceText">DORA Cyber programme management, governance, policies and procedures, ICT risk management and ICT third-party risk management, <em class="term-controls">controls</em>, monitoring of digital operational resilience testing, support during PASSI reviews, audit preparation and operational support.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="team-section" id="equipe" aria-labelledby="team-title">
+      <div class="container">
+        <header class="team-heading">
+          <span class="eyebrow dark" data-i18n="teamEyebrow">Team</span>
+          <h2 id="team-title" data-i18n="teamTitle">A senior team structured around project directors and consultants.</h2>
+          <p data-i18n="teamIntro">Experienced specialists mobilised according to each project’s needs.</p>
+        </header>
+
+        <div class="team-directory">
+          <section class="team-category" aria-labelledby="directeurs-projet-title">
+            <h3 class="team-category__title" id="directeurs-projet-title" data-i18n="projectDirectors">Project directors</h3>
+
+            <div class="team-grid">
+              <article class="team-card">
+                <div class="team-avatar" role="img" aria-label="Avatar de Gilles">
+                  <img src="assets/avatars/gilles.svg" alt="" width="92" height="92" loading="lazy" />
+                </div>
+                <p class="team-card__role" data-i18n="projectDirectorRole">Project director</p>
+                <h4>Gilles</h4>
+                <div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div>
+              </article>
+
+              <article class="team-card">
+                <div class="team-avatar" role="img" aria-label="Avatar de Karim">
+                  <img src="assets/avatars/karim-directeur.svg" alt="" width="92" height="92" loading="lazy" />
+                </div>
+                <p class="team-card__role" data-i18n="projectDirectorRole">Project director</p>
+                <h4>Karim</h4>
+                <div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div>
+              </article>
+
+              <article class="team-card">
+                <div class="team-avatar" role="img" aria-label="Avatar de Mauro">
+                  <img src="assets/avatars/mauro.svg" alt="" width="92" height="92" loading="lazy" />
+                </div>
+                <p class="team-card__role" data-i18n="projectDirectorRole">Project director</p>
+                <h4>Mauro</h4>
+                <div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div>
+              </article>
+
+              <article class="team-card">
+                <div class="team-avatar" role="img" aria-label="Avatar de Michael">
+                  <img src="assets/avatars/michael.svg" alt="" width="92" height="92" loading="lazy" />
+                </div>
+                <p class="team-card__role" data-i18n="projectDirectorRole">Project director</p>
+                <h4>Michael</h4>
+                <div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div>
+              </article>
+
+              <article class="team-card">
+                <div class="team-avatar" role="img" aria-label="Avatar de Mickael">
+                  <img src="assets/avatars/mickael.svg" alt="" width="92" height="92" loading="lazy" />
+                </div>
+                <p class="team-card__role" data-i18n="projectDirectorRole">Project director</p>
+                <h4>Mickael</h4>
+                <div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div>
+              </article>
+
+              <article class="team-card">
+                <div class="team-avatar" role="img" aria-label="Avatar de Parham">
+                  <img src="assets/avatars/parham.svg" alt="" width="92" height="92" loading="lazy" />
+                </div>
+                <p class="team-card__role" data-i18n="projectDirectorRole">Project director</p>
+                <h4>Parham</h4>
+                <div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div>
+              </article>
+            </div>
+          </section>
+
+          <section class="team-category" aria-labelledby="consultants-senior-title">
+            <h3 class="team-category__title" id="consultants-senior-title" data-i18n="seniorConsultants">Senior consultants</h3>
+
+            <div class="team-grid">
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar d’Aleksander"><span>A</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Aleksander</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar d’Audrey"><span>A</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Audrey</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar d’Aurélien"><span>A</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Aurélien</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar d’Azad"><span>A</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Azad</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Céline"><span>C</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Céline</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Clément"><span>C</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Clément</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Corinne"><span>C</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Corinne</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de David"><span>D</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>David</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar d’Edmond"><span>E</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Edmond</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar d’Eric C."><span>C</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Eric C.</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar d’Eric G."><span>G</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Eric G.</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar d’Eric Na."><span>NA</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Eric Na.</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar d’Eric No."><span>NO</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Eric No.</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Fella"><span>F</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Fella</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Florent"><span>F</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Florent</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de François"><span>F</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>François</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Frédéric"><span>F</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Frédéric</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Frédéric"><span>F</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Frédéric</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Ghislain"><span>G</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Ghislain</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar d’Hélène"><span>H</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Hélène</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Joël"><span>J</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Joël</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Karim"><span>K</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Karim</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Kevin Ap."><span>AP</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Kevin Ap.</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Kevin Ri."><span>RI</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Kevin Ri.</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Laurent"><span>L</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Laurent</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Luis"><span>L</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Luis</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Maxime"><span>M</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Maxime</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Mehdi"><span>M</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Mehdi</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Nahia"><span>N</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Nahia</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Nicolas"><span>N</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Nicolas</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Pénélope"><span>P</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Pénélope</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Prasanthi"><span>P</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Prasanthi</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Samy"><span>S</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Samy</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Serge"><span>S</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Serge</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Thomas"><span>T</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Thomas</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Zied"><span>Z</span></div><p class="team-card__role" data-i18n="seniorConsultantRole">Senior consultant</p><h4>Zied</h4><div class="team-card__bio" data-i18n="bioPlaceholder">Bio coming soon</div></article>
+            </div>
+          </section>
         </div>
       </div>
     </section>
@@ -1166,7 +1414,7 @@
 
   <footer>
     <div class="container footer-grid">
-      <a class="brand" href="#accueil" aria-label="R’U SAFE — back to home" data-i18n-aria-label="brandHome">
+      <a class="brand" href="landing.html" aria-label="R’U SAFE — back to the landing page" data-i18n-aria-label="brandHome">
         <img class="brand-logo" src="assets/logo.png" srcset="assets/logo-80.webp 80w, assets/logo-160.webp 160w, assets/logo-245.webp 245w" sizes="76px" alt="" width="116" height="84" loading="lazy" decoding="async">
       </a>
       <div data-i18n="footerExpertise">Regulatory compliance · Cybersecurity · Operational resilience · AI Act</div>
@@ -1179,20 +1427,14 @@
   <script>
     const frenchTranslations = Object.freeze({
       skipLink: "Aller au contenu principal",
-      brandHome: "R’U SAFE — retour à l’accueil",
+      brandHome: "R’U SAFE — retour à la landing page",
       mainNavigation: "Navigation principale",
       navApproach: "Notre approche",
       navExpertise: "Expertises",
       navPartners: "Partenaires",
       navReferences: "Références",
+      navTeam: "Équipe",
       navContact: "Nous contacter",
-      countdownPrefix: "Le site complet",
-      countdownSuffix: "sera mis en ligne le 31 août 2026 à 8 H.",
-      countdownNote: "En attendant, découvrez l’essentiel de notre positionnement et de nos expertises.",
-      days: "jours",
-      hours: "heures",
-      minutes: "minutes",
-      seconds: "secondes",
       heroTitle: "Transformons les obligations réglementaires en leviers de résilience et de performance.",
       heroSubtitle: "R’U SAFE accompagne les institutions financières, les industries et leurs partenaires dans leurs enjeux de conformité, de cybersécurité et de résilience opérationnelle.",
       heroCardLabel: "Domaines d’intervention",
@@ -1249,6 +1491,14 @@
       majorReferenceEyebrow: "Référence majeure",
       majorReferenceTitle: "Une expérience complète sur une infrastructure financière systémique européenne.",
       majorReferenceText: "Pilotage DORA Cyber, gouvernance, politiques et procédures, gestion des risques ICT et tiers, <em class=\"term-controls\">controls</em>, suivi des tests de résilience, accompagnement des revoyures PASSI, préparation aux audits et accompagnement opérationnel.",
+      teamEyebrow: "Équipe",
+      teamTitle: "Une équipe structurée entre direction de projet et consultants senior.",
+      teamIntro: "Des spécialistes expérimentés mobilisés selon les besoins de chaque projet.",
+      projectDirectors: "Directeurs de projet",
+      seniorConsultants: "Consultants senior",
+      projectDirectorRole: "Directeur de projet",
+      seniorConsultantRole: "Consultant senior",
+      bioPlaceholder: "Bio à compléter",
       contactTitle: "Vous souhaitez renforcer votre offre ou accompagner vos clients sur DORA, NIS2, NIS3, AI Act et la résilience opérationnelle ?",
       contactText: "Parlons de nos complémentarités et des opportunités de création de valeur commune.",
       footerExpertise: "Conformité réglementaire · Cybersécurité · Résilience opérationnelle · AI Act",
@@ -1263,15 +1513,6 @@
         switchLanguage: "Switch to French",
         languageChanged: "English version displayed.",
         mailSubject: "Discussion with R’U SAFE",
-        countdownInitial: "Countdown to the website launch",
-        countdownLive: "The new website is now live.",
-        countdownSuffix: "until the website launch",
-        units: {
-          day: ["day", "days"],
-          hour: ["hour", "hours"],
-          minute: ["minute", "minutes"],
-          second: ["second", "seconds"],
-        },
       },
       fr: {
         title: "R’U SAFE — Conformité, cybersécurité et résilience opérationnelle",
@@ -1281,15 +1522,6 @@
         switchLanguage: "Passer en anglais",
         languageChanged: "Version française affichée.",
         mailSubject: "Échange avec R’U SAFE",
-        countdownInitial: "Compte à rebours avant la mise en ligne",
-        countdownLive: "Le nouveau site est disponible.",
-        countdownSuffix: "avant la mise en ligne",
-        units: {
-          day: ["jour", "jours"],
-          hour: ["heure", "heures"],
-          minute: ["minute", "minutes"],
-          second: ["seconde", "secondes"],
-        },
       },
     });
 
@@ -1383,7 +1615,6 @@
         languageStatus.textContent = interfaceCopy.languageChanged;
       }
 
-      return updateCountdown();
     }
 
     function setMenuState(isOpen, returnFocus = false) {
@@ -1442,69 +1673,7 @@
       }
     });
 
-    // Target date: August 31, 2026 at 08:00 in Paris (UTC+2 in August).
-    const launchDate = new Date("2026-08-31T08:00:00+02:00");
-    const countdown = document.getElementById("countdown");
-    const daysOutput = document.getElementById("days");
-    const hoursOutput = document.getElementById("hours");
-    const minutesOutput = document.getElementById("minutes");
-    const secondsOutput = document.getElementById("seconds");
-    let countdownTimer;
-
-    function formatCountdownLabel(values) {
-      const interfaceCopy = interfaceTranslations[currentLanguage];
-      const unitNames = interfaceCopy.units;
-      const parts = [
-        [values.days, "day"],
-        [values.hours, "hour"],
-        [values.minutes, "minute"],
-        [values.seconds, "second"],
-      ].map(([value, unit]) => {
-        const label = unitNames[unit][value === 1 ? 0 : 1];
-        return `${value} ${label}`;
-      });
-
-      const duration = typeof Intl.ListFormat === "function"
-        ? new Intl.ListFormat(currentLanguage, { style: "long", type: "conjunction" }).format(parts)
-        : parts.join(", ");
-      return `${duration} ${interfaceCopy.countdownSuffix}`;
-    }
-
-    function updateCountdown() {
-      const now = new Date();
-      const distance = launchDate.getTime() - now.getTime();
-      const interfaceCopy = interfaceTranslations[currentLanguage];
-
-      if (distance <= 0) {
-        countdown.setAttribute("role", "status");
-        countdown.setAttribute("aria-live", "polite");
-        countdown.setAttribute("aria-label", interfaceCopy.countdownLive);
-        const liveMessage = document.createElement("strong");
-        liveMessage.className = "launch-live";
-        liveMessage.textContent = interfaceCopy.countdownLive;
-        countdown.replaceChildren(liveMessage);
-        if (countdownTimer) {
-          window.clearInterval(countdownTimer);
-        }
-        return false;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((distance / (1000 * 60)) % 60);
-      const seconds = Math.floor((distance / 1000) % 60);
-
-      daysOutput.textContent = String(days);
-      hoursOutput.textContent = String(hours).padStart(2, "0");
-      minutesOutput.textContent = String(minutes).padStart(2, "0");
-      secondsOutput.textContent = String(seconds).padStart(2, "0");
-      countdown.setAttribute("aria-label", formatCountdownLabel({ days, hours, minutes, seconds }));
-      return true;
-    }
-
-    if (applyLanguage("en")) {
-      countdownTimer = window.setInterval(updateCountdown, 1000);
-    }
+    applyLanguage("en");
   </script>
 </body>
 </html>

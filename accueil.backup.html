@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>R'U SAFE | Accueil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="design-system.css" />
+  <link rel="stylesheet" href="accueil.css" />
+</head>
+<body class="home-page">
+  <main class="home-shell">
+    <div class="home-bg" aria-hidden="true">
+      <div class="home-bg__fade"></div>
+    </div>
+
+    <header class="home-header">
+      <a class="home-logo-link" href="landing.html" aria-label="Retour à la landing">
+        <img class="home-logo" src="assets/logo.png" alt="Logo R'U SAFE" width="116" height="84" />
+      </a>
+
+      <nav class="home-nav" aria-label="Navigation principale">
+        <ul class="home-nav__list">
+          <li class="home-nav__item home-nav__item--has-dropdown">
+            <button
+              type="button"
+              class="home-nav__trigger"
+              aria-expanded="false"
+              aria-controls="activities-menu"
+              aria-haspopup="true"
+            >
+              Activités
+            </button>
+      
+            <div class="home-nav__dropdown" id="activities-menu">
+              <ul class="home-nav__submenu">
+                <li class="home-nav__submenu-item home-nav__submenu-item--has-dropdown">
+                  <button
+                    type="button"
+                    class="home-nav__subtrigger"
+                    aria-expanded="false"
+                    aria-controls="expertise-menu"
+                    aria-haspopup="true"
+                  >
+                    Expertise / Consulting
+                  </button>
+      
+                  <div class="home-nav__subdropdown" id="expertise-menu">
+                    <ul class="home-nav__subsubmenu">
+                      <li class="home-nav__group">
+                        <span class="home-nav__group-title">1. Cybersécurité</span>
+                        <ul>
+                          <li><a href="">DORA</a></li>
+                          <li><a href="">NIS2</a></li>
+                          <li><a href="">NIS3</a></li>
+                          <li><a href="">SecNumCloud</a></li>
+                          <li><a href="">RSSI de transition</a></li>
+                          <li><a href="">DSI de transition</a></li>
+                        </ul>
+                      </li>
+      
+                      <li class="home-nav__group">
+                        <span class="home-nav__group-title">2. RGPD</span>
+                        <ul>
+                          <li><a href="">DPO de transition</a></li>
+                        </ul>
+                      </li>
+      
+                      <li class="home-nav__group">
+                        <span class="home-nav__group-title">3. Cash Management</span>
+                        <ul>
+                          <li><a href="">AUSECAF</a></li>
+                          <li><a href="">SECEDI</a></li>
+                        </ul>
+                      </li>
+      
+                      <li class="home-nav__group">
+                        <span class="home-nav__group-title">4. Risk Management</span>
+                        <ul>
+                          <li><a href="">Voir l’offre</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+      
+                <li class="home-nav__submenu-item home-nav__submenu-item--has-dropdown">
+                  <button
+                    type="button"
+                    class="home-nav__subtrigger"
+                    aria-expanded="false"
+                    aria-controls="formations-menu"
+                    aria-haspopup="true"
+                  >
+                    Formations
+                  </button>
+      
+                  <div class="home-nav__subdropdown" id="formations-menu">
+                    <ul class="home-nav__subsubmenu">
+                      <li><a href="">L’intelligence artificielle</a></li>
+                      <li><a href="">Transformation numérique</a></li>
+                      <li><a href="">Gouvernance, risque et conformité</a></li>
+                      <li><a href="">Sécurité de l’information</a></li>
+                      <li><a href="">Protection des données et de la vie privée</a></li>
+                      <li><a href="">Gestion de la cybersécurité</a></li>
+                      <li><a href="">Cybersécurité technique</a></li>
+                      <li><a href="">Continuité, résilience et reprise</a></li>
+                      <li><a href="">Qualité et management</a></li>
+                      <li><a href="">Santé et sécurité</a></li>
+                      <li><a href="">Durabilité</a></li>
+                    </ul>
+                  </div>
+                </li>
+      
+                <li class="home-nav__submenu-item">
+                  <a href="">Audit</a>
+                </li>
+                <li class="home-nav__submenu-item">
+                  <a href="">Diagnostic</a>
+                </li>
+                <li class="home-nav__submenu-item">
+                  <a href="">TPRM</a>
+                </li>
+                <li class="home-nav__submenu-item">
+                  <a href="">Cash Management</a>
+                </li>
+                <li class="home-nav__submenu-item">
+                  <a href="">Corporate / Filiales</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+      
+          <li class="home-nav__item">
+            <a href="#approche">Qui sommes-nous</a>
+          </li>
+      
+          <li class="home-nav__item">
+            <a href="#equipe">Équipes</a>
+          </li>
+      
+          <li class="home-nav__item">
+            <a class="pill-button pill-button--nav" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero-section" aria-labelledby="home-hero-title">
+      <div class="section-decor section-decor--hero" aria-hidden="true">
+        <img class="section-blob section-blob--v1" src="assets/background/Vector1.svg" alt="" width="1330" height="1957" decoding="async" />
+        <img class="section-blob section-blob--v2" src="assets/background/Vector2.svg" alt="" width="956" height="1049" decoding="async" />
+      </div>
+
+      <div class="hero-copy">
+        <h1 id="home-hero-title">Audits de sécurité précis, lisibles et vraiment exploitables.</h1>
+        <p>
+          R&apos;U SAFE accompagne les directions techniques, produits et métiers avec des audits
+          applicatifs, d&apos;infrastructure et de configuration pensés pour décider vite, corriger
+          juste et sécuriser les mises en ligne sensibles.
+        </p>
+
+        <div class="hero-actions">
+          <a class="pill-button pill-button--gradient" href="#enjeux">Comprendre l&apos;approche</a>
+          <a class="pill-button pill-button--dark" href="#contact">Demander un audit</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro-section" id="enjeux" aria-labelledby="home-intro-title">
+      <div class="section-decor section-decor--intro" aria-hidden="true">
+        <img class="section-blob section-blob--v3" src="assets/background/Vector3.svg" alt="" width="1546" height="1593" decoding="async" />
+      </div>
+
+      <h2 class="sr-only" id="home-intro-title">Pourquoi un audit de sécurité compte avant un incident</h2>
+      <article class="intro-block intro-block--one">
+        <h3>Un risque mal qualifié reste un risque subi</h3>
+        <p>
+          Avant une mise en ligne, une refonte, une ouverture partenaire ou un contrôle de
+          conformité, l’enjeu n’est pas de produire un document de plus&nbsp;: c’est de voir ce qui
+          peut réellement casser, fuiter ou être contourné.
+        </p>
+      </article>
+
+      <article class="intro-block intro-block--two">
+        <h3>L’audit sert à arbitrer avec des faits</h3>
+        <p>
+          Il remet au même niveau les sujets applicatifs, d’infrastructure et de configuration
+          pour distinguer ce qui relève du bruit, de la dette tolérable et des vulnérabilités qui
+          méritent une décision rapide.
+        </p>
+      </article>
+
+      <article class="intro-block intro-block--three">
+        <h3>La bonne restitution change la suite</h3>
+        <p>
+          Un bon audit ne s’arrête pas au constat. Il priorise, contextualise et transforme les
+          écarts en plan d’action compréhensible pour la direction comme pour les équipes
+          techniques.
+        </p>
+      </article>
+
+      <img
+        class="intro-illustration"
+        src="assets/intro-illustration.svg"
+        alt=""
+        width="379"
+        height="379"
+      />
+
+      <div class="intro-summary" aria-label="Repères d’un audit utile">
+        <article class="intro-stat">
+          <p class="intro-stat__label">Visibilité</p>
+          <p class="intro-stat__value">Périmètre réel, exposition réelle, impact réel.</p>
+        </article>
+
+        <article class="intro-stat">
+          <p class="intro-stat__label">Priorisation</p>
+          <p class="intro-stat__value">Des écarts hiérarchisés pour décider sans brouillard.</p>
+        </article>
+
+        <article class="intro-stat">
+          <p class="intro-stat__label">Décision</p>
+          <p class="intro-stat__value">Une restitution utilisable par la direction et les équipes.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-section services-section" id="services" aria-labelledby="services-title">
+      <div class="section-decor section-decor--services" aria-hidden="true">
+        <img class="section-blob section-blob--services-primary" src="assets/background/Vector2.svg" alt="" width="956" height="1049" decoding="async" />
+      </div>
+
+      <div class="home-section__inner">
+        <header class="section-heading section-heading--split">
+          <div>
+            <p class="section-eyebrow">Services</p>
+            <h2 id="services-title">Des audits calibrés selon le périmètre, le niveau d’exposition et le moment du projet.</h2>
+          </div>
+
+          <p>
+            L’intervention peut être ponctuelle ou intégrée à une phase sensible&nbsp;: mise en
+            production, revue annuelle, due diligence technique, refonte applicative ou plan de
+            remédiation.
+          </p>
+        </header>
+
+        <div class="services-grid">
+          <article class="service-card service-card--wide">
+            <p class="service-card__kicker">Web, API, mobile</p>
+            <h3>Audit applicatif</h3>
+            <p>
+              Revue ciblée des parcours critiques, de la logique métier, des contrôles d’accès et
+              des flux sensibles pour identifier les failles qui comptent réellement.
+            </p>
+            <ul class="service-card__list">
+              <li>Authentification, sessions, droits et séparation des rôles</li>
+              <li>Entrées, sorties, API, composants tiers et surfaces d’attaque</li>
+              <li>Vulnérabilités contextualisées par l’usage métier</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <p class="service-card__kicker">Systèmes, réseau, cloud</p>
+            <h3>Audit d’infrastructure</h3>
+            <p>
+              Analyse de l’exposition, du durcissement, des accès, des rebonds possibles et des
+              configurations qui élargissent inutilement la surface d’attaque.
+            </p>
+            <ul class="service-card__list">
+              <li>Segmentation, accès distants, secrets et comptes à privilèges</li>
+              <li>Durcissement, cloisonnement et points de confiance faibles</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <p class="service-card__kicker">Plateformes et outils</p>
+            <h3>Revue de configuration</h3>
+            <p>
+              Vérification des réglages de sécurité sur les briques critiques&nbsp;: reverse proxy,
+              IAM, stockage, CI/CD, supervision ou services managés.
+            </p>
+            <ul class="service-card__list">
+              <li>Paramètres incohérents avec le niveau de sensibilité réel</li>
+              <li>Écarts fréquents entre usages métier et configuration effective</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <p class="service-card__kicker">Avant ouverture ou après évolution</p>
+            <h3>Revue d’exposition externe</h3>
+            <p>
+              Inventaire accessible depuis l’extérieur, points d’entrée visibles, routes exposées
+              et signaux faibles qui trahissent un niveau de sécurité inégal.
+            </p>
+            <ul class="service-card__list">
+              <li>Services publiés, bannières, métadonnées et informations sensibles</li>
+              <li>Chemins d’attaque probables avant qu’ils ne soient exploités</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <p class="service-card__kicker">Go-live, migration, refonte</p>
+            <h3>Vérification avant mise en production</h3>
+            <p>
+              Contrôle ciblé sur le périmètre critique pour valider les arbitrages de dernière ligne
+              droite avant une ouverture publique ou un changement majeur.
+            </p>
+            <ul class="service-card__list">
+              <li>Contrôles focalisés sur les scénarios qui font vraiment monter le risque</li>
+              <li>Lecture claire du résiduel avant décision d’ouverture</li>
+            </ul>
+          </article>
+
+          <article class="service-card service-card--wide">
+            <p class="service-card__kicker">Après audit ou en reprise</p>
+            <h3>Accompagnement remédiation</h3>
+            <p>
+              Relecture des mesures proposées, hiérarchisation réaliste et vérification des
+              corrections pour refermer proprement les sujets critiques sans rajouter de complexité.
+            </p>
+            <ul class="service-card__list">
+              <li>Recommandations adaptées aux contraintes techniques et aux délais</li>
+              <li>Validation des correctifs et éclairage sur les points résiduels</li>
+              <li>Support à l’arbitrage pour les sujets à fort impact métier</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section methodology-section" id="methodologie" aria-labelledby="methodology-title">
+      <div class="section-decor section-decor--methodology" aria-hidden="true">
+        <img class="section-blob section-blob--methodology-primary" src="assets/background/Vector1.svg" alt="" width="1330" height="1957" decoding="async" />
+      </div>
+
+      <div class="home-section__inner methodology-layout">
+        <div class="methodology-copy">
+          <p class="section-eyebrow">Méthodologie</p>
+          <h2 id="methodology-title">Une démarche cadrée pour produire des constats défendables et utiles.</h2>
+          <p class="methodology-lead">
+            Chaque mission commence par un cadrage précis du contexte, des actifs critiques et du
+            niveau d’attente. Le but n’est pas de “tester partout”, mais de concentrer l’effort là
+            où une décision de sécurité a vraiment de la valeur.
+          </p>
+
+          <div class="methodology-note">
+            <p class="methodology-note__title">Cadre d’intervention</p>
+            <p>
+              Périmètre, profondeur de test et niveau de restitution sont partagés en amont pour
+              éviter l’effet boîte noire. L’audit reste lisible pour les équipes qui devront agir
+              ensuite.
+            </p>
+          </div>
+        </div>
+
+        <ol class="method-steps">
+          <li class="method-step">
+            <span class="method-step__index">01</span>
+            <div>
+              <h3>Cadrage précis</h3>
+              <p>Comprendre le contexte, les flux sensibles, les usages critiques et les contraintes opérationnelles.</p>
+            </div>
+          </li>
+
+          <li class="method-step">
+            <span class="method-step__index">02</span>
+            <div>
+              <h3>Analyse de surface</h3>
+              <p>Qualifier l’exposition, les briques en présence, les dépendances et les premiers signaux de faiblesse.</p>
+            </div>
+          </li>
+
+          <li class="method-step">
+            <span class="method-step__index">03</span>
+            <div>
+              <h3>Tests ciblés</h3>
+              <p>Vérifier les scénarios plausibles et les écarts à plus fort impact, sans dispersion inutile.</p>
+            </div>
+          </li>
+
+          <li class="method-step">
+            <span class="method-step__index">04</span>
+            <div>
+              <h3>Restitution hiérarchisée</h3>
+              <p>Présenter des constats contextualisés, un niveau de criticité clair et des recommandations actionnables.</p>
+            </div>
+          </li>
+
+          <li class="method-step">
+            <span class="method-step__index">05</span>
+            <div>
+              <h3>Remédiation et relecture</h3>
+              <p>Accompagner les arbitrages, vérifier les corrections et clarifier le risque résiduel.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="home-section deliverables-section" id="livrables" aria-labelledby="deliverables-title">
+      <div class="section-decor section-decor--deliverables" aria-hidden="true">
+        <img class="section-blob section-blob--deliverables-primary" src="assets/background/Vector3.svg" alt="" width="1546" height="1593" decoding="async" />
+      </div>
+
+      <div class="home-section__inner">
+        <header class="section-heading section-heading--split">
+          <div>
+            <p class="section-eyebrow">Ce que vous obtenez</p>
+            <h2 id="deliverables-title">Des livrables pensés pour faire agir, pas pour dormir dans un dossier partagé.</h2>
+          </div>
+
+          <p>
+            La valeur d’un audit tient autant dans la qualité des constats que dans la manière de
+            les restituer. Le livrable doit être clair pour la direction et directement exploitable
+            par les équipes techniques.
+          </p>
+        </header>
+
+        <div class="deliverables-panel">
+          <article class="report-preview" aria-label="Exemple de restitution priorisée">
+            <div class="report-preview__header">
+              <div>
+                <p class="report-preview__eyebrow">Exemple de restitution</p>
+                <h3>Rapport priorisé</h3>
+              </div>
+
+              <span class="report-preview__chip">Synthèse + détails techniques</span>
+            </div>
+
+            <div class="report-preview__list">
+              <article class="report-line">
+                <div>
+                  <h4>API interne exposée via authentification insuffisante</h4>
+                  <p>Impact métier&nbsp;: accès transversal à des données client.</p>
+                </div>
+                <span class="criticality criticality--high">Critique</span>
+              </article>
+
+              <article class="report-line">
+                <div>
+                  <h4>Segmentation cloud incomplète entre environnements</h4>
+                  <p>Impact technique&nbsp;: rebond possible entre services.</p>
+                </div>
+                <span class="criticality criticality--medium">Élevée</span>
+              </article>
+
+              <article class="report-line">
+                <div>
+                  <h4>Paramètre par défaut conservé sur un composant exposé</h4>
+                  <p>Impact opérationnel&nbsp;: élargissement inutile de la surface.</p>
+                </div>
+                <span class="criticality criticality--low">Modérée</span>
+              </article>
+            </div>
+
+            <p class="report-preview__footer">
+              Chaque point est contextualisé, priorisé et accompagné d’une recommandation exploitable.
+            </p>
+          </article>
+
+          <div class="deliverables-stack">
+            <article class="deliverable-card">
+              <h3>Rapport clair et priorisé</h3>
+              <p>Constats hiérarchisés, niveau de criticité assumable et lecture immédiate des sujets qui changent réellement le niveau de risque.</p>
+            </article>
+
+            <article class="deliverable-card">
+              <h3>Synthèse pour les décideurs</h3>
+              <p>Une lecture courte pour arbitrer vite, sans devoir retraduire tout le contenu technique en comité de pilotage.</p>
+            </article>
+
+            <article class="deliverable-card">
+              <h3>Recommandations actionnables</h3>
+              <p>Mesures réalistes, ordonnées et reliées au contexte du système, pas une liste générique de bonnes pratiques.</p>
+            </article>
+
+            <article class="deliverable-card">
+              <h3>Support à la remédiation</h3>
+              <p>Clarification des priorités, relecture des corrections et visibilité sur le risque résiduel avant validation finale.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section audience-section" id="pour-qui" aria-labelledby="audience-title">
+      <div class="section-decor section-decor--audience" aria-hidden="true">
+        <img class="section-blob section-blob--audience-primary" src="assets/background/Vector2.svg" alt="" width="956" height="1049" decoding="async" />
+      </div>
+
+      <div class="home-section__inner audience-layout">
+        <div class="audience-copy">
+          <p class="section-eyebrow">Pour qui</p>
+          <h2 id="audience-title">Pour les structures qui ont besoin de voir clair avant de s’exposer davantage.</h2>
+          <p>
+            L’offre s’adresse aux organisations qui manipulent des flux sensibles, déploient vite,
+            ou doivent rendre leurs arbitrages de sécurité lisibles face à un client, une direction
+            ou un partenaire.
+          </p>
+        </div>
+
+        <div class="audience-grid">
+          <article class="audience-card">
+            <h3>PME et ETI</h3>
+            <p>Pour structurer les priorités de sécurité sans surcharger les équipes ni multiplier les chantiers hors sol.</p>
+          </article>
+
+          <article class="audience-card">
+            <h3>Scale-up et équipes produit</h3>
+            <p>Pour challenger une plateforme, un parcours critique ou une API avant d’accélérer l’exposition.</p>
+          </article>
+
+          <article class="audience-card">
+            <h3>ESN, agences et plateformes clients</h3>
+            <p>Pour sécuriser les environnements livrés, clarifier les responsabilités et objectiver le niveau de risque.</p>
+          </article>
+
+          <article class="audience-card">
+            <h3>Directions techniques, RSSI, DSI de transition</h3>
+            <p>Pour disposer d’une vue exploitable qui aide à arbitrer, planifier et défendre les décisions prises.</p>
+          </article>
+
+          <article class="audience-card">
+            <h3>Projets avant mise en ligne critique</h3>
+            <p>Pour valider un go-live, une migration, une refonte ou une ouverture partenaire avec un regard externe précis.</p>
+          </article>
+
+          <article class="audience-card">
+            <h3>Préparation à une exigence externe</h3>
+            <p>Avant un audit client, un appel d’offres, une revue de conformité ou une demande forte d’un donneur d’ordre.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section team-section" id="equipe" aria-labelledby="team-title">
+      <div class="section-decor section-decor--team" aria-hidden="true">
+        <img class="section-blob section-blob--team-primary" src="assets/background/Vector4.svg" alt="" width="1028" height="1000" decoding="async" />
+        <img class="section-blob section-blob--team-secondary" src="assets/background/Vector1.svg" alt="" width="1330" height="1957" decoding="async" />
+      </div>
+
+      <div class="home-section__inner">
+        <header class="section-heading section-heading--center">
+          <p class="section-eyebrow">Équipe</p>
+          <h2 id="team-title">Une équipe structurée entre direction de projet et consultants senior.</h2>
+          <p>
+            Les profils sont présentés par catégorie, avec un emplacement dédié pour compléter la
+            bio de chaque intervenant.
+          </p>
+        </header>
+
+        <div class="team-directory">
+          <section class="team-category" aria-labelledby="directeurs-projet-title">
+            <h3 class="team-category__title" id="directeurs-projet-title">Directeurs de projet</h3>
+
+            <div class="team-grid">
+              <article class="team-card">
+                <div class="team-avatar" role="img" aria-label="Avatar de Gilles">
+                  <img src="assets/avatars/gilles.svg" alt="" width="92" height="92" loading="lazy" />
+                </div>
+                <p class="team-card__role">Directeur de projet</p>
+                <h4>Gilles</h4>
+                <div class="team-card__bio">Bio à compléter</div>
+              </article>
+
+              <article class="team-card">
+                <div class="team-avatar" role="img" aria-label="Avatar de Karim">
+                  <img src="assets/avatars/karim-directeur.svg" alt="" width="92" height="92" loading="lazy" />
+                </div>
+                <p class="team-card__role">Directeur de projet</p>
+                <h4>Karim</h4>
+                <div class="team-card__bio">Bio à compléter</div>
+              </article>
+
+              <article class="team-card">
+                <div class="team-avatar" role="img" aria-label="Avatar de Mauro">
+                  <img src="assets/avatars/mauro.svg" alt="" width="92" height="92" loading="lazy" />
+                </div>
+                <p class="team-card__role">Directeur de projet</p>
+                <h4>Mauro</h4>
+                <div class="team-card__bio">Bio à compléter</div>
+              </article>
+
+              <article class="team-card">
+                <div class="team-avatar" role="img" aria-label="Avatar de Michael">
+                  <img src="assets/avatars/michael.svg" alt="" width="92" height="92" loading="lazy" />
+                </div>
+                <p class="team-card__role">Directeur de projet</p>
+                <h4>Michael</h4>
+                <div class="team-card__bio">Bio à compléter</div>
+              </article>
+
+              <article class="team-card">
+                <div class="team-avatar" role="img" aria-label="Avatar de Mickael">
+                  <img src="assets/avatars/mickael.svg" alt="" width="92" height="92" loading="lazy" />
+                </div>
+                <p class="team-card__role">Directeur de projet</p>
+                <h4>Mickael</h4>
+                <div class="team-card__bio">Bio à compléter</div>
+              </article>
+
+              <article class="team-card">
+                <div class="team-avatar" role="img" aria-label="Avatar de Parham">
+                  <img src="assets/avatars/parham.svg" alt="" width="92" height="92" loading="lazy" />
+                </div>
+                <p class="team-card__role">Directeur de projet</p>
+                <h4>Parham</h4>
+                <div class="team-card__bio">Bio à compléter</div>
+              </article>
+            </div>
+          </section>
+
+          <section class="team-category" aria-labelledby="consultants-senior-title">
+            <h3 class="team-category__title" id="consultants-senior-title">Consultants senior</h3>
+
+            <div class="team-grid">
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar d’Aleksander"><span>A</span></div><p class="team-card__role">Consultant senior</p><h4>Aleksander</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar d’Audrey"><span>A</span></div><p class="team-card__role">Consultante senior</p><h4>Audrey</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar d’Aurélien"><span>A</span></div><p class="team-card__role">Consultant senior</p><h4>Aurélien</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar d’Azad"><span>A</span></div><p class="team-card__role">Consultant senior</p><h4>Azad</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Céline"><span>C</span></div><p class="team-card__role">Consultante senior</p><h4>Céline</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Clément"><span>C</span></div><p class="team-card__role">Consultant senior</p><h4>Clément</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Corinne"><span>C</span></div><p class="team-card__role">Consultante senior</p><h4>Corinne</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de David"><span>D</span></div><p class="team-card__role">Consultant senior</p><h4>David</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar d’Edmond"><span>E</span></div><p class="team-card__role">Consultant senior</p><h4>Edmond</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar d’Eric C."><span>C</span></div><p class="team-card__role">Consultant senior</p><h4>Eric C.</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar d’Eric G."><span>G</span></div><p class="team-card__role">Consultant senior</p><h4>Eric G.</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar d’Eric Na."><span>NA</span></div><p class="team-card__role">Consultant senior</p><h4>Eric Na.</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar d’Eric No."><span>NO</span></div><p class="team-card__role">Consultant senior</p><h4>Eric No.</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Fella"><span>F</span></div><p class="team-card__role">Consultante senior</p><h4>Fella</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Florent"><span>F</span></div><p class="team-card__role">Consultant senior</p><h4>Florent</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de François"><span>F</span></div><p class="team-card__role">Consultant senior</p><h4>François</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Frédéric"><span>F</span></div><p class="team-card__role">Consultant senior</p><h4>Frédéric</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Frédéric"><span>F</span></div><p class="team-card__role">Consultant senior</p><h4>Frédéric</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Ghislain"><span>G</span></div><p class="team-card__role">Consultant senior</p><h4>Ghislain</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar d’Hélène"><span>H</span></div><p class="team-card__role">Consultante senior</p><h4>Hélène</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Joël"><span>J</span></div><p class="team-card__role">Consultant senior</p><h4>Joël</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Karim"><span>K</span></div><p class="team-card__role">Consultant senior</p><h4>Karim</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Kevin Ap."><span>AP</span></div><p class="team-card__role">Consultant senior</p><h4>Kevin Ap.</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Kevin Ri."><span>RI</span></div><p class="team-card__role">Consultant senior</p><h4>Kevin Ri.</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Laurent"><span>L</span></div><p class="team-card__role">Consultant senior</p><h4>Laurent</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Luis"><span>L</span></div><p class="team-card__role">Consultant senior</p><h4>Luis</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Maxime"><span>M</span></div><p class="team-card__role">Consultant senior</p><h4>Maxime</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Mehdi"><span>M</span></div><p class="team-card__role">Consultant senior</p><h4>Mehdi</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Nahia"><span>N</span></div><p class="team-card__role">Consultante senior</p><h4>Nahia</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Nicolas"><span>N</span></div><p class="team-card__role">Consultant senior</p><h4>Nicolas</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Pénélope"><span>P</span></div><p class="team-card__role">Consultante senior</p><h4>Pénélope</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Prasanthi"><span>P</span></div><p class="team-card__role">Consultante senior</p><h4>Prasanthi</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Samy"><span>S</span></div><p class="team-card__role">Consultant senior</p><h4>Samy</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Serge"><span>S</span></div><p class="team-card__role">Consultant senior</p><h4>Serge</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Thomas"><span>T</span></div><p class="team-card__role">Consultant senior</p><h4>Thomas</h4><div class="team-card__bio">Bio à compléter</div></article>
+              <article class="team-card"><div class="team-avatar" role="img" aria-label="Avatar de Zied"><span>Z</span></div><p class="team-card__role">Consultant senior</p><h4>Zied</h4><div class="team-card__bio">Bio à compléter</div></article>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section approach-section" id="approche" aria-labelledby="approach-title">
+      <div class="section-decor section-decor--approach" aria-hidden="true">
+        <img class="section-blob section-blob--approach-primary" src="assets/background/Vector3.svg" alt="" width="1546" height="1593" decoding="async" />
+      </div>
+
+      <div class="home-section__inner approach-layout">
+        <div class="approach-editorial">
+          <p class="section-eyebrow">Approche</p>
+          <h2 id="approach-title">De l’exigence technique, sans jargon inutile.</h2>
+          <p class="approach-quote">
+            Un audit utile ne dramatise pas. Il éclaire, explique et hiérarchise pour que la
+            décision soit assumable et la correction réellement faisable.
+          </p>
+          <p class="approach-note">
+            L’objectif est de produire une lecture honnête du risque, adaptée au contexte du
+            système, au niveau de maturité de l’équipe et au tempo réel du projet.
+          </p>
+        </div>
+
+        <div class="approach-pillars">
+          <article class="approach-card">
+            <h3>Regard humain et technique</h3>
+            <p>Comprendre le contexte métier autant que la mécanique technique pour éviter les constats hors sujet.</p>
+          </article>
+
+          <article class="approach-card">
+            <h3>Pédagogie sans dilution</h3>
+            <p>Expliquer clairement les risques et les arbitrages sans noyer la restitution dans un jargon inutile.</p>
+          </article>
+
+          <article class="approach-card">
+            <h3>Recommandations adaptées au terrain</h3>
+            <p>Proposer des mesures crédibles, tenables par les équipes et proportionnées au niveau d’exposition réel.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section proof-section" id="reassurance" aria-labelledby="proof-title">
+      <div class="section-decor section-decor--proof" aria-hidden="true">
+        <img class="section-blob section-blob--proof-primary" src="assets/background/Vector2.svg" alt="" width="956" height="1049" decoding="async" />
+      </div>
+
+      <div class="home-section__inner">
+        <header class="section-heading section-heading--split">
+          <div>
+            <p class="section-eyebrow">Réassurance</p>
+            <h2 id="proof-title">Une intervention conçue pour rester claire, sobre et crédible à chaque étape.</h2>
+          </div>
+
+          <p>
+            La confiance vient autant du fond que de la manière de travailler&nbsp;: périmètre
+            cadré, échanges réguliers et restitution qui tient à la fois devant un comité de
+            pilotage et devant les équipes techniques.
+          </p>
+        </header>
+
+        <div class="proof-grid">
+          <div class="proof-signals">
+            <article class="proof-signal">
+              <h3>Périmètre validé avant les tests</h3>
+              <p>Les objectifs, les limites et les hypothèses de travail sont partagés en amont pour éviter toute zone grise.</p>
+            </article>
+
+            <article class="proof-signal">
+              <h3>Points d’avancement intermédiaires</h3>
+              <p>Les signaux majeurs peuvent être remontés avant la restitution finale pour accélérer les décisions quand c’est nécessaire.</p>
+            </article>
+
+            <article class="proof-signal">
+              <h3>Restitution double niveau</h3>
+              <p>Une lecture claire pour la direction, des éléments exploitables pour les équipes qui doivent corriger.</p>
+            </article>
+          </div>
+
+          <div class="proof-aside">
+            <article class="testimonial-card">
+              <blockquote>
+                «&nbsp;La restitution a permis de faire arbitrer trois sujets critiques en comité de
+                pilotage sans retraduction supplémentaire côté technique.&nbsp;»
+              </blockquote>
+              <p>Direction technique, plateforme B2B</p>
+            </article>
+
+            <div class="proof-contexts" aria-label="Contextes fréquemment accompagnés">
+              <p class="proof-contexts__label">Contextes fréquemment accompagnés</p>
+              <div class="trust-cloud">
+                <span class="trust-chip">Applications métiers</span>
+                <span class="trust-chip">Portails clients</span>
+                <span class="trust-chip">API partenaires</span>
+                <span class="trust-chip">Environnements cloud</span>
+                <span class="trust-chip">Cash management</span>
+                <span class="trust-chip">Pré go-live</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="placeholder-section cta-section" id="contact" aria-labelledby="contact-title">
+      <div class="section-decor section-decor--placeholder" aria-hidden="true">
+        <img class="section-blob section-blob--v4" src="assets/background/Vector4.svg" alt="" width="1028" height="1000" decoding="async" />
+        <img class="section-blob section-blob--cta-accent" src="assets/background/Vector2.svg" alt="" width="956" height="1049" decoding="async" />
+      </div>
+
+      <div class="cta-card">
+        <p class="section-eyebrow">Passer à l’action</p>
+        <h2 id="contact-title">Vous avez un périmètre à challenger, une mise en ligne à sécuriser ou un doute à lever&nbsp;?</h2>
+        <p>
+          Un premier échange permet de cadrer le contexte, le niveau d’exposition et le type de
+          restitution attendu. L’objectif&nbsp;: définir un audit utile, proportionné et exploitable
+          par vos équipes.
+        </p>
+
+        <div class="cta-points" aria-label="Engagements de prise de contact">
+          <span class="cta-point">Premier échange confidentiel</span>
+          <span class="cta-point">Périmètre ajusté au contexte</span>
+          <span class="cta-point">Restitution décideurs + technique</span>
+        </div>
+
+        <div class="cta-actions">
+          <a class="pill-button pill-button--gradient" href="mailto:contact@rusafe.fr?subject=Demande%20d%27audit">Demander un audit</a>
+          <a class="pill-button pill-button--dark" href="mailto:contact@rusafe.fr?subject=Prise%20de%20contact">Écrire à l’équipe</a>
+        </div>
+
+        <p class="cta-contact-line">contact@rusafe.fr</p>
+      </div>
+    </section>
+  </main>
+  <script src="script.js" defer></script>
+</body>
+</html>
