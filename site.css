@@ -918,6 +918,90 @@
       font-size: var(--font-size-caption);
     }
 
+    .team-grid--directors {
+      align-items: start;
+    }
+
+    .team-card--featured {
+      grid-column: span 2;
+      grid-template-columns: 112px minmax(0, 1fr);
+      padding: var(--space-6);
+    }
+
+    .team-card--featured:has(.team-bio-details[open]) {
+      grid-column: 1 / -1;
+    }
+
+    .team-card--featured .team-avatar {
+      width: 104px;
+      height: 104px;
+    }
+
+    .team-card--featured h4 {
+      font-size: clamp(1.35rem, 2vw, 1.65rem);
+    }
+
+    .team-card__bio--long {
+      min-height: 0;
+    }
+
+    .team-card__intro {
+      max-width: 72ch;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .team-bio-details {
+      margin-top: var(--space-2);
+    }
+
+    .team-bio-details summary {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--color-brand-1);
+      cursor: pointer;
+      font-weight: var(--font-weight-semibold);
+      list-style: none;
+    }
+
+    .team-bio-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .team-bio-details summary::after {
+      content: "+";
+      display: grid;
+      width: 24px;
+      height: 24px;
+      flex: 0 0 24px;
+      place-items: center;
+      border: 1px solid var(--color-border-accent-soft);
+      border-radius: 50%;
+      color: var(--color-brand-3);
+      transition: transform var(--duration-base) var(--ease-out);
+    }
+
+    .team-bio-details[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .team-bio-details__content {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(var(--space-6), 4vw, var(--space-32));
+      padding-top: var(--space-3);
+      color: var(--muted);
+      font-size: var(--font-size-caption);
+      line-height: 1.7;
+    }
+
+    .team-bio-details__content p {
+      margin: 0;
+    }
+
     #approche::before,
     #expertise::before,
     .partner::before,
@@ -1053,6 +1137,19 @@
     }
     @media (max-width: 640px) {
       .team-grid { grid-template-columns: 1fr; }
+      .team-card--featured,
+      .team-card--featured:has(.team-bio-details[open]) {
+        grid-column: auto;
+        grid-template-columns: 88px minmax(0, 1fr);
+      }
+      .team-card--featured .team-avatar {
+        width: 80px;
+        height: 80px;
+      }
+      .team-bio-details__content {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
       .team-heading { margin-bottom: var(--space-8); }
       .cta::after { display: none; }
       .partner-panel,
