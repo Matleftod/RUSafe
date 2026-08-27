@@ -888,17 +888,22 @@
     }
 
     .team-card__profile,
-    .team-card__profile > summary {
+    .team-card__profile > summary,
+    .team-card__summary {
       min-width: 0;
     }
 
-    .team-card__profile > summary {
+    .team-card__profile > summary,
+    .team-card__summary {
       display: grid;
       grid-template-columns: minmax(0, 44%) minmax(0, 56%);
       min-height: 178px;
       padding: 0;
-      cursor: pointer;
       list-style: none;
+    }
+
+    .team-card__profile > summary {
+      cursor: pointer;
     }
 
     .team-card__profile > summary::-webkit-details-marker {
@@ -916,8 +921,8 @@
       place-items: center;
       min-width: 0;
       padding: var(--space-6);
-      border-inline-end: 1px solid var(--line);
-      background: color-mix(in srgb, var(--color-brand-2) 20%, var(--color-page));
+      border-inline-end: 1px solid color-mix(in srgb, var(--color-brand-2) 55%, var(--color-brand-1));
+      background: var(--color-brand-1);
     }
 
     .team-card__portrait {
@@ -925,7 +930,7 @@
       width: min(100%, 132px);
       aspect-ratio: 1;
       place-items: center;
-      border: 1px solid color-mix(in srgb, var(--color-brand-2) 48%, transparent);
+      border: 2px solid color-mix(in srgb, var(--color-brand-2) 72%, var(--color-page));
       border-radius: 50%;
       overflow: hidden;
       background: color-mix(in srgb, var(--color-brand-2) 16%, var(--color-page));
@@ -998,6 +1003,19 @@
       font-size: 1.1rem;
       line-height: 1;
       transition: transform var(--duration-base) var(--ease-out);
+    }
+
+    .team-card__profile--unavailable .team-card__barcode {
+      opacity: .18;
+    }
+
+    .team-card__profile--unavailable .team-card__sheet-label {
+      color: var(--color-text-muted);
+      opacity: .58;
+    }
+
+    .team-card__profile--unavailable .team-card__sheet-label::after {
+      display: none;
     }
 
     .team-card__profile[open] .team-card__sheet-label::after {
@@ -1149,6 +1167,12 @@
       transform: none;
     }
 
+    .team-card:has(.team-card__profile--unavailable):hover {
+      transform: none;
+      border-color: var(--line);
+      box-shadow: var(--shadow);
+    }
+
     .cta::before {
       --organic-size: clamp(240px, 28vw, 360px);
       --organic-ratio: 1546 / 1593;
@@ -1179,7 +1203,8 @@
     }
     @media (max-width: 640px) {
       .team-grid { grid-template-columns: 1fr; }
-      .team-card__profile > summary {
+      .team-card__profile > summary,
+      .team-card__summary {
         grid-template-columns: minmax(0, 42%) minmax(0, 58%);
       }
       .team-card__profile[open] > summary {

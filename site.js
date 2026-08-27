@@ -70,8 +70,10 @@
       if (!avatar || !role || !heading || !bio) return;
 
       const name = heading.textContent.trim();
-      const details = document.createElement("details");
-      const summary = document.createElement("summary");
+      const bioText = bio.textContent.trim();
+      const hasBio = bioText !== "" && !/^Bio à compléter\.?$/i.test(bioText);
+      const profile = document.createElement(hasBio ? "details" : "div");
+      const surface = document.createElement(hasBio ? "summary" : "div");
       const portraitPanel = document.createElement("span");
       const portrait = document.createElement("span");
       const identity = document.createElement("span");
@@ -80,11 +82,15 @@
       const sheetLink = document.createElement("span");
       const barcode = document.createElement("span");
       const sheetLabel = document.createElement("span");
-      const expanded = document.createElement("div");
-      const expandedTitle = document.createElement("p");
 
-      details.className = "team-card__profile";
-      summary.setAttribute("aria-label", `Afficher la fiche synthèse de ${name}`);
+      profile.className = "team-card__profile";
+      surface.className = "team-card__summary";
+      if (hasBio) {
+        surface.setAttribute("aria-label", `Afficher la fiche synthèse de ${name}`);
+      } else {
+        profile.classList.add("team-card__profile--unavailable");
+        surface.setAttribute("aria-disabled", "true");
+      }
       portraitPanel.className = "team-card__portrait-panel";
       portrait.className = "team-card__portrait";
       portrait.setAttribute("role", "img");
@@ -97,33 +103,43 @@
       barcode.setAttribute("aria-hidden", "true");
       barcode.style.backgroundPosition = `${(index * 7) % 19}px 0, ${(index * 11) % 23}px 0`;
       sheetLabel.className = "team-card__sheet-label";
-      expanded.className = "team-card__expanded";
-      expandedTitle.className = "team-card__expanded-title";
 
       while (avatar.firstChild) portrait.append(avatar.firstChild);
       nameLabel.textContent = name;
       roleLabel.textContent = role.textContent.trim();
       sheetLabel.textContent = "Fiche synthèse";
-      expandedTitle.textContent = `Fiche synthèse — ${name}`;
 
       portraitPanel.append(portrait);
       sheetLink.append(barcode, sheetLabel);
       identity.append(nameLabel, roleLabel, sheetLink);
-      summary.append(portraitPanel, identity);
-      expanded.append(expandedTitle, bio);
-      details.append(summary, expanded);
+      surface.append(portraitPanel, identity);
+      profile.append(surface);
+
+      if (hasBio) {
+        const expanded = document.createElement("div");
+        const expandedTitle = document.createElement("p");
+        expanded.className = "team-card__expanded";
+        expandedTitle.className = "team-card__expanded-title";
+        expandedTitle.textContent = `Fiche synthèse — ${name}`;
+        expanded.append(expandedTitle, bio);
+        profile.append(expanded);
+      } else {
+        bio.remove();
+      }
 
       avatar.remove();
       role.remove();
       heading.remove();
-      card.append(details);
+      card.append(profile);
 
-      details.addEventListener("toggle", () => {
-        summary.setAttribute("aria-label", `${details.open ? "Fermer" : "Afficher"} la fiche synthèse de ${name}`);
-        if (!details.open) return;
+      if (!hasBio) return;
 
-        card.closest(".team-grid")?.querySelectorAll(".team-card__profile[open]").forEach((profile) => {
-          if (profile !== details) profile.open = false;
+      profile.addEventListener("toggle", () => {
+        surface.setAttribute("aria-label", `${profile.open ? "Fermer" : "Afficher"} la fiche synthèse de ${name}`);
+        if (!profile.open) return;
+
+        card.closest(".team-grid")?.querySelectorAll(".team-card__profile[open]").forEach((otherProfile) => {
+          if (otherProfile !== profile) otherProfile.open = false;
         });
       });
     });
