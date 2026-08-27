@@ -2355,6 +2355,36 @@
   background: var(--color-page-soft);
 }
 
+.page-contact .page-hero {
+  min-height: 0;
+  align-content: start;
+  align-items: start;
+  gap: clamp(72px, 8vw, 112px);
+  padding-bottom: clamp(72px, 8vw, 120px);
+}
+
+.page-contact .page-hero::before {
+  top: clamp(-240px, -16vw, -140px);
+}
+
+.page-contact .page-hero__decor {
+  position: absolute;
+  z-index: 0;
+  top: clamp(440px, 40vw, 580px);
+  right: clamp(40px, 8vw, 120px);
+  width: min(72vw, 720px);
+  aspect-ratio: 1028 / 1000;
+  background: url("assets/background/Vector4.svg") center / contain no-repeat;
+  opacity: .2;
+  transform: rotate(18deg);
+  pointer-events: none;
+}
+
+.page-contact .contact-layout {
+  position: relative;
+  z-index: 1;
+}
+
 .page-contact .needs-list {
   padding: 0;
   background: transparent;
