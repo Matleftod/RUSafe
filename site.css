@@ -917,7 +917,7 @@
       min-width: 0;
       padding: var(--space-6);
       border-inline-end: 1px solid var(--line);
-      background: var(--color-accent-soft);
+      background: color-mix(in srgb, var(--color-brand-2) 20%, var(--color-page));
     }
 
     .team-card__portrait {
@@ -925,10 +925,10 @@
       width: min(100%, 132px);
       aspect-ratio: 1;
       place-items: center;
-      border: 1px solid var(--color-border-accent-soft);
+      border: 1px solid color-mix(in srgb, var(--color-brand-2) 48%, transparent);
       border-radius: 50%;
       overflow: hidden;
-      background: var(--color-page-home);
+      background: color-mix(in srgb, var(--color-brand-2) 16%, var(--color-page));
       color: var(--blue);
       font-size: clamp(1.5rem, 3vw, 2.15rem);
       font-weight: var(--font-weight-bold);
