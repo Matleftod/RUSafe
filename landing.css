@@ -436,6 +436,88 @@
   transform-origin: center center;
 }
 
+.gate-video-state {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 6px;
+  padding: 8px;
+  background: rgba(8, 15, 28, 0.9);
+  color: var(--color-page);
+  text-align: center;
+}
+
+.gate-video-state[hidden],
+.gate-video-retry[hidden],
+.gate-video-state__spinner[hidden] {
+  display: none;
+}
+
+.gate-video-state p {
+  max-width: 34ch;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.gate-video-state__spinner {
+  width: 28px;
+  height: 28px;
+  border: 2px solid rgba(244, 255, 253, 0.28);
+  border-top-color: var(--color-brand-2);
+  border-radius: 50%;
+  animation: gate-video-spin 800ms linear infinite;
+}
+
+.gate-video-retry {
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid rgba(244, 255, 253, 0.5);
+  border-radius: var(--radius-pill);
+  background: var(--color-page);
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: var(--font-weight-semibold);
+}
+
+.gate-video-retry:focus-visible {
+  outline: 3px solid var(--color-brand-2);
+  outline-offset: 3px;
+}
+
+.gate-playback-meta {
+  grid-column: 1 / -1;
+  width: min(100%, var(--gate-description-width));
+  margin: -8px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.gate-playback-meta p {
+  margin: 0;
+}
+
+.gate-playback-progress {
+  flex: 0 0 auto;
+  min-width: 42px;
+  color: var(--color-brand-1);
+  font-weight: var(--font-weight-semibold);
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes gate-video-spin {
+  to { transform: rotate(360deg); }
+}
+
 .gate-access-wrap {
   grid-column: 1 / -1;
   justify-self: center;
@@ -603,6 +685,10 @@
   .gate-card[data-active-tab="diag62030"] .gate-media-row {
     grid-column: 1;
   }
+
+  .gate-playback-meta {
+    grid-column: 1;
+  }
 }
 
 @media (max-width: 720px) {
@@ -652,6 +738,12 @@
   .gate-access-wrap {
     width: min(100%, 280px);
   }
+
+  .gate-playback-meta {
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12px;
+  }
 }
 
 /* Motion accessibility */
@@ -671,5 +763,9 @@
   .landing-glow {
     transition: none !important;
     animation: none !important;
+  }
+
+  .gate-video-state__spinner {
+    animation-duration: 1.6s !important;
   }
 }

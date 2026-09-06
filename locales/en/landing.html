@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>R'U SAFE | Landing</title>
+  <title>R'U SAFE | Home</title>
   <link rel="icon" href="assets/favicon.png" type="image/png" />
   <link rel="stylesheet" href="design-system.css" />
   <link rel="stylesheet" href="landing.css" />
 </head>
 <body class="landing-page">
-  <main class="landing-shell" aria-label="Présentation R'U SAFE">
+  <main class="landing-shell" aria-label="R'U SAFE introduction">
     <div class="landing-viewport">
       <div class="landing-glow" aria-hidden="true"></div>
 
@@ -29,15 +29,15 @@
             />
 
             <div class="landing-copy">
-              <h1 id="landing-title">Bienvenue sur R’U SAFE</h1>
+              <h1 id="landing-title">Welcome to R’U SAFE</h1>
               <p class="landing-slogan" data-slogan aria-live="polite">
-                Grand angle sur <span class="accent">vos risques.</span>
+                A wider view of <span class="accent">your risks.</span>
               </p>
             </div>
 
             <div class="landing-actions">
               <button class="pill-button pill-button--gradient landing-cta" type="button" data-open-gate>
-                <span>Découvrir nos activités</span>
+                <span>Explore our services</span>
               </button>
             </div>
           </div>
@@ -46,7 +46,7 @@
         <section class="stage-panel stage-panel--gate" data-stage="gate" aria-labelledby="gate-title" aria-hidden="true">
           <div class="panel-frame panel-frame--gate">
             <div class="gate-topbar">
-              <button class="back-link" type="button" aria-label="Revenir à la landing" data-back-to-landing>
+              <button class="back-link" type="button" aria-label="Return to the home screen" data-back-to-landing>
                 <span></span>
               </button>
 
@@ -64,9 +64,9 @@
             </div>
 
             <section class="gate-card" aria-labelledby="gate-title">
-              <h2 class="sr-only" id="gate-title">Choix des activités</h2>
+              <h2 class="sr-only" id="gate-title">Choose a service</h2>
 
-              <div class="gate-tabs" role="tablist" aria-label="Activités">
+              <div class="gate-tabs" role="tablist" aria-label="Services">
                 <button class="gate-tab is-active" id="gate-tab-dora" type="button" role="tab" aria-controls="gate-activity-panel" aria-selected="true" tabindex="0" data-gate-tab="dora">DORA</button>
                 <button class="gate-tab" id="gate-tab-ausecaf" type="button" role="tab" aria-controls="gate-activity-panel" aria-selected="false" tabindex="-1" data-gate-tab="ausecaf">AUSECAF</button>
                 <button class="gate-tab" id="gate-tab-secedi" type="button" role="tab" aria-controls="gate-activity-panel" aria-selected="false" tabindex="-1" data-gate-tab="secedi">SECEDI</button>
@@ -75,7 +75,7 @@
 
               <div class="gate-body" id="gate-activity-panel" role="tabpanel" aria-labelledby="gate-tab-dora">
                 <p class="gate-description" data-gate-description>
-                  Passez de la conformité « papier » à la résilience opérationnelle.
+                  Move from paper-based compliance to operational resilience.
                 </p>
 
                 <div class="gate-media-row">
@@ -95,14 +95,14 @@
                               playsinline
                             >
                               <p>
-                                Votre navigateur ne peut pas lire cette vidéo.
-                                Utilisez un navigateur compatible HTML5.
+                                Your browser cannot play this video.
+                                Please use an HTML5-compatible browser.
                               </p>
                             </video>
                             <div class="gate-video-state" data-gate-video-state hidden>
                               <span class="gate-video-state__spinner" data-gate-video-spinner aria-hidden="true"></span>
                               <p data-gate-video-message aria-live="polite"></p>
-                              <button class="gate-video-retry" type="button" data-gate-video-retry hidden>Réessayer</button>
+                              <button class="gate-video-retry" type="button" data-gate-video-retry hidden>Try again</button>
                             </div>
                           </div>
 
@@ -135,14 +135,14 @@
                               playsinline
                             >
                               <p>
-                                Votre navigateur ne peut pas lire cette vidéo.
-                                Utilisez un navigateur compatible HTML5.
+                                Your browser cannot play this video.
+                                Please use an HTML5-compatible browser.
                               </p>
                             </video>
                             <div class="gate-video-state" data-gate-video-state hidden>
                               <span class="gate-video-state__spinner" data-gate-video-spinner aria-hidden="true"></span>
                               <p data-gate-video-message aria-live="polite"></p>
-                              <button class="gate-video-retry" type="button" data-gate-video-retry hidden>Réessayer</button>
+                              <button class="gate-video-retry" type="button" data-gate-video-retry hidden>Try again</button>
                             </div>
                           </div>
 
@@ -163,11 +163,11 @@
                 </div>
 
                 <div class="gate-playback-meta">
-                  <p data-gate-playback-help>Lecture complète requise — l’avance rapide est désactivée.</p>
+                  <p data-gate-playback-help>Watch in full to continue — fast-forwarding is disabled.</p>
                   <span
                     class="gate-playback-progress"
                     role="progressbar"
-                    aria-label="Progression de la vidéo"
+                    aria-label="Video progress"
                     aria-valuemin="0"
                     aria-valuemax="100"
                     aria-valuenow="0"
@@ -183,11 +183,11 @@
                     aria-describedby="gate-access-help"
                     data-gate-access
                   >
-                    <span>Accéder au site</span>
+                    <span>Enter the site</span>
                     <span class="button-arrow" aria-hidden="true"></span>
                   </a>
                   <span class="gate-access-tooltip" id="gate-access-help" role="tooltip">
-                    Regardez l’une des 4 vidéos ci-dessus jusqu’au bout pour accéder au site.
+                    Watch one of the four videos above to the end to enter the site.
                   </span>
                   <span class="sr-only" role="status" aria-live="polite" data-gate-access-status></span>
                 </div>
@@ -197,7 +197,7 @@
         </section>
       </div>
 
-      <p class="page-footer">Mentions - Confidentialité - Contact</p>
+      <p class="page-footer">Legal notice - Privacy - Contact</p>
     </div>
   </main>
 
