@@ -23,6 +23,10 @@ Le contenu de `dist/` servira de base au déploiement GitHub Pages lors de l’�
 
 Le build par défaut est volontairement une pré-production : il désactive l’envoi réel du formulaire, applique `noindex, nofollow` et bloque les robots dans `robots.txt`. Ce comportement est explicite dans l’interface de contact ; aucune demande n’est simulée.
 
+## Publication GitHub Pages
+
+Le workflow `.github/workflows/deploy-pages.yml` construit et publie automatiquement `dist/` à chaque push sur la branche `pre-prod`. Dans GitHub, ouvrez **Settings → Pages**, sélectionnez **GitHub Actions** comme source, puis poussez la branche `pre-prod`. La publication se consulte ensuite dans l’onglet **Actions** ; elle prend habituellement quelques minutes.
+
 ## Formulaire de contact et IONOS
 
 Le formulaire utilise `api/contact.php` uniquement en production. L’endpoint valide les données côté serveur, limite les tentatives par IP, utilise un champ leurre anti-robots et envoie via SMTP avec une adresse du domaine du client comme expéditeur. L’adresse du visiteur n’est utilisée que dans `Reply-To`.
