@@ -153,7 +153,8 @@ function createSeoTags(pageFile, locale) {
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="${title}">
   <meta name="twitter:description" content="${description}">` : "";
-  return `  <meta name="robots" content="${robots}">
+  return `  <meta name="description" content="${description}">
+  <meta name="robots" content="${robots}">
 ${alternateLinks}
   <link rel="alternate" hreflang="x-default" href="${xDefault}">${socialTags}`;
 }

@@ -124,8 +124,6 @@ function initLandingPage() {
   const gateAccess = document.querySelector("[data-gate-access]");
   const gateAccessWrap = document.querySelector("[data-gate-access-wrap]");
   const gateAccessStatus = document.querySelector("[data-gate-access-status]");
-  const gatePlaybackHelp = document.querySelector("[data-gate-playback-help]");
-  const gatePlaybackProgress = document.querySelector("[data-gate-playback-progress]");
   const stackedGateMediaQuery = window.matchMedia("(max-width: 960px)");
   const mockupHeightFactor = Math.max(
     ...Object.values(MOCKUP_CONFIG).map((config) => config.nativeHeight / config.screenHeight)
@@ -190,7 +188,6 @@ function initLandingPage() {
         : (isEnglish ? "Watch a video to the end to enter the site." : "Regardez une vidéo jusqu’au bout pour accéder au site.");
     }
 
-    updateGatePlaybackMeta();
   }
 
   function unlockGateAccess() {
@@ -215,27 +212,6 @@ function initLandingPage() {
 
   function getLayerForVideo(video) {
     return gateMediaLayers.find((layer) => layer.video === video);
-  }
-
-  function updateGatePlaybackMeta(key = gateActiveKey) {
-    if (!gatePlaybackHelp || !gatePlaybackProgress) {
-      return;
-    }
-
-    const progress = key ? getVideoProgress(key) : { furthestTime: 0, duration: 0 };
-    const ratio = progress.duration > 0 ? progress.furthestTime / progress.duration : 0;
-    const percentage = gateUnlocked ? 100 : Math.min(99, Math.max(0, Math.floor(ratio * 100)));
-
-    if (gateUnlocked) {
-      gatePlaybackHelp.textContent = isEnglish ? "Video complete — site access is unlocked." : "Vidéo terminée — l’accès au site est déverrouillé.";
-    } else if (progress.furthestTime > 0) {
-      gatePlaybackHelp.textContent = isEnglish ? "Viewing in progress — fast-forwarding is disabled." : "Visionnage en cours — l’avance rapide est désactivée.";
-    } else {
-      gatePlaybackHelp.textContent = isEnglish ? "Watch in full to continue — fast-forwarding is disabled." : "Lecture complète requise — l’avance rapide est désactivée.";
-    }
-
-    gatePlaybackProgress.textContent = `${percentage} %`;
-    gatePlaybackProgress.setAttribute("aria-valuenow", String(percentage));
   }
 
   function setVideoUiState(video, state, message = "") {
@@ -320,7 +296,6 @@ function initLandingPage() {
     }
 
     if (playbackState.key === gateActiveKey) {
-      updateGatePlaybackMeta(playbackState.key);
     }
   }
 
@@ -366,7 +341,6 @@ function initLandingPage() {
         video.currentTime = resumeAt;
       }
 
-      updateGatePlaybackMeta(playbackState.key);
     });
 
     video.addEventListener("canplay", () => {
@@ -752,7 +726,6 @@ function initLandingPage() {
         gateActiveKey = key;
         layer.key = key;
         gateAccess.classList.remove("is-swapping");
-        updateGatePlaybackMeta(key);
       });
     });
   }
@@ -821,7 +794,6 @@ function initLandingPage() {
     gateDescription.textContent = gateContent[initialKey].description;
     updateGateTabs(initialKey);
     gateActiveKey = initialKey;
-    updateGatePlaybackMeta(initialKey);
   }
 
   openGateButton?.addEventListener("click", () => setStage("gate", { moveFocus: true }));
