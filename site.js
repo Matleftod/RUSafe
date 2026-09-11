@@ -6,6 +6,17 @@
   const scrollSentinel = document.getElementById("scrollSentinel");
   const desktopMedia = window.matchMedia("(min-width: 901px)");
   const isEnglish = document.documentElement.lang === "en";
+  const teamDisplayNames = new Map([
+    ["Azad", "Azad H."], ["Gilles", "Gilles C."], ["Karim", "Karim A."], ["Mauro", "Mauro I."],
+    ["Michael", "Michael L."], ["Parham", "Parham M."], ["Aleksander", "Aleksander B."],
+    ["Anas", "Anas M."], ["Arnaud", "Arnaud G."], ["Aurélien", "Aurélien R."], ["Céline", "Céline P."],
+    ["Corinne", "Corinne P."], ["Edmond", "Edmond S."], ["Eric C.", "Eric C."], ["Eric G.", "Eric G."],
+    ["Eric No.", "Eric N."], ["Fella", "Fella B."], ["François", "François B."], ["Gilles Bo.", "Gilles B."],
+    ["Kevin A.", "Kevin A."], ["Kevin Ri.", "Kevin R."], ["Luis", "Luis C."], ["Mehdi", "Mehdi B."],
+    ["Mickael", "Mickael B."], ["Nicolas", "Nicolas L."], ["Pénélope", "Pénélope M."],
+    ["Pascal R.", "Pascal R."], ["Prasanthi", "Prasanthi J."], ["Samy", "Samy B."], ["Serge", "Serge C."],
+    ["Venkata", "Venkata C."], ["Zied", "Zied B."], ["Clément R.", "Clément R."], ["Clément R", "Clément R."],
+  ]);
 
   function setMenuState(isOpen, returnFocus = false) {
     navLinks?.classList.toggle("open", isOpen);
@@ -72,7 +83,8 @@
       const bio = card.querySelector(".team-card__bio");
       if (!avatar || !role || !heading || !bio) return;
 
-      const name = heading.textContent.trim();
+      const name = teamDisplayNames.get(heading.textContent.trim()) || heading.textContent.trim();
+      heading.textContent = name;
       const hasBio = bio.querySelector("p") !== null;
       const profile = document.createElement(hasBio ? "details" : "div");
       const surface = document.createElement(hasBio ? "summary" : "div");
@@ -144,6 +156,13 @@
 
         card.closest(".team-grid")?.querySelectorAll(".team-card__profile[open]").forEach((otherProfile) => {
           if (otherProfile !== profile) otherProfile.open = false;
+        });
+
+        window.requestAnimationFrame(() => {
+          card.scrollIntoView({
+            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+            block: "start",
+          });
         });
       });
     });
