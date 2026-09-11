@@ -73,8 +73,7 @@
       if (!avatar || !role || !heading || !bio) return;
 
       const name = heading.textContent.trim();
-      const bioText = bio.textContent.trim();
-      const hasBio = bioText !== "" && !/^(?:Bio à compléter|Bio to be completed)\.?$/i.test(bioText);
+      const hasBio = bio.querySelector("p") !== null;
       const profile = document.createElement(hasBio ? "details" : "div");
       const surface = document.createElement(hasBio ? "summary" : "div");
       const portraitPanel = document.createElement("span");
