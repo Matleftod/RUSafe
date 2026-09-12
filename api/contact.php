@@ -21,8 +21,20 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     respond(405, false, 'Method not allowed.');
 }
 
-$configPath = getenv('RUSAFE_SMTP_CONFIG') ?: '';
-if ($configPath === '' || !is_file($configPath)) {
+$documentRoot = realpath($_SERVER['DOCUMENT_ROOT'] ?? '') ?: '';
+$configCandidates = array_filter([
+    getenv('RUSAFE_SMTP_CONFIG') ?: '',
+    $documentRoot !== '' ? dirname($documentRoot) . DIRECTORY_SEPARATOR . 'private-config' . DIRECTORY_SEPARATOR . 'rusafe-smtp.php' : '',
+    dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'private-config' . DIRECTORY_SEPARATOR . 'rusafe-smtp.php'
+]);
+$configPath = '';
+foreach ($configCandidates as $candidate) {
+    if (is_file($candidate)) {
+        $configPath = $candidate;
+        break;
+    }
+}
+if ($configPath === '') {
     error_log('R’U SAFE contact form: SMTP configuration is unavailable.');
     respond(503, false, 'Service temporarily unavailable.');
 }

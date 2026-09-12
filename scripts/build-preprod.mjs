@@ -52,7 +52,7 @@ const sharedFiles = [
   "assets/avatars/mauro.webp", "assets/avatars/mickael.webp", "assets/avatars/parham.webp",
   "assets/avatars/anas.webp", "assets/avatars/azad.webp", "assets/avatars/celine.webp", "assets/avatars/clement-r.webp", "assets/avatars/edmond.webp",
   "assets/avatars/eric-g.webp", "assets/avatars/francois.webp", "assets/avatars/mehdi.webp", "assets/avatars/pascal.webp",
-  "assets/avatars/penelope.webp", "assets/avatars/prasanthi.webp", "assets/avatars/samy.webp", "assets/avatars/venkata.webp",
+  "assets/avatars/penelope.webp", "assets/avatars/prasanthi.webp", "assets/avatars/samy.webp", "assets/avatars/serge.webp", "assets/avatars/venkata.webp",
   "assets/background/Vector1.svg", "assets/background/Vector2.svg", "assets/background/Vector3.svg", "assets/background/Vector4.svg",
   "assets/mockups/handphoneLeft.webp", "assets/mockups/handphoneright.webp",
   "assets/mockups/laptop.webp", "assets/mockups/moniteur.webp"
@@ -267,6 +267,21 @@ async function build() {
     await mkdir(dirname(destination), { recursive: true });
     await cp(source, destination);
     totalBytes += file.size;
+  }
+
+  if (isIndexableBuild) {
+    const runtimeFiles = ["api/contact.php", "server/ionos/.htaccess"];
+
+    for (const relativePath of runtimeFiles) {
+      const source = resolveInsideProject(relativePath);
+      const destination = relativePath === "server/ionos/.htaccess"
+        ? join(outputDirectory, ".htaccess")
+        : join(outputDirectory, relativePath);
+      const file = await stat(source);
+      await mkdir(dirname(destination), { recursive: true });
+      await cp(source, destination);
+      totalBytes += file.size;
+    }
   }
 
   for (const locale of Object.keys(locales)) {

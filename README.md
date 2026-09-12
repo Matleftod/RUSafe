@@ -31,16 +31,15 @@ Le workflow `.github/workflows/deploy-pages.yml` construit et publie automatique
 
 Le formulaire utilise `api/contact.php` uniquement en production. L’endpoint valide les données côté serveur, limite les tentatives par IP, utilise un champ leurre anti-robots et envoie via SMTP avec une adresse du domaine du client comme expéditeur. L’adresse du visiteur n’est utilisée que dans `Reply-To`.
 
-1. Copiez `config/smtp.config.example.php` dans un emplacement **hors de la racine web** IONOS et renseignez les identifiants SMTP fournis par IONOS.
-2. Définissez la variable PHP `RUSAFE_SMTP_CONFIG` avec le chemin absolu de ce fichier. Si l’offre IONOS ne permet pas de variable d’environnement PHP, demandez à IONOS le chemin recommandé pour un fichier de configuration hors webroot ; ne placez pas d’identifiants dans `dist/` ni dans Git.
-3. Copiez `api/contact.php` à la racine publiée, à côté du dossier `fr/` et de `en/`.
-4. Produisez le paquet indexable pour le domaine final, sans changer de code :
+1. Créez une boîte e-mail IONOS dédiée à l’envoi, par exemple `contact@rusafe.fr`, puis copiez `config/smtp.config.example.php` **hors de la racine web** sous le nom `private-config/rusafe-smtp.php`. Avec l’arborescence IONOS habituelle, ce dossier est placé à côté de `web/`, jamais dedans. Utilisez `smtp.ionos.fr`, le port `465` en SSL/TLS, l’adresse complète de cette boîte comme identifiant et comme expéditeur, puis son mot de passe IONOS.
+2. Le script PHP cherche automatiquement ce fichier dans le dossier frère du répertoire web IONOS, y compris lorsque le site est installé dans un sous-dossier de pré-production. Une variable PHP `RUSAFE_SMTP_CONFIG` peut aussi fournir un chemin absolu si l’arborescence IONOS diffère. Ne placez jamais d’identifiants dans `dist/` ni dans Git.
+3. Produisez le paquet indexable pour le domaine final, sans changer de code :
 
 ```bash
 SITE_INDEXABLE=true PUBLIC_SITE_URL=https://rusafe.fr CONTACT_MODE=live node scripts/build-preprod.mjs
 ```
 
-`PUBLIC_SITE_URL` doit être remplacée si le domaine final diffère. Ce build génère les canonical, Open Graph, `sitemap.xml` et un `robots.txt` indexable. Il ne contient aucun secret. Les mentions légales et la politique de confidentialité comportent les informations restant à compléter par le client avant publication.
+`PUBLIC_SITE_URL` doit être remplacée si le domaine final diffère. Ce build génère les canonical, Open Graph, `sitemap.xml`, un `robots.txt` indexable, `api/contact.php` et une configuration Apache minimale. Il ne contient aucun secret. Téléversez ensuite le contenu de `dist/` dans le répertoire web IONOS ; ne téléversez pas `private-config/rusafe-smtp.php` dans ce répertoire. Les mentions légales et la politique de confidentialité comportent les informations restant à compléter par le client avant publication.
 
 ## Architecture FR/EN
 
