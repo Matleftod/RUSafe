@@ -10,3 +10,4 @@ assets/videos/*.mp4
 
 # Server-side SMTP credentials: kept outside the public web root on IONOS.
 config/smtp.config.php
+config/rusafe-smtp.php
