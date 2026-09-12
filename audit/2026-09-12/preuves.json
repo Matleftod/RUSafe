@@ -1,0 +1,3711 @@
+{
+  "date": "2026-09-12",
+  "commit": "9ac21f3",
+  "scope": "Local production build; read-only unauthenticated IONOS checks; no real SMTP email sent.",
+  "browser": [
+    {
+      "locale": "fr",
+      "name": "landing",
+      "violations": [
+        {
+          "id": "region",
+          "impact": "moderate",
+          "nodes": [
+            {
+              "target": [
+                ".language-switcher"
+              ],
+              "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            }
+          ],
+          "count": 1
+        }
+      ],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 18.30000001192093
+          },
+          {
+            "url": "http://127.0.0.1:8765/landing.css",
+            "bytes": 16969,
+            "duration": 22.799999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 39.8999999910593
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 41
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-245.webp",
+            "bytes": 17806,
+            "duration": 21.200000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-160.webp",
+            "bytes": 11462,
+            "duration": 24.299999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/script.js",
+            "bytes": 34698,
+            "duration": 34.099999994039536
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 69.29999999701977
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 70.3999999910593
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 70
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 70.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 2.1000000089406967
+          }
+        ],
+        "lang": "fr",
+        "canonical": "https://rusafe.fr/fr/landing.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "fr",
+      "name": "accueil",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": [
+            {
+              "target": [
+                ".split-copy:nth-child(1) > .eyebrow"
+              ],
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.62 (foreground color: #0c6199, background color: #101a31, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "count": 1
+        }
+      ],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 6.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.css",
+            "bytes": 66176,
+            "duration": 5.9000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-80.webp",
+            "bytes": 4800,
+            "duration": 14.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 22.30000001192093
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 22.299999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.js",
+            "bytes": 10238,
+            "duration": 6.5999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-245.webp",
+            "bytes": 17806,
+            "duration": 6.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector1.svg",
+            "bytes": 1217,
+            "duration": 3.7999999970197678
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 98.09999999403954
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector4.svg",
+            "bytes": 1226,
+            "duration": 1.8999999910593033
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 96.59999999403954
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 95.70000000298023
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 95
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 2.9000000059604645
+          }
+        ],
+        "lang": "fr",
+        "canonical": "https://rusafe.fr/fr/accueil.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "fr",
+      "name": "approche",
+      "violations": [],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 3.199999988079071
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.css",
+            "bytes": 66176,
+            "duration": 7.4000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-80.webp",
+            "bytes": 4800,
+            "duration": 10.900000005960464
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 11.300000011920929
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 13.300000011920929
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.js",
+            "bytes": 10238,
+            "duration": 7.799999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-245.webp",
+            "bytes": 0,
+            "duration": 0.3999999910593033
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector1.svg",
+            "bytes": 1217,
+            "duration": 7.299999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector4.svg",
+            "bytes": 1226,
+            "duration": 7.799999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 12.399999991059303
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 11.200000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 11.600000008940697
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 14.199999988079071
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 3.7000000029802322
+          }
+        ],
+        "lang": "fr",
+        "canonical": "https://rusafe.fr/fr/approche.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "fr",
+      "name": "expertise",
+      "violations": [],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 3.699999988079071
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.css",
+            "bytes": 66176,
+            "duration": 4.800000011920929
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-80.webp",
+            "bytes": 4800,
+            "duration": 6.9000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 7.800000011920929
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 7.800000011920929
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.js",
+            "bytes": 10238,
+            "duration": 5.799999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector1.svg",
+            "bytes": 1217,
+            "duration": 4.200000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector4.svg",
+            "bytes": 1226,
+            "duration": 5.4000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 11.199999988079071
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 11.200000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector2.svg",
+            "bytes": 1210,
+            "duration": 7.899999991059303
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 10.800000011920929
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 11.700000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 1.300000011920929
+          }
+        ],
+        "lang": "fr",
+        "canonical": "https://rusafe.fr/fr/expertise.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "fr",
+      "name": "solutions",
+      "violations": [],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 2.9000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.css",
+            "bytes": 66176,
+            "duration": 3.7999999970197678
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.js",
+            "bytes": 10238,
+            "duration": 4.800000011920929
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-80.webp",
+            "bytes": 4800,
+            "duration": 5.600000008940697
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 5.9000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 5.9000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector1.svg",
+            "bytes": 1217,
+            "duration": 3.7999999970197678
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector4.svg",
+            "bytes": 1226,
+            "duration": 5.9000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector2.svg",
+            "bytes": 1210,
+            "duration": 6.899999991059303
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 11.100000008940697
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 11.199999988079071
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 12.100000008940697
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 13.599999994039536
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 1.7999999970197678
+          }
+        ],
+        "lang": "fr",
+        "canonical": "https://rusafe.fr/fr/solutions.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "fr",
+      "name": "partenaires",
+      "violations": [],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 1.9000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.css",
+            "bytes": 66176,
+            "duration": 3
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-80.webp",
+            "bytes": 4800,
+            "duration": 6.199999988079071
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.js",
+            "bytes": 10238,
+            "duration": 3.2999999970197678
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 7.700000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 8.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector1.svg",
+            "bytes": 1217,
+            "duration": 5.199999988079071
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector4.svg",
+            "bytes": 1226,
+            "duration": 5.5999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 7.899999991059303
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 9.299999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 9.700000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 9.900000005960464
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 2.699999988079071
+          }
+        ],
+        "lang": "fr",
+        "canonical": "https://rusafe.fr/fr/partenaires.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "fr",
+      "name": "formation",
+      "violations": [],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 2.7000000029802322
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.css",
+            "bytes": 66176,
+            "duration": 3.8999999910593033
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.js",
+            "bytes": 10238,
+            "duration": 4.600000008940697
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-80.webp",
+            "bytes": 4800,
+            "duration": 7.100000008940697
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 7.4000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 8
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector1.svg",
+            "bytes": 1217,
+            "duration": 4.299999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector4.svg",
+            "bytes": 1226,
+            "duration": 4.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector2.svg",
+            "bytes": 1210,
+            "duration": 8.299999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 10.900000005960464
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 11.399999991059303
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 12.200000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 12.199999988079071
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 2.699999988079071
+          }
+        ],
+        "lang": "fr",
+        "canonical": "https://rusafe.fr/fr/formation.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "fr",
+      "name": "references",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": [
+            {
+              "target": [
+                "section[aria-labelledby=\"reference-difference-title\"] > .split-grid.container > .split-copy:nth-child(1) > .eyebrow"
+              ],
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.62 (foreground color: #0c6199, background color: #101a31, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".split-copy:nth-child(2) > .eyebrow"
+              ],
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.62 (foreground color: #0c6199, background color: #101a31, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "count": 2
+        }
+      ],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 5.800000011920929
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.css",
+            "bytes": 66176,
+            "duration": 11.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-80.webp",
+            "bytes": 4800,
+            "duration": 20.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 27
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 31.299999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.js",
+            "bytes": 10238,
+            "duration": 12.599999994039536
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector1.svg",
+            "bytes": 1217,
+            "duration": 25.399999991059303
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector4.svg",
+            "bytes": 1226,
+            "duration": 26.69999998807907
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 31
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 34.599999994039536
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 34.70000000298023
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 37
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 1.7999999970197678
+          }
+        ],
+        "lang": "fr",
+        "canonical": "https://rusafe.fr/fr/references.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "fr",
+      "name": "contact",
+      "violations": [],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 4.699999988079071
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.css",
+            "bytes": 66176,
+            "duration": 6.799999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-80.webp",
+            "bytes": 4800,
+            "duration": 8.400000005960464
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 8.700000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 8.700000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.js",
+            "bytes": 10238,
+            "duration": 7.299999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector1.svg",
+            "bytes": 1217,
+            "duration": 3.2999999970197678
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector4.svg",
+            "bytes": 1226,
+            "duration": 4.200000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 19.900000005960464
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 20.599999994039536
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 17.299999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 17.900000005960464
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 2.8999999910593033
+          }
+        ],
+        "lang": "fr",
+        "canonical": "https://rusafe.fr/fr/contact.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "fr",
+      "name": "mentions-legales",
+      "violations": [],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 2.8999999910593033
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.css",
+            "bytes": 66176,
+            "duration": 4.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-80.webp",
+            "bytes": 4800,
+            "duration": 6.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 7.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 7.200000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.js",
+            "bytes": 10238,
+            "duration": 5.0999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector1.svg",
+            "bytes": 1217,
+            "duration": 6.399999991059303
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector4.svg",
+            "bytes": 1226,
+            "duration": 6.9000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 7.800000011920929
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 9.599999994039536
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 10.200000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 10.299999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 1.7000000029802322
+          }
+        ],
+        "lang": "fr",
+        "canonical": "https://rusafe.fr/fr/mentions-legales.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "fr",
+      "name": "politique-confidentialite",
+      "violations": [
+        {
+          "id": "link-in-text-block",
+          "impact": "serious",
+          "nodes": [
+            {
+              "target": [
+                "p > a[href$=\"mentions-legales.html\"]"
+              ],
+              "summary": "Fix any of the following:\n  The link has insufficient color contrast of 2.84:1 with the surrounding text. (Minimum contrast is 3:1, link text: #0c6199, surrounding text: #0b1220)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+            }
+          ],
+          "count": 1
+        }
+      ],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 2.4000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.css",
+            "bytes": 66176,
+            "duration": 3.3999999910593033
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-80.webp",
+            "bytes": 4800,
+            "duration": 5.700000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 5.799999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.js",
+            "bytes": 10238,
+            "duration": 3.7999999970197678
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 6.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector1.svg",
+            "bytes": 1217,
+            "duration": 3.0999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector4.svg",
+            "bytes": 1226,
+            "duration": 4.299999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 8.199999988079071
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 8.800000011920929
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 8.900000005960464
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 9.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 1.7999999970197678
+          }
+        ],
+        "lang": "fr",
+        "canonical": "https://rusafe.fr/fr/politique-confidentialite.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "en",
+      "name": "landing",
+      "violations": [
+        {
+          "id": "region",
+          "impact": "moderate",
+          "nodes": [
+            {
+              "target": [
+                ".language-switcher"
+              ],
+              "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            }
+          ],
+          "count": 1
+        }
+      ],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 3.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/landing.css",
+            "bytes": 16969,
+            "duration": 5.100000008940697
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 10.399999991059303
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-245.webp",
+            "bytes": 17806,
+            "duration": 6.9000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-160.webp",
+            "bytes": 11462,
+            "duration": 8.099999994039536
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 10.700000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/script.js",
+            "bytes": 34698,
+            "duration": 10
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 37.79999999701977
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 39.1000000089407
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 40.099999994039536
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 40.900000005960464
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 1.5
+          }
+        ],
+        "lang": "en",
+        "canonical": "https://rusafe.fr/en/landing.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "en",
+      "name": "accueil",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": [
+            {
+              "target": [
+                ".split-copy:nth-child(1) > .eyebrow"
+              ],
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.62 (foreground color: #0c6199, background color: #101a31, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "count": 1
+        }
+      ],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 3.3999999910593033
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.css",
+            "bytes": 66176,
+            "duration": 2.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 5.700000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-80.webp",
+            "bytes": 4800,
+            "duration": 6.100000008940697
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 6.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.js",
+            "bytes": 10238,
+            "duration": 3.8999999910593033
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-245.webp",
+            "bytes": 0,
+            "duration": 0.8999999910593033
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-160.webp",
+            "bytes": 0,
+            "duration": 0.8999999910593033
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector1.svg",
+            "bytes": 1217,
+            "duration": 1.4000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 5.300000011920929
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector4.svg",
+            "bytes": 1226,
+            "duration": 1.2999999970197678
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 5.5999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 4.799999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 1.3999999910593033
+          }
+        ],
+        "lang": "en",
+        "canonical": "https://rusafe.fr/en/accueil.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "en",
+      "name": "approche",
+      "violations": [],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 2.6000000089406967
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.css",
+            "bytes": 66176,
+            "duration": 3.7999999970197678
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.js",
+            "bytes": 10238,
+            "duration": 4.899999991059303
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-80.webp",
+            "bytes": 4800,
+            "duration": 6.0999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 6.5999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 6.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector1.svg",
+            "bytes": 1217,
+            "duration": 4.700000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector4.svg",
+            "bytes": 1226,
+            "duration": 6.100000008940697
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 7.600000008940697
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 9.099999994039536
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 9.900000005960464
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 9.700000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 1.2000000029802322
+          }
+        ],
+        "lang": "en",
+        "canonical": "https://rusafe.fr/en/approche.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "en",
+      "name": "expertise",
+      "violations": [],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 2.0999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.css",
+            "bytes": 66176,
+            "duration": 3.1000000089406967
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-80.webp",
+            "bytes": 4800,
+            "duration": 5.200000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 5.299999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 6.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.js",
+            "bytes": 10238,
+            "duration": 3.699999988079071
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector1.svg",
+            "bytes": 1217,
+            "duration": 3
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector4.svg",
+            "bytes": 1226,
+            "duration": 3.5999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 6.0999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 6
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector2.svg",
+            "bytes": 1210,
+            "duration": 4.200000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 6.300000011920929
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 6.700000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 1.7000000029802322
+          }
+        ],
+        "lang": "en",
+        "canonical": "https://rusafe.fr/en/expertise.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "en",
+      "name": "solutions",
+      "violations": [],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 2.7000000029802322
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.css",
+            "bytes": 66176,
+            "duration": 3.800000011920929
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-80.webp",
+            "bytes": 4800,
+            "duration": 5.399999991059303
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.js",
+            "bytes": 10238,
+            "duration": 4
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 5.4000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 6.100000008940697
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector1.svg",
+            "bytes": 1217,
+            "duration": 2.8999999910593033
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector4.svg",
+            "bytes": 1226,
+            "duration": 3.7000000029802322
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector2.svg",
+            "bytes": 1210,
+            "duration": 4.200000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 5.799999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 6
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 6.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 6.9000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 1.5
+          }
+        ],
+        "lang": "en",
+        "canonical": "https://rusafe.fr/en/solutions.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "en",
+      "name": "partenaires",
+      "violations": [],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 2.1000000089406967
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.css",
+            "bytes": 66176,
+            "duration": 3.0999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.js",
+            "bytes": 10238,
+            "duration": 3.9000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-80.webp",
+            "bytes": 4800,
+            "duration": 5.4000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 5.4000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 6.4000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector1.svg",
+            "bytes": 1217,
+            "duration": 2.199999988079071
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector4.svg",
+            "bytes": 1226,
+            "duration": 2.5999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 4.4000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 5.200000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 5.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 1.2999999970197678
+          }
+        ],
+        "lang": "en",
+        "canonical": "https://rusafe.fr/en/partenaires.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "en",
+      "name": "formation",
+      "violations": [],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 2.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.css",
+            "bytes": 66176,
+            "duration": 2.9000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-80.webp",
+            "bytes": 4800,
+            "duration": 4.799999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 6.200000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.js",
+            "bytes": 10238,
+            "duration": 2.7999999970197678
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 6.799999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector1.svg",
+            "bytes": 1217,
+            "duration": 4
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector4.svg",
+            "bytes": 1226,
+            "duration": 4.300000011920929
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector2.svg",
+            "bytes": 1210,
+            "duration": 5.700000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 6.9000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 7.600000008940697
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 7
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 7.9000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 1.800000011920929
+          }
+        ],
+        "lang": "en",
+        "canonical": "https://rusafe.fr/en/formation.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "en",
+      "name": "references",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": [
+            {
+              "target": [
+                "section[aria-labelledby=\"reference-difference-title\"] > .split-grid.container > .split-copy:nth-child(1) > .eyebrow"
+              ],
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.62 (foreground color: #0c6199, background color: #101a31, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                ".split-copy:nth-child(2) > .eyebrow"
+              ],
+              "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.62 (foreground color: #0c6199, background color: #101a31, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "count": 2
+        }
+      ],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 3.2999999970197678
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.css",
+            "bytes": 66176,
+            "duration": 4.5999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.js",
+            "bytes": 10238,
+            "duration": 5.100000008940697
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-80.webp",
+            "bytes": 4800,
+            "duration": 6.100000008940697
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 6.4000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 6.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector1.svg",
+            "bytes": 1217,
+            "duration": 2.1000000089406967
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector4.svg",
+            "bytes": 1226,
+            "duration": 2.5999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 4.4000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 5.200000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 5.700000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 6.4000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 1.199999988079071
+          }
+        ],
+        "lang": "en",
+        "canonical": "https://rusafe.fr/en/references.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "en",
+      "name": "contact",
+      "violations": [],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 2.7999999970197678
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.css",
+            "bytes": 66176,
+            "duration": 4.200000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.js",
+            "bytes": 10238,
+            "duration": 5.0999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-80.webp",
+            "bytes": 4800,
+            "duration": 6.299999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 6.799999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 7
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector1.svg",
+            "bytes": 1217,
+            "duration": 2.2999999970197678
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector4.svg",
+            "bytes": 1226,
+            "duration": 2.5999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 8.900000005960464
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 9.800000011920929
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 9.900000005960464
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 10.400000005960464
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 1.300000011920929
+          }
+        ],
+        "lang": "en",
+        "canonical": "https://rusafe.fr/en/contact.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "en",
+      "name": "mentions-legales",
+      "violations": [],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 2.0999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.css",
+            "bytes": 66176,
+            "duration": 3.2000000029802322
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-80.webp",
+            "bytes": 4800,
+            "duration": 5.700000002980232
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.js",
+            "bytes": 10238,
+            "duration": 3.5999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 5.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 7.399999991059303
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector1.svg",
+            "bytes": 1217,
+            "duration": 3.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector4.svg",
+            "bytes": 1226,
+            "duration": 4
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 5.0999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 5.9000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 6.299999997019768
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 6.5999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 1.5
+          }
+        ],
+        "lang": "en",
+        "canonical": "https://rusafe.fr/en/mentions-legales.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "locale": "en",
+      "name": "politique-confidentialite",
+      "violations": [
+        {
+          "id": "link-in-text-block",
+          "impact": "serious",
+          "nodes": [
+            {
+              "target": [
+                "p > a[href$=\"mentions-legales.html\"]"
+              ],
+              "summary": "Fix any of the following:\n  The link has insufficient color contrast of 2.84:1 with the surrounding text. (Minimum contrast is 3:1, link text: #0c6199, surrounding text: #0b1220)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+            }
+          ],
+          "count": 1
+        }
+      ],
+      "dom": {
+        "h1": 1,
+        "brokenImages": [],
+        "duplicateIds": [],
+        "badAnchors": [],
+        "resources": [
+          {
+            "url": "http://127.0.0.1:8765/design-system.css",
+            "bytes": 8852,
+            "duration": 3
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.css",
+            "bytes": 66176,
+            "duration": 3.9000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/site.js",
+            "bytes": 10238,
+            "duration": 4.5999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/logo-80.webp",
+            "bytes": 4800,
+            "duration": 5.199999988079071
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/fr.svg",
+            "bytes": 486,
+            "duration": 5.699999988079071
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/flags/en.svg",
+            "bytes": 738,
+            "duration": 6
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector1.svg",
+            "bytes": 1217,
+            "duration": 2.2000000029802322
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/background/Vector4.svg",
+            "bytes": 1226,
+            "duration": 2.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-400-latin.woff2",
+            "bytes": 8200,
+            "duration": 5.5
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-600-latin.woff2",
+            "bytes": 8292,
+            "duration": 6.5999999940395355
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-500-latin.woff2",
+            "bytes": 8040,
+            "duration": 7.4000000059604645
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/fonts/poppins-700-latin.woff2",
+            "bytes": 8148,
+            "duration": 8.099999994039536
+          },
+          {
+            "url": "http://127.0.0.1:8765/assets/favicon.png",
+            "bytes": 6630,
+            "duration": 2
+          }
+        ],
+        "lang": "en",
+        "canonical": "https://rusafe.fr/en/politique-confidentialite.html"
+      },
+      "widths": [
+        {
+          "width": 320,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "offscreen": []
+        },
+        {
+          "width": 1440,
+          "overflow": false,
+          "offscreen": []
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "interaction": [
+    {
+      "name": "chromium",
+      "lang": "fr",
+      "menu": "true",
+      "escape": {
+        "expanded": "false",
+        "focus": "mobileToggle"
+      },
+      "switchLang": "en",
+      "profileOpened": true,
+      "invalid": "Veuillez renseigner les champs obligatoires et fournir au moins 20 caractères de contexte.",
+      "failure": "Votre demande n’a pas pu être envoyée. Réessayez ou écrivez-nous à contact@rusafe.fr.",
+      "retained": "Message de test local sans envoi de courrier.",
+      "success": "Merci. Votre demande a bien été envoyée ; nous vous répondrons prochainement.",
+      "cleared": "",
+      "initialMedia": 0,
+      "gates": [
+        {
+          "src": "DORA.web.mp4",
+          "duration": 164.437,
+          "ready": 4,
+          "tracks": 0
+        },
+        {
+          "src": "AUSECAF.web.mp4",
+          "duration": 60.949,
+          "ready": 4,
+          "tracks": 0
+        },
+        {
+          "src": "SECEDI.web.mp4",
+          "duration": 124.821,
+          "ready": 4,
+          "tracks": 0
+        },
+        {
+          "src": "DIAG6.web.mp4",
+          "duration": 107.306,
+          "ready": 4,
+          "tracks": 0
+        }
+      ],
+      "clipped": [
+        {
+          "width": 390,
+          "height": 844,
+          "cta": {
+            "top": 575.703125,
+            "bottom": 640.703125
+          },
+          "bodyHeight": 844,
+          "scrollable": [],
+          "outside": false
+        },
+        {
+          "width": 320,
+          "height": 568,
+          "cta": {
+            "top": 449.84375,
+            "bottom": 514.84375
+          },
+          "bodyHeight": 568,
+          "scrollable": [],
+          "outside": false
+        },
+        {
+          "width": 844,
+          "height": 390,
+          "cta": {
+            "top": 360.296875,
+            "bottom": 425.296875
+          },
+          "bodyHeight": 390,
+          "scrollable": [],
+          "outside": true
+        },
+        {
+          "width": 1440,
+          "height": 700,
+          "cta": {
+            "top": 515.296875,
+            "bottom": 580.296875
+          },
+          "bodyHeight": 700,
+          "scrollable": [],
+          "outside": false
+        }
+      ],
+      "a11y": [
+        {
+          "id": "landmark-unique",
+          "nodes": [
+            {
+              "target": [
+                ".stage-panel--gate"
+              ],
+              "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+            }
+          ]
+        },
+        {
+          "id": "page-has-heading-one",
+          "nodes": [
+            {
+              "target": [
+                "html"
+              ],
+              "summary": "Fix all of the following:\n  Page must have a level-one heading"
+            }
+          ]
+        },
+        {
+          "id": "region",
+          "nodes": [
+            {
+              "target": [
+                ".language-switcher"
+              ],
+              "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "chromium",
+      "lang": "en",
+      "menu": "true",
+      "escape": {
+        "expanded": "false",
+        "focus": "mobileToggle"
+      },
+      "switchLang": "fr",
+      "profileOpened": true,
+      "invalid": "Please complete the required fields and provide at least 20 characters of context.",
+      "failure": "Your request could not be sent. Please try again or contact us at contact@rusafe.fr.",
+      "retained": "Message de test local sans envoi de courrier.",
+      "success": "Thank you. Your request has been sent; we will get back to you shortly.",
+      "cleared": "",
+      "initialMedia": 0,
+      "gates": [
+        {
+          "src": "DORA.web.mp4",
+          "duration": 164.437,
+          "ready": 4,
+          "tracks": 0
+        },
+        {
+          "src": "AUSECAF.web.mp4",
+          "duration": 60.949,
+          "ready": 4,
+          "tracks": 0
+        },
+        {
+          "src": "SECEDI.web.mp4",
+          "duration": 124.821,
+          "ready": 4,
+          "tracks": 0
+        },
+        {
+          "src": "DIAG6.web.mp4",
+          "duration": 107.306,
+          "ready": 4,
+          "tracks": 0
+        }
+      ],
+      "clipped": [
+        {
+          "width": 390,
+          "height": 844,
+          "cta": {
+            "top": 575.703125,
+            "bottom": 640.703125
+          },
+          "bodyHeight": 844,
+          "scrollable": [],
+          "outside": false
+        },
+        {
+          "width": 320,
+          "height": 568,
+          "cta": {
+            "top": 449.84375,
+            "bottom": 514.84375
+          },
+          "bodyHeight": 568,
+          "scrollable": [],
+          "outside": false
+        },
+        {
+          "width": 844,
+          "height": 390,
+          "cta": {
+            "top": 360.296875,
+            "bottom": 425.296875
+          },
+          "bodyHeight": 390,
+          "scrollable": [],
+          "outside": true
+        },
+        {
+          "width": 1440,
+          "height": 700,
+          "cta": {
+            "top": 515.296875,
+            "bottom": 580.296875
+          },
+          "bodyHeight": 700,
+          "scrollable": [],
+          "outside": false
+        }
+      ],
+      "a11y": [
+        {
+          "id": "landmark-unique",
+          "nodes": [
+            {
+              "target": [
+                ".stage-panel--gate"
+              ],
+              "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+            }
+          ]
+        },
+        {
+          "id": "page-has-heading-one",
+          "nodes": [
+            {
+              "target": [
+                "html"
+              ],
+              "summary": "Fix all of the following:\n  Page must have a level-one heading"
+            }
+          ]
+        },
+        {
+          "id": "region",
+          "nodes": [
+            {
+              "target": [
+                ".language-switcher"
+              ],
+              "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "webkit",
+      "lang": "fr",
+      "menu": "true",
+      "escape": {
+        "expanded": "false",
+        "focus": "mobileToggle"
+      },
+      "switchLang": "en",
+      "profileOpened": true,
+      "invalid": "Veuillez renseigner les champs obligatoires et fournir au moins 20 caractères de contexte.",
+      "failure": "Votre demande n’a pas pu être envoyée. Réessayez ou écrivez-nous à contact@rusafe.fr.",
+      "retained": "Message de test local sans envoi de courrier.",
+      "success": "Merci. Votre demande a bien été envoyée ; nous vous répondrons prochainement.",
+      "cleared": "",
+      "initialMedia": 0,
+      "gates": [
+        {
+          "src": "DORA.web.mp4",
+          "duration": 164.41433333333333,
+          "ready": 4,
+          "tracks": 0
+        },
+        {
+          "src": "AUSECAF.web.mp4",
+          "duration": 60.92633333333333,
+          "ready": 4,
+          "tracks": 0
+        },
+        {
+          "src": "SECEDI.web.mp4",
+          "duration": 124.8,
+          "ready": 4,
+          "tracks": 0
+        },
+        {
+          "src": "DIAG6.web.mp4",
+          "duration": 107.28333333333333,
+          "ready": 4,
+          "tracks": 0
+        }
+      ],
+      "clipped": [
+        {
+          "width": 390,
+          "height": 844,
+          "cta": {
+            "top": 575.296875,
+            "bottom": 640.296875
+          },
+          "bodyHeight": 844,
+          "scrollable": [],
+          "outside": false
+        },
+        {
+          "width": 320,
+          "height": 568,
+          "cta": {
+            "top": 437.3125,
+            "bottom": 502.3125
+          },
+          "bodyHeight": 568,
+          "scrollable": [],
+          "outside": false
+        },
+        {
+          "width": 844,
+          "height": 390,
+          "cta": {
+            "top": 360.109375,
+            "bottom": 425.109375
+          },
+          "bodyHeight": 390,
+          "scrollable": [],
+          "outside": true
+        },
+        {
+          "width": 1440,
+          "height": 700,
+          "cta": {
+            "top": 515.09375,
+            "bottom": 580.09375
+          },
+          "bodyHeight": 700,
+          "scrollable": [],
+          "outside": false
+        }
+      ],
+      "a11y": [
+        {
+          "id": "landmark-unique",
+          "nodes": [
+            {
+              "target": [
+                ".stage-panel--gate"
+              ],
+              "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+            }
+          ]
+        },
+        {
+          "id": "page-has-heading-one",
+          "nodes": [
+            {
+              "target": [
+                "html"
+              ],
+              "summary": "Fix all of the following:\n  Page must have a level-one heading"
+            }
+          ]
+        },
+        {
+          "id": "region",
+          "nodes": [
+            {
+              "target": [
+                ".language-switcher"
+              ],
+              "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "webkit",
+      "lang": "en",
+      "menu": "true",
+      "escape": {
+        "expanded": "false",
+        "focus": "mobileToggle"
+      },
+      "switchLang": "fr",
+      "profileOpened": true,
+      "invalid": "Please complete the required fields and provide at least 20 characters of context.",
+      "failure": "Your request could not be sent. Please try again or contact us at contact@rusafe.fr.",
+      "retained": "Message de test local sans envoi de courrier.",
+      "success": "Thank you. Your request has been sent; we will get back to you shortly.",
+      "cleared": "",
+      "initialMedia": 0,
+      "gates": [
+        {
+          "src": "DORA.web.mp4",
+          "duration": 164.41433333333333,
+          "ready": 4,
+          "tracks": 0
+        },
+        {
+          "src": "AUSECAF.web.mp4",
+          "duration": 60.92633333333333,
+          "ready": 4,
+          "tracks": 0
+        },
+        {
+          "src": "SECEDI.web.mp4",
+          "duration": 124.8,
+          "ready": 4,
+          "tracks": 0
+        },
+        {
+          "src": "DIAG6.web.mp4",
+          "duration": 107.28333333333333,
+          "ready": 4,
+          "tracks": 0
+        }
+      ],
+      "clipped": [
+        {
+          "width": 390,
+          "height": 844,
+          "cta": {
+            "top": 575.296875,
+            "bottom": 640.296875
+          },
+          "bodyHeight": 844,
+          "scrollable": [],
+          "outside": false
+        },
+        {
+          "width": 320,
+          "height": 568,
+          "cta": {
+            "top": 437.3125,
+            "bottom": 502.3125
+          },
+          "bodyHeight": 568,
+          "scrollable": [],
+          "outside": false
+        },
+        {
+          "width": 844,
+          "height": 390,
+          "cta": {
+            "top": 360.109375,
+            "bottom": 425.109375
+          },
+          "bodyHeight": 390,
+          "scrollable": [],
+          "outside": true
+        },
+        {
+          "width": 1440,
+          "height": 700,
+          "cta": {
+            "top": 515.09375,
+            "bottom": 580.09375
+          },
+          "bodyHeight": 700,
+          "scrollable": [],
+          "outside": false
+        }
+      ],
+      "a11y": [
+        {
+          "id": "landmark-unique",
+          "nodes": [
+            {
+              "target": [
+                ".stage-panel--gate"
+              ],
+              "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+            }
+          ]
+        },
+        {
+          "id": "page-has-heading-one",
+          "nodes": [
+            {
+              "target": [
+                "html"
+              ],
+              "summary": "Fix all of the following:\n  Page must have a level-one heading"
+            }
+          ]
+        },
+        {
+          "id": "region",
+          "nodes": [
+            {
+              "target": [
+                ".language-switcher"
+              ],
+              "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "firefox",
+      "lang": "fr",
+      "menu": "true",
+      "escape": {
+        "expanded": "false",
+        "focus": "mobileToggle"
+      },
+      "switchLang": "en",
+      "profileOpened": true,
+      "invalid": "Veuillez renseigner les champs obligatoires et fournir au moins 20 caractères de contexte.",
+      "failure": "Votre demande n’a pas pu être envoyée. Réessayez ou écrivez-nous à contact@rusafe.fr.",
+      "retained": "Message de test local sans envoi de courrier.",
+      "success": "Merci. Votre demande a bien été envoyée ; nous vous répondrons prochainement.",
+      "cleared": "",
+      "initialMedia": 0,
+      "gates": [
+        {
+          "src": "DORA.web.mp4",
+          "duration": 164.458666,
+          "ready": 4,
+          "tracks": 0
+        },
+        {
+          "src": "AUSECAF.web.mp4",
+          "duration": 60.970666,
+          "ready": 4,
+          "tracks": 0
+        },
+        {
+          "src": "SECEDI.web.mp4",
+          "duration": 124.842666,
+          "ready": 4,
+          "tracks": 0
+        },
+        {
+          "src": "DIAG6.web.mp4",
+          "duration": 107.328,
+          "ready": 4,
+          "tracks": 0
+        }
+      ],
+      "clipped": [
+        {
+          "width": 390,
+          "height": 844,
+          "cta": {
+            "top": 575.7166748046875,
+            "bottom": 640.7166748046875
+          },
+          "bodyHeight": 844,
+          "scrollable": [],
+          "outside": false
+        },
+        {
+          "width": 320,
+          "height": 568,
+          "cta": {
+            "top": 449.8666687011719,
+            "bottom": 514.8666687011719
+          },
+          "bodyHeight": 568,
+          "scrollable": [],
+          "outside": false
+        },
+        {
+          "width": 844,
+          "height": 390,
+          "cta": {
+            "top": 360.316650390625,
+            "bottom": 425.316650390625
+          },
+          "bodyHeight": 390,
+          "scrollable": [],
+          "outside": true
+        },
+        {
+          "width": 1440,
+          "height": 700,
+          "cta": {
+            "top": 515.2999877929688,
+            "bottom": 580.2999877929688
+          },
+          "bodyHeight": 700,
+          "scrollable": [],
+          "outside": false
+        }
+      ],
+      "a11y": [
+        {
+          "id": "landmark-unique",
+          "nodes": [
+            {
+              "target": [
+                ".stage-panel--gate"
+              ],
+              "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+            }
+          ]
+        },
+        {
+          "id": "page-has-heading-one",
+          "nodes": [
+            {
+              "target": [
+                "html"
+              ],
+              "summary": "Fix all of the following:\n  Page must have a level-one heading"
+            }
+          ]
+        },
+        {
+          "id": "region",
+          "nodes": [
+            {
+              "target": [
+                ".language-switcher"
+              ],
+              "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "firefox",
+      "lang": "en",
+      "menu": "true",
+      "escape": {
+        "expanded": "false",
+        "focus": "mobileToggle"
+      },
+      "switchLang": "fr",
+      "profileOpened": true,
+      "invalid": "Please complete the required fields and provide at least 20 characters of context.",
+      "failure": "Your request could not be sent. Please try again or contact us at contact@rusafe.fr.",
+      "retained": "Message de test local sans envoi de courrier.",
+      "success": "Thank you. Your request has been sent; we will get back to you shortly.",
+      "cleared": "",
+      "initialMedia": 0,
+      "gates": [
+        {
+          "src": "DORA.web.mp4",
+          "duration": 164.458666,
+          "ready": 4,
+          "tracks": 0
+        },
+        {
+          "src": "AUSECAF.web.mp4",
+          "duration": 60.970666,
+          "ready": 4,
+          "tracks": 0
+        },
+        {
+          "src": "SECEDI.web.mp4",
+          "duration": 124.842666,
+          "ready": 4,
+          "tracks": 0
+        },
+        {
+          "src": "DIAG6.web.mp4",
+          "duration": 107.328,
+          "ready": 3,
+          "tracks": 0
+        }
+      ],
+      "clipped": [
+        {
+          "width": 390,
+          "height": 844,
+          "cta": {
+            "top": 575.7166748046875,
+            "bottom": 640.7166748046875
+          },
+          "bodyHeight": 844,
+          "scrollable": [],
+          "outside": false
+        },
+        {
+          "width": 320,
+          "height": 568,
+          "cta": {
+            "top": 449.8666687011719,
+            "bottom": 514.8666687011719
+          },
+          "bodyHeight": 568,
+          "scrollable": [],
+          "outside": false
+        },
+        {
+          "width": 844,
+          "height": 390,
+          "cta": {
+            "top": 360.316650390625,
+            "bottom": 425.316650390625
+          },
+          "bodyHeight": 390,
+          "scrollable": [],
+          "outside": true
+        },
+        {
+          "width": 1440,
+          "height": 700,
+          "cta": {
+            "top": 515.2999877929688,
+            "bottom": 580.2999877929688
+          },
+          "bodyHeight": 700,
+          "scrollable": [],
+          "outside": false
+        }
+      ],
+      "a11y": [
+        {
+          "id": "landmark-unique",
+          "nodes": [
+            {
+              "target": [
+                ".stage-panel--gate"
+              ],
+              "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+            }
+          ]
+        },
+        {
+          "id": "page-has-heading-one",
+          "nodes": [
+            {
+              "target": [
+                "html"
+              ],
+              "summary": "Fix all of the following:\n  Page must have a level-one heading"
+            }
+          ]
+        },
+        {
+          "id": "region",
+          "nodes": [
+            {
+              "target": [
+                ".language-switcher"
+              ],
+              "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            }
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "video": [
+    {
+      "key": "dora",
+      "skipBlocked": true,
+      "rate": 1,
+      "unlocked": true,
+      "stored": true,
+      "persistedEn": true
+    },
+    {
+      "key": "ausecaf",
+      "skipBlocked": true,
+      "rate": 1,
+      "unlocked": true,
+      "stored": true,
+      "persistedEn": true
+    },
+    {
+      "key": "secedi",
+      "skipBlocked": true,
+      "rate": 1,
+      "unlocked": true,
+      "stored": true,
+      "persistedEn": true
+    },
+    {
+      "key": "diag62030",
+      "skipBlocked": true,
+      "rate": 1,
+      "unlocked": true,
+      "stored": true,
+      "persistedEn": true
+    }
+  ],
+  "php": {
+    "accepted": 8,
+    "result": [
+      {
+        "name": "get",
+        "code": 0,
+        "stdout": "{\"ok\":false,\"message\":\"Method not allowed.\"}",
+        "status": "405",
+        "warning": false
+      },
+      {
+        "name": "origin rejection",
+        "code": 0,
+        "stdout": "{\"ok\":false,\"message\":\"Origin not allowed.\"}",
+        "status": "403",
+        "warning": false
+      },
+      {
+        "name": "empty",
+        "code": 0,
+        "stdout": "{\"ok\":false,\"message\":\"Please check the required fields.\"}",
+        "status": "422",
+        "warning": false
+      },
+      {
+        "name": "invalid email",
+        "code": 0,
+        "stdout": "{\"ok\":false,\"message\":\"Please check the required fields.\"}",
+        "status": "422",
+        "warning": false
+      },
+      {
+        "name": "short message",
+        "code": 0,
+        "stdout": "{\"ok\":false,\"message\":\"Please check the required fields.\"}",
+        "status": "422",
+        "warning": false
+      },
+      {
+        "name": "honeypot",
+        "code": 0,
+        "stdout": "{\"ok\":true,\"message\":\"\"}",
+        "status": "204",
+        "warning": false
+      },
+      {
+        "name": "array name",
+        "code": 0,
+        "stdout": "{\"ok\":true,\"message\":\"Message sent.\"}",
+        "status": "200",
+        "warning": true
+      },
+      {
+        "name": "normal SMTP",
+        "code": 0,
+        "stdout": "{\"ok\":true,\"message\":\"Message sent.\"}",
+        "status": "200",
+        "warning": false
+      },
+      {
+        "name": "SMTP accepted but QUIT disconnected",
+        "code": 0,
+        "stdout": "{\"ok\":false,\"message\":\"Unable to deliver the message.\"}",
+        "status": "502",
+        "warning": false
+      },
+      {
+        "name": "rate 1",
+        "code": 0,
+        "stdout": "{\"ok\":true,\"message\":\"Message sent.\"}",
+        "status": "200",
+        "warning": false
+      },
+      {
+        "name": "rate 2",
+        "code": 0,
+        "stdout": "{\"ok\":true,\"message\":\"Message sent.\"}",
+        "status": "200",
+        "warning": false
+      },
+      {
+        "name": "rate 3",
+        "code": 0,
+        "stdout": "{\"ok\":true,\"message\":\"Message sent.\"}",
+        "status": "200",
+        "warning": false
+      },
+      {
+        "name": "rate 4",
+        "code": 0,
+        "stdout": "{\"ok\":true,\"message\":\"Message sent.\"}",
+        "status": "200",
+        "warning": false
+      },
+      {
+        "name": "rate 5",
+        "code": 0,
+        "stdout": "{\"ok\":true,\"message\":\"Message sent.\"}",
+        "status": "200",
+        "warning": false
+      },
+      {
+        "name": "rate 6",
+        "code": 0,
+        "stdout": "{\"ok\":false,\"message\":\"Too many requests. Please try again later.\"}",
+        "status": "429",
+        "warning": false
+      }
+    ]
+  },
+  "edge": {
+    "videoFailure": {
+      "message": "Cette vidéo est momentanément indisponible.",
+      "retryVisible": true,
+      "locked": "true"
+    },
+    "videoRetry": {
+      "ready": 4
+    },
+    "tabs": {
+      "focus": "ausecaf",
+      "selected": "ausecaf"
+    },
+    "reducedMotionSlogan": {
+      "before": "Grand angle sur vos risques.",
+      "after": "Du rapport au rempart."
+    },
+    "noJs": {
+      "url": "http://127.0.0.1:8765/fr/landing.html",
+      "noscript": 0,
+      "buttonTag": "BUTTON"
+    },
+    "textScale": {
+      "h1": "34px",
+      "bodyHeight": 568
+    },
+    "links": {
+      "checked": 611,
+      "bad": []
+    },
+    "secretArtifacts": []
+  },
+  "lighthouse": [
+    {
+      "page": "landing",
+      "categories": {
+        "performance": 0.99,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "first-contentful-paint": 1231.14915,
+        "largest-contentful-paint": 1864.340675,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0.009242,
+        "speed-index": 1391.220498399291,
+        "total-byte-weight": 129033
+      },
+      "failures": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "value": "1.2 s",
+          "score": 0.99
+        },
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "value": "1.9 s",
+          "score": 0.98
+        },
+        {
+          "id": "uses-long-cache-ttl",
+          "title": "Serve static assets with an efficient cache policy",
+          "value": "10 resources found",
+          "score": 0.5
+        },
+        {
+          "id": "render-blocking-resources",
+          "title": "Eliminate render-blocking resources",
+          "value": "Est savings of 300 ms",
+          "score": 0
+        },
+        {
+          "id": "unminified-css",
+          "title": "Minify CSS",
+          "value": "Est savings of 3 KiB",
+          "score": 0.5
+        },
+        {
+          "id": "unminified-javascript",
+          "title": "Minify JavaScript",
+          "value": "Est savings of 7 KiB",
+          "score": 0
+        },
+        {
+          "id": "unused-javascript",
+          "title": "Reduce unused JavaScript",
+          "value": "Est savings of 22 KiB",
+          "score": 0
+        },
+        {
+          "id": "uses-text-compression",
+          "title": "Enable text compression",
+          "value": "Est savings of 53 KiB",
+          "score": 0
+        },
+        {
+          "id": "cache-insight",
+          "title": "Use efficient cache lifetimes",
+          "value": "Est savings of 108 KiB",
+          "score": 0
+        },
+        {
+          "id": "document-latency-insight",
+          "title": "Document request latency",
+          "value": "Est savings of 8 KiB",
+          "score": 0.5
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "value": "Est savings of 10 KiB",
+          "score": 0
+        },
+        {
+          "id": "lcp-discovery-insight",
+          "title": "LCP request discovery",
+          "score": 0
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render blocking requests",
+          "value": "Est savings of 450 ms",
+          "score": 0
+        }
+      ]
+    },
+    {
+      "page": "accueil",
+      "categories": {
+        "performance": 0.97,
+        "accessibility": 0.96,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "first-contentful-paint": 1959.2568,
+        "largest-contentful-paint": 2184.2568,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0,
+        "speed-index": 1959.2568,
+        "total-byte-weight": 204269
+      },
+      "failures": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "value": "2.0 s",
+          "score": 0.85
+        },
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "value": "2.2 s",
+          "score": 0.95
+        },
+        {
+          "id": "speed-index",
+          "title": "Speed Index",
+          "value": "2.0 s",
+          "score": 0.99
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "value": "2.2 s",
+          "score": 0.99
+        },
+        {
+          "id": "mainthread-work-breakdown",
+          "title": "Minimize main-thread work",
+          "value": "5.0 s",
+          "score": 0.5
+        },
+        {
+          "id": "bootup-time",
+          "title": "Reduce JavaScript execution time",
+          "value": "3.9 s",
+          "score": 0.5
+        },
+        {
+          "id": "color-contrast",
+          "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+          "score": 0
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "title": "Elements with visible text labels do not have matching accessible names.",
+          "score": 0
+        },
+        {
+          "id": "uses-long-cache-ttl",
+          "title": "Serve static assets with an efficient cache policy",
+          "value": "13 resources found",
+          "score": 0.5
+        },
+        {
+          "id": "render-blocking-resources",
+          "title": "Eliminate render-blocking resources",
+          "value": "Est savings of 800 ms",
+          "score": 0
+        },
+        {
+          "id": "unminified-css",
+          "title": "Minify CSS",
+          "value": "Est savings of 15 KiB",
+          "score": 0
+        },
+        {
+          "id": "unused-css-rules",
+          "title": "Reduce unused CSS",
+          "value": "Est savings of 39 KiB",
+          "score": 0
+        },
+        {
+          "id": "uses-text-compression",
+          "title": "Enable text compression",
+          "value": "Est savings of 98 KiB",
+          "score": 0
+        },
+        {
+          "id": "uses-responsive-images",
+          "title": "Properly size images",
+          "value": "Est savings of 22 KiB",
+          "score": 0.5
+        },
+        {
+          "id": "cache-insight",
+          "title": "Use efficient cache lifetimes",
+          "value": "Est savings of 150 KiB",
+          "score": 0
+        },
+        {
+          "id": "document-latency-insight",
+          "title": "Document request latency",
+          "value": "Est savings of 29 KiB",
+          "score": 0.5
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "value": "Est savings of 35 KiB",
+          "score": 0.5
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render blocking requests",
+          "value": "Est savings of 790 ms",
+          "score": 0
+        }
+      ]
+    },
+    {
+      "page": "contact",
+      "categories": {
+        "performance": 0.98,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "first-contentful-paint": 1659.9677,
+        "largest-contentful-paint": 1964.9515500000002,
+        "total-blocking-time": 0,
+        "cumulative-layout-shift": 0.063573,
+        "speed-index": 1659.9677,
+        "total-byte-weight": 139588
+      },
+      "failures": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "value": "1.7 s",
+          "score": 0.93
+        },
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "value": "2.0 s",
+          "score": 0.97
+        },
+        {
+          "id": "cumulative-layout-shift",
+          "title": "Cumulative Layout Shift",
+          "value": "0.064",
+          "score": 0.97
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "value": "2.0 s",
+          "score": 0.99
+        },
+        {
+          "id": "prioritize-lcp-image",
+          "title": "Preload Largest Contentful Paint image",
+          "value": "Est savings of 150 ms",
+          "score": 0
+        },
+        {
+          "id": "uses-long-cache-ttl",
+          "title": "Serve static assets with an efficient cache policy",
+          "value": "11 resources found",
+          "score": 0.5
+        },
+        {
+          "id": "render-blocking-resources",
+          "title": "Eliminate render-blocking resources",
+          "value": "Est savings of 820 ms",
+          "score": 0
+        },
+        {
+          "id": "unminified-css",
+          "title": "Minify CSS",
+          "value": "Est savings of 15 KiB",
+          "score": 0
+        },
+        {
+          "id": "unused-css-rules",
+          "title": "Reduce unused CSS",
+          "value": "Est savings of 51 KiB",
+          "score": 0
+        },
+        {
+          "id": "uses-text-compression",
+          "title": "Enable text compression",
+          "value": "Est savings of 73 KiB",
+          "score": 0
+        },
+        {
+          "id": "cache-insight",
+          "title": "Use efficient cache lifetimes",
+          "value": "Est savings of 120 KiB",
+          "score": 0
+        },
+        {
+          "id": "document-latency-insight",
+          "title": "Document request latency",
+          "value": "Est savings of 6 KiB",
+          "score": 0.5
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "value": "Est savings of 8 KiB",
+          "score": 0
+        },
+        {
+          "id": "lcp-discovery-insight",
+          "title": "LCP request discovery",
+          "score": 0
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render blocking requests",
+          "value": "Est savings of 970 ms",
+          "score": 0
+        }
+      ]
+    }
+  ]
+}

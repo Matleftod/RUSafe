@@ -732,6 +732,34 @@
   }
 }
 
+/* Keep the complete video journey reachable on short landscape viewports. */
+@media (orientation: landscape) and (max-height: 560px) {
+  .landing-shell.is-gate {
+    height: 100dvh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .landing-shell.is-gate .landing-viewport,
+  .landing-shell.is-gate .stage-slider,
+  .landing-shell.is-gate .stage-panel,
+  .landing-shell.is-gate .panel-frame--gate {
+    height: auto;
+    min-height: 720px;
+  }
+
+  .landing-shell.is-gate .landing-viewport,
+  .landing-shell.is-gate .stage-panel {
+    overflow: visible;
+  }
+
+  .landing-shell.is-gate .panel-frame--gate {
+    padding: 116px 0 72px;
+  }
+}
+
 /* Motion accessibility */
 
 @media (prefers-reduced-motion: reduce) {

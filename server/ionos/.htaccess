@@ -1,3 +1,9 @@
+# Redirect every clear-text or www request to the canonical HTTPS host.
+RewriteEngine On
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.rusafe\.fr$ [NC]
+RewriteRule ^ https://rusafe.fr%{REQUEST_URI} [R=301,L,NE]
+
 Options -Indexes
 
 <FilesMatch "^\.">

@@ -453,6 +453,11 @@ function initLandingPage() {
   function setStage(stage, { moveFocus = false } = {}) {
     const isGateStage = stage === "gate";
 
+    if (landingShell) {
+      landingShell.scrollLeft = 0;
+      landingShell.scrollTop = 0;
+    }
+
     if (landingViewport) {
       landingViewport.scrollLeft = 0;
       landingViewport.scrollTop = 0;
@@ -488,6 +493,11 @@ function initLandingPage() {
         if (landingViewport) {
           landingViewport.scrollLeft = 0;
           landingViewport.scrollTop = 0;
+        }
+
+        if (landingShell) {
+          landingShell.scrollLeft = 0;
+          landingShell.scrollTop = 0;
         }
       });
     }
