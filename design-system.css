@@ -69,14 +69,14 @@
 
 .language-switcher__flag {
   display: block;
-  width: 20px;
-  height: 14px;
+  width: 22px;
+  height: 15px;
   object-fit: contain;
   border-radius: 2px;
 }
 
 .language-switcher__option[aria-current="true"] {
-  background: #0b1220;
+  background: var(--color-brand-1);
 }
 
 .language-switcher a:hover {
@@ -112,7 +112,20 @@
   z-index: 20;
   inset-block-start: 18px;
   inset-inline-start: 50%;
+  min-height: 44px;
+  padding: 4px;
   transform: translateX(-50%);
+}
+
+.language-switcher--landing .language-switcher__option[lang] {
+  flex-basis: 36px;
+  width: 36px;
+  height: 36px;
+}
+
+.language-switcher--landing .language-switcher__flag {
+  width: 24px;
+  height: 16px;
 }
 
 @media (max-width: 900px) {

@@ -64,6 +64,7 @@
 
 .page-footer a {
   color: inherit;
+  text-decoration-line: underline;
   text-decoration-color: rgba(77, 115, 239, .6);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
@@ -163,17 +164,17 @@
 }
 
 .landing-slogan {
-  min-height: 54px;
   margin: var(--landing-slogan-gap) 0 0;
   font-size: var(--landing-slogan-size);
   line-height: 1.5;
   font-weight: var(--font-weight-regular);
-  transition: opacity var(--duration-slow) ease, transform var(--duration-slow) ease;
 }
 
-.landing-slogan.is-swapping {
-  opacity: 0;
-  transform: translateY(10px);
+.landing-subtitle {
+  margin: 8px 0 0;
+  color: var(--color-text-muted);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.5;
 }
 
 .landing-slogan .accent {
@@ -764,7 +765,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .stage-slider,
-  .landing-slogan,
   .gate-description,
   .gate-video-shell,
   .video-mockup-anchor,

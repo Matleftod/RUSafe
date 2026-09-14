@@ -23,6 +23,14 @@ Le contenu de `dist/` servira de base au déploiement GitHub Pages lors de l’�
 
 Le build par défaut est volontairement une pré-production : il désactive l’envoi réel du formulaire, applique `noindex, nofollow` et bloque les robots dans `robots.txt`. Ce comportement est explicite dans l’interface de contact ; aucune demande n’est simulée.
 
+Le mode de déploiement est contrôlé par `DEPLOYMENT_MODE` :
+
+- `preview` (valeur par défaut) : prévisualisation GitHub Pages, `noindex` et formulaire en démo ;
+- `staging` : pré-production IONOS protégée, `noindex`, formulaire SMTP actif et URL HTTPS du sous-dossier requise ;
+- `production` : site public indexable, formulaire SMTP actif et URL HTTPS canonique requise.
+
+Le build refuse désormais les combinaisons incohérentes, par exemple un formulaire SMTP actif dans un simple aperçu ou une production sans toutes les traductions anglaises.
+
 ## Publication GitHub Pages
 
 Le workflow `.github/workflows/deploy-pages.yml` construit et publie automatiquement `dist/` à chaque push sur la branche `pre-prod`. Dans GitHub, ouvrez **Settings → Pages**, sélectionnez **GitHub Actions** comme source, puis poussez la branche `pre-prod`. La publication se consulte ensuite dans l’onglet **Actions** ; elle prend habituellement quelques minutes.
@@ -33,13 +41,19 @@ Le formulaire utilise `api/contact.php` uniquement en production. L’endpoint v
 
 1. Créez une boîte e-mail IONOS dédiée à l’envoi, par exemple `contact@rusafe.fr`, puis copiez `config/smtp.config.example.php` **hors de la racine web** sous le nom `private-config/rusafe-smtp.php`. Avec l’arborescence IONOS habituelle, ce dossier est placé à côté de `web/`, jamais dedans. Utilisez `smtp.ionos.fr`, le port `465` en SSL/TLS, l’adresse complète de cette boîte comme identifiant et comme expéditeur, puis son mot de passe IONOS.
 2. Le script PHP cherche automatiquement ce fichier dans le dossier frère du répertoire web IONOS, y compris lorsque le site est installé dans un sous-dossier de pré-production. Une variable PHP `RUSAFE_SMTP_CONFIG` peut aussi fournir un chemin absolu si l’arborescence IONOS diffère. Ne placez jamais d’identifiants dans `dist/` ni dans Git.
-3. Produisez le paquet indexable pour le domaine final, sans changer de code :
+3. Pour la pré-production IONOS protégée, produisez le paquet suivant :
 
 ```bash
-SITE_INDEXABLE=true PUBLIC_SITE_URL=https://rusafe.fr CONTACT_MODE=live node scripts/build-preprod.mjs
+DEPLOYMENT_MODE=staging PUBLIC_SITE_URL=https://rusafe.fr/preprod-rusafe CONTACT_MODE=live node scripts/build-preprod.mjs
 ```
 
-`PUBLIC_SITE_URL` doit être remplacée si le domaine final diffère. Ce build génère les canonical, Open Graph, `sitemap.xml`, un `robots.txt` indexable, `api/contact.php` et une configuration Apache minimale. Il ne contient aucun secret. Téléversez ensuite le contenu de `dist/` dans le répertoire web IONOS ; ne téléversez pas `private-config/rusafe-smtp.php` dans ce répertoire. Les mentions légales et la politique de confidentialité comportent les informations restant à compléter par le client avant publication.
+4. Produisez le paquet public indexable pour le domaine final, sans changer de code :
+
+```bash
+DEPLOYMENT_MODE=production PUBLIC_SITE_URL=https://rusafe.fr CONTACT_MODE=live node scripts/build-preprod.mjs
+```
+
+`PUBLIC_SITE_URL` doit être remplacée si le domaine final diffère. Les builds IONOS génèrent `api/contact.php` et un `.htaccess` avec HTTPS, cache, compression, en-têtes de sécurité et une page 404 adaptée au chemin de déploiement. Il ne contient aucun secret. Téléversez ensuite le contenu de `dist/` dans le répertoire web IONOS ; ne téléversez pas `private-config/rusafe-smtp.php` dans ce répertoire. Pour la pré-production protégée, conservez les lignes d’authentification créées par IONOS dans son `.htaccess` et ajoutez-y les règles générées, au lieu d’écraser ce fichier avec une version sans protection. Les mentions légales et la politique de confidentialité comportent les informations restant à compléter par le client avant publication.
 
 ## Architecture FR/EN
 

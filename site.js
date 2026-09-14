@@ -1,4 +1,72 @@
 (() => {
+  const VIDEO_ACCESS_STORAGE_KEY = "rusafe:video-access:v1";
+
+  function hasVideoAccess() {
+    try {
+      const storedAccess = JSON.parse(window.localStorage.getItem(VIDEO_ACCESS_STORAGE_KEY));
+      const expiresAt = Number(storedAccess?.expiresAt);
+
+      if (Number.isFinite(expiresAt) && expiresAt > Date.now()) {
+        return true;
+      }
+
+      window.localStorage.removeItem(VIDEO_ACCESS_STORAGE_KEY);
+    } catch {
+      // Without storage, the utility navigation remains the safe fallback.
+    }
+
+    return false;
+  }
+
+  function initEntryNavigation() {
+    const entryNav = document.querySelector("[data-entry-nav]");
+
+    if (!entryNav || !hasVideoAccess()) {
+      return;
+    }
+
+    const isEnglish = document.documentElement.lang === "en";
+    const currentPage = window.location.pathname.split("/").pop() || "";
+    const languageSwitcher = entryNav.querySelector(".language-switcher");
+    const navigation = isEnglish
+      ? [
+        ["accueil.html", "Home"], ["approche.html", "Our approach"], ["expertise.html", "Expertise"],
+        ["solutions.html", "Solutions"], ["partenaires.html", "Partners"], ["formation.html", "Training"],
+        ["contact.html", "Contact us", true]
+      ]
+      : [
+        ["accueil.html", "Accueil"], ["approche.html", "Notre approche"], ["expertise.html", "Expertise"],
+        ["solutions.html", "Solutions"], ["partenaires.html", "Partenaires"], ["formation.html", "Formation"],
+        ["contact.html", "Nous contacter", true]
+      ];
+    const mobileToggle = document.createElement("button");
+
+    mobileToggle.className = "mobile-toggle";
+    mobileToggle.id = "mobileToggle";
+    mobileToggle.type = "button";
+    mobileToggle.setAttribute("aria-label", isEnglish ? "Open menu" : "Ouvrir le menu");
+    mobileToggle.setAttribute("aria-controls", "navLinks");
+    mobileToggle.setAttribute("aria-expanded", "false");
+    mobileToggle.innerHTML = `<span id="mobileToggleIcon" aria-hidden="true">☰</span>`;
+
+    entryNav.className = "nav-links";
+    entryNav.id = "navLinks";
+    entryNav.setAttribute("aria-label", isEnglish ? "Main navigation" : "Navigation principale");
+    entryNav.replaceChildren();
+    navigation.forEach(([href, label, isButton]) => {
+      const link = document.createElement("a");
+      link.setAttribute("href", href);
+      link.textContent = label;
+      if (isButton) link.className = "button primary";
+      if (href === currentPage) link.setAttribute("aria-current", "page");
+      entryNav.append(link);
+    });
+    if (languageSwitcher) entryNav.append(languageSwitcher);
+    entryNav.before(mobileToggle);
+  }
+
+  initEntryNavigation();
+
   const topbar = document.querySelector(".topbar");
   const mobileToggle = document.getElementById("mobileToggle");
   const mobileToggleIcon = document.getElementById("mobileToggleIcon");
@@ -6,18 +74,6 @@
   const scrollSentinel = document.getElementById("scrollSentinel");
   const desktopMedia = window.matchMedia("(min-width: 901px)");
   const isEnglish = document.documentElement.lang === "en";
-  const teamDisplayNames = new Map([
-    ["Azad", "Azad H."], ["Gilles", "Gilles C."], ["Karim", "Karim A."], ["Mauro", "Mauro I."],
-    ["Michael", "Michael L."], ["Parham", "Parham M."], ["Aleksander", "Aleksander B."],
-    ["Anas", "Anas M."], ["Arnaud", "Arnaud G."], ["Aurélien", "Aurélien R."], ["Céline", "Céline P."],
-    ["Corinne", "Corinne P."], ["Edmond", "Edmond S."], ["Eric C.", "Eric C."], ["Eric G.", "Eric G."],
-    ["Eric No.", "Eric N."], ["Fella", "Fella B."], ["François", "François B."], ["Gilles Bo.", "Gilles B."],
-    ["Kevin A.", "Kevin A."], ["Kevin Ri.", "Kevin R."], ["Luis", "Luis C."], ["Mehdi", "Mehdi B."],
-    ["Mickael", "Mickael B."], ["Nicolas", "Nicolas L."], ["Pénélope", "Pénélope M."],
-    ["Pascal R.", "Pascal R."], ["Prasanthi", "Prasanthi J."], ["Samy", "Samy B."], ["Serge", "Serge C."],
-    ["Venkata", "Venkata C."], ["Zied", "Zied B."], ["Clément R.", "Clément R."], ["Clément R", "Clément R."],
-  ]);
-
   function setMenuState(isOpen, returnFocus = false) {
     navLinks?.classList.toggle("open", isOpen);
     topbar?.classList.toggle("menu-open", isOpen);
@@ -74,7 +130,37 @@
   });
 
   function initTeamProfiles() {
-    document.querySelectorAll(".team-card").forEach((card, index) => {
+    const cards = [...document.querySelectorAll(".team-card")];
+    const teamRecords = cards.map((card) => {
+      const heading = card.querySelector("h4");
+      const rawName = heading?.textContent.trim() || "";
+      const surnameMatch = rawName.match(/\s+([A-ZÀ-ÖØ-Þ][A-Za-zÀ-ÖØ-öø-ÿ]*)\.?$/u);
+      const surnameHint = heading?.dataset.teamSurname || surnameMatch?.[1] || "";
+      const firstName = surnameMatch ? rawName.slice(0, surnameMatch.index).trim() : rawName;
+      return { card, rawName, firstName, surnameHint };
+    });
+    const recordsByFirstName = new Map();
+    teamRecords.forEach((record) => {
+      const records = recordsByFirstName.get(record.firstName) || [];
+      records.push(record);
+      recordsByFirstName.set(record.firstName, records);
+    });
+
+    const displayNameFor = (record) => {
+      const homonyms = recordsByFirstName.get(record.firstName) || [];
+      if (homonyms.length < 2) return record.firstName;
+
+      const initial = record.surnameHint.slice(0, 1).toUpperCase();
+      const sameInitial = homonyms.filter((item) => item.surnameHint.slice(0, 1).toUpperCase() === initial);
+      if (sameInitial.length < 2) return `${record.firstName} ${initial}.`;
+
+      const sameInitialIndex = sameInitial.indexOf(record);
+      if (sameInitialIndex === 0) return `${record.firstName} ${initial}.`;
+      const extendedHint = record.surnameHint.slice(0, 2);
+      return `${record.firstName} ${extendedHint.length > 1 ? extendedHint : initial}.`;
+    };
+
+    teamRecords.forEach(({ card, rawName, firstName, ...record }, index) => {
       if (card.querySelector(".team-card__profile")) return;
 
       const avatar = card.querySelector(".team-avatar");
@@ -83,7 +169,7 @@
       const bio = card.querySelector(".team-card__bio");
       if (!avatar || !role || !heading || !bio) return;
 
-      const name = teamDisplayNames.get(heading.textContent.trim()) || heading.textContent.trim();
+      const name = displayNameFor({ card, rawName, firstName, ...record });
       heading.textContent = name;
       const hasBio = bio.querySelector("p") !== null;
       const profile = document.createElement(hasBio ? "details" : "div");
@@ -99,16 +185,13 @@
 
       profile.className = "team-card__profile";
       surface.className = "team-card__summary";
-      if (hasBio) {
-        surface.setAttribute("aria-label", isEnglish ? `View ${name}'s profile` : `Afficher la fiche synthèse de ${name}`);
-      } else {
+      if (!hasBio) {
         profile.classList.add("team-card__profile--unavailable");
         surface.setAttribute("aria-disabled", "true");
       }
       portraitPanel.className = "team-card__portrait-panel";
       portrait.className = "team-card__portrait";
-      portrait.setAttribute("role", "img");
-      portrait.setAttribute("aria-label", avatar.getAttribute("aria-label") || (isEnglish ? `${name}'s avatar` : `Avatar de ${name}`));
+      portrait.setAttribute("aria-hidden", "true");
       identity.className = "team-card__identity";
       nameLabel.className = "team-card__name";
       roleLabel.className = "team-card__role";
@@ -119,6 +202,17 @@
       sheetLabel.className = "team-card__sheet-label";
 
       while (avatar.firstChild) portrait.append(avatar.firstChild);
+      // When no profile picture is available, show only the first-name initial.
+      // Keep the fallback generated from the canonical first name so FR/EN stay aligned.
+      if (!portrait.querySelector("img")) {
+        let fallback = portrait.querySelector("span");
+        if (!fallback) {
+          fallback = document.createElement("span");
+          portrait.append(fallback);
+        }
+        fallback.textContent = firstName.trim().slice(0, 1).toLocaleUpperCase();
+        fallback.setAttribute("aria-hidden", "true");
+      }
       nameLabel.textContent = name;
       roleLabel.textContent = role.textContent.trim();
       sheetLabel.textContent = isEnglish ? "Profile" : "Fiche synthèse";
@@ -149,9 +243,6 @@
       if (!hasBio) return;
 
       profile.addEventListener("toggle", () => {
-        surface.setAttribute("aria-label", isEnglish
-          ? `${profile.open ? "Close" : "View"} ${name}'s profile`
-          : `${profile.open ? "Fermer" : "Afficher"} la fiche synthèse de ${name}`);
         if (!profile.open) return;
 
         card.closest(".team-grid")?.querySelectorAll(".team-card__profile[open]").forEach((otherProfile) => {
@@ -179,12 +270,14 @@
       invalid: "Please complete the required fields and provide at least 20 characters of context.",
       sending: "Sending your request…",
       success: "Thank you. Your request has been sent; we will get back to you shortly.",
+      pending: "Your request has been received. Delivery confirmation may take a few moments; we will follow up if needed.",
       demo: "This is the GitHub Pages preview: email sending is intentionally disabled here. Your request has not been sent.",
       error: "Your request could not be sent. Please try again or contact us at contact@rusafe.fr."
     } : {
       invalid: "Veuillez renseigner les champs obligatoires et fournir au moins 20 caractères de contexte.",
       sending: "Envoi de votre demande…",
       success: "Merci. Votre demande a bien été envoyée ; nous vous répondrons prochainement.",
+      pending: "Votre demande a été prise en compte. La confirmation de livraison peut prendre quelques instants ; nous vous recontacterons si nécessaire.",
       demo: "Ceci est la pré-production GitHub Pages : l’envoi d’e-mail y est volontairement désactivé. Votre demande n’a pas été envoyée.",
       error: "Votre demande n’a pas pu être envoyée. Réessayez ou écrivez-nous à contact@rusafe.fr."
     };
@@ -222,8 +315,9 @@
         const payload = await response.json().catch(() => ({}));
         if (!response.ok || !payload.ok) throw new Error(payload.message || "Contact request failed");
 
+        const isPending = payload.delivery_status === "pending";
         contactForm.reset();
-        setStatus(messages.success, "success");
+        setStatus(isPending ? messages.pending : messages.success, isPending ? "pending" : "success");
       } catch {
         setStatus(messages.error, "error");
       } finally {

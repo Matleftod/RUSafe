@@ -10,9 +10,11 @@ header('Content-Type: application/json; charset=utf-8');
 header('X-Content-Type-Options: nosniff');
 header('Cache-Control: no-store');
 
-function respond(int $status, bool $ok, string $message): never {
+function respond(int $status, bool $ok, string $message, ?string $deliveryStatus = null): never {
+    $payload = ['ok' => $ok, 'message' => $message];
+    if ($deliveryStatus !== null) $payload['delivery_status'] = $deliveryStatus;
     http_response_code($status);
-    echo json_encode(['ok' => $ok, 'message' => $message], JSON_UNESCAPED_UNICODE);
+    echo json_encode($payload, JSON_UNESCAPED_UNICODE);
     exit;
 }
 
@@ -97,6 +99,12 @@ function enforceRateLimit(): void {
 
 enforceRateLimit();
 
+final class SmtpResponseException extends RuntimeException {
+    public function __construct(public readonly int $smtpCode) {
+        parent::__construct("SMTP error $smtpCode");
+    }
+}
+
 function smtpRead($socket, array $accepted): void {
     $response = '';
     do {
@@ -106,11 +114,21 @@ function smtpRead($socket, array $accepted): void {
     } while (isset($line[3]) && $line[3] === '-');
 
     $code = (int)substr($response, 0, 3);
-    if (!in_array($code, $accepted, true)) throw new RuntimeException("SMTP error $code");
+    if (!in_array($code, $accepted, true)) throw new SmtpResponseException($code);
+}
+
+function smtpWriteRaw($socket, string $payload): void {
+    $length = strlen($payload);
+    $offset = 0;
+    while ($offset < $length) {
+        $written = fwrite($socket, substr($payload, $offset));
+        if ($written === false || $written === 0) throw new RuntimeException('SMTP connection could not write the full payload.');
+        $offset += $written;
+    }
 }
 
 function smtpWrite($socket, string $command, array $accepted): void {
-    fwrite($socket, $command . "\r\n");
+    smtpWriteRaw($socket, $command . "\r\n");
     smtpRead($socket, $accepted);
 }
 
@@ -119,6 +137,7 @@ function base64Header(string $value): string {
 }
 
 try {
+    $deliveryState = 'not-sent';
     $context = stream_context_create(['ssl' => ['verify_peer' => true, 'verify_peer_name' => true]]);
     $socket = stream_socket_client(
         'tls://' . $config['host'] . ':' . (int)$config['port'],
@@ -152,13 +171,36 @@ try {
         'Content-Transfer-Encoding: base64'
     ];
     $payload = implode("\r\n", $headers) . "\r\n\r\n" . chunk_split(base64_encode(str_replace("\n", "\r\n", $body)), 76, "\r\n") . ".\r\n";
-    fwrite($socket, $payload);
-    smtpRead($socket, [250]);
-    smtpWrite($socket, 'QUIT', [221]);
+    // Once the final DATA payload starts, a lost response is inherently
+    // ambiguous: the SMTP server may already have accepted the message.
+    $deliveryState = 'uncertain';
+    smtpWriteRaw($socket, $payload);
+    try {
+        smtpRead($socket, [250]);
+    } catch (SmtpResponseException $exception) {
+        // A clear SMTP rejection is not ambiguous and must remain an error.
+        if ($exception->smtpCode >= 400) $deliveryState = 'rejected';
+        throw $exception;
+    }
+    $deliveryState = 'accepted';
+    // QUIT is only a clean-up acknowledgement.  Once the DATA response is
+    // 250, a lost QUIT response must not turn a successfully accepted mail
+    // into a form error.
+    try {
+        smtpWrite($socket, 'QUIT', [221]);
+    } catch (Throwable $exception) {
+        error_log('R’U SAFE contact form: SMTP QUIT acknowledgement unavailable: ' . $exception->getMessage());
+    }
     fclose($socket);
 } catch (Throwable $exception) {
     error_log('R’U SAFE contact form: ' . $exception->getMessage());
+    if (($deliveryState ?? 'not-sent') === 'accepted') {
+        respond(200, true, 'Message sent.', 'accepted');
+    }
+    if (($deliveryState ?? 'not-sent') === 'uncertain') {
+        respond(202, true, 'Request received; delivery confirmation is pending.', 'pending');
+    }
     respond(502, false, 'Unable to deliver the message.');
 }
 
-respond(200, true, 'Message sent.');
+respond(200, true, 'Message sent.', 'accepted');

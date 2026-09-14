@@ -3,8 +3,6 @@ function initLandingPage() {
   const landingViewport = document.querySelector(".landing-viewport");
   const stageSlider = document.querySelector("[data-stage-slider]");
   const stagePanels = document.querySelectorAll("[data-stage]");
-  const SLOGAN_SWAP_DELAY_MS = 180;
-  const SLOGAN_ROTATION_MS = 4200;
   const isEnglish = document.documentElement.lang === "en";
   const VIDEO_ACCESS_STORAGE_KEY = "rusafe:video-access:v1";
   const VIDEO_ACCESS_DURATION_MS = 60 * 24 * 60 * 60 * 1000;
@@ -60,17 +58,6 @@ function initLandingPage() {
     return;
   }
 
-  const sloganEntries = isEnglish ? [
-    { html: 'A wider view of <span class="accent">your risks.</span>' },
-    { html: 'From reporting to <span class="accent">protection.</span>' },
-    { html: 'Peace of mind, <span class="accent">approved.</span>' },
-    { html: 'Surprises only when they come with <span class="accent">champagne.</span>' }
-  ] : [
-    { html: 'Grand angle sur <span class="accent">vos risques.</span>' },
-    { html: 'Du rapport au <span class="accent">rempart.</span>' },
-    { html: 'Tranquillité <span class="accent">approuvée.</span>' },
-    { html: 'Les surprises, seulement si elles viennent avec du <span class="accent">champagne.</span>' }
-  ];
   const gateContent = {
     dora: {
       description: isEnglish ? "Move from paper-based compliance to operational resilience." : "Passez de la conformité « papier » à la résilience opérationnelle.",
@@ -103,7 +90,6 @@ function initLandingPage() {
   };
   const openGateButton = document.querySelector("[data-open-gate]");
   const backToLandingButton = document.querySelector("[data-back-to-landing]");
-  const sloganNode = document.querySelector("[data-slogan]");
   const gateCard = document.querySelector(".gate-card");
   const gateTabs = document.querySelectorAll("[data-gate-tab]");
   const gateDescription = document.querySelector("[data-gate-description]");
@@ -131,7 +117,6 @@ function initLandingPage() {
   const imageWarmCache = new Map();
   const videoPlaybackStates = new WeakMap();
   const videoProgressByKey = new Map();
-  let sloganIndex = 0;
   let activeGateLayerIndex = 0;
   let gateActiveKey = "";
   let gateSwapSequence = 0;
@@ -740,20 +725,6 @@ function initLandingPage() {
     });
   }
 
-  function swapSlogan() {
-    if (!sloganNode || document.hidden || stageSlider.classList.contains("is-gate")) {
-      return;
-    }
-
-    sloganNode.classList.add("is-swapping");
-
-    window.setTimeout(() => {
-      sloganIndex = (sloganIndex + 1) % sloganEntries.length;
-      sloganNode.innerHTML = sloganEntries[sloganIndex].html;
-      sloganNode.classList.remove("is-swapping");
-    }, SLOGAN_SWAP_DELAY_MS);
-  }
-
   function setGateTab(key) {
     if (!gateDescription || !gateAccess || !gateContent[key] || gateMediaLayers.length === 0) {
       return;
@@ -865,10 +836,6 @@ function initLandingPage() {
       pauseGateVideos();
     }
   });
-
-  if (sloganNode) {
-    window.setInterval(swapSlogan, SLOGAN_ROTATION_MS);
-  }
 
   gateCard?.style.setProperty("--gate-mockup-stage-factor", mockupHeightFactor.toFixed(6));
   gateMediaLayers.forEach((layer) => protectGateVideo(layer.video));
