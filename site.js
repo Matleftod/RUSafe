@@ -129,6 +129,34 @@
     }
   });
 
+  function initBackToTop() {
+    if (!document.body.classList.contains("site-page")) {
+      return;
+    }
+
+    const button = document.createElement("button");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    button.className = "back-to-top";
+    button.type = "button";
+    button.setAttribute("aria-label", isEnglish ? "Back to top" : "Revenir en haut de la page");
+    button.innerHTML = '<span aria-hidden="true">↑</span>';
+    document.body.append(button);
+
+    const updateVisibility = () => {
+      button.classList.toggle("is-visible", window.scrollY > 480);
+    };
+
+    button.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: reduceMotion.matches ? "auto" : "smooth" });
+    });
+
+    updateVisibility();
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+  }
+
+  initBackToTop();
+
   function initTeamProfiles() {
     const cards = [...document.querySelectorAll(".team-card")];
     const teamRecords = cards.map((card) => {
