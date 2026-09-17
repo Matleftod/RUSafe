@@ -82,7 +82,7 @@ const sharedFiles = [
   "assets/logo-80.webp", "assets/logo-160.webp", "assets/logo-245.webp",
   "assets/posters/DORA.webp", "assets/posters/AUSECAF.webp", "assets/posters/SECEDI.webp", "assets/posters/DIAG6-2030.webp",
   "assets/DORA.web.mp4", "assets/AUSECAF.web.mp4", "assets/SECEDI.web.mp4", "assets/DIAG6.web.mp4",
-  "assets/avatars/aurelien.webp", "assets/avatars/gilles.webp",
+  "assets/avatars/aurelien.webp", "assets/avatars/gilles.webp", "assets/avatars/gilles-b.webp",
   "assets/avatars/mauro.webp", "assets/avatars/mickael.webp", "assets/avatars/parham.webp",
   "assets/avatars/anas.webp", "assets/avatars/azad.webp", "assets/avatars/celine.webp", "assets/avatars/clement-r.webp", "assets/avatars/edmond.webp",
   "assets/avatars/eric-g.webp", "assets/avatars/francois.webp", "assets/avatars/mehdi.webp", "assets/avatars/pascal.webp",
