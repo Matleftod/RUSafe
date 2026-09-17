@@ -295,10 +295,10 @@
     const status = contactForm.querySelector("[data-contact-status]");
     const submitButton = contactForm.querySelector('[type="submit"]');
     const messages = isEnglish ? {
-      invalid: "Please complete the required fields and provide at least 20 characters of context.",
+      invalid: "Please complete all required fields and describe your situation in at least 20 characters.",
       sending: "Sending your request…",
-      success: "Thank you. Your request has been sent; we will get back to you shortly.",
-      pending: "Your request has been received. Delivery confirmation may take a few moments; we will follow up if needed.",
+      success: "Thank you. Your request has been sent. We will get back to you shortly.",
+      pending: "Your request has been recorded. Delivery confirmation may take a few moments. We will contact you if necessary.",
       demo: "This is the GitHub Pages preview: email sending is intentionally disabled here. Your request has not been sent.",
       error: "Your request could not be sent. Please try again or contact us at contact@rusafe.fr."
     } : {

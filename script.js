@@ -60,7 +60,7 @@ function initLandingPage() {
 
   const gateContent = {
     dora: {
-      description: isEnglish ? "Move from paper-based compliance to operational resilience." : "Passez de la conformité « papier » à la résilience opérationnelle.",
+      description: isEnglish ? "Move from compliance on paper to operational resilience." : "Passez de la conformité « papier » à la résilience opérationnelle.",
       title: "DORA",
       video: assetPath("DORA.web.mp4"),
       poster: assetPath("posters/DORA.webp"),
@@ -81,7 +81,7 @@ function initLandingPage() {
       mockup: "moniteur"
     },
     diag62030: {
-      description: isEnglish ? "Diagnostic 2030: current state, gaps, roadmap, budget and milestones." : "Diagnostic 2030 : état des lieux, gaps, roadmap, budget, échéances.",
+      description: isEnglish ? "2030 assessment: current position, gaps, roadmap, budget and deadlines." : "Diagnostic 2030 : état des lieux, gaps, roadmap, budget, échéances.",
       title: "DIAG6 2030",
       video: assetPath("DIAG6.web.mp4"),
       poster: assetPath("posters/DIAG6-2030.webp"),
@@ -230,7 +230,7 @@ function initLandingPage() {
       case MediaError.MEDIA_ERR_ABORTED:
         return isEnglish ? "Video loading was interrupted." : "Le chargement de la vidéo a été interrompu.";
       case MediaError.MEDIA_ERR_NETWORK:
-        return isEnglish ? "Your connection interrupted video loading." : "La connexion a interrompu le chargement de la vidéo.";
+        return isEnglish ? "A connection problem interrupted video loading." : "La connexion a interrompu le chargement de la vidéo.";
       case MediaError.MEDIA_ERR_DECODE:
         return isEnglish ? "Your browser cannot decode this video." : "Cette vidéo ne peut pas être décodée par le navigateur.";
       case MediaError.MEDIA_ERR_SRC_NOT_SUPPORTED:
@@ -409,7 +409,7 @@ function initLandingPage() {
       setVideoUiState(video, "error", getVideoErrorMessage(video));
 
       if (playbackState.key === gateActiveKey && gateAccessStatus) {
-        gateAccessStatus.textContent = `${getVideoErrorMessage(video)} ${isEnglish ? "Use the Retry button." : "Utilisez le bouton Réessayer."}`;
+        gateAccessStatus.textContent = `${getVideoErrorMessage(video)} ${isEnglish ? "Select Try again." : "Utilisez le bouton Réessayer."}`;
       }
     });
 

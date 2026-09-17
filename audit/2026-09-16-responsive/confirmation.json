@@ -1,0 +1,36 @@
+[
+  {
+    "test": "404-wheel",
+    "scroll": {
+      "y": 0,
+      "body": 0,
+      "root": 0
+    },
+    "button": {
+      "x": 16,
+      "y": 407.828125,
+      "width": 210.84375,
+      "height": 50
+    }
+  },
+  {
+    "test": "contact-demo-status",
+    "text": "Ceci est la pré-production GitHub Pages : l’envoi d’e-mail y est volontairement désactivé. Votre demande n’a pas été envoyée.",
+    "box": {
+      "x": 42,
+      "y": 733.5625,
+      "width": 306,
+      "height": 110.4375
+    }
+  },
+  {
+    "test": "landing-text200-short",
+    "cta": {
+      "x": 20,
+      "y": 833.265625,
+      "width": 280,
+      "height": 124
+    },
+    "h": 568
+  }
+]

@@ -60,15 +60,15 @@ const pageMetadata = {
   },
   "accueil.html": {
     fr: { title: "R’U SAFE — Conformité, résilience et gouvernance IA", description: "R’U SAFE transforme les exigences réglementaires, cyber et IA en dispositifs concrets, pilotables et durables." },
-    en: { title: "R’U SAFE — Compliance, resilience and AI governance", description: "R’U SAFE turns regulatory, cyber and AI requirements into concrete, manageable and durable operating frameworks." }
+    en: { title: "R’U SAFE — Compliance, resilience and AI governance", description: "R’U SAFE turns regulatory, cyber and AI requirements into practical, manageable frameworks built to last." }
   },
-  "approche.html": { fr: { title: "Notre approche — R’U SAFE", description: "Une méthode structurée pour diagnostiquer, remédier, automatiser et piloter durablement la conformité et la résilience." }, en: { title: "Our approach — R’U SAFE", description: "A structured approach to assess, remediate, automate and sustainably manage compliance and resilience." } },
+  "approche.html": { fr: { title: "Notre approche — R’U SAFE", description: "Une méthode structurée pour diagnostiquer, remédier, automatiser et piloter durablement la conformité et la résilience." }, en: { title: "Our approach — R’U SAFE", description: "A structured approach to assessment, remediation, automation and the ongoing management of compliance and resilience." } },
   "expertise.html": { fr: { title: "Expertise — R’U SAFE", description: "Conformité réglementaire, résilience opérationnelle, TPRM, cybersécurité, gouvernance IA et automatisation des contrôles." }, en: { title: "Expertise — R’U SAFE", description: "Regulatory compliance, operational resilience, TPRM, cybersecurity, AI governance and control automation." } },
-  "solutions.html": { fr: { title: "Solutions — R’U SAFE", description: "Resilient Advisor, AUSECAF, SECEDI, D&IM et Compliance Accelerator : des solutions issues du terrain." }, en: { title: "Solutions — R’U SAFE", description: "Resilient Advisor, AUSECAF, SECEDI, D&IM and Compliance Accelerator: solutions built from operational needs." } },
+  "solutions.html": { fr: { title: "Solutions — R’U SAFE", description: "Resilient Advisor, AUSECAF, SECEDI, D&IM et Compliance Accelerator : des solutions issues du terrain." }, en: { title: "Solutions — R’U SAFE", description: "Resilient Advisor, AUSECAF, SECEDI, D&IM, Compliance Accelerator and CIATA Manager: solutions developed to meet real operational needs." } },
   "partenaires.html": { fr: { title: "Partenaires — R’U SAFE", description: "Des modèles de collaboration clairs pour cabinets, intégrateurs, éditeurs, organismes de formation et institutions." }, en: { title: "Partners — R’U SAFE", description: "Clear collaboration models for consultancies, systems integrators, software vendors, training providers and institutions." } },
   "formation.html": { fr: { title: "Formation — R’U SAFE", description: "Formations opérationnelles en IA, conformité, cyber, résilience et réglementations pour décideurs et équipes métiers." }, en: { title: "Training — R’U SAFE", description: "Practical training in AI, compliance, cybersecurity, resilience and regulation for decision-makers and business teams." } },
   "references.html": { fr: { title: "Références — R’U SAFE", description: "Retour d’expérience : sécurisation et mise en conformité d’une plateforme d’échanges financiers critique." }, en: { title: "Case studies — R’U SAFE", description: "Case study: securing and bringing a critical financial exchange platform into compliance." } },
-  "contact.html": { fr: { title: "Contact — R’U SAFE", description: "Présentez votre besoin à R’U SAFE et cadrez une intervention adaptée à vos priorités et à votre échéance." }, en: { title: "Contact — R’U SAFE", description: "Tell R’U SAFE about your needs and scope an engagement tailored to your priorities and timeline." } },
+  "contact.html": { fr: { title: "Contact — R’U SAFE", description: "Présentez votre besoin à R’U SAFE et cadrez une intervention adaptée à vos priorités et à votre échéance." }, en: { title: "Contact — R’U SAFE", description: "Tell R’U SAFE what you need and define an engagement that fits your priorities and timeline." } },
   "mentions-legales.html": { fr: { title: "Mentions légales — R’U SAFE", description: "Mentions légales du site R’U SAFE." }, en: { title: "Legal notice — R’U SAFE", description: "Legal notice for the R’U SAFE website." } },
   "politique-confidentialite.html": { fr: { title: "Politique de confidentialité — R’U SAFE", description: "Politique de confidentialité du site R’U SAFE." }, en: { title: "Privacy policy — R’U SAFE", description: "Privacy policy for the R’U SAFE website." } }
 };
@@ -87,6 +87,8 @@ const sharedFiles = [
   "assets/avatars/anas.webp", "assets/avatars/azad.webp", "assets/avatars/celine.webp", "assets/avatars/clement-r.webp", "assets/avatars/edmond.webp",
   "assets/avatars/eric-g.webp", "assets/avatars/francois.webp", "assets/avatars/mehdi.webp", "assets/avatars/pascal.webp",
   "assets/avatars/penelope.webp", "assets/avatars/prasanthi.webp", "assets/avatars/samy.webp", "assets/avatars/serge.webp", "assets/avatars/venkata.webp",
+  "assets/avatars/aleksander.webp", "assets/avatars/arnaud.webp", "assets/avatars/corinne.webp", "assets/avatars/karim.webp",
+  "assets/avatars/kevin-r.webp", "assets/avatars/luis.webp", "assets/avatars/michael.webp", "assets/avatars/nicolas.webp", "assets/avatars/stephane.webp",
   "assets/background/Vector1.svg", "assets/background/Vector2.svg", "assets/background/Vector3.svg", "assets/background/Vector4.svg",
   "assets/mockups/handphoneLeft.webp", "assets/mockups/handphoneright.webp",
   "assets/mockups/laptop.webp", "assets/mockups/moniteur.webp"
@@ -178,7 +180,7 @@ function createLanguageSwitcher(pageFile, activeLocale, isLanding) {
       return `<strong class="language-switcher__option" lang="${locale}" aria-current="true" aria-label="${config.currentLabel} — ${currentLanguageSuffix}">${flag}${text}</strong>`;
     }
 
-    return `<a class="language-switcher__option" href="../${locale}/${pageFile}" lang="${locale}" hreflang="${locale}" aria-label="${config.switchLabel}">${flag}${text}</a>`;
+    return `<a class="language-switcher__option" href="../${locale}/${pageFile}" lang="${locale}" hreflang="${locale}" aria-label="${activeLocale === "en" ? "Switch to French" : config.switchLabel}">${flag}${text}</a>`;
   }).join('');
 
   return `<span class="language-switcher${isLanding ? " language-switcher--landing" : ""}" role="group" aria-label="${groupLabel}">${controls}</span>`;
@@ -373,11 +375,14 @@ function createNotFoundPage() {
       const text = {
         title: "Page not found — R’U SAFE", label: "Secure navigation", heading: "This page could not be found.",
         copy: "The link you followed may be outdated, or the address may contain an error. You can return to the homepage or contact us if you need assistance.",
-        home: "Back to homepage", contact: "Contact us", helpTitle: "Need to talk?",
+        home: "Back to the homepage", contact: "Contact us", helpTitle: "Would you like to talk?",
         helpCopy: "Our teams are available to discuss your compliance, cybersecurity and resilience priorities."
       };
       document.documentElement.lang = "en";
       document.title = text.title;
+      document.querySelector(".not-found-header .brand").setAttribute("aria-label", "R’U SAFE — back to the homepage");
+      document.querySelector(".not-found-header .brand").href = ${JSON.stringify(englishHomePath)};
+      document.querySelector(".not-found-footer .container > span").textContent = "R’U SAFE — Compliance · Cybersecurity · Resilience";
       document.querySelector(".skip-link").textContent = "Skip to main content";
       document.querySelector("[data-not-found-label]").textContent = text.label;
       document.querySelector("#not-found-title").textContent = text.heading;

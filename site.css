@@ -906,7 +906,7 @@
     .team-heading h2, .team-heading p { margin: 0; }
     .team-heading .eyebrow { justify-self: start; }
     .team-heading h2 {
-      max-width: 18ch;
+      max-width: 34ch;
       color: var(--navy);
       font-size: var(--font-size-title);
       line-height: 1.08;
@@ -934,7 +934,7 @@
       border: 1px solid var(--line);
       border-radius: var(--radius-card-md);
       background: var(--color-page);
-      box-shadow: var(--shadow);
+      box-shadow: none;
     }
 
     .team-card:has(.team-card__profile[open]) {
@@ -2340,7 +2340,7 @@
   background: var(--color-page-home);
 }
 
-/* Solutions — quatre actifs hiérarchisés par largeur, avec deux fonds de charte. */
+/* Solutions — deux actifs larges, puis trois cartes équilibrées. */
 
 .page-solutions .solution-grid {
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -2349,21 +2349,29 @@
 }
 
 .page-solutions .solution-card:nth-child(1) {
-  grid-column: 1 / 8;
+  grid-column: 1 / 7;
   background: var(--color-page-soft);
 }
 
 .page-solutions .solution-card:nth-child(2) {
-  grid-column: 8 / -1;
+  grid-column: 7 / -1;
 }
 
 .page-solutions .solution-card:nth-child(3) {
-  grid-column: 1 / 6;
+  grid-column: 1 / 5;
 }
 
 .page-solutions .solution-card:nth-child(4) {
-  grid-column: 6 / -1;
+  grid-column: 5 / 9;
   background: var(--color-page-soft);
+}
+
+.page-solutions .solution-card:nth-child(5) {
+  grid-column: 9 / -1;
+}
+
+.page-solutions .solution-card .text-link {
+  margin-top: auto;
 }
 
 .page-solutions .solution-videos-section {
@@ -2408,7 +2416,6 @@
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
-  border: 1px solid var(--color-border-accent-soft);
   border-radius: var(--radius-card-lg);
   background: var(--color-text);
   box-shadow: 0 16px 34px rgba(11, 18, 32, .08);

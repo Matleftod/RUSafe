@@ -1,0 +1,1413 @@
+[
+  {
+    "engine": "chromium",
+    "lang": "fr",
+    "test": "gate-back-320",
+    "clickError": "locator.click: Timeout 1000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-back-to-landing]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" class=\"back-link\" data-back-to-landing=\"\" aria-label=\"Revenir à la landing\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <section class=\"gate-card\" data-active-tab=\"dora\" aria-labelledby=\"gate-title\">…</section> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m"
+  },
+  {
+    "engine": "chromium",
+    "lang": "fr",
+    "test": "contact-invalid-focus",
+    "active": {
+      "id": "contact-name",
+      "tag": "INPUT"
+    },
+    "box": {
+      "top": -0.1875,
+      "bottom": 50.609375,
+      "left": 42,
+      "right": 278,
+      "width": 236,
+      "height": 50.796875
+    },
+    "header": {
+      "top": 0,
+      "bottom": 64,
+      "left": 0,
+      "right": 320,
+      "width": 320,
+      "height": 64
+    }
+  },
+  {
+    "engine": "chromium",
+    "lang": "fr",
+    "test": "menu-resize-settled",
+    "expanded": "false"
+  },
+  {
+    "engine": "chromium",
+    "lang": "en",
+    "test": "gate-back-320",
+    "clickError": null
+  },
+  {
+    "engine": "chromium",
+    "lang": "en",
+    "test": "contact-invalid-focus",
+    "active": {
+      "id": "contact-name",
+      "tag": "INPUT"
+    },
+    "box": {
+      "top": -0.328125,
+      "bottom": 50.46875,
+      "left": 42,
+      "right": 278,
+      "width": 236,
+      "height": 50.796875
+    },
+    "header": {
+      "top": 0,
+      "bottom": 64,
+      "left": 0,
+      "right": 320,
+      "width": 320,
+      "height": 64
+    }
+  },
+  {
+    "engine": "chromium",
+    "lang": "en",
+    "test": "menu-resize-settled",
+    "expanded": "false"
+  },
+  {
+    "engine": "chromium",
+    "test": "404",
+    "w": 280,
+    "h": 653,
+    "docW": 393,
+    "docH": 1184,
+    "bodyH": 653,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 16,
+        "b": 59.3125
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 530.8125,
+        "b": 580.8125
+      },
+      {
+        "text": "Nous contacter",
+        "y": 592.8125,
+        "b": 642.8125
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 1097.15625,
+        "b": 1116.84375
+      }
+    ]
+  },
+  {
+    "engine": "chromium",
+    "test": "404",
+    "w": 320,
+    "h": 568,
+    "docW": 450,
+    "docH": 1100,
+    "bodyH": 568,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 16,
+        "b": 59.3125
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 496.234375,
+        "b": 546.234375
+      },
+      {
+        "text": "Nous contacter",
+        "y": 558.234375,
+        "b": 608.234375
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 990.40625,
+        "b": 1010.09375
+      }
+    ]
+  },
+  {
+    "engine": "chromium",
+    "test": "404",
+    "w": 390,
+    "h": 844,
+    "docW": 548,
+    "docH": 1076,
+    "bodyH": 844,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 16,
+        "b": 59.3125
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 457.0625,
+        "b": 507.0625
+      },
+      {
+        "text": "Nous contacter",
+        "y": 519.0625,
+        "b": 569.0625
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 907.234375,
+        "b": 926.921875
+      }
+    ]
+  },
+  {
+    "engine": "chromium",
+    "test": "404",
+    "w": 768,
+    "h": 1024,
+    "docW": 1079,
+    "docH": 1382,
+    "bodyH": 1024,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 24,
+        "b": 80.765625
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 676.671875,
+        "b": 726.671875
+      },
+      {
+        "text": "Nous contacter",
+        "y": 676.671875,
+        "b": 726.671875
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 972.3125,
+        "b": 992
+      }
+    ]
+  },
+  {
+    "engine": "chromium",
+    "test": "404",
+    "w": 1440,
+    "h": 900,
+    "docW": 1995,
+    "docH": 1610,
+    "bodyH": 900,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 24,
+        "b": 80.765625
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 674.578125,
+        "b": 724.578125
+      },
+      {
+        "text": "Nous contacter",
+        "y": 674.578125,
+        "b": 724.578125
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 848.3125,
+        "b": 868
+      }
+    ]
+  },
+  {
+    "engine": "chromium",
+    "test": "404",
+    "w": 568,
+    "h": 320,
+    "docW": 798,
+    "docH": 1051,
+    "bodyH": 320,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 16,
+        "b": 59.3125
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 407.828125,
+        "b": 457.828125
+      },
+      {
+        "text": "Nous contacter",
+        "y": 407.828125,
+        "b": 457.828125
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 753.75,
+        "b": 773.4375
+      }
+    ]
+  },
+  {
+    "engine": "chromium",
+    "test": "404",
+    "w": 320,
+    "h": 256,
+    "docW": 450,
+    "docH": 1100,
+    "bodyH": 256,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 16,
+        "b": 59.3125
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 496.234375,
+        "b": 546.234375
+      },
+      {
+        "text": "Nous contacter",
+        "y": 558.234375,
+        "b": 608.234375
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 990.40625,
+        "b": 1010.09375
+      }
+    ]
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "landing",
+    "width": 320,
+    "docW": 320,
+    "issues": []
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "landing",
+    "width": 768,
+    "docW": 768,
+    "issues": []
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "accueil",
+    "width": 320,
+    "docW": 320,
+    "issues": []
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "accueil",
+    "width": 768,
+    "docW": 768,
+    "issues": []
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "approche",
+    "width": 320,
+    "docW": 320,
+    "issues": []
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "approche",
+    "width": 768,
+    "docW": 768,
+    "issues": []
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "expertise",
+    "width": 320,
+    "docW": 320,
+    "issues": []
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "expertise",
+    "width": 768,
+    "docW": 768,
+    "issues": []
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "solutions",
+    "width": 320,
+    "docW": 320,
+    "issues": []
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "solutions",
+    "width": 768,
+    "docW": 768,
+    "issues": []
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "partenaires",
+    "width": 320,
+    "docW": 320,
+    "issues": [
+      {
+        "el": "",
+        "text": "Une expertise immédiatement mobilisable.",
+        "right": 334.609375
+      },
+      {
+        "el": "",
+        "text": "R’U SAFE intervient directement auprès des organisations ou ",
+        "right": 334.609375
+      },
+      {
+        "el": "",
+        "text": "Notre expertise peut être intégrée à l’offre du partenaire, ",
+        "right": 334.609375
+      },
+      {
+        "el": "",
+        "text": "Notre modèle est flexible, évolutif et adapté aux projets à ",
+        "right": 334.609375
+      }
+    ]
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "partenaires",
+    "width": 768,
+    "docW": 768,
+    "issues": []
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "formation",
+    "width": 320,
+    "docW": 320,
+    "issues": [
+      {
+        "el": "",
+        "text": "Des formations directement reliées aux réalités opérationnel",
+        "right": 343.828125
+      },
+      {
+        "el": "",
+        "text": "La conformité et la résilience ne peuvent pas reposer unique",
+        "right": 343.828125
+      },
+      {
+        "el": "",
+        "text": "Les parcours associent apports réglementaires, retours d’exp",
+        "right": 343.828125
+      },
+      {
+        "el": "",
+        "text": "Des parcours professionnels immédiatement déployables.",
+        "right": 334.609375
+      },
+      {
+        "el": "",
+        "text": "R’U SAFE propose un catalogue étendu dédié à la cybersécurit",
+        "right": 334.609375
+      }
+    ]
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "formation",
+    "width": 768,
+    "docW": 768,
+    "issues": []
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "references",
+    "width": 320,
+    "docW": 320,
+    "issues": []
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "references",
+    "width": 768,
+    "docW": 768,
+    "issues": []
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "contact",
+    "width": 320,
+    "docW": 320,
+    "issues": []
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "contact",
+    "width": 768,
+    "docW": 768,
+    "issues": []
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "mentions-legales",
+    "width": 320,
+    "docW": 320,
+    "issues": []
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "mentions-legales",
+    "width": 768,
+    "docW": 768,
+    "issues": []
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "politique-confidentialite",
+    "width": 320,
+    "docW": 320,
+    "issues": []
+  },
+  {
+    "engine": "chromium",
+    "test": "text-spacing",
+    "page": "politique-confidentialite",
+    "width": 768,
+    "docW": 768,
+    "issues": []
+  },
+  {
+    "engine": "chromium",
+    "test": "solution-videos",
+    "width": 320,
+    "boxes": [
+      {
+        "w": 292,
+        "h": 164,
+        "ready": 4
+      },
+      {
+        "w": 292,
+        "h": 164,
+        "ready": 4
+      },
+      {
+        "w": 292,
+        "h": 164,
+        "ready": 4
+      },
+      {
+        "w": 292,
+        "h": 164,
+        "ready": 4
+      }
+    ]
+  },
+  {
+    "engine": "chromium",
+    "test": "solution-videos",
+    "width": 390,
+    "boxes": [
+      {
+        "w": 362,
+        "h": 204,
+        "ready": 4
+      },
+      {
+        "w": 362,
+        "h": 204,
+        "ready": 4
+      },
+      {
+        "w": 362,
+        "h": 204,
+        "ready": 4
+      },
+      {
+        "w": 362,
+        "h": 204,
+        "ready": 4
+      }
+    ]
+  },
+  {
+    "engine": "chromium",
+    "test": "solution-videos",
+    "width": 768,
+    "boxes": [
+      {
+        "w": 352,
+        "h": 198,
+        "ready": 4
+      },
+      {
+        "w": 352,
+        "h": 198,
+        "ready": 4
+      },
+      {
+        "w": 352,
+        "h": 198,
+        "ready": 4
+      },
+      {
+        "w": 352,
+        "h": 198,
+        "ready": 4
+      }
+    ]
+  },
+  {
+    "engine": "chromium",
+    "test": "solution-videos",
+    "width": 901,
+    "boxes": [
+      {
+        "w": 417,
+        "h": 235,
+        "ready": 4
+      },
+      {
+        "w": 417,
+        "h": 235,
+        "ready": 4
+      },
+      {
+        "w": 417,
+        "h": 235,
+        "ready": 4
+      },
+      {
+        "w": 417,
+        "h": 235,
+        "ready": 4
+      }
+    ]
+  },
+  {
+    "engine": "chromium",
+    "test": "solution-videos",
+    "width": 1024,
+    "boxes": [
+      {
+        "w": 477,
+        "h": 268,
+        "ready": 4
+      },
+      {
+        "w": 477,
+        "h": 268,
+        "ready": 4
+      },
+      {
+        "w": 477,
+        "h": 268,
+        "ready": 4
+      },
+      {
+        "w": 477,
+        "h": 268,
+        "ready": 4
+      }
+    ]
+  },
+  {
+    "engine": "chromium",
+    "test": "solution-videos",
+    "width": 1440,
+    "boxes": [
+      {
+        "w": 631,
+        "h": 355,
+        "ready": 4
+      },
+      {
+        "w": 631,
+        "h": 355,
+        "ready": 4
+      },
+      {
+        "w": 631,
+        "h": 355,
+        "ready": 4
+      },
+      {
+        "w": 631,
+        "h": 355,
+        "ready": 4
+      }
+    ]
+  },
+  {
+    "engine": "chromium",
+    "test": "solution-videos",
+    "width": 2560,
+    "boxes": [
+      {
+        "w": 631,
+        "h": 355,
+        "ready": 4
+      },
+      {
+        "w": 631,
+        "h": 355,
+        "ready": 4
+      },
+      {
+        "w": 631,
+        "h": 355,
+        "ready": 4
+      },
+      {
+        "w": 631,
+        "h": 355,
+        "ready": 4
+      }
+    ]
+  },
+  {
+    "engine": "webkit",
+    "lang": "fr",
+    "test": "gate-back-320",
+    "clickError": "locator.click: Timeout 1000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-back-to-landing]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" class=\"back-link\" data-back-to-landing=\"\" aria-label=\"Revenir à la landing\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <section class=\"gate-card\" data-active-tab=\"dora\" aria-labelledby=\"gate-title\">…</section> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m"
+  },
+  {
+    "engine": "webkit",
+    "lang": "fr",
+    "test": "contact-invalid-focus",
+    "active": {
+      "id": "contact-name",
+      "tag": "INPUT"
+    },
+    "box": {
+      "top": 258,
+      "bottom": 309,
+      "left": 42,
+      "right": 278,
+      "width": 236,
+      "height": 51
+    },
+    "header": {
+      "top": 0,
+      "bottom": 64,
+      "left": 0,
+      "right": 320,
+      "width": 320,
+      "height": 64
+    }
+  },
+  {
+    "engine": "webkit",
+    "lang": "fr",
+    "test": "menu-resize-settled",
+    "expanded": "false"
+  },
+  {
+    "engine": "webkit",
+    "lang": "en",
+    "test": "gate-back-320",
+    "clickError": null
+  },
+  {
+    "engine": "webkit",
+    "lang": "en",
+    "test": "contact-invalid-focus",
+    "active": {
+      "id": "contact-name",
+      "tag": "INPUT"
+    },
+    "box": {
+      "top": 258,
+      "bottom": 309,
+      "left": 42,
+      "right": 278,
+      "width": 236,
+      "height": 51
+    },
+    "header": {
+      "top": 0,
+      "bottom": 64,
+      "left": 0,
+      "right": 320,
+      "width": 320,
+      "height": 64
+    }
+  },
+  {
+    "engine": "webkit",
+    "lang": "en",
+    "test": "menu-resize-settled",
+    "expanded": "false"
+  },
+  {
+    "engine": "webkit",
+    "test": "404",
+    "w": 280,
+    "h": 653,
+    "docW": 393,
+    "docH": 1177,
+    "bodyH": 653,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 16,
+        "b": 59.3125
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 527.3125,
+        "b": 577.3125
+      },
+      {
+        "text": "Nous contacter",
+        "y": 589.3125,
+        "b": 639.3125
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 1089.3125,
+        "b": 1108.3125
+      }
+    ]
+  },
+  {
+    "engine": "webkit",
+    "test": "404",
+    "w": 320,
+    "h": 568,
+    "docW": 450,
+    "docH": 1095,
+    "bodyH": 568,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 16,
+        "b": 59.3125
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 493.3125,
+        "b": 543.3125
+      },
+      {
+        "text": "Nous contacter",
+        "y": 555.3125,
+        "b": 605.3125
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 984.3125,
+        "b": 1003.3125
+      }
+    ]
+  },
+  {
+    "engine": "webkit",
+    "test": "404",
+    "w": 390,
+    "h": 844,
+    "docW": 548,
+    "docH": 1072,
+    "bodyH": 844,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 16,
+        "b": 59.3125
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 454.3125,
+        "b": 504.3125
+      },
+      {
+        "text": "Nous contacter",
+        "y": 516.3125,
+        "b": 566.3125
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 902.3125,
+        "b": 921.3125
+      }
+    ]
+  },
+  {
+    "engine": "webkit",
+    "test": "404",
+    "w": 768,
+    "h": 1024,
+    "docW": 1079,
+    "docH": 1383,
+    "bodyH": 1024,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 24,
+        "b": 80.765625
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 674.875,
+        "b": 724.875
+      },
+      {
+        "text": "Nous contacter",
+        "y": 674.875,
+        "b": 724.875
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 973,
+        "b": 992
+      }
+    ]
+  },
+  {
+    "engine": "webkit",
+    "test": "404",
+    "w": 1440,
+    "h": 900,
+    "docW": 1995,
+    "docH": 1610,
+    "bodyH": 900,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 24,
+        "b": 80.765625
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 673.375,
+        "b": 723.375
+      },
+      {
+        "text": "Nous contacter",
+        "y": 673.375,
+        "b": 723.375
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 849,
+        "b": 868
+      }
+    ]
+  },
+  {
+    "engine": "webkit",
+    "test": "404",
+    "w": 568,
+    "h": 320,
+    "docW": 798,
+    "docH": 1048,
+    "bodyH": 320,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 16,
+        "b": 59.3125
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 406.3125,
+        "b": 456.3125
+      },
+      {
+        "text": "Nous contacter",
+        "y": 406.3125,
+        "b": 456.3125
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 751.0625,
+        "b": 770.0625
+      }
+    ]
+  },
+  {
+    "engine": "webkit",
+    "test": "404",
+    "w": 320,
+    "h": 256,
+    "docW": 450,
+    "docH": 1095,
+    "bodyH": 256,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 16,
+        "b": 59.3125
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 493.3125,
+        "b": 543.3125
+      },
+      {
+        "text": "Nous contacter",
+        "y": 555.3125,
+        "b": 605.3125
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 984.3125,
+        "b": 1003.3125
+      }
+    ]
+  },
+  {
+    "engine": "firefox",
+    "lang": "fr",
+    "test": "gate-back-320",
+    "clickError": "locator.click: Timeout 1000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-back-to-landing]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" class=\"back-link\" data-back-to-landing=\"\" aria-label=\"Revenir à la landing\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <section class=\"gate-card\" data-active-tab=\"dora\" aria-labelledby=\"gate-title\">…</section> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m"
+  },
+  {
+    "engine": "firefox",
+    "lang": "fr",
+    "test": "contact-invalid-focus",
+    "active": {
+      "id": "contact-name",
+      "tag": "INPUT"
+    },
+    "box": {
+      "top": 258.183349609375,
+      "bottom": 308.9833526611328,
+      "left": 42,
+      "right": 278,
+      "width": 236,
+      "height": 50.80000305175781
+    },
+    "header": {
+      "top": 0,
+      "bottom": 64,
+      "left": 0,
+      "right": 320,
+      "width": 320,
+      "height": 64
+    }
+  },
+  {
+    "engine": "firefox",
+    "lang": "fr",
+    "test": "menu-resize-settled",
+    "expanded": "false"
+  },
+  {
+    "engine": "firefox",
+    "lang": "en",
+    "test": "gate-back-320",
+    "clickError": null
+  },
+  {
+    "engine": "firefox",
+    "lang": "en",
+    "test": "contact-invalid-focus",
+    "active": {
+      "id": "contact-name",
+      "tag": "INPUT"
+    },
+    "box": {
+      "top": 258.98333740234375,
+      "bottom": 309.78334045410156,
+      "left": 42,
+      "right": 278,
+      "width": 236,
+      "height": 50.80000305175781
+    },
+    "header": {
+      "top": 0,
+      "bottom": 64,
+      "left": 0,
+      "right": 320,
+      "width": 320,
+      "height": 64
+    }
+  },
+  {
+    "engine": "firefox",
+    "lang": "en",
+    "test": "menu-resize-settled",
+    "expanded": "false"
+  },
+  {
+    "engine": "firefox",
+    "test": "404",
+    "w": 280,
+    "h": 653,
+    "docW": 393,
+    "docH": 1184,
+    "bodyH": 653,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 16,
+        "b": 59.31666564941406
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 530.9166870117188,
+        "b": 580.9166870117188
+      },
+      {
+        "text": "Nous contacter",
+        "y": 592.9166870117188,
+        "b": 642.9166870117188
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 1097.2833251953125,
+        "b": 1116.9666442871094
+      }
+    ]
+  },
+  {
+    "engine": "firefox",
+    "test": "404",
+    "w": 320,
+    "h": 568,
+    "docW": 450,
+    "docH": 1100,
+    "bodyH": 568,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 16,
+        "b": 59.31666564941406
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 496.316650390625,
+        "b": 546.316650390625
+      },
+      {
+        "text": "Nous contacter",
+        "y": 558.316650390625,
+        "b": 608.316650390625
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 990.5,
+        "b": 1010.1833343505859
+      }
+    ]
+  },
+  {
+    "engine": "firefox",
+    "test": "404",
+    "w": 390,
+    "h": 844,
+    "docW": 548,
+    "docH": 1076,
+    "bodyH": 844,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 16,
+        "b": 59.31666564941406
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 457.1333312988281,
+        "b": 507.1333312988281
+      },
+      {
+        "text": "Nous contacter",
+        "y": 519.13330078125,
+        "b": 569.13330078125
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 907.316650390625,
+        "b": 926.9999847412109
+      }
+    ]
+  },
+  {
+    "engine": "firefox",
+    "test": "404",
+    "w": 768,
+    "h": 1024,
+    "docW": 1079,
+    "docH": 1382,
+    "bodyH": 1024,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 24,
+        "b": 80.76666259765625
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 676.7000122070312,
+        "b": 726.7000122070312
+      },
+      {
+        "text": "Nous contacter",
+        "y": 676.7000122070312,
+        "b": 726.7000122070312
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 972.316650390625,
+        "b": 991.9999847412109
+      }
+    ]
+  },
+  {
+    "engine": "firefox",
+    "test": "404",
+    "w": 1440,
+    "h": 900,
+    "docW": 1995,
+    "docH": 1610,
+    "bodyH": 900,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 24,
+        "b": 80.76666259765625
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 674.61669921875,
+        "b": 724.61669921875
+      },
+      {
+        "text": "Nous contacter",
+        "y": 674.61669921875,
+        "b": 724.61669921875
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 848.316650390625,
+        "b": 867.9999847412109
+      }
+    ]
+  },
+  {
+    "engine": "firefox",
+    "test": "404",
+    "w": 568,
+    "h": 320,
+    "docW": 798,
+    "docH": 1051,
+    "bodyH": 320,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 16,
+        "b": 59.31666564941406
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 407.8833312988281,
+        "b": 457.8833312988281
+      },
+      {
+        "text": "Nous contacter",
+        "y": 407.8833312988281,
+        "b": 457.8833312988281
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 753.816650390625,
+        "b": 773.4999847412109
+      }
+    ]
+  },
+  {
+    "engine": "firefox",
+    "test": "404",
+    "w": 320,
+    "h": 256,
+    "docW": 450,
+    "docH": 1100,
+    "bodyH": 256,
+    "overflowY": "hidden",
+    "links": [
+      {
+        "text": "Aller au contenu principal",
+        "y": -58,
+        "b": -10
+      },
+      {
+        "text": "",
+        "y": 16,
+        "b": 59.31666564941406
+      },
+      {
+        "text": "Revenir à l’accueil →",
+        "y": 496.316650390625,
+        "b": 546.316650390625
+      },
+      {
+        "text": "Nous contacter",
+        "y": 558.316650390625,
+        "b": 608.316650390625
+      },
+      {
+        "text": "contact@rusafe.fr",
+        "y": 990.5,
+        "b": 1010.1833343505859
+      }
+    ]
+  }
+]
