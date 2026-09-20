@@ -2651,7 +2651,7 @@
   width: min(92vw, 760px);
   max-height: min(88dvh, 920px);
   padding: 0;
-  overflow: auto;
+  overflow: hidden;
   border: 1px solid rgba(22, 102, 168, .2);
   border-radius: var(--radius-card-lg);
   background: var(--color-page);
@@ -2678,7 +2678,9 @@
 
 .media-dialog__content img {
   display: block;
-  width: min(100%, 620px);
+  width: auto;
+  max-width: 100%;
+  max-height: min(52dvh, 560px);
   height: auto;
   margin: 4px auto 0;
   border-radius: 18px;
