@@ -138,40 +138,59 @@
         <header class="section-heading">
           <span class="eyebrow dark">En vidéo</span>
           <h2 id="solution-videos-title">Découvrez nos solutions en action.</h2>
-          <p>Une présentation rapide de quatre offres et démarches issues de nos retours terrain.</p>
+          <p>Une présentation rapide de cinq offres et démarches issues de nos retours terrain.</p>
         </header>
         <div class="solution-video-grid">
           <figure class="solution-video-card">
             <figcaption>DORA</figcaption>
             <video controls controlslist="nodownload noplaybackrate" preload="metadata" playsinline poster="assets/posters/DORA.webp">
-              <source src="assets/DORA.web.mp4" type="video/mp4">
+              <source src="assets/DORA.en.web.mp4" type="video/mp4">
               Votre navigateur ne peut pas lire cette vidéo.
             </video>
+            <p class="solution-video-card__notice">Cette vidéo est actuellement disponible uniquement en anglais. Sa version française est en cours de réalisation et sera prochainement mise en ligne.</p>
           </figure>
           <figure class="solution-video-card">
             <figcaption>AUSECAF</figcaption>
-            <video controls controlslist="nodownload noplaybackrate" preload="metadata" playsinline poster="assets/posters/AUSECAF.webp">
-              <source src="assets/AUSECAF.web.mp4" type="video/mp4">
+            <video controls controlslist="nodownload noplaybackrate" preload="metadata" playsinline poster="assets/posters/AUSECAF.fr.webp">
+              <source src="assets/AUSECAF.fr.web.mp4" type="video/mp4">
               Votre navigateur ne peut pas lire cette vidéo.
             </video>
           </figure>
           <figure class="solution-video-card">
             <figcaption>SECEDI</figcaption>
-            <video controls controlslist="nodownload noplaybackrate" preload="metadata" playsinline poster="assets/posters/SECEDI.webp">
-              <source src="assets/SECEDI.web.mp4" type="video/mp4">
+            <video controls controlslist="nodownload noplaybackrate" preload="metadata" playsinline poster="assets/posters/SECEDI.fr.webp">
+              <source src="assets/SECEDI.fr.web.mp4" type="video/mp4">
               Votre navigateur ne peut pas lire cette vidéo.
             </video>
           </figure>
           <figure class="solution-video-card">
-            <figcaption>DIAG6 2030</figcaption>
-            <video controls controlslist="nodownload noplaybackrate" preload="metadata" playsinline poster="assets/posters/DIAG6-2030.webp">
-              <source src="assets/DIAG6.web.mp4" type="video/mp4">
+            <figcaption>DIAG8-2030</figcaption>
+            <video controls controlslist="nodownload noplaybackrate" preload="metadata" playsinline poster="assets/posters/DIAG8-2030.fr.webp">
+              <source src="assets/DIAG8-2030.fr.web.mp4" type="video/mp4">
+              Votre navigateur ne peut pas lire cette vidéo.
+            </video>
+            <button class="solution-video-card__notice-action" type="button" data-media-dialog-open="diag8-dialog" aria-haspopup="dialog">Voir la nouvelle infographie DIAG8-2030</button>
+          </figure>
+          <figure class="solution-video-card">
+            <figcaption>Pack Tranquillité</figcaption>
+            <video controls controlslist="nodownload noplaybackrate" preload="metadata" playsinline poster="assets/posters/PACK-TRANQUILLITE.fr.webp">
+              <source src="assets/PACK-TRANQUILLITE.fr.web.mp4" type="video/mp4">
               Votre navigateur ne peut pas lire cette vidéo.
             </video>
           </figure>
         </div>
       </div>
     </section>
+
+    <dialog class="media-dialog" id="diag8-dialog" aria-labelledby="diag8-dialog-title">
+      <div class="media-dialog__content">
+        <button class="media-dialog__close" type="button" data-media-dialog-close aria-label="Fermer l’infographie">×</button>
+        <span class="eyebrow dark">DIAG8-2030</span>
+        <h2 id="diag8-dialog-title">Une version enrichie en préparation</h2>
+        <p>Cette vidéo présente la version initiale DIAG5. La nouvelle version DIAG8-2030, enrichie de trois nouvelles briques — classification documentaire, intelligence artificielle et sécurité physique — est en cours de réalisation et sera prochainement disponible.</p>
+        <img src="assets/diag8-2030-fr.webp" alt="Infographie DIAG8-2030 présentant ses huit briques" width="1100" height="1100" loading="lazy" decoding="async">
+      </div>
+    </dialog>
 
     <section class="page-cta">
       <div class="container page-cta__inner">

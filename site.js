@@ -158,6 +158,22 @@
   initBackToTop();
 
   function initTeamProfiles() {
+    document.querySelectorAll(".team-grid").forEach((grid) => {
+      const cards = [...grid.querySelectorAll(":scope > .team-card")];
+      cards.sort((left, right) => {
+        const leftHeading = left.querySelector("h4");
+        const rightHeading = right.querySelector("h4");
+        const leftName = leftHeading?.textContent.trim() || "";
+        const rightName = rightHeading?.textContent.trim() || "";
+        const byFirstName = leftName.localeCompare(rightName, "fr", { sensitivity: "base" });
+        if (byFirstName !== 0) return byFirstName;
+        const leftSurname = leftHeading?.dataset.teamSurname || "";
+        const rightSurname = rightHeading?.dataset.teamSurname || "";
+        return leftSurname.localeCompare(rightSurname, "fr", { sensitivity: "base" });
+      });
+      cards.forEach((card) => grid.append(card));
+    });
+
     const cards = [...document.querySelectorAll(".team-card")];
     const teamRecords = cards.map((card) => {
       const heading = card.querySelector("h4");
@@ -354,4 +370,19 @@
       }
     });
   }
+})();
+
+(() => {
+  document.querySelectorAll("[data-media-dialog-open]").forEach((trigger) => {
+    const dialog = document.getElementById(trigger.dataset.mediaDialogOpen);
+    const closeButton = dialog?.querySelector("[data-media-dialog-close]");
+
+    if (!dialog) return;
+
+    trigger.addEventListener("click", () => dialog.showModal());
+    closeButton?.addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  });
 })();

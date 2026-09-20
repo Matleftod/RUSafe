@@ -73,13 +73,17 @@
                 <button class="gate-tab is-active" id="gate-tab-dora" type="button" role="tab" aria-controls="gate-activity-panel" aria-selected="true" tabindex="0" data-gate-tab="dora">DORA</button>
                 <button class="gate-tab" id="gate-tab-ausecaf" type="button" role="tab" aria-controls="gate-activity-panel" aria-selected="false" tabindex="-1" data-gate-tab="ausecaf">AUSECAF</button>
                 <button class="gate-tab" id="gate-tab-secedi" type="button" role="tab" aria-controls="gate-activity-panel" aria-selected="false" tabindex="-1" data-gate-tab="secedi">SECEDI</button>
-                <button class="gate-tab" id="gate-tab-diag62030" type="button" role="tab" aria-controls="gate-activity-panel" aria-selected="false" tabindex="-1" data-gate-tab="diag62030">DIAG6 2030</button>
+                <button class="gate-tab" id="gate-tab-diag82030" type="button" role="tab" aria-controls="gate-activity-panel" aria-selected="false" tabindex="-1" data-gate-tab="diag82030">DIAG8 2030</button>
               </div>
 
               <div class="gate-body" id="gate-activity-panel" role="tabpanel" aria-labelledby="gate-tab-dora">
                 <p class="gate-description" data-gate-description>
                   Passez de la conformité « papier » à la résilience opérationnelle.
                 </p>
+                <div class="gate-media-note" data-gate-media-note hidden role="status" aria-live="polite">
+                  <p data-gate-media-note-text></p>
+                  <button class="gate-media-note__action" type="button" data-gate-diag8-dialog-open hidden>Voir l’infographie DIAG8-2030</button>
+                </div>
 
                 <div class="gate-media-row">
                   <div class="gate-media-stage" data-gate-stage>
@@ -190,6 +194,16 @@
       <nav class="page-footer" aria-label="Liens utiles"><a href="mentions-legales.html">Mentions légales</a><span aria-hidden="true"> · </span><a href="politique-confidentialite.html">Confidentialité</a><span aria-hidden="true"> · </span><a href="contact.html">Contact</a></nav>
     </div>
   </main>
+
+  <dialog class="media-dialog" id="diag8-dialog" aria-labelledby="diag8-dialog-title">
+    <div class="media-dialog__content">
+      <button class="media-dialog__close" type="button" data-media-dialog-close aria-label="Fermer l’infographie">×</button>
+      <span class="eyebrow dark">DIAG8-2030</span>
+      <h2 id="diag8-dialog-title">Une version enrichie en préparation</h2>
+      <p>Cette vidéo présente la version initiale DIAG5. La nouvelle version DIAG8-2030, enrichie de trois nouvelles briques — classification documentaire, intelligence artificielle et sécurité physique — est en cours de réalisation et sera prochainement disponible.</p>
+      <img src="assets/diag8-2030-fr.webp" alt="Infographie DIAG8-2030 présentant ses huit briques" width="1100" height="1100" loading="lazy" decoding="async">
+    </div>
+  </dialog>
 
   <script src="script.js"></script>
 </body>

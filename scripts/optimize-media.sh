@@ -41,20 +41,13 @@ encode_video() {
   mv "${temporary_output}" "${output}"
 }
 
-require_command ffmpeg
 require_command cwebp
 
 mkdir -p assets/posters
 
-encode_video assets/videos/DORA.source.mp4 assets/DORA.web.mp4
-encode_video assets/videos/AUSECAF.source.mp4 assets/AUSECAF.web.mp4
-encode_video assets/videos/SECEDI.source.mp4 assets/SECEDI.web.mp4
-encode_video assets/videos/DIAG6.source.mp4 assets/DIAG6.web.mp4
-
-cwebp -quiet -q 82 -resize 1280 0 -metadata none assets/DORA.png -o assets/posters/DORA.webp
-cwebp -quiet -q 82 -resize 1280 0 -metadata none assets/AUSECAF.png -o assets/posters/AUSECAF.webp
-cwebp -quiet -q 82 -resize 1280 0 -metadata none assets/SECEDI.png -o assets/posters/SECEDI.webp
-cwebp -quiet -q 82 -resize 1280 0 -metadata none "assets/DIAG6 2030.png" -o assets/posters/DIAG6-2030.webp
+# Les vidéos publiques sont livrées déjà encodées depuis les masters validés.
+# Ne pas les régénérer ici sans ces sources : elles sont nommées par langue
+# (par exemple DIAG8-2030.fr.web.mp4 et DIAG8-2030.en.web.mp4).
 
 cwebp -quiet -q 82 -resize 400 400 -metadata none assets/avatars/aurelien.jpg -o assets/avatars/aurelien.webp
 cwebp -quiet -q 82 -resize 400 400 -metadata none assets/avatars/gilles.jpg -o assets/avatars/gilles.webp

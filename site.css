@@ -2441,6 +2441,109 @@
   letter-spacing: .12em;
 }
 
+.page-solutions .solution-video-card__notice,
+.page-solutions .solution-video-card__notice-action {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid rgba(22, 102, 168, .16);
+  border-radius: 12px;
+  background: rgba(244, 255, 253, .72);
+  color: var(--color-text-muted);
+  font-size: .86rem;
+  line-height: 1.45;
+}
+
+.page-solutions .solution-video-card__notice-action {
+  justify-self: start;
+  color: var(--color-brand-1);
+  font-family: inherit;
+  font-weight: var(--font-weight-semibold);
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.page-solutions .solution-video-card__notice-action:hover {
+  border-color: rgba(22, 102, 168, .32);
+  color: var(--color-accent);
+}
+
+.page-solutions .solution-video-card__notice-action:focus-visible {
+  outline: 3px solid var(--color-brand-1);
+  outline-offset: 3px;
+}
+
+.page-solutions .solution-video-card:nth-child(5) {
+  grid-column: 1 / -1;
+  width: calc((100% - clamp(24px, 3vw, 38px)) / 2);
+  justify-self: center;
+}
+
+.media-dialog {
+  width: min(92vw, 760px);
+  max-height: min(88dvh, 920px);
+  padding: 0;
+  overflow: auto;
+  border: 1px solid rgba(22, 102, 168, .2);
+  border-radius: var(--radius-card-lg);
+  background: var(--color-page);
+  color: var(--color-text);
+  box-shadow: 0 28px 80px rgba(11, 18, 32, .24);
+}
+
+.media-dialog::backdrop {
+  background: rgba(8, 15, 28, .52);
+  backdrop-filter: blur(4px);
+}
+
+.media-dialog__content {
+  position: relative;
+  display: grid;
+  gap: 16px;
+  padding: clamp(24px, 4vw, 38px);
+}
+
+.media-dialog__content h2,
+.media-dialog__content p {
+  margin: 0;
+}
+
+.media-dialog__content img {
+  display: block;
+  width: min(100%, 620px);
+  height: auto;
+  margin: 4px auto 0;
+  border-radius: 18px;
+}
+
+.media-dialog__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid rgba(11, 18, 32, .12);
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.media-dialog__close:hover {
+  background: var(--color-page-home);
+}
+
+.media-dialog__close:focus-visible {
+  outline: 3px solid var(--color-brand-1);
+  outline-offset: 3px;
+}
+
 /* Partenaires — les modèles redeviennent une liste structurée, sans capsules décoratives. */
 
 .page-partners .page-hero {
@@ -2777,6 +2880,10 @@
 
   .page-solutions .solution-video-card:nth-child(n) {
     padding-top: 0;
+  }
+
+  .page-solutions .solution-video-card:nth-child(5) {
+    width: 100%;
   }
 
   .page-solutions .solution-videos-section::before {

@@ -62,30 +62,35 @@ function initLandingPage() {
     dora: {
       description: isEnglish ? "Move from compliance on paper to operational resilience." : "Passez de la conformité « papier » à la résilience opérationnelle.",
       title: "DORA",
-      video: assetPath("DORA.web.mp4"),
+      video: assetPath("DORA.en.web.mp4"),
       poster: assetPath("posters/DORA.webp"),
-      mockup: "handphoneLeft"
+      mockup: "handphoneLeft",
+      notice: isEnglish ? "" : "Cette vidéo est actuellement disponible uniquement en anglais. Sa version française est en cours de réalisation et sera prochainement mise en ligne."
     },
     ausecaf: {
       description: isEnglish ? "Your treasury is a target: audit your applications, not only your processes." : "Votre trésorerie est une cible : auditez vos applis, pas seulement vos process.",
       title: "AUSECAF",
-      video: assetPath("AUSECAF.web.mp4"),
-      poster: assetPath("posters/AUSECAF.webp"),
+      video: assetPath(isEnglish ? "AUSECAF.en.web.mp4" : "AUSECAF.fr.web.mp4"),
+      poster: assetPath(isEnglish ? "posters/AUSECAF.en.webp" : "posters/AUSECAF.fr.webp"),
       mockup: "laptop"
     },
     secedi: {
       description: isEnglish ? "Fewer blind spots across your banking EDI platforms." : "Moins d’angles morts sur vos plateformes EDI bancaires.",
       title: "SECEDI",
-      video: assetPath("SECEDI.web.mp4"),
-      poster: assetPath("posters/SECEDI.webp"),
+      video: assetPath(isEnglish ? "SECEDI.en.web.mp4" : "SECEDI.fr.web.mp4"),
+      poster: assetPath(isEnglish ? "posters/SECEDI.en.webp" : "posters/SECEDI.fr.webp"),
       mockup: "moniteur"
     },
-    diag62030: {
+    diag82030: {
       description: isEnglish ? "2030 assessment: current position, gaps, roadmap, budget and deadlines." : "Diagnostic 2030 : état des lieux, gaps, roadmap, budget, échéances.",
-      title: "DIAG6 2030",
-      video: assetPath("DIAG6.web.mp4"),
-      poster: assetPath("posters/DIAG6-2030.webp"),
-      mockup: "handphoneRight"
+      title: "DIAG8 2030",
+      video: assetPath(isEnglish ? "DIAG8-2030.en.web.mp4" : "DIAG8-2030.fr.web.mp4"),
+      poster: assetPath(isEnglish ? "posters/DIAG8-2030.en.webp" : "posters/DIAG8-2030.fr.webp"),
+      mockup: "handphoneRight",
+      notice: isEnglish
+        ? "This video presents the initial DIAG5 version. The new DIAG8-2030 version is currently in production and will be available soon."
+        : "Cette vidéo présente la version initiale DIAG5. La nouvelle version DIAG8-2030 est en cours de réalisation et sera prochainement disponible.",
+      noticeDialog: true
     }
   };
   const openGateButton = document.querySelector("[data-open-gate]");
@@ -93,6 +98,11 @@ function initLandingPage() {
   const gateCard = document.querySelector(".gate-card");
   const gateTabs = document.querySelectorAll("[data-gate-tab]");
   const gateDescription = document.querySelector("[data-gate-description]");
+  const gateMediaNote = document.querySelector("[data-gate-media-note]");
+  const gateMediaNoteText = document.querySelector("[data-gate-media-note-text]");
+  const gateDiag8DialogOpen = document.querySelector("[data-gate-diag8-dialog-open]");
+  const diag8Dialog = document.getElementById("diag8-dialog");
+  const diag8DialogClose = diag8Dialog?.querySelector("[data-media-dialog-close]");
   const gateBody = document.getElementById("gate-activity-panel");
   const gateMediaStage = document.querySelector("[data-gate-stage]");
   const gateMediaLayers = Array.from(document.querySelectorAll("[data-gate-media-layer]")).map((layerElement) => ({
@@ -123,6 +133,22 @@ function initLandingPage() {
   let gateRealignFrame = 0;
   let gateUnlocked = false;
   let gateMediaInitialized = false;
+
+  function updateGateMediaNote(content) {
+    const hasNotice = Boolean(content?.notice);
+
+    if (gateMediaNote) {
+      gateMediaNote.hidden = !hasNotice;
+    }
+
+    if (gateMediaNoteText) {
+      gateMediaNoteText.textContent = hasNotice ? content.notice : "";
+    }
+
+    if (gateDiag8DialogOpen) {
+      gateDiag8DialogOpen.hidden = !content?.noticeDialog;
+    }
+  }
 
   function hasStoredGateAccess() {
     try {
@@ -715,6 +741,7 @@ function initLandingPage() {
         }
 
         gateDescription.textContent = nextContent.description;
+        updateGateMediaNote(nextContent);
         setLayerState(layer, { mounted: true, visible: true });
         gateDescription.classList.remove("is-swapping");
         activeGateLayerIndex = gateMediaLayers.indexOf(layer);
@@ -773,6 +800,7 @@ function initLandingPage() {
     gateMediaLayers.slice(1).forEach((layer) => setLayerState(layer, { mounted: false, visible: false }));
     gateCard?.setAttribute("data-active-tab", initialKey);
     gateDescription.textContent = gateContent[initialKey].description;
+    updateGateMediaNote(gateContent[initialKey]);
     updateGateTabs(initialKey);
     gateActiveKey = initialKey;
   }
@@ -811,6 +839,14 @@ function initLandingPage() {
         landingViewport.scrollTop = 0;
       }
     });
+  });
+
+  gateDiag8DialogOpen?.addEventListener("click", () => diag8Dialog?.showModal());
+  diag8DialogClose?.addEventListener("click", () => diag8Dialog?.close());
+  diag8Dialog?.addEventListener("click", (event) => {
+    if (event.target === diag8Dialog) {
+      diag8Dialog.close();
+    }
   });
 
   gateMediaLayers.forEach((layer) => {
