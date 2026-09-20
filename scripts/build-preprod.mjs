@@ -48,7 +48,7 @@ if (requiresPublicSiteUrl) {
 }
 
 const pageFiles = [
-  "landing.html", "accueil.html", "approche.html", "expertise.html", "solutions.html",
+  "landing.html", "accueil.html", "equipe.html", "approche.html", "expertise.html", "solutions.html",
   "partenaires.html", "formation.html", "references.html", "contact.html",
   "mentions-legales.html", "politique-confidentialite.html"
 ];
@@ -61,6 +61,10 @@ const pageMetadata = {
   "accueil.html": {
     fr: { title: "R’U SAFE — Conformité, résilience et gouvernance IA", description: "R’U SAFE transforme les exigences réglementaires, cyber et IA en dispositifs concrets, pilotables et durables." },
     en: { title: "R’U SAFE — Compliance, resilience and AI governance", description: "R’U SAFE turns regulatory, cyber and AI requirements into practical, manageable frameworks built to last." }
+  },
+  "equipe.html": {
+    fr: { title: "Équipe — R’U SAFE", description: "Découvrez les directeurs de projet et consultants seniors mobilisables par R’U SAFE pour vos enjeux de conformité, cybersécurité et résilience." },
+    en: { title: "Team — R’U SAFE", description: "Meet the R’U SAFE project directors and senior consultants available for compliance, cybersecurity and resilience engagements." }
   },
   "approche.html": { fr: { title: "Notre approche — R’U SAFE", description: "Une méthode structurée pour diagnostiquer, remédier, automatiser et piloter durablement la conformité et la résilience." }, en: { title: "Our approach — R’U SAFE", description: "A structured approach to assessment, remediation, automation and the ongoing management of compliance and resilience." } },
   "expertise.html": { fr: { title: "Expertise — R’U SAFE", description: "Conformité réglementaire, résilience opérationnelle, TPRM, cybersécurité, gouvernance IA et automatisation des contrôles." }, en: { title: "Expertise — R’U SAFE", description: "Regulatory compliance, operational resilience, TPRM, cybersecurity, AI governance and control automation." } },
@@ -75,6 +79,9 @@ const pageMetadata = {
 
 const sharedFiles = [
   "assets/flags/fr.svg", "assets/flags/en.svg",
+  "assets/flags/mobility/be.svg", "assets/flags/mobility/lu.svg", "assets/flags/mobility/ch.svg",
+  "assets/flags/mobility/de.svg", "assets/flags/mobility/ca.svg", "assets/flags/mobility/sg.svg", "assets/flags/mobility/us.svg",
+  "assets/flags/mobility/qa.svg", "assets/flags/mobility/ae.svg", "assets/flags/mobility/ma.svg",
   "design-system.css", "landing.css", "site.css", "script.js", "site.js",
   "assets/logo.png", "assets/favicon.png",
   "assets/fonts/poppins-400-latin.woff2", "assets/fonts/poppins-500-latin.woff2",

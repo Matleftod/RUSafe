@@ -83,7 +83,7 @@ function initLandingPage() {
     },
     diag82030: {
       description: isEnglish ? "2030 assessment: current position, gaps, roadmap, budget and deadlines." : "Diagnostic 2030 : état des lieux, gaps, roadmap, budget, échéances.",
-      title: "DIAG8 2030",
+      title: "DIAG8-2030",
       video: assetPath(isEnglish ? "DIAG8-2030.en.web.mp4" : "DIAG8-2030.fr.web.mp4"),
       poster: assetPath(isEnglish ? "posters/DIAG8-2030.en.webp" : "posters/DIAG8-2030.fr.webp"),
       mockup: "handphoneRight",

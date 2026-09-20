@@ -30,12 +30,12 @@
     const languageSwitcher = entryNav.querySelector(".language-switcher");
     const navigation = isEnglish
       ? [
-        ["accueil.html", "Home"], ["approche.html", "Our approach"], ["expertise.html", "Expertise"],
+        ["accueil.html", "Home"], ["equipe.html", "Team"], ["approche.html", "Our approach"], ["expertise.html", "Expertise"],
         ["solutions.html", "Solutions"], ["partenaires.html", "Partners"], ["formation.html", "Training"],
         ["contact.html", "Contact us", true]
       ]
       : [
-        ["accueil.html", "Accueil"], ["approche.html", "Notre approche"], ["expertise.html", "Expertise"],
+        ["accueil.html", "Accueil"], ["equipe.html", "Équipe"], ["approche.html", "Notre approche"], ["expertise.html", "Expertise"],
         ["solutions.html", "Solutions"], ["partenaires.html", "Partenaires"], ["formation.html", "Formation"],
         ["contact.html", "Nous contacter", true]
       ];
@@ -210,6 +210,7 @@
       const avatar = card.querySelector(".team-avatar");
       const role = card.querySelector(".team-card__role");
       const heading = card.querySelector("h4");
+      const mobility = card.querySelector(".team-card__mobility");
       const bio = card.querySelector(".team-card__bio");
       if (!avatar || !role || !heading || !bio) return;
 
@@ -263,7 +264,9 @@
 
       portraitPanel.append(portrait);
       sheetLink.append(barcode, sheetLabel);
-      identity.append(nameLabel, roleLabel, sheetLink);
+      identity.append(nameLabel, roleLabel);
+      if (mobility) identity.append(mobility);
+      identity.append(sheetLink);
       surface.append(portraitPanel, identity);
       profile.append(surface);
 
@@ -304,6 +307,42 @@
   }
 
   initTeamProfiles();
+
+  function initTeamMobility() {
+    const visibleFlagCount = 6;
+
+    document.querySelectorAll(".team-card__flags").forEach((flags) => {
+      const flagItems = [...flags.querySelectorAll(":scope > .team-card__flag")];
+      if (flagItems.length <= visibleFlagCount || flags.querySelector(".team-card__flags-toggle")) return;
+
+      const extraFlags = flagItems.slice(visibleFlagCount);
+      const toggle = document.createElement("button");
+      toggle.type = "button";
+      toggle.className = "team-card__flags-toggle";
+
+      const setExpanded = (expanded) => {
+        extraFlags.forEach((flag) => { flag.hidden = !expanded; });
+        toggle.textContent = expanded ? "−" : `+${extraFlags.length}`;
+        toggle.setAttribute("aria-expanded", String(expanded));
+        toggle.setAttribute("aria-label", isEnglish
+          ? (expanded ? `Hide ${extraFlags.length} additional countries` : `Show ${extraFlags.length} more countries`)
+          : (expanded ? `Masquer les ${extraFlags.length} pays supplémentaires` : `Afficher ${extraFlags.length} pays supplémentaires`));
+      };
+
+      toggle.addEventListener("click", (event) => {
+        // The toggle sits in the card summary: keep this interaction independent
+        // from opening the team profile.
+        event.preventDefault();
+        event.stopPropagation();
+        setExpanded(toggle.getAttribute("aria-expanded") !== "true");
+      });
+
+      flags.append(toggle);
+      setExpanded(false);
+    });
+  }
+
+  initTeamMobility();
 
   const contactForm = document.querySelector("[data-contact-form]");
 
