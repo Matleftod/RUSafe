@@ -3039,6 +3039,26 @@
 }
 
 @media (max-width: 720px) {
+  /* Anchor the shapes to screen-sized offsets, not the variable hero height. */
+  .site-page .page-hero::before {
+    width: clamp(280px, 85vw, 480px);
+    aspect-ratio: 1330 / 1957;
+    top: 48px;
+    left: -45%;
+  }
+
+  .site-page .page-hero::after {
+    width: clamp(280px, 90vw, 480px);
+    right: -28%;
+    bottom: -64px;
+  }
+
+  .page-contact .page-hero__decor {
+    top: 45%;
+    right: -35%;
+    width: clamp(280px, 90vw, 480px);
+  }
+
   .page-training .catalog-group summary {
     grid-template-columns: minmax(0, 1fr) auto;
     gap: var(--space-4);
