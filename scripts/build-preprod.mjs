@@ -315,7 +315,7 @@ function createNotFoundPage() {
   <link rel="icon" href="${faviconPath}" type="image/png">
   <link rel="stylesheet" href="${publicPath("design-system.css")}">
   <style>
-    .not-found-page { min-height: 100vh; display: grid; grid-template-rows: auto 1fr auto; margin: 0; overflow: hidden; background: var(--color-page); color: var(--color-text); font-family: var(--font-family-base); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    .not-found-page { min-height: 100dvh; display: grid; grid-template-rows: auto 1fr auto; margin: 0; overflow-x: hidden; overflow-y: auto; background: var(--color-page); color: var(--color-text); font-family: var(--font-family-base); line-height: 1.5; -webkit-font-smoothing: antialiased; }
     .not-found-page *, .not-found-page *::before, .not-found-page *::after { box-sizing: border-box; }
     .not-found-page a { color: inherit; text-decoration: none; }
     .not-found-page .container { width: min(1300px, calc(100% - 40px)); margin: 0 auto; }

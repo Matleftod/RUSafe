@@ -123,6 +123,14 @@
   height: 36px;
 }
 
+@media (pointer: coarse) {
+  .language-switcher--landing .language-switcher__option[lang] {
+    flex-basis: 44px;
+    width: 44px;
+    height: 44px;
+  }
+}
+
 .language-switcher--landing .language-switcher__flag {
   width: 24px;
   height: 16px;

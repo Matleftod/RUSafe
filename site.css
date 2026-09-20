@@ -821,6 +821,9 @@
         box-shadow: var(--shadow);
         flex-direction: column;
         align-items: stretch;
+        max-height: calc(100dvh - var(--header-height) - 24px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
       }
       .nav-links.open { display: flex; }
       .nav-links a {
@@ -2026,6 +2029,7 @@
   border-radius: 12px;
   background: var(--color-surface-glass-stronger);
   color: var(--color-text);
+  scroll-margin-top: calc(var(--header-height) + 24px);
 }
 
 .form-field textarea {
@@ -2070,6 +2074,31 @@
 
   .entry-nav > a {
     font-size: .76rem;
+  }
+}
+
+/* Small screens and enlarged text: let editorial content wrap instead of
+   being clipped by the decorative section boundaries. */
+@media (max-width: 720px) {
+  .site-page :is(
+    .page-hero__grid,
+    .split-grid,
+    .feature-grid,
+    .axis-grid,
+    .solution-grid,
+    .metric-grid,
+    .module-grid,
+    .course-grid,
+    .contact-layout,
+    .catalog-index,
+    .team-grid
+  ) > * {
+    min-width: 0;
+  }
+
+  .site-page :is(h1, h2, h3, h4, p, li, .text-link, .catalog-index a, .team-card__name) {
+    overflow-wrap: anywhere;
+    hyphens: auto;
   }
 }
 

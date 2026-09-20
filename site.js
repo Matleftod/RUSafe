@@ -372,6 +372,14 @@
       status.dataset.state = state;
     };
 
+    contactForm.addEventListener("invalid", (event) => {
+      const field = event.target;
+      if (contactForm.querySelector(":invalid") !== field) return;
+      window.requestAnimationFrame(() => {
+        field.scrollIntoView({ block: "center", behavior: "auto" });
+      });
+    }, true);
+
     contactForm.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (!contactForm.checkValidity()) {
