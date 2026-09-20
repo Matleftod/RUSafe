@@ -881,7 +881,9 @@
   }
 
   .page-footer {
-    position: static;
+    position: relative;
+    left: auto;
+    bottom: auto;
     width: min(100% - 32px, 420px);
     margin: 18px auto 16px;
     transform: none;
@@ -975,7 +977,9 @@
   }
 
   .landing-shell:not(.is-gate) .page-footer {
-    position: static;
+    position: relative;
+    left: auto;
+    bottom: auto;
     display: block;
     min-height: 72px;
     width: min(100% - 32px, 420px);
