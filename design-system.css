@@ -108,7 +108,7 @@
 }
 
 .language-switcher--landing {
-  position: fixed;
+  position: absolute;
   z-index: 20;
   inset-block-start: 18px;
   inset-inline-start: 50%;

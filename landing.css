@@ -34,31 +34,33 @@
   background: var(--color-page);
   min-height: 100dvh;
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .landing-shell {
   position: relative;
   min-height: 100dvh;
-  overflow: hidden;
+  overflow: clip;
 }
 
 .landing-viewport {
   position: relative;
-  height: 100dvh;
+  min-height: 100dvh;
   overflow: hidden;
 }
 
 .page-footer {
-  position: absolute;
-  left: 50%;
-  bottom: 10px;
-  margin: 0;
-  transform: translateX(-50%);
+  position: relative;
+  width: min(100% - 32px, 420px);
+  min-height: 72px;
+  margin: 0 auto;
+  padding-block: 12px;
+  text-align: center;
   font-size: 14px;
   line-height: 1.5;
   color: var(--color-text);
-  white-space: nowrap;
+  white-space: normal;
   z-index: 2;
 }
 
@@ -82,7 +84,7 @@
   z-index: 1;
   display: flex;
   width: 200%;
-  height: 100%;
+  align-items: flex-start;
   transition: transform 900ms var(--ease-out);
   will-change: transform;
 }
@@ -95,14 +97,19 @@
   flex: 0 0 50%;
   width: 50%;
   min-width: 50%;
-  min-height: 100%;
+  min-height: 0;
   overflow: hidden;
   background: transparent;
 }
 
+.stage-panel[aria-hidden="true"] {
+  height: 0;
+  visibility: hidden;
+}
+
 .panel-frame {
   width: min(100%, var(--landing-frame-width));
-  height: 100%;
+  min-height: calc(100dvh - 72px);
   margin: 0 auto;
 }
 
@@ -142,7 +149,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: var(--landing-intro-top);
+  justify-content: center;
+  padding: max(96px, var(--landing-intro-top)) 20px 24px;
+}
+
+.panel-frame--landing > * {
+  flex-shrink: 0;
 }
 
 .brand-logo--landing {
@@ -197,9 +209,10 @@
 
 .panel-frame--gate {
   position: relative;
-  display: grid;
-  place-items: center;
-  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: calc(var(--gate-top-padding) + var(--gate-mark-width) * 171 / 237 + 24px) 0 24px;
 }
 
 .gate-topbar {
@@ -207,7 +220,7 @@
   top: var(--gate-top-padding);
   left: 0;
   width: 100%;
-  min-height: var(--gate-topbar-height);
+  min-height: 44px;
   display: grid;
   grid-template-columns: 42px 1fr auto;
   align-items: start;
@@ -247,6 +260,7 @@
 
 .gate-card {
   position: relative;
+  flex-shrink: 0;
   isolation: isolate;
   width: min(90%, var(--gate-card-width));
   margin: 0 auto;
@@ -399,7 +413,7 @@
 
 .media-dialog {
   width: min(92vw, 760px);
-  max-height: min(88dvh, 920px);
+  max-height: min(92dvh, 920px);
   padding: 0;
   overflow: auto;
   border: 1px solid rgba(22, 102, 168, .2);
@@ -416,31 +430,43 @@
 
 .media-dialog__content {
   position: relative;
-  display: grid;
-  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  max-height: min(calc(92dvh - 2px), 918px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  gap: 12px;
   padding: clamp(24px, 4vw, 38px);
 }
 
 .media-dialog__content h2,
 .media-dialog__content p {
   margin: 0;
+  flex-shrink: 0;
+  overflow-wrap: anywhere;
 }
 
 .media-dialog__content img {
   display: block;
   width: min(100%, 620px);
+  max-height: min(52dvh, 560px);
+  min-height: min(120px, 20dvh);
+  flex-shrink: 1;
+  object-fit: contain;
   height: auto;
   margin: 4px auto 0;
   border-radius: 18px;
 }
 
 .media-dialog__close {
-  position: absolute;
-  top: 14px;
-  right: 14px;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  align-self: flex-end;
+  flex-shrink: 0;
   display: grid;
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   place-items: center;
   border: 1px solid rgba(11, 18, 32, .12);
@@ -842,7 +868,11 @@
 
 }
 
-@media (max-width: 360px) {
+@media (max-width: 460px) {
+  .landing-page {
+    --gate-mark-width: 80px;
+  }
+
   .gate-tabs {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2px 8px;
@@ -854,140 +884,11 @@
   }
 }
 
-/* Keep both landing stages usable when a phone has very little height. */
-@media (max-height: 560px) {
-  .landing-page {
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-
-  .landing-shell,
-  .landing-viewport {
-    height: auto;
-    min-height: 100dvh;
-    overflow: visible;
-  }
-
-  .stage-slider {
-    height: auto;
-    min-height: 100dvh;
-  }
-
-  .stage-panel,
-  .panel-frame {
-    height: auto;
-    min-height: 100dvh;
-    overflow: visible;
-  }
-
-  .page-footer {
-    position: relative;
-    left: auto;
-    bottom: auto;
-    width: min(100% - 32px, 420px);
-    margin: 18px auto 16px;
-    transform: none;
-  }
-
-  .panel-frame--gate {
-    display: block;
-    padding: calc(var(--gate-topbar-height) + 14px) 0 56px;
-  }
-
-  .landing-shell.is-gate {
-    min-height: 100dvh;
-    overflow-x: hidden;
-    overflow-y: visible;
-    overscroll-behavior-y: contain;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .landing-shell.is-gate .landing-viewport,
-  .landing-shell.is-gate .stage-slider,
-  .landing-shell.is-gate .stage-panel,
-  .landing-shell.is-gate .panel-frame--gate {
-    height: auto;
-    min-height: 0;
-  }
-
-  .landing-shell.is-gate .landing-viewport,
-  .landing-shell.is-gate .stage-panel {
-    overflow: visible;
-  }
-
-  .landing-shell.is-gate .panel-frame--gate {
-    padding: calc(var(--gate-topbar-height) + 14px) 0 56px;
-  }
-}
-
 @media (pointer: coarse) {
   .page-footer a {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
-  }
-}
-
-/* Centre the introduction between the language controls and footer.
-   Natural height keeps the content reachable on short screens. */
-@media (max-width: 720px), (max-height: 560px) {
-  .landing-page:has(.landing-shell:not(.is-gate)) {
-    overflow-y: auto;
-  }
-
-  /* Clip decorative overflow without limiting the height of real content. */
-  .landing-shell {
-    overflow: clip;
-  }
-
-  .landing-shell:not(.is-gate) .stage-panel--landing {
-    min-height: 0;
-  }
-
-  .landing-shell:not(.is-gate) .language-switcher--landing {
-    position: absolute;
-  }
-
-  .landing-shell:not(.is-gate) .landing-viewport,
-  .landing-shell:not(.is-gate) .stage-slider {
-    height: auto;
-    min-height: 0;
-  }
-
-  .landing-shell:not(.is-gate) .stage-slider {
-    align-items: flex-start;
-  }
-
-  .landing-shell:not(.is-gate) .stage-panel--gate {
-    height: 0;
-    min-height: 0;
-    visibility: hidden;
-    overflow: hidden;
-  }
-
-  .landing-shell:not(.is-gate) .panel-frame--landing {
-    height: auto;
-    min-height: calc(100dvh - 72px);
-    justify-content: center;
-    padding: 96px 20px 24px;
-  }
-
-  .landing-shell:not(.is-gate) .panel-frame--landing > * {
-    flex-shrink: 0;
-  }
-
-  .landing-shell:not(.is-gate) .page-footer {
-    position: relative;
-    left: auto;
-    bottom: auto;
-    display: block;
-    min-height: 72px;
-    width: min(100% - 32px, 420px);
-    margin: 0 auto;
-    padding-block: 12px;
-    transform: none;
-    text-align: center;
-    white-space: normal;
   }
 }
 

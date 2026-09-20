@@ -463,6 +463,7 @@ function initLandingPage() {
 
   function setStage(stage, { moveFocus = false } = {}) {
     const isGateStage = stage === "gate";
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
 
     if (landingShell) {
       landingShell.scrollLeft = 0;

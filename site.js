@@ -129,6 +129,30 @@
     }
   });
 
+  // Use the mobile menu whenever the translated/enlarged navigation cannot fit.
+  if (topbar && navLinks && mobileToggle && "ResizeObserver" in window) {
+    const nav = navLinks.parentElement;
+    let pendingLayout = 0;
+    const updateNavigationLayout = () => {
+      pendingLayout = 0;
+      topbar.classList.remove("nav-compact");
+      const gap = parseFloat(getComputedStyle(nav).columnGap) || 0;
+      const requiredWidth = navLinks.scrollWidth + (nav.querySelector(".brand")?.offsetWidth || 0) + gap;
+      const needsCompactMenu = desktopMedia.matches && requiredWidth > nav.clientWidth;
+      topbar.classList.toggle("nav-compact", needsCompactMenu);
+      if (desktopMedia.matches && !needsCompactMenu) setMenuState(false);
+    };
+    const scheduleNavigationLayout = () => {
+      if (!pendingLayout) pendingLayout = requestAnimationFrame(updateNavigationLayout);
+    };
+    const navObserver = new ResizeObserver(scheduleNavigationLayout);
+    navObserver.observe(nav);
+    navObserver.observe(navLinks);
+    window.addEventListener("resize", scheduleNavigationLayout, { passive: true });
+    document.fonts?.ready.then(scheduleNavigationLayout);
+    scheduleNavigationLayout();
+  }
+
   function initBackToTop() {
     if (!document.body.classList.contains("site-page")) {
       return;
