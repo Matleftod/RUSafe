@@ -175,6 +175,11 @@
   letter-spacing: var(--letter-spacing-heading);
 }
 
+.landing-brand-name {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 .landing-slogan {
   margin: var(--landing-slogan-gap) 0 0;
   font-size: var(--landing-slogan-size);

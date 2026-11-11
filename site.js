@@ -182,6 +182,8 @@
   initBackToTop();
 
   function initTeamProfiles() {
+    const standbyProfileNames = new Set(["michael"]);
+
     document.querySelectorAll(".team-grid").forEach((grid) => {
       const cards = [...grid.querySelectorAll(":scope > .team-card")];
       cards.sort((left, right) => {
@@ -240,7 +242,13 @@
 
       const name = displayNameFor({ card, rawName, firstName, ...record });
       heading.textContent = name;
-      const hasBio = bio.querySelector("p") !== null;
+      const isStandby = standbyProfileNames.has(firstName.trim().toLocaleLowerCase());
+      if (isStandby) {
+        // Keep the profile card visible while its portrait and biography remain unpublished.
+        avatar.querySelector("img")?.remove();
+        bio.replaceChildren();
+      }
+      const hasBio = !isStandby && bio.querySelector("p") !== null;
       const profile = document.createElement(hasBio ? "details" : "div");
       const surface = document.createElement(hasBio ? "summary" : "div");
       const portraitPanel = document.createElement("span");

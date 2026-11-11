@@ -1219,6 +1219,10 @@
       border-color: #efb8cb;
     }
 
+    .team-card__profile--unavailable .team-card__role {
+      color: #bd5577;
+    }
+
     .team-card__profile--unavailable .team-card__sheet-label {
       color: var(--color-text-muted);
       opacity: .58;
